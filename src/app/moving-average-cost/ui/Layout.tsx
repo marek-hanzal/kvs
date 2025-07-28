@@ -2,9 +2,9 @@ import { Link, useParams } from "@tanstack/react-router";
 import { Toaster } from "@use-pico/client";
 import { tvc } from "@use-pico/common";
 import type { FC, PropsWithChildren } from "react";
-import { Footer } from "~/app/moving-average-cost/Footer";
-import { LayoutCls } from "~/app/moving-average-cost/LayoutCls";
-import { Menu } from "~/app/moving-average-cost/Menu";
+import { Footer } from "~/app/moving-average-cost/ui/Footer";
+import { LayoutCls } from "~/app/moving-average-cost/ui/LayoutCls";
+import { Menu } from "~/app/moving-average-cost/ui/Menu";
 import logo from "~/assets/logo.svg";
 
 export namespace Layout {
