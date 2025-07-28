@@ -1,5 +1,9 @@
 import { createFileRoute, useParams } from "@tanstack/react-router";
-import { Icon, LinkTo, Tx } from "@use-pico/client";
+import { LinkTo, Tx } from "@use-pico/client";
+import { tvc } from "@use-pico/common";
+import { Tile } from "../../app/kvs/Tile";
+import { TileSet } from "../../app/kvs/TileSet";
+import logo from "../../assets/logo.svg";
 
 export const Route = createFileRoute("/$locale/")({
 	component() {
@@ -8,16 +12,103 @@ export const Route = createFileRoute("/$locale/")({
 		});
 
 		return (
-			<div>
-				<LinkTo
-					icon={<Icon icon={"icon-[lets-icons--root-light-light]"} />}
-					to={"/$locale/moving-average-cost"}
-					params={{
-						locale,
-					}}
+			<div
+				className={tvc([
+					"min-h-screen",
+					"bg-gradient-to-br",
+					"from-slate-50",
+					"to-slate-100",
+					"p-8",
+				])}
+			>
+				<div
+					className={tvc([
+						"max-w-6xl",
+						"mx-auto",
+					])}
 				>
-					<Tx label={"Moving Average Cost"} />
-				</LinkTo>
+					{/* Header */}
+					<div
+						className={tvc([
+							"text-center",
+							"mb-8",
+						])}
+					>
+						<h1
+							className={tvc([
+								"text-4xl",
+								"font-bold",
+								"text-slate-800",
+								"mb-4",
+							])}
+						>
+							<Tx label="Welcome to KVS" />
+						</h1>
+						<p
+							className={tvc([
+								"text-lg",
+								"text-slate-600",
+								"max-w-2xl",
+								"mx-auto",
+							])}
+						>
+							<Tx label="Select a module to get started" />
+						</p>
+					</div>
+
+					{/* Logo */}
+					<div
+						className={tvc([
+							"flex",
+							"justify-center",
+							"mb-12",
+						])}
+					>
+						<img
+							src={logo}
+							alt="KVS Logo"
+							className={tvc([
+								"w-1/5",
+								"max-w-md",
+								"h-auto",
+								"object-contain",
+								"drop-shadow-lg",
+							])}
+						/>
+					</div>
+
+					{/* Tiles Grid */}
+					<TileSet>
+						<Tile
+							title="Moving Average Cost"
+							description="Calculate and track moving average costs for inventory management"
+							icon="icon-[mdi--calculator]"
+							wrapper={(props) => {
+								return (
+									<LinkTo
+										to={"/$locale/moving-average-cost"}
+										params={{
+											locale,
+										}}
+										{...props}
+									/>
+								);
+							}}
+						/>
+						<Tile
+							title="Coming Soon"
+							description="New modules are being developed"
+							icon="icon-[mdi--clock-outline]"
+							disabled={true}
+						/>
+						<Tile
+							title="Coming Soon"
+							description="More exciting features on the way"
+							icon="icon-[mdi--star-outline]"
+							disabled={true}
+						/>
+					</TileSet>
+				</div>
 			</div>
 		);
 	},

@@ -1,4 +1,4 @@
 @import "tailwindcss";
 @import "@use-pico/client/pico.css";
 
-@config '../../tailwind.config.ts';
+@config "../../tailwind.config.ts";
