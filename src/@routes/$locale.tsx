@@ -1,5 +1,3 @@
-/** @format */
-
 import { createFileRoute } from "@tanstack/react-router";
 import { translator } from "@use-pico/common";
 
