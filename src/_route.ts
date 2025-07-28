@@ -14,6 +14,8 @@ import { Route as IndexRouteImport } from './@routes/index'
 import { Route as LocaleIndexRouteImport } from './@routes/$locale/index'
 import { Route as LocaleMovingAverageCostRouteImport } from './@routes/$locale/moving-average-cost'
 import { Route as LocaleMovingAverageCostIndexRouteImport } from './@routes/$locale/moving-average-cost/index'
+import { Route as LocaleMovingAverageCostListRouteImport } from './@routes/$locale/moving-average-cost/list'
+import { Route as LocaleMovingAverageCostCreateRouteImport } from './@routes/$locale/moving-average-cost/create'
 
 const LocaleRoute = LocaleRouteImport.update({
   id: '/$locale',
@@ -41,17 +43,33 @@ const LocaleMovingAverageCostIndexRoute =
     path: '/',
     getParentRoute: () => LocaleMovingAverageCostRoute,
   } as any)
+const LocaleMovingAverageCostListRoute =
+  LocaleMovingAverageCostListRouteImport.update({
+    id: '/list',
+    path: '/list',
+    getParentRoute: () => LocaleMovingAverageCostRoute,
+  } as any)
+const LocaleMovingAverageCostCreateRoute =
+  LocaleMovingAverageCostCreateRouteImport.update({
+    id: '/create',
+    path: '/create',
+    getParentRoute: () => LocaleMovingAverageCostRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/moving-average-cost': typeof LocaleMovingAverageCostRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/moving-average-cost/create': typeof LocaleMovingAverageCostCreateRoute
+  '/$locale/moving-average-cost/list': typeof LocaleMovingAverageCostListRoute
   '/$locale/moving-average-cost/': typeof LocaleMovingAverageCostIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleIndexRoute
+  '/$locale/moving-average-cost/create': typeof LocaleMovingAverageCostCreateRoute
+  '/$locale/moving-average-cost/list': typeof LocaleMovingAverageCostListRoute
   '/$locale/moving-average-cost': typeof LocaleMovingAverageCostIndexRoute
 }
 export interface FileRoutesById {
@@ -60,6 +78,8 @@ export interface FileRoutesById {
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/moving-average-cost': typeof LocaleMovingAverageCostRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
+  '/$locale/moving-average-cost/create': typeof LocaleMovingAverageCostCreateRoute
+  '/$locale/moving-average-cost/list': typeof LocaleMovingAverageCostListRoute
   '/$locale/moving-average-cost/': typeof LocaleMovingAverageCostIndexRoute
 }
 export interface FileRouteTypes {
@@ -69,15 +89,24 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/moving-average-cost'
     | '/$locale/'
+    | '/$locale/moving-average-cost/create'
+    | '/$locale/moving-average-cost/list'
     | '/$locale/moving-average-cost/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$locale' | '/$locale/moving-average-cost'
+  to:
+    | '/'
+    | '/$locale'
+    | '/$locale/moving-average-cost/create'
+    | '/$locale/moving-average-cost/list'
+    | '/$locale/moving-average-cost'
   id:
     | '__root__'
     | '/'
     | '/$locale'
     | '/$locale/moving-average-cost'
     | '/$locale/'
+    | '/$locale/moving-average-cost/create'
+    | '/$locale/moving-average-cost/list'
     | '/$locale/moving-average-cost/'
   fileRoutesById: FileRoutesById
 }
@@ -123,15 +152,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleMovingAverageCostIndexRouteImport
       parentRoute: typeof LocaleMovingAverageCostRoute
     }
+    '/$locale/moving-average-cost/list': {
+      id: '/$locale/moving-average-cost/list'
+      path: '/list'
+      fullPath: '/$locale/moving-average-cost/list'
+      preLoaderRoute: typeof LocaleMovingAverageCostListRouteImport
+      parentRoute: typeof LocaleMovingAverageCostRoute
+    }
+    '/$locale/moving-average-cost/create': {
+      id: '/$locale/moving-average-cost/create'
+      path: '/create'
+      fullPath: '/$locale/moving-average-cost/create'
+      preLoaderRoute: typeof LocaleMovingAverageCostCreateRouteImport
+      parentRoute: typeof LocaleMovingAverageCostRoute
+    }
   }
 }
 
 interface LocaleMovingAverageCostRouteChildren {
+  LocaleMovingAverageCostCreateRoute: typeof LocaleMovingAverageCostCreateRoute
+  LocaleMovingAverageCostListRoute: typeof LocaleMovingAverageCostListRoute
   LocaleMovingAverageCostIndexRoute: typeof LocaleMovingAverageCostIndexRoute
 }
 
 const LocaleMovingAverageCostRouteChildren: LocaleMovingAverageCostRouteChildren =
   {
+    LocaleMovingAverageCostCreateRoute: LocaleMovingAverageCostCreateRoute,
+    LocaleMovingAverageCostListRoute: LocaleMovingAverageCostListRoute,
     LocaleMovingAverageCostIndexRoute: LocaleMovingAverageCostIndexRoute,
   }
 

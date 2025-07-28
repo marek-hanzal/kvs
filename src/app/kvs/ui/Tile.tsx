@@ -44,7 +44,7 @@ export const Tile = ({
 					</div>
 					<div className={slots.textContainer()}>
 						<h3 className={slots.title()}>{title}</h3>
-						<p className={slots.description()}>{description}</p>
+						<div className={slots.description()}>{description}</div>
 					</div>
 				</div>
 			</Wrapper>

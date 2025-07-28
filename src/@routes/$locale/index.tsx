@@ -44,7 +44,7 @@ export const Route = createFileRoute("/$locale/")({
 						>
 							<Tx label="Welcome to KVS" />
 						</h1>
-						<p
+						<div
 							className={tvc([
 								"text-lg",
 								"text-slate-600",
@@ -53,7 +53,7 @@ export const Route = createFileRoute("/$locale/")({
 							])}
 						>
 							<Tx label="Select a module to get started" />
-						</p>
+						</div>
 					</div>
 
 					{/* Logo */}
@@ -88,7 +88,7 @@ export const Route = createFileRoute("/$locale/")({
 							wrapper={(props) => {
 								return (
 									<LinkTo
-										to={"/$locale/moving-average-cost"}
+										to={"/$locale/moving-average-cost/list"}
 										params={{
 											locale,
 										}}
