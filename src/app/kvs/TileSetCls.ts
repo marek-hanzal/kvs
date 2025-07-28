@@ -6,6 +6,7 @@ export const TileSetCls = cls({
 			"grid",
 			"grid-cols-3",
 			"gap-6",
+			"items-start",
 		],
 	},
 	variant: {},
