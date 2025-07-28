@@ -1,4 +1,4 @@
-import { Table, withColumn } from "@use-pico/client";
+import { Table, Tx, withColumn } from "@use-pico/client";
 import type { FC } from "react";
 import type { MvaRecordSchema } from "~/app/moving-average-cost/db/MvaRecordSchema";
 
@@ -12,40 +12,34 @@ const column = withColumn<MvaRecordSchema.Type>();
 
 const columns = [
 	column({
-		name: "id",
-		header: () => "ID",
-		render: ({ data }) => data.id,
-		size: 80,
-	}),
-	column({
 		name: "stamp",
-		header: () => "Date",
+		header: () => <Tx label="Date" />,
 		render: ({ data }) => new Date(data.stamp).toLocaleDateString(),
-		size: 120,
+		size: 12,
 	}),
 	column({
 		name: "name",
-		header: () => "Resource Name",
+		header: () => <Tx label="Resource Name" />,
 		render: ({ data }) => data.name,
-		size: 200,
+		size: 18,
 	}),
 	column({
 		name: "amount",
-		header: () => "Amount Produced",
+		header: () => <Tx label="Amount Produced" />,
 		render: ({ data }) => data.amount.toFixed(2),
-		size: 150,
+		size: 12,
 	}),
 	column({
 		name: "cost",
-		header: () => "Total Cost",
+		header: () => <Tx label="Total Cost" />,
 		render: ({ data }) => data.cost.toFixed(2),
-		size: 150,
+		size: 12,
 	}),
 	column({
 		name: "gross",
-		header: () => "Cost per Unit",
+		header: () => <Tx label="Cost per Unit" />,
 		render: ({ data }) => data.gross.toFixed(2),
-		size: 150,
+		size: "auto",
 	}),
 ];
 
