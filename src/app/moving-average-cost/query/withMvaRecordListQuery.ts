@@ -1,20 +1,20 @@
 import { withListCount, withQuery } from "@use-pico/client";
 import type { CursorSchema } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
-import type { MvaRecordFilterSchema } from "~/app/moving-average-cost/db/MvaRecordFilterSchema";
 import type { MvaRecordSortSchema } from "~/app/moving-average-cost/db/MvaRecordSortSchema";
-import { MvaRecordSchema } from "../db/MvaRecordSchema";
+import type { MvcRecordFilterSchema } from "~/app/moving-average-cost/db/MvcRecordFilterSchema";
+import { MvcRecordSchema } from "../db/MvcRecordSchema";
 
 export namespace withMvaRecordListQuery {
 	export interface Props
 		extends withQuery.PropsEx<
 			{
 				cursor?: CursorSchema.Type;
-				where?: MvaRecordFilterSchema.Type;
-				filter?: MvaRecordFilterSchema.Type;
+				where?: MvcRecordFilterSchema.Type;
+				filter?: MvcRecordFilterSchema.Type;
 				sort?: MvaRecordSortSchema.Type;
 			},
-			MvaRecordSchema.Type
+			MvcRecordSchema.Type
 		> {
 		//
 	}
@@ -35,7 +35,7 @@ export const withMvaRecordListQuery = ({
 		async queryFn({ cursor, where, filter, sort }) {
 			return withListCount({
 				select: kysely.selectFrom("MvaRecord as mr").selectAll(),
-				output: MvaRecordSchema,
+				output: MvcRecordSchema,
 				cursor,
 				where,
 				filter,

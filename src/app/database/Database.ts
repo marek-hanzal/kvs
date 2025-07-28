@@ -1,7 +1,5 @@
-import type { MvaItemSchema } from "~/app/moving-average-cost/db/MvaItemSchema";
-import type { MvaRecordSchema } from "~/app/moving-average-cost/db/MvaRecordSchema";
+import type { MvcRecordSchema } from "~/app/moving-average-cost/db/MvcRecordSchema";
 
 export interface Database {
-	MvaRecord: MvaRecordSchema.Type;
-	MvaItem: MvaItemSchema.Type;
+	MvaRecord: MvcRecordSchema.Type;
 }

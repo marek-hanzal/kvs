@@ -7,12 +7,12 @@ import {
 	Tx,
 	withSourceSearchSchema,
 } from "@use-pico/client";
-import { MvaRecordFilterSchema } from "~/app/moving-average-cost/db/MvaRecordFilterSchema";
+import { MvcRecordFilterSchema } from "~/app/moving-average-cost/db/MvcRecordFilterSchema";
 import { withMvaRecordListQuery } from "~/app/moving-average-cost/query/withMvaRecordListQuery";
-import { MvaTable } from "~/app/moving-average-cost/ui/MvaTable";
+import { MvcTable } from "~/app/moving-average-cost/ui/MvcTable";
 
 const { validateSearch } = withSourceSearchSchema({
-	filter: MvaRecordFilterSchema,
+	filter: MvcRecordFilterSchema,
 	defaultSort: {
 		stamp: "asc",
 	},
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/$locale/moving-average-cost/list")({
 		const navigate = Route.useNavigate();
 
 		return (
-			<MvaTable
+			<MvcTable
 				data={list}
 				filter={{
 					state: {

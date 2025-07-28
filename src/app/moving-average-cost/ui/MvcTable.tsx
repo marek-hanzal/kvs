@@ -1,14 +1,14 @@
 import { Table, Tx, withColumn } from "@use-pico/client";
 import type { FC } from "react";
-import type { MvaRecordSchema } from "~/app/moving-average-cost/db/MvaRecordSchema";
+import type { MvcRecordSchema } from "~/app/moving-average-cost/db/MvcRecordSchema";
 
-export namespace MvaTable {
-	export interface Props extends Table.PropsEx<MvaRecordSchema.Type> {
+export namespace MvcTable {
+	export interface Props extends Table.PropsEx<MvcRecordSchema.Type> {
 		//
 	}
 }
 
-const column = withColumn<MvaRecordSchema.Type>();
+const column = withColumn<MvcRecordSchema.Type>();
 
 const columns = [
 	column({
@@ -43,7 +43,7 @@ const columns = [
 	}),
 ];
 
-export const MvaTable: FC<MvaTable.Props> = ({ ...props }) => {
+export const MvcTable: FC<MvcTable.Props> = ({ ...props }) => {
 	return (
 		<Table
 			columns={columns}
