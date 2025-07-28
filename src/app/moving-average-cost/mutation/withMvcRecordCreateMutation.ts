@@ -1,5 +1,5 @@
 import { withMutation } from "@use-pico/client";
-import { genId } from "@use-pico/common";
+import { DateTime, genId } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
 import type { MvcRecordCreateSchema } from "../db/MvcRecordCreateSchema";
 import type { MvcRecordSchema } from "../db/MvcRecordSchema";
@@ -26,11 +26,19 @@ export const withMvcRecordCreateMutation = (
 			];
 		},
 		async mutationFn(values) {
+			const now = DateTime.now().toUTC().toSQLTime();
+
+			console.log("values", {
+				id: genId(),
+				stamp: now,
+				...values,
+			});
+
 			return kysely
 				.insertInto("MvaRecord")
 				.values({
 					id: genId(),
-					stamp: new Date().toISOString(),
+					stamp: now,
 					...values,
 				})
 				.returningAll()

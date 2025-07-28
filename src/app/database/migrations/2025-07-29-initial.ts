@@ -5,7 +5,7 @@ export const InitialMigration: Migration = {
 		await db.schema
 			.createTable("MvaRecord")
 			.addColumn("id", "integer", (col) => col.primaryKey())
-			.addColumn("stamp", "text", (col) => col.notNull())
+			.addColumn("stamp", "datetime", (col) => col.notNull())
 			.addColumn("name", "text", (col) => col.notNull())
 			.addColumn("amount", "real", (col) => col.notNull())
 			.addColumn("cost", "real", (col) => col.notNull())
@@ -18,7 +18,7 @@ export const InitialMigration: Migration = {
 			.addColumn("mvaRecordId", "integer", (col) =>
 				col.references("MvaRecord.id").onDelete("cascade").notNull(),
 			)
-			.addColumn("stamp", "text", (col) => col.notNull())
+			.addColumn("stamp", "datetime", (col) => col.notNull())
 			.addColumn("name", "text", (col) => col.notNull())
 			.addColumn("cost", "real", (col) => col.notNull())
 			.execute();
