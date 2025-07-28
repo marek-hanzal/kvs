@@ -80,8 +80,10 @@ export const Route = createFileRoute("/$locale/")({
 					{/* Tiles Grid */}
 					<TileSet>
 						<Tile
-							title="Moving Average Cost"
-							description="Calculate and track moving average costs for inventory management"
+							title={<Tx label="Moving Average Cost" />}
+							description={
+								<Tx label="Calculate and track moving average costs for inventory management" />
+							}
 							icon="icon-[mdi--calculator]"
 							wrapper={(props) => {
 								return (
@@ -96,14 +98,18 @@ export const Route = createFileRoute("/$locale/")({
 							}}
 						/>
 						<Tile
-							title="Coming Soon"
-							description="New modules are being developed"
+							title={<Tx label="Coming Soon" />}
+							description={
+								<Tx label="New modules are being developed" />
+							}
 							icon="icon-[mdi--clock-outline]"
 							disabled={true}
 						/>
 						<Tile
-							title="Coming Soon"
-							description="More exciting features on the way"
+							title={<Tx label="Coming Soon" />}
+							description={
+								<Tx label="More exciting features on the way" />
+							}
 							icon="icon-[mdi--star-outline]"
 							disabled={true}
 						/>

@@ -1,0 +1,135 @@
+1345bf9e64d99f8fa9a1cdb1067c859499aa7c04ef20ac9a94478b11:
+  ref: Missing required token(s). (title)
+  value: Missing required token(s). (title)
+1b163f7a517fd4d7d84d7ac05f4afe6158ea8e941335589a2337ec6c:
+  ref: File downloaded...
+  value: File downloaded...
+22648440e36f6980e7bbf7f1f9c5c080edccd9ba1415f301b3b2df2f:
+  ref: Sorted by desc, remove sort
+  value: Sorted by desc, remove sort
+2727e5a04d8acc225b3320799348e34eff9ac515e1130101baab751a:
+  ref: .
+  value: .
+282447aea716ad0adce959ef2fa721688cf8614506ecdfd8c1dcf052:
+  ref: No tags (label)
+  value: No tags (label)
+290c6448930c95565c7175167b73696849273004c2be24f440fe3cf7:
+  ref: Select a module to get started
+  value: Select a module to get started
+38347572d8aa1607a788bf890a6e9f83c334d06fc92987ae1535b1f5:
+  ref: Missing any token(s). (title)
+  value: Missing any token(s). (title)
+3909c87c4b736847773096b6ead06fff8cfcab8426b86024493883bd:
+  ref: Select item
+  value: Select item
+3b9b4be744020203adc5a5aeca81a821b1bda652d33bc4b043aa796b:
+  ref: Error (toast)
+  value: Error (toast)
+3cf6a94de82eff398e945c860419d934e2ed52b559f97a8d4aedfadc:
+  ref: Welcome to KVS
+  value: Welcome to KVS
+3fa727133217f67d7ba23ebb7aea03e50418be8190006ec675f298d0:
+  ref: Without VAT
+  value: Without VAT
+420f1e10ac45101f5905b3b0d51d995d7c42e7c38f4dc034c898dca5:
+  ref: Cancel (button)
+  value: Cancel (button)
+52a90ac39b40af333717a0e6d596cd865a4c7f56f760374bb86082ba:
+  ref: Missing any token(s). (message)
+  value: Missing any token(s). (message)
+54f47a22840e2e29550b8bb925fc4dcca868be0b55be5a3063b7fe69:
+  ref: Total count of items (label)
+  value: Total count of items (label)
+568d3ece0540fd580d2c48b7bb3b48905a52a204db6726a452b29659:
+  ref: Invalid on/off value
+  value: Invalid on/off value
+5aadd057a77e161f140bd21426c90c9a5c6f3ddecfc261351e5cdfa1:
+  ref: Moving Average Cost
+  value: Moving Average Cost
+5cd4cffcbafbe0a40563538352c1a593909e57b10bb8d9ad5f9b3d2a:
+  ref: Delete (button)
+  value: Delete (button)
+70d7fb9cb6ce7775c5f9e1f890e6b248e538277a973f1aa95a36c0f2:
+  ref: Clear files
+  value: Clear files
+77b049e75c767c4ca346dd05d7a42c39c3479ac4f6dfaeaaa6efc1da:
+  ref: There is nothing to see right now.
+  value: There is nothing to see right now.
+816c08b99b10a24bccbaf9ed3be66e93498a5ca8967792f35b425fa2:
+  ref: Close (label)
+  value: Close (label)
+82967940b5822009f49d035d2534b9d9d1bd7afda070425a6240ef2c:
+  ref: New modules are being developed
+  value: New modules are being developed
+877f5f6106968c26486b30ccfd0af1e22ca05b4131099f99823b45f6:
+  ref: With VAT
+  value: With VAT
+891fe47dd650cc5e7c3864f9cb807b951df70b334f3c076fe50fda11:
+  ref: Missing required token(s). (message)
+  value: Missing required token(s). (message)
+9787305b076729a8818974ec91c90b96e1bbeee3a189994587c92ff5:
+  ref: Nothing here
+  value: Nothing here
+9a4fbda949e2064f4e559fc54f6377f3c178bba7892face8fcc404fb:
+  ref: Coming Soon
+  value: Coming Soon
+9f3ea85808a44a993024995453b438851943f2aba42cad77b727d127:
+  ref: Fulltext (placeholder)
+  value: Fulltext (placeholder)
+a23ce2805827f8c89f8254b43ecc2a73d5974af2fb57a74ecd8839c5:
+  ref: Invalid data provided (message)
+  value: Invalid data provided (message)
+a26e2f454b3953f2d2b295fcdae89f2bd7b4a6a145918f37d91e31c8:
+  ref: Unsorted, sort by asc
+  value: Unsorted, sort by asc
+a421acdb6005685abf3ab655b39bd5a6fd36b74ffb42026ddc48fc6b:
+  ref: Cannot resolve iso date time
+  value: Cannot resolve iso date time
+abcfdda5d6985517d677dc843ccdb96a3b74a2e708e82fbc8076dcf8:
+  ref: Success (toast)
+  value: Success (toast)
+acb8bc45623779875e63d70364abc9a77446efe7c8b6c86825497e17:
+  ref: Sorted by asc, sort by desc
+  value: Sorted by asc, sort by desc
+ada656378ad55508bb4133baf81d6678f544d15199ed57c1e9ebe146:
+  ref: Export settings (title)
+  value: Export settings (title)
+af8f35d688a6936914f62e095e58125cd5fa4407d8c0343bc7fdeb7d:
+  ref: Drag 'n' drop a file here
+  value: Drag 'n' drop a file here
+b2a00524ce3a0620b582b540a0f5f1da7fd91db9b79dc3944233603c:
+  ref: Invalid data provided (title)
+  value: Invalid data provided (title)
+b35f0b66df0dbbf3c51b1281ea17e7a0ddeeb96392e89d8bc588b27d:
+  ref: No more items (label)
+  value: No more items (label)
+b4fcc48516f0b04ca6bc78304c96366505e47360ff63bfc8b3a27f7b:
+  ref: Select items (label)
+  value: Select items (label)
+b83f73c562eea84b9ed3076da04cc1ab2fdbeb3f2a701a61159a27d6:
+  ref: Downloading file...
+  value: Downloading file...
+bcb2263af0ec3c192d55f37db91b702dfb64cd249372992287291fe9:
+  ref: Export (button)
+  value: Export (button)
+c6d6c21e5b7c3b5b0ec93d104717a2f368ba366ba10e877aff9845a8:
+  ref: Input is not Luxon DateTime!
+  value: Input is not Luxon DateTime!
+c7e7945b7ab787a78dde0f2634018552eab8a1638ca076172231bd42:
+  ref: More exciting features on the way
+  value: More exciting features on the way
+c9c476d23927e4f88653018dc6c592a90dc2282ccc040acce5961294:
+  ref: Cannot download the file...
+  value: Cannot download the file...
+cb991f39f30e87a574eb95aca9cfcdad90a0983a8198507ba127cc51:
+  ref: Calculate and track moving average costs for inventory management
+  value: Calculate and track moving average costs for inventory management
+dc408471ab7060a83f7ded6167a5ce1c79ea02a9b5d44f40c4530ee2:
+  ref: Loading... (toast)
+  value: Loading... (toast)
+e9c24bfbf06755877d0fa51f062bc6e0475f722e432ce78224fb77d5:
+  ref: Select item (label)
+  value: Select item (label)
+f92c5bcd27dd6e6537d9b4eaaac63558d27e759c58675fef5f4f992c:
+  ref: Confirm selection (label)
+  value: Confirm selection (label)
