@@ -1,9 +1,9 @@
 import { createFileRoute, useParams } from "@tanstack/react-router";
 import { LinkTo, Tx } from "@use-pico/client";
 import { tvc } from "@use-pico/common";
-import { Tile } from "../../app/kvs/Tile";
-import { TileSet } from "../../app/kvs/TileSet";
-import logo from "../../assets/logo.svg";
+import { Tile } from "~/app/kvs/ui/Tile";
+import { TileSet } from "~/app/kvs/ui/TileSet";
+import logo from "~/assets/logo.svg";
 
 export const Route = createFileRoute("/$locale/")({
 	component() {
