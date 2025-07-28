@@ -35,9 +35,12 @@ export const Tile = ({
 			<Wrapper>
 				<div className={slots.content()}>
 					<div className={slots.iconContainer()}>
-						<div className={slots.icon()}>
-							<Icon icon={icon} />
-						</div>
+						<Icon
+							icon={icon}
+							cls={{
+								base: slots.icon(),
+							}}
+						/>
 					</div>
 					<div className={slots.textContainer()}>
 						<h3 className={slots.title()}>{title}</h3>
