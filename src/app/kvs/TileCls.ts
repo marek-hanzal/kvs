@@ -17,7 +17,7 @@ export const TileCls = cls({
 			"flex",
 			"flex-col",
 			"h-full",
-			"w-full",
+			"gap-4",
 		],
 		iconContainer: [
 			"w-12",
@@ -28,7 +28,6 @@ export const TileCls = cls({
 			"items-center",
 			"justify-center",
 			"mx-auto",
-			"mb-4",
 			"flex-shrink-0",
 		],
 		icon: [
@@ -39,13 +38,11 @@ export const TileCls = cls({
 		textContainer: [
 			"flex-1",
 			"min-w-0",
-			"w-full",
 		],
 		title: [
 			"text-xl",
 			"font-semibold",
 			"text-slate-800",
-			"mb-2",
 			"break-words",
 			"overflow-wrap-break-word",
 			"word-break-break-word",
