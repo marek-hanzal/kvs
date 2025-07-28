@@ -7,11 +7,12 @@ import {
 	Tx,
 	withSourceSearchSchema,
 } from "@use-pico/client";
+import { MvaRecordFilterSchema } from "~/app/moving-average-cost/db/MvaRecordFilterSchema";
 import { withMvaRecordListQuery } from "~/app/moving-average-cost/query/withMvaRecordListQuery";
 import { MvaTable } from "~/app/moving-average-cost/ui/MvaTable";
 
 const { validateSearch } = withSourceSearchSchema({
-	// filter: ClientWhereSchema,
+	filter: MvaRecordFilterSchema,
 	defaultSort: {
 		stamp: "asc",
 	},
