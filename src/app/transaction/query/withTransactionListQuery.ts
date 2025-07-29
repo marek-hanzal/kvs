@@ -46,6 +46,22 @@ export const withTransactionListQuery = () => {
 						});
 					}
 
+					if (where?.accountToFrom) {
+						$select = $select.where(
+							"t.accountTo",
+							">=",
+							where.accountToFrom,
+						);
+					}
+
+					if (where?.accountToTo) {
+						$select = $select.where(
+							"t.accountTo",
+							"<=",
+							where.accountToTo,
+						);
+					}
+
 					if (sort) {
 						if (sort.stamp) {
 							$select = $select.orderBy("t.stamp", sort.stamp);
