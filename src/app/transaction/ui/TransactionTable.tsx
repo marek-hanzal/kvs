@@ -3,6 +3,7 @@ import { LinkTo, Table, Tx, withColumn } from "@use-pico/client";
 import { DateTime } from "@use-pico/common";
 import type { FC } from "react";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
+import { ActionRow } from "~/app/transaction/ui/TransactionTable/ActionRow";
 import { Toolbar } from "./TransactionTable/Toolbar";
 
 export namespace TransactionTable {
@@ -55,6 +56,7 @@ export const TransactionTable: FC<TransactionTable.Props> = ({ ...props }) => {
 		<Table
 			columns={columns}
 			toolbar={Toolbar}
+			actionRow={ActionRow}
 			row={{
 				css({ data }) {
 					if (data.amount > 0) {

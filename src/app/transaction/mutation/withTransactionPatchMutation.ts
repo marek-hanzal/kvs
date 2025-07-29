@@ -5,6 +5,7 @@ import { TransactionPatchSchema } from "~/app/transaction/db/TransactionPatchSch
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
 import { withTransactionFetchQuery } from "~/app/transaction/query/withTransactionFetchQuery";
 import { withTransactionListQuery } from "~/app/transaction/query/withTransactionListQuery";
+import { withTransactionSumQuery } from "~/app/transaction/query/withTransactionSumQuery";
 
 export const withTransactionPatchMutation = ({ id }: IdentitySchema.Type) => {
 	return withMutation<TransactionPatchSchema.Type, TransactionSchema.Type>({
@@ -24,6 +25,7 @@ export const withTransactionPatchMutation = ({ id }: IdentitySchema.Type) => {
 				.executeTakeFirstOrThrow();
 		},
 		invalidate: [
+            withTransactionSumQuery(),
 			withTransactionFetchQuery(),
 			withTransactionListQuery(),
 		],

@@ -4,6 +4,7 @@ import { kysely } from "~/app/database/kysely";
 import { TransactionCreateSchema } from "~/app/transaction/db/TransactionCreateSchema";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
 import { withTransactionListQuery } from "~/app/transaction/query/withTransactionListQuery";
+import { withTransactionSumQuery } from "~/app/transaction/query/withTransactionSumQuery";
 
 export namespace withTransactionCreateMutation {
 	export interface Props
@@ -41,6 +42,7 @@ export const withTransactionCreateMutation = ({
 				.executeTakeFirstOrThrow();
 		},
 		invalidate: [
+			withTransactionSumQuery(),
 			withTransactionListQuery(),
 		],
 	});

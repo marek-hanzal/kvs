@@ -1,12 +1,18 @@
 0146b5cddbb273ed3ecc2871f7d0cd1161b039c65c552b85700d90d5:
     ref: Item Name
     value: Název položky
+0353a7e7a341b6b63f3e182605fd6627a8e0e1c6897b7bf639ff5d89:
+    ref: Back (label)
+    value: Zpět
 06870a93e66047a4d536fc3467bb3152d92487734dbc2ab9bc5ab06a:
     ref: Create
     value: Vytvořit
 1345bf9e64d99f8fa9a1cdb1067c859499aa7c04ef20ac9a94478b11:
     ref: Missing required token(s). (title)
     value: Chybí povinné token(y).
+1a1f737ddf071477184f4fe87e21c38c371f8edfc3bc013887265d59:
+    ref: Todo list
+    value: Todo list
 1a4f554672141fab5ebea5545cf45231b430a1b0224399c8e11ff04d:
     ref: List Moving Average Cost
     value: Seznam
@@ -16,9 +22,6 @@
 1c998cb11280a12e453e74bc727ef9fa1057fae9f48110279a593bad:
     ref: Notifications
     value: Notifikace
-1f6590e76a3425defb28e41ffa5dc896b32499bc9eb3745c04da7f2a:
-    ref: Create Record
-    value: Vytvořit záznam
 22648440e36f6980e7bbf7f1f9c5c080edccd9ba1415f301b3b2df2f:
     ref: Sorted by desc, remove sort
     value: Seřazeno sestupně, odebrat řazení
@@ -37,9 +40,6 @@
 290c6448930c95565c7175167b73696849273004c2be24f440fe3cf7:
     ref: Select a module to get started
     value: Aplikace určená pro sledování cen a dalších zajímavostí v oblasti podnikání.
-2a6f89ba384a713b42f124fb17b8b6d99487cbe7d06208030f033a5e:
-    ref: Amount Produced
-    value: Množství vyrobeného zboží
 2dc007e932619d69a3764f194224cb28fcd5e9ffb60d3cf82a144ca7:
     ref: Amount
     value: Množství
@@ -82,9 +82,9 @@
 5cd4cffcbafbe0a40563538352c1a593909e57b10bb8d9ad5f9b3d2a:
     ref: Delete (button)
     value: Smazat
-64a9bd6efedee20522b35742072e63d585bd6f326f2f4d93ca2f00ba:
-    ref: Company Runtime Cost
-    value: Náklady provozu firmy
+5fada65104ecc35ab6cef0c96301b306e4ce14016251deb9f132dd5c:
+    ref: Save
+    value: Uložit
 66ddcf59b0dbab435cfb780058d90f4fb3fcaa144145747254addf1a:
     ref: Update Item
     value: Upravit položku
@@ -115,9 +115,6 @@
 82967940b5822009f49d035d2534b9d9d1bd7afda070425a6240ef2c:
     ref: New modules are being developed
     value: Nové moduly jsou v různých fázích vývoje
-84c534a811ace551d75f55848c009f057b7f67955ff7d32b251f6548:
-    ref: MVC Record count
-    value: Počet záznamů
 851db0190e11976a9a9be952123a2360166bf8ca526afdadf1e5f2cd:
     ref: Description
     value: Popis
@@ -211,15 +208,15 @@ cc8fbdb9d7a01c996c607174aec16985e3583279f6cd61656a06a60c:
 cd062bde074f081e7f1557c284b11163dba0e5eb0a1ca39223cb1a17:
     ref: Track and manage your transactions
     value: Sledujte a spravujte své příjmy a výdaje
+cd6002d885c0756e4b527673e32553d155f689624a2603062baf5516:
+    ref: Transaction (preview)
+    value: Transakce
 cd6da5d1a46c93ef11d8a7f16619de31f2142687543f1bf479997d5a:
     ref: Input (label)
     value: Příjem
 cfbb9c4de21431ab1400b242ecc0937d8361e828fc32b29ac00a4aa6:
     ref: Saving...
     value: Ukládání...
-d01f079a9c3b5b30892103f15d66f2c1dbf278bb56f58ed903146ca9:
-    ref: Total Cost
-    value: Celkové náklady
 d4746c101ee2b6a47bacebef07520ba9036e508d22c0b15bcebf893a:
     ref: Recalculate Quantity
     value: Přepočítat množství
@@ -235,12 +232,6 @@ dc408471ab7060a83f7ded6167a5ce1c79ea02a9b5d44f40c4530ee2:
 dcb4b824ea2bffd69e1f57e48bd36f40606057020d3c05c3f5c0c761:
     ref: Date
     value: Datum
-e4fa7d2513d4e3d27d7d65d325a04983cdfdf4ccf1c933a23fbb052e:
-    ref: Cost per Unit
-    value: Cena za jednotku
-e5e586960a7915ea8061fbc329e9b1d3c9afdbbc3cec6a7db6c53053:
-    ref: Resource Name
-    value: Název zdroje
 e9c24bfbf06755877d0fa51f062bc6e0475f722e432ce78224fb77d5:
     ref: Select item (label)
     value: Vybrat položku

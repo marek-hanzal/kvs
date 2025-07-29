@@ -75,7 +75,7 @@ export const TransactionPreview: FC<TransactionPreview.Props> = (props) => {
 							locale,
 						}}
 					>
-						<Tx label={"Back to transaction list"} />
+						<Tx label={"Back (label)"} />
 					</LinkTo>
 				);
 			}}

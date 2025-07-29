@@ -52,7 +52,62 @@ The timeline view will be clean and readable with entry previews and quick edit 
 
 ---
 
-## 3. Enhanced Inventory Management
+## 3. Calendar with Event Tracking
+
+### Core Concept
+The Calendar will serve as a visual timeline that displays all business events, activities, and important dates throughout the month. It will provide an at-a-glance view of what's happening in the business, making it easy to plan and track activities.
+
+### Monthly Calendar View
+The calendar will display a traditional monthly grid layout showing all days of the current month. Each day will be a tile that can contain multiple events, with visual indicators for different types of activities. The calendar will support navigation between months and years for historical and future planning.
+
+### Event Types and Markers
+Different types of events will be visually distinguished with color-coded markers:
+- **TODO Items**: Due dates and deadlines with priority-based colors
+- **Transactions**: Financial events with income/expense indicators
+- **Diary Entries**: Important business notes and decisions
+- **Inventory Events**: Stock movements, maintenance schedules, reorder dates
+- **Custom Events**: User-defined events like meetings, appointments, or reminders
+
+### Event Display
+Each day tile will show a summary of events with:
+- Event count indicator (e.g., "3 events")
+- Color-coded dots for different event types
+- Hover tooltips showing event previews
+- Click-to-expand functionality for detailed view
+
+### Quick Event Creation
+The calendar will support quick event creation directly from the calendar view:
+- Click on any day to add a new event
+- Drag and drop events between dates
+- Quick TODO creation with due dates
+- Direct transaction entry for financial events
+
+### Business Intelligence
+The calendar will provide insights into business patterns:
+- Busiest days and weeks
+- Event type distribution
+- Completion rates for scheduled activities
+- Historical trends and seasonal patterns
+
+### Integration with Other Modules
+The calendar will automatically pull events from all other business modules:
+- TODO due dates and completions
+- Transaction dates and financial milestones
+- Diary entry timestamps
+- Inventory movement dates
+- Maintenance schedules
+
+### User Experience
+The calendar interface will be clean and intuitive with:
+- Responsive design that works on all devices
+- Quick navigation between months
+- Today highlighting and current time indicators
+- Print-friendly views for physical planning
+- Export capabilities for external calendar applications
+
+---
+
+## 4. Enhanced Inventory Management
 
 ### Smart Inventory Features
 The inventory system will automatically generate TODO items based on business rules. Low stock alerts will notify when items need reordering, expiry date reminders will prevent waste, and maintenance schedules will ensure equipment stays operational.
@@ -64,7 +119,7 @@ Multi-location support will track items across different storage areas, rooms, o
 
 ---
 
-## 4. Financial Tracking Enhancements
+## 5. Financial Tracking Enhancements
 
 ### Transaction Categories
 A comprehensive categorization system will organize income and expenses into meaningful categories, enabling budget tracking and category-based reporting. Financial goals can be set and tracked against actual performance.
@@ -74,7 +129,7 @@ Financial analytics will provide cash flow analysis, profit/loss tracking, expen
 
 ---
 
-## 5. Integration Features
+## 6. Integration Features
 
 ### Cross-Entity Relations
 A universal linking system will allow any entity to be connected to any other entity. This creates a web of relationships that can be analyzed for impact assessment and dependency management. For example, completing a TODO might affect inventory levels, create a transaction, and update a diary entry.
@@ -84,7 +139,7 @@ Automated workflows will reduce manual work by triggering actions based on event
 
 ---
 
-## 6. Mobile and Accessibility
+## 7. Mobile and Accessibility
 
 ### Mobile Features
 The application will be fully mobile-responsive with touch-friendly interfaces and offline capability. Push notifications will keep users informed even when not actively using the system, and mobile-specific workflows will optimize the experience for on-the-go business management.
@@ -94,7 +149,7 @@ Full accessibility compliance will ensure the application is usable by everyone,
 
 ---
 
-## 7. Data Management
+## 8. Data Management
 
 ### Backup and Sync
 Robust data protection will include automatic backups, data export/import capabilities, version history, and data recovery options. This ensures business data is always safe and recoverable.
@@ -104,7 +159,7 @@ The system will be optimized for performance with database optimization, caching
 
 ---
 
-## 8. Future Enhancements
+## 9. Future Enhancements
 
 ### AI Integration
 Smart suggestions will use artificial intelligence to recommend TODO items based on patterns, auto-categorize transactions, provide predictive analytics, and process natural language input. This will make the system increasingly intelligent and user-friendly.

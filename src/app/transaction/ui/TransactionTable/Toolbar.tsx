@@ -1,9 +1,12 @@
 import { useParams } from "@tanstack/react-router";
-import { Button, LinkTo, type Table, Tx } from "@use-pico/client";
+import { Button, Icon, LinkTo, type Table, Tx } from "@use-pico/client";
+import { tvc } from "@use-pico/common";
 import type { FC } from "react";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
+import { withTransactionSumQuery } from "~/app/transaction/query/withTransactionSumQuery";
 import { InputTransactionIcon } from "~/app/ui/icon/InputTransactionIcon";
 import { OutputTransactionIcon } from "~/app/ui/icon/OutputTransactionIcon";
+import { TransactionIcon } from "~/app/ui/icon/TransactionIcon";
 
 export namespace Toolbar {
 	export interface Props extends Table.Toolbar.Props<TransactionSchema.Type> {
@@ -15,6 +18,9 @@ export const Toolbar: FC<Toolbar.Props> = () => {
 	const { locale } = useParams({
 		from: "/$locale",
 	});
+
+	const sumQuery = withTransactionSumQuery();
+	const { data: sum } = sumQuery.useSuspenseQuery();
 
 	return (
 		<>
@@ -51,6 +57,33 @@ export const Toolbar: FC<Toolbar.Props> = () => {
 					<Tx label="Output transaction" />
 				</Button>
 			</LinkTo>
+
+			<div
+				className={tvc([
+					"flex",
+					"flex-row",
+					"items-center",
+					"gap-2",
+				])}
+			>
+				<Icon
+					icon={TransactionIcon}
+					cls={{
+						base: [
+							"bg-slate-400",
+						],
+					}}
+				/>
+				<div
+					className={tvc([
+						"text-lg",
+						"font-bold",
+						sum > 0 ? "text-green-600" : "text-red-600",
+					])}
+				>
+					{sum.toFixed(2)}
+				</div>
+			</div>
 		</>
 	);
 };
