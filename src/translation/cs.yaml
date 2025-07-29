@@ -139,6 +139,9 @@ a26e2f454b3953f2d2b295fcdae89f2bd7b4a6a145918f37d91e31c8:
 a421acdb6005685abf3ab655b39bd5a6fd36b74ffb42026ddc48fc6b:
     ref: Cannot resolve iso date time
     value: Nelze rozpoznat ISO datum a čas
+a74d891f2e673b2d5d9abfd9be09da484cb0a9d703a6d4e5cee70e0a:
+    ref: Transactions
+    value: Příjmy a výdaje
 a864ba545b4983feb9375f547fc86ce7c0d22c589212c1f103563512:
     ref: Create Item
     value: Vytvořit položku
@@ -190,6 +193,9 @@ cb991f39f30e87a574eb95aca9cfcdad90a0983a8198507ba127cc51:
 cc8fbdb9d7a01c996c607174aec16985e3583279f6cd61656a06a60c:
     ref: Overview
     value: Přehled
+cd062bde074f081e7f1557c284b11163dba0e5eb0a1ca39223cb1a17:
+    ref: Track and manage your transactions
+    value: Sledujte a spravujte své příjmy a výdaje
 cd6da5d1a46c93ef11d8a7f16619de31f2142687543f1bf479997d5a:
     ref: Input (label)
     value: Příjem

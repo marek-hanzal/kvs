@@ -4,6 +4,7 @@ import { tvc } from "@use-pico/common";
 import { Tile } from "~/app/kvs/ui/Tile";
 import { TileSet } from "~/app/kvs/ui/TileSet";
 import { InventoryItemIcon } from "~/app/ui/icon/InventoryItemIcon";
+import { TransactionIcon } from "~/app/ui/icon/TransactionIcon";
 import logo from "~/assets/logo.svg";
 
 export const Route = createFileRoute("/$locale/")({
@@ -90,6 +91,25 @@ export const Route = createFileRoute("/$locale/")({
 								return (
 									<LinkTo
 										to={"/$locale/inventory"}
+										params={{
+											locale,
+										}}
+										{...props}
+									/>
+								);
+							}}
+						/>
+
+						<Tile
+							title={<Tx label="Transactions" />}
+							description={
+								<Tx label="Track and manage your transactions" />
+							}
+							icon={TransactionIcon}
+							wrapper={(props) => {
+								return (
+									<LinkTo
+										to={"/$locale/transaction"}
 										params={{
 											locale,
 										}}
