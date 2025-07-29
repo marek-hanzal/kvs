@@ -26,22 +26,18 @@ export const Route = createFileRoute("/$locale/moving-average-cost/list")({
 		sort,
 	}),
 	async loader({ context: { queryClient }, deps }) {
-		await withMvcRecordListQuery({
-			data: deps,
-		}).prefetch(queryClient);
+		await withMvcRecordListQuery().prefetch(queryClient, deps);
 	},
 	component() {
 		const { filter, cursor, sort } = Route.useSearch();
-		const mvcRecordListQuery = withMvcRecordListQuery({
-			data: {
-				cursor,
-				filter,
-				sort,
-			},
-		});
+		const mvcRecordListQuery = withMvcRecordListQuery();
 		const {
 			data: { list, count },
-		} = mvcRecordListQuery.useSuspenseQuery();
+		} = mvcRecordListQuery.useSuspenseQuery({
+			cursor,
+			filter,
+			sort,
+		});
 		const navigate = Route.useNavigate();
 
 		return (

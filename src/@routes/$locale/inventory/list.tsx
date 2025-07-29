@@ -26,22 +26,18 @@ export const Route = createFileRoute("/$locale/inventory/list")({
 		sort,
 	}),
 	async loader({ context: { queryClient }, deps }) {
-		await withInventoryItemListQuery({
-			data: deps,
-		}).prefetch(queryClient);
+		await withInventoryItemListQuery().prefetch(queryClient, deps);
 	},
 	component() {
 		const { filter, cursor, sort } = Route.useSearch();
-		const inventoryItemListQuery = withInventoryItemListQuery({
-			data: {
-				cursor,
-				filter,
-				sort,
-			},
-		});
+		const inventoryItemListQuery = withInventoryItemListQuery();
 		const {
 			data: { list, count },
-		} = inventoryItemListQuery.useSuspenseQuery();
+		} = inventoryItemListQuery.useSuspenseQuery({
+			cursor,
+			filter,
+			sort,
+		});
 		const navigate = Route.useNavigate();
 
 		return (

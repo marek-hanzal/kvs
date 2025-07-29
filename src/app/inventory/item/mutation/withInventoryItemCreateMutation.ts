@@ -41,9 +41,7 @@ export const withInventoryItemCreateMutation = (
 				.executeTakeFirstOrThrow();
 		},
 		invalidate: [
-			withInventoryItemListQuery({
-				data: {},
-			}),
+			withInventoryItemListQuery(),
 		],
 	});
 };

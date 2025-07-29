@@ -5,26 +5,16 @@ import type { InventoryItemFilterSchema } from "~/app/inventory/item/db/Inventor
 import { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
 import type { InventoryItemSortSchema } from "~/app/inventory/item/db/InventoryItemSortSchema";
 
-export namespace withInventoryItemListQuery {
-	export interface Props
-		extends withQuery.PropsEx<
-			{
-				cursor?: CursorSchema.Type;
-				where?: InventoryItemFilterSchema.Type;
-				filter?: InventoryItemFilterSchema.Type;
-				sort?: InventoryItemSortSchema.Type;
-			},
-			InventoryItemSchema.Type
-		> {
-		//
-	}
-}
-
-export const withInventoryItemListQuery = ({
-	data,
-}: withInventoryItemListQuery.Props) => {
-	return withQuery({
-		data,
+export const withInventoryItemListQuery = () => {
+	return withQuery<
+		{
+			cursor?: CursorSchema.Type;
+			where?: InventoryItemFilterSchema.Type;
+			filter?: InventoryItemFilterSchema.Type;
+			sort?: InventoryItemSortSchema.Type;
+		},
+		withListCount.Result<InventoryItemSchema.Type>
+	>({
 		keys(data) {
 			return [
 				"inventory-item",

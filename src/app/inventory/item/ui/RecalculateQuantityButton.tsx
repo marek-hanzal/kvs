@@ -11,7 +11,7 @@ export namespace RecalculateQuantityButton {
 export const RecalculateQuantityButton: FC<RecalculateQuantityButton.Props> = ({
 	inventoryItemId,
 }) => {
-	const mutation = withInventoryItemQuantityMutation({}).useMutation();
+	const mutation = withInventoryItemQuantityMutation().useMutation();
 
 	const handleClick = () => {
 		mutation.mutate({

@@ -6,20 +6,16 @@ import { usePageTva } from "~/app/ui/usePageTva";
 
 export const Route = createFileRoute("/$locale/inventory/$id")({
 	async loader({ context: { queryClient }, params }) {
-		await withInventoryItemFetchQuery({
-			data: params,
-		}).prefetch(queryClient);
+		await withInventoryItemFetchQuery().prefetch(queryClient, params);
 	},
 	component() {
 		const { id } = Route.useParams();
 		const tva = usePageTva();
 		const { slots } = tva({});
-		const inventoryItemFetchQuery = withInventoryItemFetchQuery({
-			data: {
-				id,
-			},
+		const inventoryItemFetchQuery = withInventoryItemFetchQuery();
+		const { data } = inventoryItemFetchQuery.useSuspenseQuery({
+			id,
 		});
-		const { data } = inventoryItemFetchQuery.useSuspenseQuery();
 
 		return (
 			<div className={slots.base()}>

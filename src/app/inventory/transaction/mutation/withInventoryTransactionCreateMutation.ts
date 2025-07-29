@@ -42,9 +42,7 @@ export const withInventoryTransactionCreateMutation = ({
 				.executeTakeFirstOrThrow();
 		},
 		invalidate: [
-			withInventoryTransactionListQuery({
-				data: {},
-			}),
+			withInventoryTransactionListQuery(),
 		],
 	});
 };

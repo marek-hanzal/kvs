@@ -5,26 +5,16 @@ import type { InventoryTransactionFilterSchema } from "~/app/inventory/transacti
 import { InventoryTransactionSchema } from "~/app/inventory/transaction/db/InventoryTransactionSchema";
 import type { InventoryTransactionSortSchema } from "~/app/inventory/transaction/db/InventoryTransactionSortSchema";
 
-export namespace withInventoryTransactionListQuery {
-	export interface Props
-		extends withQuery.PropsEx<
-			{
-				cursor?: CursorSchema.Type;
-				where?: InventoryTransactionFilterSchema.Type;
-				filter?: InventoryTransactionFilterSchema.Type;
-				sort?: InventoryTransactionSortSchema.Type;
-			},
-			InventoryTransactionSchema.Type
-		> {
-		//
-	}
-}
-
-export const withInventoryTransactionListQuery = ({
-	data,
-}: withInventoryTransactionListQuery.Props) => {
-	return withQuery({
-		data,
+export const withInventoryTransactionListQuery = () => {
+	return withQuery<
+		{
+			cursor?: CursorSchema.Type;
+			where?: InventoryTransactionFilterSchema.Type;
+			filter?: InventoryTransactionFilterSchema.Type;
+			sort?: InventoryTransactionSortSchema.Type;
+		},
+		withListCount.Result<InventoryTransactionSchema.Type>
+	>({
 		keys(data) {
 			return [
 				"inventory-transaction",

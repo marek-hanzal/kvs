@@ -5,26 +5,16 @@ import type { MvcRecordFilterSchema } from "~/app/moving-average-cost/db/MvcReco
 import type { MvcRecordSortSchema } from "~/app/moving-average-cost/db/MvcRecordSortSchema";
 import { MvcRecordSchema } from "../db/MvcRecordSchema";
 
-export namespace withMvcRecordListQuery {
-	export interface Props
-		extends withQuery.PropsEx<
-			{
-				cursor?: CursorSchema.Type;
-				where?: MvcRecordFilterSchema.Type;
-				filter?: MvcRecordFilterSchema.Type;
-				sort?: MvcRecordSortSchema.Type;
-			},
-			MvcRecordSchema.Type
-		> {
-		//
-	}
-}
-
-export const withMvcRecordListQuery = ({
-	data,
-}: withMvcRecordListQuery.Props) => {
-	return withQuery({
-		data,
+export const withMvcRecordListQuery = () => {
+	return withQuery<
+		{
+			cursor?: CursorSchema.Type;
+			where?: MvcRecordFilterSchema.Type;
+			filter?: MvcRecordFilterSchema.Type;
+			sort?: MvcRecordSortSchema.Type;
+		},
+		withListCount.Result<MvcRecordSchema.Type>
+	>({
 		keys(data) {
 			return [
 				"mvc-record",

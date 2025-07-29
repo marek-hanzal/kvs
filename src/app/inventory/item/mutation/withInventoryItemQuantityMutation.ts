@@ -3,21 +3,7 @@ import { kysely } from "~/app/database/kysely";
 import { withInventoryItemFetchQuery } from "~/app/inventory/item/query/withInventoryItemFetchQuery";
 import { withInventoryItemListQuery } from "~/app/inventory/item/query/withInventoryItemListQuery";
 
-export namespace withInventoryItemQuantityMutation {
-	export interface Props
-		extends withMutation.PropsEx<
-			{
-				inventoryItemId: string;
-			},
-			void
-		> {
-		//
-	}
-}
-
-export const withInventoryItemQuantityMutation = (
-	_: withInventoryItemQuantityMutation.Props,
-) => {
+export const withInventoryItemQuantityMutation = () => {
 	return withMutation<
 		{
 			inventoryItemId: string;
@@ -50,14 +36,8 @@ export const withInventoryItemQuantityMutation = (
 			});
 		},
 		invalidate: [
-			withInventoryItemFetchQuery({
-				data: {
-					id: "",
-				},
-			}),
-			withInventoryItemListQuery({
-				data: {},
-			}),
+			withInventoryItemFetchQuery(),
+			withInventoryItemListQuery(),
 		],
 	});
 };

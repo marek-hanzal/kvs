@@ -3,21 +3,8 @@ import type { IdentitySchema } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
 import { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
 
-export namespace withInventoryItemFetchQuery {
-	export interface Props
-		extends withQuery.PropsEx<
-			IdentitySchema.Type,
-			InventoryItemSchema.Type
-		> {
-		//
-	}
-}
-
-export const withInventoryItemFetchQuery = ({
-	data,
-}: withInventoryItemFetchQuery.Props) => {
-	return withQuery({
-		data,
+export const withInventoryItemFetchQuery = () => {
+	return withQuery<IdentitySchema.Type, InventoryItemSchema.Type>({
 		keys(data) {
 			return [
 				"inventory-item",
@@ -26,6 +13,8 @@ export const withInventoryItemFetchQuery = ({
 			];
 		},
 		async queryFn({ id }) {
+			console.log("refetching!");
+
 			return withFetch({
 				select: kysely.selectFrom("InventoryItem as ii").selectAll(),
 				output: InventoryItemSchema,
