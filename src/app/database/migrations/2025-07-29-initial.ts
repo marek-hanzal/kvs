@@ -43,6 +43,19 @@ export const InitialMigration: Migration = {
 			.execute();
 
 		await db.schema
+			.createTable("MacRecord")
+			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
+			.addColumn("name", "text", (col) => col.notNull())
+			.addColumn("inventoryItemId", "varchar(36)", (col) =>
+				col
+					.references("InventoryItem.id")
+					.onDelete("cascade")
+					.notNull(),
+			)
+			.addColumn("cost", "real", (col) => col.notNull())
+			.execute();
+
+		await db.schema
 			.createTable("MvcRecord")
 			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
 			.addColumn("stamp", "datetime", (col) => col.notNull())

@@ -1,5 +1,6 @@
 import { useParams } from "@tanstack/react-router";
 import { LinkTo, Table, Tx, withColumn } from "@use-pico/client";
+import { toHumanNumber } from "@use-pico/common";
 import type { FC } from "react";
 import type { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
 import { ActionRow } from "~/app/inventory/item/ui/InventoryItemTable/ActionRow";
@@ -45,7 +46,11 @@ const columns = [
 	column({
 		name: "quantity",
 		header: () => <Tx label="Quantity" />,
-		render: ({ data }) => data.quantity.toFixed(2),
+		render: ({ data }) =>
+			toHumanNumber({
+				number: data.quantity,
+				fraction: 2,
+			}),
 		size: "auto",
 	}),
 ];

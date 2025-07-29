@@ -22,7 +22,12 @@ export const InventoryItemMultiPopupSelect: FC<
 	return (
 		<PopupMultiSelect
 			icon={InventoryItemIcon}
-			table={(props) => <InventoryItemTable {...props} />}
+			table={(props) => (
+				<InventoryItemTable
+					toolbarHidden
+					{...props}
+				/>
+			)}
 			render={({ entities }) => (
 				<More
 					items={entities}
