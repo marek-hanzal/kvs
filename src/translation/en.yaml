@@ -1,12 +1,24 @@
+06870a93e66047a4d536fc3467bb3152d92487734dbc2ab9bc5ab06a:
+  ref: Create
+  value: Create
 1345bf9e64d99f8fa9a1cdb1067c859499aa7c04ef20ac9a94478b11:
   ref: Missing required token(s). (title)
   value: Missing required token(s). (title)
+1a4f554672141fab5ebea5545cf45231b430a1b0224399c8e11ff04d:
+  ref: List Moving Average Cost
+  value: List Moving Average Cost
 1b163f7a517fd4d7d84d7ac05f4afe6158ea8e941335589a2337ec6c:
   ref: File downloaded...
   value: File downloaded...
+1f6590e76a3425defb28e41ffa5dc896b32499bc9eb3745c04da7f2a:
+  ref: Create Record
+  value: Create Record
 22648440e36f6980e7bbf7f1f9c5c080edccd9ba1415f301b3b2df2f:
   ref: Sorted by desc, remove sort
   value: Sorted by desc, remove sort
+2583e8825e2d5c72d778150b8ca445117195a53331c472901f3388af:
+  ref: Error!
+  value: Error!
 2727e5a04d8acc225b3320799348e34eff9ac515e1130101baab751a:
   ref: .
   value: .
@@ -16,12 +28,18 @@
 290c6448930c95565c7175167b73696849273004c2be24f440fe3cf7:
   ref: Select a module to get started
   value: Select a module to get started
+2a6f89ba384a713b42f124fb17b8b6d99487cbe7d06208030f033a5e:
+  ref: Amount Produced
+  value: Amount Produced
 38347572d8aa1607a788bf890a6e9f83c334d06fc92987ae1535b1f5:
   ref: Missing any token(s). (title)
   value: Missing any token(s). (title)
 3909c87c4b736847773096b6ead06fff8cfcab8426b86024493883bd:
   ref: Select item
   value: Select item
+3b50fd11e314a698fe3b9587bf18c6ee722eb4b5885023c4d09ae7be:
+  ref: MVA Record count
+  value: MVA Record count
 3b9b4be744020203adc5a5aeca81a821b1bda652d33bc4b043aa796b:
   ref: Error (toast)
   value: Error (toast)
@@ -49,12 +67,18 @@
 5cd4cffcbafbe0a40563538352c1a593909e57b10bb8d9ad5f9b3d2a:
   ref: Delete (button)
   value: Delete (button)
+64a9bd6efedee20522b35742072e63d585bd6f326f2f4d93ca2f00ba:
+  ref: Company Runtime Cost
+  value: Company Runtime Cost
 70d7fb9cb6ce7775c5f9e1f890e6b248e538277a973f1aa95a36c0f2:
   ref: Clear files
   value: Clear files
 77b049e75c767c4ca346dd05d7a42c39c3479ac4f6dfaeaaa6efc1da:
   ref: There is nothing to see right now.
   value: There is nothing to see right now.
+7897e6d0cbd9ea7e40c873443e18bb3efe753f0ab7bc7762afcbd39b:
+  ref: Saved!
+  value: Saved!
 816c08b99b10a24bccbaf9ed3be66e93498a5ca8967792f35b425fa2:
   ref: Close (label)
   value: Close (label)
@@ -103,6 +127,9 @@ b2a00524ce3a0620b582b540a0f5f1da7fd91db9b79dc3944233603c:
 b35f0b66df0dbbf3c51b1281ea17e7a0ddeeb96392e89d8bc588b27d:
   ref: No more items (label)
   value: No more items (label)
+b4e8a29838ae1162bde0b03ce16b75d4739d6bfeeac544c56a20ac10:
+  ref: Cancel
+  value: Cancel
 b4fcc48516f0b04ca6bc78304c96366505e47360ff63bfc8b3a27f7b:
   ref: Select items (label)
   value: Select items (label)
@@ -124,9 +151,24 @@ c9c476d23927e4f88653018dc6c592a90dc2282ccc040acce5961294:
 cb991f39f30e87a574eb95aca9cfcdad90a0983a8198507ba127cc51:
   ref: Calculate and track moving average costs for inventory management
   value: Calculate and track moving average costs for inventory management
+cfbb9c4de21431ab1400b242ecc0937d8361e828fc32b29ac00a4aa6:
+  ref: Saving...
+  value: Saving...
+d01f079a9c3b5b30892103f15d66f2c1dbf278bb56f58ed903146ca9:
+  ref: Total Cost
+  value: Total Cost
 dc408471ab7060a83f7ded6167a5ce1c79ea02a9b5d44f40c4530ee2:
   ref: Loading... (toast)
   value: Loading... (toast)
+dcb4b824ea2bffd69e1f57e48bd36f40606057020d3c05c3f5c0c761:
+  ref: Date
+  value: Date
+e4fa7d2513d4e3d27d7d65d325a04983cdfdf4ccf1c933a23fbb052e:
+  ref: Cost per Unit
+  value: Cost per Unit
+e5e586960a7915ea8061fbc329e9b1d3c9afdbbc3cec6a7db6c53053:
+  ref: Resource Name
+  value: Resource Name
 e9c24bfbf06755877d0fa51f062bc6e0475f722e432ce78224fb77d5:
   ref: Select item (label)
   value: Select item (label)

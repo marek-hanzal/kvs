@@ -1,12 +1,24 @@
+06870a93e66047a4d536fc3467bb3152d92487734dbc2ab9bc5ab06a:
+    ref: Create
+    value: Vytvořit
 1345bf9e64d99f8fa9a1cdb1067c859499aa7c04ef20ac9a94478b11:
     ref: Missing required token(s). (title)
     value: Chybí povinné token(y).
+1a4f554672141fab5ebea5545cf45231b430a1b0224399c8e11ff04d:
+    ref: List Moving Average Cost
+    value: Seznam plovoucích průměrných cen
 1b163f7a517fd4d7d84d7ac05f4afe6158ea8e941335589a2337ec6c:
     ref: File downloaded...
     value: Soubor stažen...
+1f6590e76a3425defb28e41ffa5dc896b32499bc9eb3745c04da7f2a:
+    ref: Create Record
+    value: Vytvořit záznam
 22648440e36f6980e7bbf7f1f9c5c080edccd9ba1415f301b3b2df2f:
     ref: Sorted by desc, remove sort
     value: Seřazeno sestupně, odebrat řazení
+2583e8825e2d5c72d778150b8ca445117195a53331c472901f3388af:
+    ref: Error!
+    value: Chyba!
 2727e5a04d8acc225b3320799348e34eff9ac515e1130101baab751a:
     ref: .
     value: .
@@ -15,13 +27,19 @@
     value: Žádné štítky
 290c6448930c95565c7175167b73696849273004c2be24f440fe3cf7:
     ref: Select a module to get started
-    value: Pár drobných funkcí užitečných pro výpočty.
+    value: Aplikace určená pro sledování cen a dalších zajímavostí v oblasti podnikání.
+2a6f89ba384a713b42f124fb17b8b6d99487cbe7d06208030f033a5e:
+    ref: Amount Produced
+    value: Množství vyrobeného zboží
 38347572d8aa1607a788bf890a6e9f83c334d06fc92987ae1535b1f5:
     ref: Missing any token(s). (title)
     value: Chybí libovolné token(y).
 3909c87c4b736847773096b6ead06fff8cfcab8426b86024493883bd:
     ref: Select item
     value: Vybrat položku
+3b50fd11e314a698fe3b9587bf18c6ee722eb4b5885023c4d09ae7be:
+    ref: MVA Record count
+    value: Počet záznamů
 3b9b4be744020203adc5a5aeca81a821b1bda652d33bc4b043aa796b:
     ref: Error (toast)
     value: Chyba
@@ -49,18 +67,24 @@
 5cd4cffcbafbe0a40563538352c1a593909e57b10bb8d9ad5f9b3d2a:
     ref: Delete (button)
     value: Smazat
+64a9bd6efedee20522b35742072e63d585bd6f326f2f4d93ca2f00ba:
+    ref: Company Runtime Cost
+    value: Náklady provozu firmy
 70d7fb9cb6ce7775c5f9e1f890e6b248e538277a973f1aa95a36c0f2:
     ref: Clear files
     value: Vymazat soubory
 77b049e75c767c4ca346dd05d7a42c39c3479ac4f6dfaeaaa6efc1da:
     ref: There is nothing to see right now.
     value: Momentálně není co zobrazit.
+7897e6d0cbd9ea7e40c873443e18bb3efe753f0ab7bc7762afcbd39b:
+    ref: Saved!
+    value: Uloženo!
 816c08b99b10a24bccbaf9ed3be66e93498a5ca8967792f35b425fa2:
     ref: Close (label)
     value: Zavřít
-82967940e5822009f49d035d2534b9d9d1bd7afda070425a6240ef2c:
+82967940b5822009f49d035d2534b9d9d1bd7afda070425a6240ef2c:
     ref: New modules are being developed
-    value: Můžete se těšit na nové funkce
+    value: Nové moduly jsou v různých fázích vývoje
 877f5f6106968c26486b30ccfd0af1e22ca05b4131099f99823b45f6:
     ref: With VAT
     value: S DPH
@@ -75,7 +99,7 @@
     value: Již brzy
 9f3ea85808a44a993024995453b438851943f2aba42cad77b727d127:
     ref: Fulltext (placeholder)
-    value: Fulltext
+    value: Vyhledávání
 a23ce2805827f8c89f8254b43ecc2a73d5974af2fb57a74ecd8839c5:
     ref: Invalid data provided (message)
     value: Poskytnuta neplatná data
@@ -103,6 +127,9 @@ b2a00524ce3a0620b582b540a0f5f1da7fd91db9b79dc3944233603c:
 b35f0b66df0dbbf3c51b1281ea17e7a0ddeeb96392e89d8bc588b27d:
     ref: No more items (label)
     value: Žádné další položky
+b4e8a29838ae1162bde0b03ce16b75d4739d6bfeeac544c56a20ac10:
+    ref: Cancel
+    value: Zrušit
 b4fcc48516f0b04ca6bc78304c96366505e47360ff63bfc8b3a27f7b:
     ref: Select items (label)
     value: Vybrat položky
@@ -123,10 +150,25 @@ c9c476d23927e4f88653018dc6c592a90dc2282ccc040acce5961294:
     value: Soubor nelze stáhnout...
 cb991f39f30e87a574eb95aca9cfcdad90a0983a8198507ba127cc51:
     ref: Calculate and track moving average costs for inventory management
-    value: Modul na správu a výpočet plovoucích průměrných cen.
+    value: Modul pro správu a výpočet plovoucích průměrných cen.
+cfbb9c4de21431ab1400b242ecc0937d8361e828fc32b29ac00a4aa6:
+    ref: Saving...
+    value: Ukládání...
+d01f079a9c3b5b30892103f15d66f2c1dbf278bb56f58ed903146ca9:
+    ref: Total Cost
+    value: Celkové náklady
 dc408471ab7060a83f7ded6167a5ce1c79ea02a9b5d44f40c4530ee2:
     ref: Loading... (toast)
     value: Načítání...
+dcb4b824ea2bffd69e1f57e48bd36f40606057020d3c05c3f5c0c761:
+    ref: Date
+    value: Datum
+e4fa7d2513d4e3d27d7d65d325a04983cdfdf4ccf1c933a23fbb052e:
+    ref: Cost per Unit
+    value: Cena za jednotku
+e5e586960a7915ea8061fbc329e9b1d3c9afdbbc3cec6a7db6c53053:
+    ref: Resource Name
+    value: Název zdroje
 e9c24bfbf06755877d0fa51f062bc6e0475f722e432ce78224fb77d5:
     ref: Select item (label)
     value: Vybrat položku
