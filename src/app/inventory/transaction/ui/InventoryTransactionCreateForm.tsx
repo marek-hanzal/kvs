@@ -8,10 +8,11 @@ import {
 	onSubmit,
 	Tx,
 } from "@use-pico/client";
-import { tvc } from "@use-pico/common";
+import { DateTime, tvc } from "@use-pico/common";
 import type { FC } from "react";
 import { InventoryTransactionCreateSchema } from "~/app/inventory/transaction/db/InventoryTransactionCreateSchema";
 import { useKvsForm } from "~/app/kvs/ui/useKvsForm";
+import { InventoryItemIcon } from "~/app/ui/icon/InventoryItemIcon";
 
 export namespace InventoryTransactionCreateForm {
 	export interface Props
@@ -40,6 +41,7 @@ export const InventoryTransactionCreateForm: FC<
 			amount: 0,
 			inventoryItemId,
 			note: "",
+			accountTo: DateTime.now().toFormat("yyyy-MM"),
 			...defaultValues,
 		} satisfies InventoryTransactionCreateSchema.Type as InventoryTransactionCreateSchema.Type,
 		validators: {
@@ -72,6 +74,23 @@ export const InventoryTransactionCreateForm: FC<
 				form.handleSubmit();
 			}}
 		>
+			<form.AppField name="accountTo">
+				{(field) => (
+					<FormField
+						label={<Tx label="Account To" />}
+						name={field.name}
+						meta={field.state.meta}
+					>
+						<field.TextInput
+							type="month"
+							className={slots.input()}
+							value={field.state.value ?? ""}
+							onChange={(e) => field.handleChange(e.target.value)}
+						/>
+					</FormField>
+				)}
+			</form.AppField>
+
 			<form.AppField name="amount">
 				{(field) => (
 					<FormField
@@ -140,7 +159,7 @@ export const InventoryTransactionCreateForm: FC<
 					<Tx label="Cancel" />
 				</Button>
 
-				<form.SubmitButton>
+				<form.SubmitButton iconEnabled={InventoryItemIcon}>
 					<Tx label="Create Transaction" />
 				</form.SubmitButton>
 			</div>

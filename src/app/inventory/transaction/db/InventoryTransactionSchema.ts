@@ -6,6 +6,9 @@ export const InventoryTransactionSchema = z.object({
 	stamp: z.string().transform((val) => {
 		return String(DateTime.fromSQL(val).toISO());
 	}),
+	accountTo: z.string().transform((val) => {
+		return String(DateTime.fromSQL(val).toISO());
+	}),
 	amount: z.number(),
 	inventoryItemId: z.string(),
 	note: z.string().nullish(),
