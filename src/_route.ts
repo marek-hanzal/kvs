@@ -31,7 +31,6 @@ import { Route as LocaleInventoryIdRouteImport } from './@routes/$locale/invento
 import { Route as LocaleTransactionIdViewRouteImport } from './@routes/$locale/transaction/$id/view'
 import { Route as LocaleTransactionIdEditRouteImport } from './@routes/$locale/transaction/$id/edit'
 import { Route as LocaleMacIdViewRouteImport } from './@routes/$locale/mac/$id/view'
-import { Route as LocaleMacIdEditRouteImport } from './@routes/$locale/mac/$id/edit'
 import { Route as LocaleInventoryIdViewRouteImport } from './@routes/$locale/inventory/$id/view'
 import { Route as LocaleInventoryIdOutputRouteImport } from './@routes/$locale/inventory/$id/output'
 import { Route as LocaleInventoryIdInputRouteImport } from './@routes/$locale/inventory/$id/input'
@@ -148,11 +147,6 @@ const LocaleMacIdViewRoute = LocaleMacIdViewRouteImport.update({
   path: '/view',
   getParentRoute: () => LocaleMacIdRoute,
 } as any)
-const LocaleMacIdEditRoute = LocaleMacIdEditRouteImport.update({
-  id: '/edit',
-  path: '/edit',
-  getParentRoute: () => LocaleMacIdRoute,
-} as any)
 const LocaleInventoryIdViewRoute = LocaleInventoryIdViewRouteImport.update({
   id: '/view',
   path: '/view',
@@ -204,7 +198,6 @@ export interface FileRoutesByFullPath {
   '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
   '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
   '/$locale/inventory/$id/view': typeof LocaleInventoryIdViewRoute
-  '/$locale/mac/$id/edit': typeof LocaleMacIdEditRoute
   '/$locale/mac/$id/view': typeof LocaleMacIdViewRoute
   '/$locale/transaction/$id/edit': typeof LocaleTransactionIdEditRoute
   '/$locale/transaction/$id/view': typeof LocaleTransactionIdViewRoute
@@ -230,7 +223,6 @@ export interface FileRoutesByTo {
   '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
   '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
   '/$locale/inventory/$id/view': typeof LocaleInventoryIdViewRoute
-  '/$locale/mac/$id/edit': typeof LocaleMacIdEditRoute
   '/$locale/mac/$id/view': typeof LocaleMacIdViewRoute
   '/$locale/transaction/$id/edit': typeof LocaleTransactionIdEditRoute
   '/$locale/transaction/$id/view': typeof LocaleTransactionIdViewRoute
@@ -261,7 +253,6 @@ export interface FileRoutesById {
   '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
   '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
   '/$locale/inventory/$id/view': typeof LocaleInventoryIdViewRoute
-  '/$locale/mac/$id/edit': typeof LocaleMacIdEditRoute
   '/$locale/mac/$id/view': typeof LocaleMacIdViewRoute
   '/$locale/transaction/$id/edit': typeof LocaleTransactionIdEditRoute
   '/$locale/transaction/$id/view': typeof LocaleTransactionIdViewRoute
@@ -293,7 +284,6 @@ export interface FileRouteTypes {
     | '/$locale/inventory/$id/input'
     | '/$locale/inventory/$id/output'
     | '/$locale/inventory/$id/view'
-    | '/$locale/mac/$id/edit'
     | '/$locale/mac/$id/view'
     | '/$locale/transaction/$id/edit'
     | '/$locale/transaction/$id/view'
@@ -319,7 +309,6 @@ export interface FileRouteTypes {
     | '/$locale/inventory/$id/input'
     | '/$locale/inventory/$id/output'
     | '/$locale/inventory/$id/view'
-    | '/$locale/mac/$id/edit'
     | '/$locale/mac/$id/view'
     | '/$locale/transaction/$id/edit'
     | '/$locale/transaction/$id/view'
@@ -349,7 +338,6 @@ export interface FileRouteTypes {
     | '/$locale/inventory/$id/input'
     | '/$locale/inventory/$id/output'
     | '/$locale/inventory/$id/view'
-    | '/$locale/mac/$id/edit'
     | '/$locale/mac/$id/view'
     | '/$locale/transaction/$id/edit'
     | '/$locale/transaction/$id/view'
@@ -516,13 +504,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleMacIdViewRouteImport
       parentRoute: typeof LocaleMacIdRoute
     }
-    '/$locale/mac/$id/edit': {
-      id: '/$locale/mac/$id/edit'
-      path: '/edit'
-      fullPath: '/$locale/mac/$id/edit'
-      preLoaderRoute: typeof LocaleMacIdEditRouteImport
-      parentRoute: typeof LocaleMacIdRoute
-    }
     '/$locale/inventory/$id/view': {
       id: '/$locale/inventory/$id/view'
       path: '/view'
@@ -599,12 +580,10 @@ const LocaleInventoryRouteWithChildren = LocaleInventoryRoute._addFileChildren(
 )
 
 interface LocaleMacIdRouteChildren {
-  LocaleMacIdEditRoute: typeof LocaleMacIdEditRoute
   LocaleMacIdViewRoute: typeof LocaleMacIdViewRoute
 }
 
 const LocaleMacIdRouteChildren: LocaleMacIdRouteChildren = {
-  LocaleMacIdEditRoute: LocaleMacIdEditRoute,
   LocaleMacIdViewRoute: LocaleMacIdViewRoute,
 }
 
