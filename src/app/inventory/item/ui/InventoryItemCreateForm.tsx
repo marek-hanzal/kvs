@@ -12,7 +12,7 @@ import { tvc } from "@use-pico/common";
 import type { FC } from "react";
 import { InventoryItemCreateSchema } from "~/app/inventory/item/db/InventoryItemCreateSchema";
 import { useKvsForm } from "~/app/kvs/ui/useKvsForm";
-import { InventoryIcon } from "~/app/ui/icon/InventoryIcon";
+import { InventoryItemIcon } from "~/app/ui/icon/InventoryItemIcon";
 
 export namespace InventoryItemCreateForm {
 	export interface Props extends Form.Props<InventoryItemCreateSchema> {
@@ -126,7 +126,7 @@ export const InventoryItemCreateForm: FC<InventoryItemCreateForm.Props> = ({
 					<Tx label="Cancel" />
 				</Button>
 
-				<form.SubmitButton iconEnabled={InventoryIcon}>
+				<form.SubmitButton iconEnabled={InventoryItemIcon}>
 					<Tx label="Create Item" />
 				</form.SubmitButton>
 			</div>

@@ -2,7 +2,9 @@ import { useParams } from "@tanstack/react-router";
 import { EditIcon, Menu, MenuLink, Tx } from "@use-pico/client";
 import type { Entity, IdentitySchema } from "@use-pico/common";
 import type { FC } from "react";
+import { InputIcon } from "~/app/ui/icon/InputIcon";
 import { InventoryIcon } from "~/app/ui/icon/InventoryIcon";
+import { OutputIcon } from "~/app/ui/icon/OutputIcon";
 
 export namespace IndexMenu {
 	export interface Props
@@ -31,7 +33,7 @@ export const IndexMenu: FC<IndexMenu.Props> = ({ entity, ...props }) => {
 			</MenuLink>
 
 			<MenuLink
-				icon={"icon-[mdi--storefront-plus-outline]"}
+				icon={InputIcon}
 				to={"/$locale/inventory/$id/input"}
 				params={{
 					locale,
@@ -42,7 +44,7 @@ export const IndexMenu: FC<IndexMenu.Props> = ({ entity, ...props }) => {
 			</MenuLink>
 
 			<MenuLink
-				icon={"icon-[mdi--storefront-minus-outline]"}
+				icon={OutputIcon}
 				to={"/$locale/inventory/$id/output"}
 				params={{
 					locale,

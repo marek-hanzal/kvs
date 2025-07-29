@@ -2,6 +2,7 @@ import { useParams } from "@tanstack/react-router";
 import { LinkTo, Table, Tx, withColumn } from "@use-pico/client";
 import type { FC } from "react";
 import type { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
+import { ActionRow } from "~/app/inventory/item/ui/InventoryItemTable/ActionRow";
 import { Toolbar } from "./InventoryItemTable/Toolbar";
 
 export namespace InventoryItemTable {
@@ -45,7 +46,7 @@ const columns = [
 		name: "quantity",
 		header: () => <Tx label="Quantity" />,
 		render: ({ data }) => data.quantity.toFixed(2),
-		size: 12,
+		size: "auto",
 	}),
 ];
 
@@ -56,6 +57,7 @@ export const InventoryItemTable: FC<InventoryItemTable.Props> = ({
 		<Table
 			columns={columns}
 			toolbar={Toolbar}
+			actionRow={ActionRow}
 			{...props}
 		/>
 	);

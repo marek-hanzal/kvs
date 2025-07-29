@@ -3,7 +3,7 @@ import { LinkTo, Tx } from "@use-pico/client";
 import { tvc } from "@use-pico/common";
 import { Tile } from "~/app/kvs/ui/Tile";
 import { TileSet } from "~/app/kvs/ui/TileSet";
-import { InventoryIcon } from "~/app/ui/icon/InventoryIcon";
+import { InventoryItemIcon } from "~/app/ui/icon/InventoryItemIcon";
 import logo from "~/assets/logo.svg";
 
 export const Route = createFileRoute("/$locale/")({
@@ -85,7 +85,7 @@ export const Route = createFileRoute("/$locale/")({
 							description={
 								<Tx label="Track and manage your inventory" />
 							}
-							icon={InventoryIcon}
+							icon={InventoryItemIcon}
 							wrapper={(props) => {
 								return (
 									<LinkTo
