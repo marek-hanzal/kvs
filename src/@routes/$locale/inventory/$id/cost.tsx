@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-	Button,
 	navigateOnCursor,
 	navigateOnFilter,
 	navigateOnFulltext,
@@ -8,11 +7,10 @@ import {
 	Tx,
 	withSourceSearchSchema,
 } from "@use-pico/client";
-import type { FC } from "react";
-import type { AccountToTypeSchema } from "~/app/transaction/db/AccountToTypeSchema";
 import { TransactionFilterSchema } from "~/app/transaction/db/TransactionFilterSchema";
 import { withTransactionListQuery } from "~/app/transaction/query/withTransactionListQuery";
 import { TransactionTable } from "~/app/transaction/ui/TransactionTable";
+import { DateRangeToolbar } from "~/app/ui/DateRangeToolbar";
 
 const { validateSearch } = withSourceSearchSchema({
 	filter: TransactionFilterSchema,
@@ -20,72 +18,6 @@ const { validateSearch } = withSourceSearchSchema({
 		accountTo: "desc",
 	},
 });
-
-// Custom toolbar component for range buttons
-const RangeToolbar: FC<{
-	filter: TransactionFilterSchema.Type | undefined;
-	setFilter: (filter: TransactionFilterSchema.Type) => void;
-}> = ({ filter, setFilter }) => {
-	const handleRangeClick = (accountToType: AccountToTypeSchema.Type) => {
-		setFilter({
-			...filter,
-			accountToType,
-		});
-	};
-
-	return (
-		<>
-			<Button
-				variant={{
-					size: "sm",
-					variant:
-						filter?.accountToType === "current-month"
-							? "primary"
-							: "light",
-				}}
-				onClick={() => handleRangeClick("current-month")}
-			>
-				<Tx label="Current month" />
-			</Button>
-			<Button
-				variant={{
-					size: "sm",
-					variant:
-						filter?.accountToType === "last-month"
-							? "primary"
-							: "light",
-				}}
-				onClick={() => handleRangeClick("last-month")}
-			>
-				<Tx label="Last month" />
-			</Button>
-			<Button
-				variant={{
-					size: "sm",
-					variant:
-						filter?.accountToType === "last-three-months"
-							? "primary"
-							: "light",
-				}}
-				onClick={() => handleRangeClick("last-three-months")}
-			>
-				<Tx label="Last three months" />
-			</Button>
-			<Button
-				variant={{
-					size: "sm",
-					variant:
-						filter?.accountToType === "last-half-year"
-							? "primary"
-							: "light",
-				}}
-				onClick={() => handleRangeClick("last-half-year")}
-			>
-				<Tx label="Last half a year" />
-			</Button>
-		</>
-	);
-};
 
 export const Route = createFileRoute("/$locale/inventory/$id/cost")({
 	validateSearch,
@@ -110,12 +42,19 @@ export const Route = createFileRoute("/$locale/inventory/$id/cost")({
 		const navigate = Route.useNavigate();
 		const setFilter = navigateOnFilter(navigate);
 
+		const handleRangeClick = (accountToType: string) => {
+			setFilter({
+				...filter,
+				accountToType,
+			});
+		};
+
 		return (
 			<TransactionTable
 				toolbar={() => (
-					<RangeToolbar
-						filter={filter}
-						setFilter={setFilter}
+					<DateRangeToolbar
+						accountToType={filter?.accountToType}
+						onRangeClick={handleRangeClick}
 					/>
 				)}
 				data={list}
