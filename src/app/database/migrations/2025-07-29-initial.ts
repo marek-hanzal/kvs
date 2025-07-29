@@ -36,6 +36,13 @@ export const InitialMigration: Migration = {
 			.execute();
 
 		await db.schema
+			.createTable("Mac")
+			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
+			.addColumn("stamp", "datetime", (col) => col.notNull())
+			.addColumn("accountTo", "datetime", (col) => col.notNull())
+			.execute();
+
+		await db.schema
 			.createTable("MvcRecord")
 			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
 			.addColumn("stamp", "datetime", (col) => col.notNull())

@@ -2,6 +2,7 @@ import type { ExpensePeriodSchema } from "~/app/expense/db/ExpensePeriodSchema";
 import type { ExpenseSchema } from "~/app/expense/db/ExpenseSchema";
 import type { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
 import type { InventoryTransactionSchema } from "~/app/inventory/transaction/db/InventoryTransactionSchema";
+import type { MacSchema } from "~/app/mac/db/MacSchema";
 import type { PeriodSchema } from "~/app/period/db/PeriodSchema";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
 
@@ -12,4 +13,5 @@ export interface Database {
 	Expense: ExpenseSchema.Type;
 	ExpensePeriod: ExpensePeriodSchema.Type;
 	Transaction: TransactionSchema.Type;
+	Mac: MacSchema.Type;
 }
