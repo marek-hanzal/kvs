@@ -27,7 +27,7 @@ export const withMvcRecordCreateMutation = (
 		},
 		async mutationFn(values) {
 			return kysely
-				.insertInto("MvaRecord")
+				.insertInto("MvcRecord")
 				.values({
 					id: genId(),
 					stamp: DateTime.now().toUTC().toSQLTime(),

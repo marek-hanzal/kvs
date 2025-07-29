@@ -7,18 +7,18 @@ import {
 	Tx,
 	withSourceSearchSchema,
 } from "@use-pico/client";
-import { MvcRecordFilterSchema } from "~/app/moving-average-cost/db/MvcRecordFilterSchema";
-import { withMvcRecordListQuery } from "~/app/moving-average-cost/query/withMvcRecordListQuery";
-import { MvcTable } from "~/app/moving-average-cost/ui/MvcTable";
+import { InventoryItemFilterSchema } from "~/app/inventory/db/InventoryItemFilterSchema";
+import { withInventoryItemListQuery } from "~/app/inventory/query/withInventoryItemListQuery";
+import { InventoryItemTable } from "~/app/inventory/ui/InventoryItemTable";
 
 const { validateSearch } = withSourceSearchSchema({
-	filter: MvcRecordFilterSchema,
+	filter: InventoryItemFilterSchema,
 	defaultSort: {
-		stamp: "asc",
+		name: "asc",
 	},
 });
 
-export const Route = createFileRoute("/$locale/moving-average-cost/list")({
+export const Route = createFileRoute("/$locale/inventory/list")({
 	validateSearch,
 	loaderDeps: ({ search: { filter, cursor, sort } }) => ({
 		filter,
@@ -26,13 +26,13 @@ export const Route = createFileRoute("/$locale/moving-average-cost/list")({
 		sort,
 	}),
 	async loader({ context: { queryClient }, deps }) {
-		await withMvcRecordListQuery({
+		await withInventoryItemListQuery({
 			data: deps,
 		}).prefetch(queryClient);
 	},
 	component() {
 		const { filter, cursor, sort } = Route.useSearch();
-		const mvcRecordListQuery = withMvcRecordListQuery({
+		const inventoryItemListQuery = withInventoryItemListQuery({
 			data: {
 				cursor,
 				filter,
@@ -41,11 +41,11 @@ export const Route = createFileRoute("/$locale/moving-average-cost/list")({
 		});
 		const {
 			data: { list, count },
-		} = mvcRecordListQuery.useSuspenseQuery();
+		} = inventoryItemListQuery.useSuspenseQuery();
 		const navigate = Route.useNavigate();
 
 		return (
-			<MvcTable
+			<InventoryItemTable
 				data={list}
 				filter={{
 					state: {
@@ -66,7 +66,7 @@ export const Route = createFileRoute("/$locale/moving-average-cost/list")({
 				cursor={{
 					cursor,
 					count,
-					textTotal: <Tx label={"MVC Record count"} />,
+					textTotal: <Tx label={"Inventory Item count"} />,
 					...navigateOnCursor(navigate),
 				}}
 			/>

@@ -1,12 +1,8 @@
 import { DateTime, IdentitySchema } from "@use-pico/common";
 import z from "zod";
 
-export const MvaItemSchema = z.object({
+export const ExpenseSchema = z.object({
 	...IdentitySchema.shape,
-	/**
-	 * Reference to the parent MvaRecord
-	 */
-	mvaRecordId: z.string(),
 	/**
 	 * Automatic datetime when this record was created; used only for sorting
 	 */
@@ -14,7 +10,7 @@ export const MvaItemSchema = z.object({
 		return String(DateTime.fromSQL(val).toISO());
 	}),
 	/**
-	 * Name of item contributing to mva record
+	 * Name of item contributing to expense record
 	 */
 	name: z.string().min(1),
 	/**
@@ -23,8 +19,8 @@ export const MvaItemSchema = z.object({
 	cost: z.number().positive(),
 });
 
-export type MvaItemSchema = typeof MvaItemSchema;
+export type ExpenseSchema = typeof ExpenseSchema;
 
-export namespace MvaItemSchema {
-	export type Type = z.infer<MvaItemSchema>;
+export namespace ExpenseSchema {
+	export type Type = z.infer<ExpenseSchema>;
 }

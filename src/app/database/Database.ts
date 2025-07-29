@@ -1,5 +1,11 @@
-import type { MvcRecordSchema } from "~/app/moving-average-cost/db/MvcRecordSchema";
+import type { ExpensePeriodSchema } from "~/app/expense/db/ExpensePeriodSchema";
+import type { ExpenseSchema } from "~/app/expense/db/ExpenseSchema";
+import type { InventoryItemSchema } from "~/app/inventory/db/InventoryItemSchema";
+import type { PeriodSchema } from "~/app/period/db/PeriodSchema";
 
 export interface Database {
-	MvaRecord: MvcRecordSchema.Type;
+	Period: PeriodSchema.Type;
+	InventoryItem: InventoryItemSchema.Type;
+	Expense: ExpenseSchema.Type;
+	ExpensePeriod: ExpensePeriodSchema.Type;
 }

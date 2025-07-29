@@ -3,7 +3,15 @@ import type { Migration } from "kysely";
 export const InitialMigration: Migration = {
 	async up(db) {
 		await db.schema
-			.createTable("MvaRecord")
+			.createTable("InventoryItem")
+			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
+			.addColumn("name", "text", (col) => col.notNull())
+			.addColumn("description", "text")
+			.addColumn("quantity", "real", (col) => col.notNull())
+			.execute();
+
+		await db.schema
+			.createTable("MvcRecord")
 			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
 			.addColumn("stamp", "datetime", (col) => col.notNull())
 			.addColumn("name", "text", (col) => col.notNull())
@@ -13,10 +21,10 @@ export const InitialMigration: Migration = {
 			.execute();
 
 		await db.schema
-			.createTable("MvaItem")
+			.createTable("MvcItem")
 			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
-			.addColumn("mvaRecordId", "varchar(36)", (col) =>
-				col.references("MvaRecord.id").onDelete("cascade").notNull(),
+			.addColumn("mvcRecordId", "varchar(36)", (col) =>
+				col.references("MvcRecord.id").onDelete("cascade").notNull(),
 			)
 			.addColumn("stamp", "datetime", (col) => col.notNull())
 			.addColumn("name", "text", (col) => col.notNull())

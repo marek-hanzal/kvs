@@ -1,18 +1,18 @@
 import { withListCount, withQuery } from "@use-pico/client";
 import type { CursorSchema } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
-import type { MvaRecordSortSchema } from "~/app/moving-average-cost/db/MvaRecordSortSchema";
 import type { MvcRecordFilterSchema } from "~/app/moving-average-cost/db/MvcRecordFilterSchema";
+import type { MvcRecordSortSchema } from "~/app/moving-average-cost/db/MvcRecordSortSchema";
 import { MvcRecordSchema } from "../db/MvcRecordSchema";
 
-export namespace withMvaRecordListQuery {
+export namespace withMvcRecordListQuery {
 	export interface Props
 		extends withQuery.PropsEx<
 			{
 				cursor?: CursorSchema.Type;
 				where?: MvcRecordFilterSchema.Type;
 				filter?: MvcRecordFilterSchema.Type;
-				sort?: MvaRecordSortSchema.Type;
+				sort?: MvcRecordSortSchema.Type;
 			},
 			MvcRecordSchema.Type
 		> {
@@ -20,21 +20,21 @@ export namespace withMvaRecordListQuery {
 	}
 }
 
-export const withMvaRecordListQuery = ({
+export const withMvcRecordListQuery = ({
 	data,
-}: withMvaRecordListQuery.Props) => {
+}: withMvcRecordListQuery.Props) => {
 	return withQuery({
 		data,
 		keys(data) {
 			return [
-				"mva-record",
+				"mvc-record",
 				"list",
 				data,
 			];
 		},
 		async queryFn({ cursor, where, filter, sort }) {
 			return withListCount({
-				select: kysely.selectFrom("MvaRecord as mr").selectAll(),
+				select: kysely.selectFrom("MvcRecord as mr").selectAll(),
 				output: MvcRecordSchema,
 				cursor,
 				where,

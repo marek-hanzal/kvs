@@ -11,6 +11,16 @@ export const TileCls = cls({
 			"h-full",
 			"w-full",
 			"overflow-hidden",
+			"transition-all",
+			"duration-200",
+			"hover:shadow-lg",
+			"hover:border-slate-300",
+			"hover:scale-105",
+			"[&>a]:block",
+			"[&>a]:w-full",
+			"[&>a]:h-full",
+			"[&>a]:no-underline",
+			"[&>a]:text-inherit",
 		],
 		content: [
 			"text-center",
@@ -72,6 +82,10 @@ export const TileCls = cls({
 			do: {
 				base: [
 					"opacity-60",
+					"hover:shadow-none",
+					"hover:border-slate-200",
+					"hover:scale-100",
+					"cursor-not-allowed",
 				],
 				iconContainer: [
 					"bg-slate-100",

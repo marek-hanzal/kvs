@@ -3,6 +3,7 @@ import { LinkTo, Tx } from "@use-pico/client";
 import { tvc } from "@use-pico/common";
 import { Tile } from "~/app/kvs/ui/Tile";
 import { TileSet } from "~/app/kvs/ui/TileSet";
+import { InventoryIcon } from "~/app/ui/icon/InventoryIcon";
 import logo from "~/assets/logo.svg";
 
 export const Route = createFileRoute("/$locale/")({
@@ -80,15 +81,15 @@ export const Route = createFileRoute("/$locale/")({
 					{/* Tiles Grid */}
 					<TileSet>
 						<Tile
-							title={<Tx label="Moving Average Cost" />}
+							title={<Tx label="Inventory" />}
 							description={
-								<Tx label="Calculate and track moving average costs for inventory management" />
+								<Tx label="Track and manage your inventory" />
 							}
-							icon="icon-[mdi--calculator]"
+							icon={InventoryIcon}
 							wrapper={(props) => {
 								return (
 									<LinkTo
-										to={"/$locale/moving-average-cost/list"}
+										to={"/$locale/inventory"}
 										params={{
 											locale,
 										}}
@@ -97,6 +98,26 @@ export const Route = createFileRoute("/$locale/")({
 								);
 							}}
 						/>
+
+						<Tile
+							title={<Tx label="Moving Average Cost" />}
+							description={
+								<Tx label="Calculate and track moving average costs for inventory management" />
+							}
+							icon="icon-[mdi--calculator]"
+							wrapper={(props) => {
+								return (
+									<LinkTo
+										to={"/$locale/moving-average-cost"}
+										params={{
+											locale,
+										}}
+										{...props}
+									/>
+								);
+							}}
+						/>
+
 						<Tile
 							title={<Tx label="Coming Soon" />}
 							description={
@@ -105,6 +126,7 @@ export const Route = createFileRoute("/$locale/")({
 							icon="icon-[mdi--clock-outline]"
 							disabled={true}
 						/>
+
 						<Tile
 							title={<Tx label="Coming Soon" />}
 							description={

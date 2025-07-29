@@ -6,7 +6,7 @@
     value: Chybí povinné token(y).
 1a4f554672141fab5ebea5545cf45231b430a1b0224399c8e11ff04d:
     ref: List Moving Average Cost
-    value: Seznam plovoucích průměrných cen
+    value: Seznam
 1b163f7a517fd4d7d84d7ac05f4afe6158ea8e941335589a2337ec6c:
     ref: File downloaded...
     value: Soubor stažen...
@@ -37,9 +37,6 @@
 3909c87c4b736847773096b6ead06fff8cfcab8426b86024493883bd:
     ref: Select item
     value: Vybrat položku
-3b50fd11e314a698fe3b9587bf18c6ee722eb4b5885023c4d09ae7be:
-    ref: MVA Record count
-    value: Počet záznamů
 3b9b4be744020203adc5a5aeca81a821b1bda652d33bc4b043aa796b:
     ref: Error (toast)
     value: Chyba
@@ -52,6 +49,9 @@
 420f1e10ac45101f5905b3b0d51d995d7c42e7c38f4dc034c898dca5:
     ref: Cancel (button)
     value: Zrušit
+4c78c05221a2b3d855bacb29439ad8dca91d757038fae288842a32a5:
+    ref: Track and manage your inventory
+    value: Sledujte a spravujte svůj inventář
 52a90ac39b40af333717a0e6d596cd865a4c7f56f760374bb86082ba:
     ref: Missing any token(s). (message)
     value: Chybí libovolné token(y).
@@ -85,6 +85,9 @@
 82967940b5822009f49d035d2534b9d9d1bd7afda070425a6240ef2c:
     ref: New modules are being developed
     value: Nové moduly jsou v různých fázích vývoje
+84c534a811ace551d75f55848c009f057b7f67955ff7d32b251f6548:
+    ref: MVC Record count
+    value: Počet záznamů
 877f5f6106968c26486b30ccfd0af1e22ca05b4131099f99823b45f6:
     ref: With VAT
     value: S DPH
@@ -94,6 +97,9 @@
 9787305b076729a8818974ec91c90b96e1bbeee3a189994587c92ff5:
     ref: Nothing here
     value: Nic zde není
+98ae65157d4bf888e8270d26d3156d4a416f747c0c6dc8c6773561e7:
+    ref: Inventory
+    value: Inventář
 9a4fbda949e2064f4e559fc54f6377f3c178bba7892face8fcc404fb:
     ref: Coming Soon
     value: Již brzy
@@ -151,6 +157,9 @@ c9c476d23927e4f88653018dc6c592a90dc2282ccc040acce5961294:
 cb991f39f30e87a574eb95aca9cfcdad90a0983a8198507ba127cc51:
     ref: Calculate and track moving average costs for inventory management
     value: Modul pro správu a výpočet plovoucích průměrných cen.
+cc8fbdb9d7a01c996c607174aec16985e3583279f6cd61656a06a60c:
+    ref: Overview
+    value: Přehled
 cfbb9c4de21431ab1400b242ecc0937d8361e828fc32b29ac00a4aa6:
     ref: Saving...
     value: Ukládání...

@@ -18,7 +18,7 @@ export const Menu: FC<Menu.Props> = ({ ...props }) => {
 		<CoolMenu {...props}>
 			<MenuLink
 				icon={DashboardIcon}
-				to={"/$locale/moving-average-cost"}
+				to={"/$locale/inventory"}
 				params={{
 					locale,
 				}}
@@ -28,7 +28,7 @@ export const Menu: FC<Menu.Props> = ({ ...props }) => {
 
 			<MenuLink
 				icon={ListIcon}
-				to={"/$locale/moving-average-cost/list"}
+				to={"/$locale/inventory/list"}
 				params={{
 					locale,
 				}}
