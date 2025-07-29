@@ -1,4 +1,4 @@
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, useParams } from "@tanstack/react-router";
 import {
 	BackIcon,
 	Button,
@@ -27,6 +27,9 @@ export const TransactionCreateForm: FC<TransactionCreateForm.Props> = ({
 	tva = FormCls,
 	cls,
 }) => {
+	const { locale } = useParams({
+		from: "/$locale",
+	});
 	const navigate = useNavigate();
 
 	const form = useKvsForm({
@@ -140,9 +143,9 @@ export const TransactionCreateForm: FC<TransactionCreateForm.Props> = ({
 					}}
 					onClick={() =>
 						navigate({
-							to: "/$locale/transaction",
+							to: "/$locale/transaction/list",
 							params: {
-								locale: "en",
+								locale,
 							},
 						})
 					}
