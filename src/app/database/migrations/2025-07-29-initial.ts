@@ -25,6 +25,13 @@ export const InitialMigration: Migration = {
 			.execute();
 
 		await db.schema
+			.createTable("Transaction")
+			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
+			.addColumn("stamp", "datetime", (col) => col.notNull())
+			.addColumn("amount", "real", (col) => col.notNull())
+			.execute();
+
+		await db.schema
 			.createTable("MvcRecord")
 			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
 			.addColumn("stamp", "datetime", (col) => col.notNull())

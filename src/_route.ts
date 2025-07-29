@@ -12,11 +12,14 @@ import { Route as rootRouteImport } from './@routes/__root'
 import { Route as LocaleRouteImport } from './@routes/$locale'
 import { Route as IndexRouteImport } from './@routes/index'
 import { Route as LocaleIndexRouteImport } from './@routes/$locale/index'
+import { Route as LocaleTransactionRouteImport } from './@routes/$locale/transaction'
 import { Route as LocaleMovingAverageCostRouteImport } from './@routes/$locale/moving-average-cost'
 import { Route as LocaleInventoryRouteImport } from './@routes/$locale/inventory'
 import { Route as LocaleTransactionIndexRouteImport } from './@routes/$locale/transaction/index'
 import { Route as LocaleMovingAverageCostIndexRouteImport } from './@routes/$locale/moving-average-cost/index'
 import { Route as LocaleInventoryIndexRouteImport } from './@routes/$locale/inventory/index'
+import { Route as LocaleTransactionListRouteImport } from './@routes/$locale/transaction/list'
+import { Route as LocaleTransactionCreateRouteImport } from './@routes/$locale/transaction/create'
 import { Route as LocaleMovingAverageCostListRouteImport } from './@routes/$locale/moving-average-cost/list'
 import { Route as LocaleMovingAverageCostCreateRouteImport } from './@routes/$locale/moving-average-cost/create'
 import { Route as LocaleInventoryListRouteImport } from './@routes/$locale/inventory/list'
@@ -42,6 +45,11 @@ const LocaleIndexRoute = LocaleIndexRouteImport.update({
   path: '/',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocaleTransactionRoute = LocaleTransactionRouteImport.update({
+  id: '/transaction',
+  path: '/transaction',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LocaleMovingAverageCostRoute = LocaleMovingAverageCostRouteImport.update({
   id: '/moving-average-cost',
   path: '/moving-average-cost',
@@ -53,9 +61,9 @@ const LocaleInventoryRoute = LocaleInventoryRouteImport.update({
   getParentRoute: () => LocaleRoute,
 } as any)
 const LocaleTransactionIndexRoute = LocaleTransactionIndexRouteImport.update({
-  id: '/transaction/',
-  path: '/transaction/',
-  getParentRoute: () => LocaleRoute,
+  id: '/',
+  path: '/',
+  getParentRoute: () => LocaleTransactionRoute,
 } as any)
 const LocaleMovingAverageCostIndexRoute =
   LocaleMovingAverageCostIndexRouteImport.update({
@@ -67,6 +75,16 @@ const LocaleInventoryIndexRoute = LocaleInventoryIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => LocaleInventoryRoute,
+} as any)
+const LocaleTransactionListRoute = LocaleTransactionListRouteImport.update({
+  id: '/list',
+  path: '/list',
+  getParentRoute: () => LocaleTransactionRoute,
+} as any)
+const LocaleTransactionCreateRoute = LocaleTransactionCreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => LocaleTransactionRoute,
 } as any)
 const LocaleMovingAverageCostListRoute =
   LocaleMovingAverageCostListRouteImport.update({
@@ -121,15 +139,18 @@ export interface FileRoutesByFullPath {
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/inventory': typeof LocaleInventoryRouteWithChildren
   '/$locale/moving-average-cost': typeof LocaleMovingAverageCostRouteWithChildren
+  '/$locale/transaction': typeof LocaleTransactionRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/inventory/$id': typeof LocaleInventoryIdRouteWithChildren
   '/$locale/inventory/create': typeof LocaleInventoryCreateRoute
   '/$locale/inventory/list': typeof LocaleInventoryListRoute
   '/$locale/moving-average-cost/create': typeof LocaleMovingAverageCostCreateRoute
   '/$locale/moving-average-cost/list': typeof LocaleMovingAverageCostListRoute
+  '/$locale/transaction/create': typeof LocaleTransactionCreateRoute
+  '/$locale/transaction/list': typeof LocaleTransactionListRoute
   '/$locale/inventory/': typeof LocaleInventoryIndexRoute
   '/$locale/moving-average-cost/': typeof LocaleMovingAverageCostIndexRoute
-  '/$locale/transaction': typeof LocaleTransactionIndexRoute
+  '/$locale/transaction/': typeof LocaleTransactionIndexRoute
   '/$locale/inventory/$id/edit': typeof LocaleInventoryIdEditRoute
   '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
   '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
@@ -143,6 +164,8 @@ export interface FileRoutesByTo {
   '/$locale/inventory/list': typeof LocaleInventoryListRoute
   '/$locale/moving-average-cost/create': typeof LocaleMovingAverageCostCreateRoute
   '/$locale/moving-average-cost/list': typeof LocaleMovingAverageCostListRoute
+  '/$locale/transaction/create': typeof LocaleTransactionCreateRoute
+  '/$locale/transaction/list': typeof LocaleTransactionListRoute
   '/$locale/inventory': typeof LocaleInventoryIndexRoute
   '/$locale/moving-average-cost': typeof LocaleMovingAverageCostIndexRoute
   '/$locale/transaction': typeof LocaleTransactionIndexRoute
@@ -157,12 +180,15 @@ export interface FileRoutesById {
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/inventory': typeof LocaleInventoryRouteWithChildren
   '/$locale/moving-average-cost': typeof LocaleMovingAverageCostRouteWithChildren
+  '/$locale/transaction': typeof LocaleTransactionRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/inventory/$id': typeof LocaleInventoryIdRouteWithChildren
   '/$locale/inventory/create': typeof LocaleInventoryCreateRoute
   '/$locale/inventory/list': typeof LocaleInventoryListRoute
   '/$locale/moving-average-cost/create': typeof LocaleMovingAverageCostCreateRoute
   '/$locale/moving-average-cost/list': typeof LocaleMovingAverageCostListRoute
+  '/$locale/transaction/create': typeof LocaleTransactionCreateRoute
+  '/$locale/transaction/list': typeof LocaleTransactionListRoute
   '/$locale/inventory/': typeof LocaleInventoryIndexRoute
   '/$locale/moving-average-cost/': typeof LocaleMovingAverageCostIndexRoute
   '/$locale/transaction/': typeof LocaleTransactionIndexRoute
@@ -178,15 +204,18 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/inventory'
     | '/$locale/moving-average-cost'
+    | '/$locale/transaction'
     | '/$locale/'
     | '/$locale/inventory/$id'
     | '/$locale/inventory/create'
     | '/$locale/inventory/list'
     | '/$locale/moving-average-cost/create'
     | '/$locale/moving-average-cost/list'
+    | '/$locale/transaction/create'
+    | '/$locale/transaction/list'
     | '/$locale/inventory/'
     | '/$locale/moving-average-cost/'
-    | '/$locale/transaction'
+    | '/$locale/transaction/'
     | '/$locale/inventory/$id/edit'
     | '/$locale/inventory/$id/input'
     | '/$locale/inventory/$id/output'
@@ -200,6 +229,8 @@ export interface FileRouteTypes {
     | '/$locale/inventory/list'
     | '/$locale/moving-average-cost/create'
     | '/$locale/moving-average-cost/list'
+    | '/$locale/transaction/create'
+    | '/$locale/transaction/list'
     | '/$locale/inventory'
     | '/$locale/moving-average-cost'
     | '/$locale/transaction'
@@ -213,12 +244,15 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/inventory'
     | '/$locale/moving-average-cost'
+    | '/$locale/transaction'
     | '/$locale/'
     | '/$locale/inventory/$id'
     | '/$locale/inventory/create'
     | '/$locale/inventory/list'
     | '/$locale/moving-average-cost/create'
     | '/$locale/moving-average-cost/list'
+    | '/$locale/transaction/create'
+    | '/$locale/transaction/list'
     | '/$locale/inventory/'
     | '/$locale/moving-average-cost/'
     | '/$locale/transaction/'
@@ -256,6 +290,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleIndexRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/transaction': {
+      id: '/$locale/transaction'
+      path: '/transaction'
+      fullPath: '/$locale/transaction'
+      preLoaderRoute: typeof LocaleTransactionRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/moving-average-cost': {
       id: '/$locale/moving-average-cost'
       path: '/moving-average-cost'
@@ -272,10 +313,10 @@ declare module '@tanstack/react-router' {
     }
     '/$locale/transaction/': {
       id: '/$locale/transaction/'
-      path: '/transaction'
-      fullPath: '/$locale/transaction'
+      path: '/'
+      fullPath: '/$locale/transaction/'
       preLoaderRoute: typeof LocaleTransactionIndexRouteImport
-      parentRoute: typeof LocaleRoute
+      parentRoute: typeof LocaleTransactionRoute
     }
     '/$locale/moving-average-cost/': {
       id: '/$locale/moving-average-cost/'
@@ -290,6 +331,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/$locale/inventory/'
       preLoaderRoute: typeof LocaleInventoryIndexRouteImport
       parentRoute: typeof LocaleInventoryRoute
+    }
+    '/$locale/transaction/list': {
+      id: '/$locale/transaction/list'
+      path: '/list'
+      fullPath: '/$locale/transaction/list'
+      preLoaderRoute: typeof LocaleTransactionListRouteImport
+      parentRoute: typeof LocaleTransactionRoute
+    }
+    '/$locale/transaction/create': {
+      id: '/$locale/transaction/create'
+      path: '/create'
+      fullPath: '/$locale/transaction/create'
+      preLoaderRoute: typeof LocaleTransactionCreateRouteImport
+      parentRoute: typeof LocaleTransactionRoute
     }
     '/$locale/moving-average-cost/list': {
       id: '/$locale/moving-average-cost/list'
@@ -410,18 +465,33 @@ const LocaleMovingAverageCostRouteWithChildren =
     LocaleMovingAverageCostRouteChildren,
   )
 
+interface LocaleTransactionRouteChildren {
+  LocaleTransactionCreateRoute: typeof LocaleTransactionCreateRoute
+  LocaleTransactionListRoute: typeof LocaleTransactionListRoute
+  LocaleTransactionIndexRoute: typeof LocaleTransactionIndexRoute
+}
+
+const LocaleTransactionRouteChildren: LocaleTransactionRouteChildren = {
+  LocaleTransactionCreateRoute: LocaleTransactionCreateRoute,
+  LocaleTransactionListRoute: LocaleTransactionListRoute,
+  LocaleTransactionIndexRoute: LocaleTransactionIndexRoute,
+}
+
+const LocaleTransactionRouteWithChildren =
+  LocaleTransactionRoute._addFileChildren(LocaleTransactionRouteChildren)
+
 interface LocaleRouteChildren {
   LocaleInventoryRoute: typeof LocaleInventoryRouteWithChildren
   LocaleMovingAverageCostRoute: typeof LocaleMovingAverageCostRouteWithChildren
+  LocaleTransactionRoute: typeof LocaleTransactionRouteWithChildren
   LocaleIndexRoute: typeof LocaleIndexRoute
-  LocaleTransactionIndexRoute: typeof LocaleTransactionIndexRoute
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleInventoryRoute: LocaleInventoryRouteWithChildren,
   LocaleMovingAverageCostRoute: LocaleMovingAverageCostRouteWithChildren,
+  LocaleTransactionRoute: LocaleTransactionRouteWithChildren,
   LocaleIndexRoute: LocaleIndexRoute,
-  LocaleTransactionIndexRoute: LocaleTransactionIndexRoute,
 }
 
 const LocaleRouteWithChildren =
