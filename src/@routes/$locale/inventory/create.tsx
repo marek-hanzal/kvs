@@ -3,8 +3,8 @@ import {
 	useNavigate,
 	useParams,
 } from "@tanstack/react-router";
-import { withInventoryItemCreateMutation } from "~/app/inventory/mutation/withInventoryItemCreateMutation";
-import { InventoryItemCreateForm } from "~/app/inventory/ui/InventoryItemCreateForm";
+import { withInventoryItemCreateMutation } from "~/app/inventory/item/mutation/withInventoryItemCreateMutation";
+import { InventoryItemCreateForm } from "~/app/inventory/item/ui/InventoryItemCreateForm";
 
 export const Route = createFileRoute("/$locale/inventory/create")({
 	component() {

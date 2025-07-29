@@ -1,9 +1,9 @@
 import { withMutation } from "@use-pico/client";
 import { genId } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
-import { withInventoryItemListQuery } from "~/app/inventory/query/withInventoryItemListQuery";
-import type { InventoryItemCreateSchema } from "../db/InventoryItemCreateSchema";
-import type { InventoryItemSchema } from "../db/InventoryItemSchema";
+import type { InventoryItemCreateSchema } from "~/app/inventory/item/db/InventoryItemCreateSchema";
+import type { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
+import { withInventoryItemListQuery } from "~/app/inventory/item/query/withInventoryItemListQuery";
 
 export namespace withInventoryItemCreateMutation {
 	export interface Props

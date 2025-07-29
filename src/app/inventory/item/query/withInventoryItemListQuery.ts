@@ -1,9 +1,9 @@
 import { withListCount, withQuery } from "@use-pico/client";
 import type { CursorSchema } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
-import type { InventoryItemFilterSchema } from "~/app/inventory/db/InventoryItemFilterSchema";
-import type { InventoryItemSortSchema } from "~/app/inventory/db/InventoryItemSortSchema";
-import { InventoryItemSchema } from "../db/InventoryItemSchema";
+import type { InventoryItemFilterSchema } from "~/app/inventory/item/db/InventoryItemFilterSchema";
+import { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
+import type { InventoryItemSortSchema } from "~/app/inventory/item/db/InventoryItemSortSchema";
 
 export namespace withInventoryItemListQuery {
 	export interface Props

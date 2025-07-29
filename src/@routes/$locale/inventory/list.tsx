@@ -7,9 +7,9 @@ import {
 	Tx,
 	withSourceSearchSchema,
 } from "@use-pico/client";
-import { InventoryItemFilterSchema } from "~/app/inventory/db/InventoryItemFilterSchema";
-import { withInventoryItemListQuery } from "~/app/inventory/query/withInventoryItemListQuery";
-import { InventoryItemTable } from "~/app/inventory/ui/InventoryItemTable";
+import { InventoryItemFilterSchema } from "~/app/inventory/item/db/InventoryItemFilterSchema";
+import { withInventoryItemListQuery } from "~/app/inventory/item/query/withInventoryItemListQuery";
+import { InventoryItemTable } from "~/app/inventory/item/ui/InventoryItemTable";
 
 const { validateSearch } = withSourceSearchSchema({
 	filter: InventoryItemFilterSchema,

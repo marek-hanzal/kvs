@@ -10,7 +10,7 @@ import {
 } from "@use-pico/client";
 import { tvc } from "@use-pico/common";
 import type { FC } from "react";
-import { InventoryItemCreateSchema } from "~/app/inventory/db/InventoryItemCreateSchema";
+import { InventoryItemCreateSchema } from "~/app/inventory/item/db/InventoryItemCreateSchema";
 import { useKvsForm } from "~/app/kvs/ui/useKvsForm";
 import { InventoryIcon } from "~/app/ui/icon/InventoryIcon";
 

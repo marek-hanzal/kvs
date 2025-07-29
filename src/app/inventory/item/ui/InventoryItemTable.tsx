@@ -1,6 +1,7 @@
-import { Table, Tx, withColumn } from "@use-pico/client";
+import { useParams } from "@tanstack/react-router";
+import { LinkTo, Table, Tx, withColumn } from "@use-pico/client";
 import type { FC } from "react";
-import type { InventoryItemSchema } from "~/app/inventory/db/InventoryItemSchema";
+import type { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
 import { Toolbar } from "./InventoryItemTable/Toolbar";
 
 export namespace InventoryItemTable {
@@ -15,7 +16,23 @@ const columns = [
 	column({
 		name: "name",
 		header: () => <Tx label="Item Name" />,
-		render: ({ data }) => data.name,
+		render({ value, data }) {
+			const { locale } = useParams({
+				from: "/$locale",
+			});
+
+			return (
+				<LinkTo
+					to="/$locale/inventory/$id/view"
+					params={{
+						locale,
+						id: data.id,
+					}}
+				>
+					{value}
+				</LinkTo>
+			);
+		},
 		size: 18,
 	}),
 	column({

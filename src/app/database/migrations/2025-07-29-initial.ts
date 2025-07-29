@@ -11,6 +11,20 @@ export const InitialMigration: Migration = {
 			.execute();
 
 		await db.schema
+			.createTable("InventoryTransaction")
+			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
+			.addColumn("stamp", "datetime", (col) => col.notNull())
+			.addColumn("amount", "real", (col) => col.notNull())
+			.addColumn("inventoryItemId", "varchar(36)", (col) =>
+				col
+					.references("InventoryItem.id")
+					.onDelete("cascade")
+					.notNull(),
+			)
+			.addColumn("note", "text")
+			.execute();
+
+		await db.schema
 			.createTable("MvcRecord")
 			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
 			.addColumn("stamp", "datetime", (col) => col.notNull())

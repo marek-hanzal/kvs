@@ -2,9 +2,9 @@ import { Link, Outlet, useParams } from "@tanstack/react-router";
 import { Toaster } from "@use-pico/client";
 import { tvc } from "@use-pico/common";
 import type { FC } from "react";
-import { Footer } from "~/app/inventory/ui/Footer";
-import { LayoutCls } from "~/app/inventory/ui/LayoutCls";
-import { Menu } from "~/app/inventory/ui/Menu";
+import { Footer } from "~/app/inventory/item/ui/Footer";
+import { LayoutCls } from "~/app/inventory/item/ui/LayoutCls";
+import { Menu } from "~/app/inventory/item/ui/Menu";
 import logo from "~/assets/logo.svg";
 
 export namespace Layout {

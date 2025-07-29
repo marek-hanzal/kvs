@@ -1,7 +1,7 @@
 import { useParams } from "@tanstack/react-router";
 import { Button, LinkTo, type Table, Tx } from "@use-pico/client";
 import type { FC } from "react";
-import type { InventoryItemSchema } from "~/app/inventory/db/InventoryItemSchema";
+import type { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
 import { InventoryIcon } from "~/app/ui/icon/InventoryIcon";
 
 export namespace Toolbar {

@@ -32,6 +32,11 @@ export const Menu: FC<Menu.Props> = ({ ...props }) => {
 				params={{
 					locale,
 				}}
+				match={[
+					{
+						to: "/$locale/inventory/$id/view",
+					},
+				]}
 			>
 				<Tx label={"List Moving Average Cost"} />
 			</MenuLink>
