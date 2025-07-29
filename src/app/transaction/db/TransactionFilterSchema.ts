@@ -7,6 +7,7 @@ export const TransactionFilterSchema = z.object({
 	accountToFrom: z.string().nullish(),
 	accountToTo: z.string().nullish(),
 	accountToType: DateRangeSchema.optional(),
+	mac: z.boolean().nullish(),
 });
 
 export type TransactionFilterSchema = typeof TransactionFilterSchema;

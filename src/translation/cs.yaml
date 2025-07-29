@@ -16,6 +16,9 @@
 1a4f554672141fab5ebea5545cf45231b430a1b0224399c8e11ff04d:
     ref: List Moving Average Cost
     value: Seznam
+1a5c7d06d544608c0557079fdab7b9e991624cd8ffcf15580119b880:
+    ref: Created
+    value: Vytvořeno
 1aa565bbb43dcc9c0f6906f8b752456f37a2327a6fa35a36e2fb7a95:
     ref: With MAC
     value: Zaúčtovat do plovoucího průměru ceny
@@ -46,6 +49,9 @@
 2dc007e932619d69a3764f194224cb28fcd5e9ffb60d3cf82a144ca7:
     ref: Amount
     value: Množství
+32ae866da465e1a2e09f3dde89caefa5b67cc3ac6f8529d48209322d:
+    ref: Edit
+    value: Upravit
 3641a6fff4824fffe883f3d6123673e01a39c2b00690de8de8bdb22f:
     ref: Last half a year
     value: Poslední půl roku
@@ -68,7 +74,8 @@
     value: Vítejte v KVS
 3d1acc5392f55ebe98f90b5e100b2be8033df2948ff426020e8ae41d:
     ref: With MAC (hint)
-    value: Tento přepínač tuto transakci nabídne v agendě počítání plovoucího průměru ceny.
+    value: Tento přepínač tuto transakci nabídne v agendě počítání plovoucího
+        průměru ceny.
 3fa727133217f67d7ba23ebb7aea03e50418be8190006ec675f298d0:
     ref: Without VAT
     value: Bez DPH
@@ -84,6 +91,9 @@
 420f1e10ac45101f5905b3b0d51d995d7c42e7c38f4dc034c898dca5:
     ref: Cancel (button)
     value: Zrušit
+459fba3dac8af1f50f990dc7a9e14dcc49e6e72e8e1f87b316ef0a73:
+    ref: MAC Account To (hint)
+    value: Vyberte účetní měsíc, do kterého se bude tato uzávěrka účtovat.
 4c78c05221a2b3d855bacb29439ad8dca91d757038fae288842a32a5:
     ref: Track and manage your inventory
     value: Sledujte a spravujte svůj inventář
@@ -102,6 +112,9 @@
 568d3ece0540fd580d2c48b7bb3b48905a52a204db6726a452b29659:
     ref: Invalid on/off value
     value: Neplatná hodnota zapnuto/vypnuto
+58b780f5ce5273e26c054aba5cb517a7392c32a437076744c5bf87a2:
+    ref: Select inventory items (label)
+    value: Vyberte položky inventáře
 5aadd057a77e161f140bd21426c90c9a5c6f3ddecfc261351e5cdfa1:
     ref: Moving Average Cost
     value: Plovoucí průměrná cena
@@ -117,6 +130,9 @@
 6725918315956dd08ee7de15b33a5b021102dd358eae07c869a73914:
     ref: Diary
     value: Deník
+6ec83e3b38a0e728947e072bb1b61e9d574f2b8dd586c49d01ae8589:
+    ref: Create MAC
+    value: Nová uzávěrka
 70d7fb9cb6ce7775c5f9e1f890e6b248e538277a973f1aa95a36c0f2:
     ref: Clear files
     value: Vymazat soubory
@@ -168,9 +184,15 @@
 98ae65157d4bf888e8270d26d3156d4a416f747c0c6dc8c6773561e7:
     ref: Inventory
     value: Inventář
+9a0d53791a01626cdc8e1e7cb9392bb540cee986273473e6b3e3eeee:
+    ref: Inventory items (hint)
+    value: Vyberte položky inventáře, které se mají zahrnout do uzávěrky.
 9a4fbda949e2064f4e559fc54f6377f3c178bba7892face8fcc404fb:
     ref: Coming Soon
     value: Již brzy
+9d68fd7d2b9e208edb77ede71fe6c547b34f40f0b4b28741f68c0614:
+    ref: Detail
+    value: Detail
 9d8a4d182abf49ed4d37c4cbf04be4a83d3c497d9bd86765dca46969:
     ref: Input transaction
     value: Zadat příjem
@@ -207,6 +229,9 @@ ada656378ad55508bb4133baf81d6678f544d15199ed57c1e9ebe146:
 af8f35d688a6936914f62e095e58125cd5fa4407d8c0343bc7fdeb7d:
     ref: Drag 'n' drop a file here
     value: Přetáhněte sem soubor
+afcd08d668a070855a31a19cd4fafa787447710c81907040993f8058:
+    ref: Inventory items (label)
+    value: Položky inventáře
 b2a00524ce3a0620b582b540a0f5f1da7fd91db9b79dc3944233603c:
     ref: Invalid data provided (title)
     value: Poskytnuta neplatná data
@@ -234,6 +259,9 @@ c7e7945b7ab787a78dde0f2634018552eab8a1638ca076172231bd42:
 c9c476d23927e4f88653018dc6c592a90dc2282ccc040acce5961294:
     ref: Cannot download the file...
     value: Soubor nelze stáhnout...
+ca62fd57285eefa48b84fdab0fa4b378b921c2ac1a54f3a53d18a168:
+    ref: MAC (preview)
+    value: Náhled uzávěrky
 cb991f39f30e87a574eb95aca9cfcdad90a0983a8198507ba127cc51:
     ref: Calculate and track moving average costs for inventory management
     value: Modul pro správu a výpočet plovoucích průměrných cen.
@@ -276,6 +304,9 @@ f049184b4891ec173899d756154cb8c7533e1667eef85faf75d4bc05:
 f3acc879f6d7a8558311e71269bf79ce74689eeba1dc71ee292dccdc:
     ref: Transaction list
     value: Seznam transakcí
+f3b4e0123049fb9555852addd8b329dc9140f38048b07b619722188c:
+    ref: MAC list
+    value: Seznam uzávěrek
 f4272751f3900e2ed4bebeff224bbf085162cf4266acf5f56a08e68e:
     ref: Output transaction
     value: Zadat výdaj
@@ -288,6 +319,9 @@ f5895da6a944a108bb4591801078b71911da5b609c264ecdcdfebca9:
 f6d86be34667ab62aaf2173c74159c451054dd8d40026cc70a64f1fe:
     ref: Account To
     value: Zaúčtovat do
+f8104fd21fb287ea956f716e415c38754dddbc160e5311623551592e:
+    ref: MAC count
+    value: Počet uzávěrek
 f9243e42e2e73ad6a3ef91f35dbeb72ba0aa4e3cb6b74e2a0f815e3c:
     ref: Edit (label)
     value: Upravit

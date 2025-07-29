@@ -12,6 +12,7 @@ import { DateTime, tvc } from "@use-pico/common";
 import type { FC } from "react";
 import { useKvsForm } from "~/app/kvs/ui/useKvsForm";
 import { MacPatchSchema } from "~/app/mac/db/MacPatchSchema";
+import { MacIcon } from "~/app/ui/icon/MacIcon";
 
 export namespace MacPatchForm {
 	export interface Props extends Form.Props<MacPatchSchema> {
@@ -114,7 +115,7 @@ export const MacPatchForm: FC<MacPatchForm.Props> = ({
 					<Tx label="Cancel" />
 				</Button>
 
-				<form.SubmitButton>
+				<form.SubmitButton iconEnabled={MacIcon}>
 					<Tx label="Save" />
 				</form.SubmitButton>
 			</div>

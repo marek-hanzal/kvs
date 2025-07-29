@@ -12,6 +12,7 @@ import { DateTime, tvc } from "@use-pico/common";
 import type { FC } from "react";
 import { useKvsForm } from "~/app/kvs/ui/useKvsForm";
 import { MacCreateSchema } from "~/app/mac/db/MacCreateSchema";
+import { MacIcon } from "~/app/ui/icon/MacIcon";
 
 export namespace MacCreateForm {
 	export interface Props extends Form.Props<MacCreateSchema> {
@@ -34,6 +35,8 @@ export const MacCreateForm: FC<MacCreateForm.Props> = ({
 	const form = useKvsForm({
 		defaultValues: {
 			accountTo: DateTime.now().toFormat("yyyy-MM"),
+			inventoryItemIds: [],
+			transactionIds: [],
 			...defaultValues,
 		} satisfies MacCreateSchema.Type as MacCreateSchema.Type,
 		validators: {
@@ -72,12 +75,60 @@ export const MacCreateForm: FC<MacCreateForm.Props> = ({
 						label={<Tx label="Account To" />}
 						name={field.name}
 						meta={field.state.meta}
+						hint={<Tx label="MAC Account To (hint)" />}
 					>
 						<field.TextInput
 							type="month"
 							className={slots.input()}
 							value={field.state.value ?? ""}
 							onChange={(e) => field.handleChange(e.target.value)}
+						/>
+					</FormField>
+				)}
+			</form.AppField>
+
+			<form.AppField name="inventoryItemIds">
+				{(field) => (
+					<FormField
+						label={<Tx label={"Inventory items (label)"} />}
+						name={field.name}
+						meta={field.state.meta}
+						hint={<Tx label={"Inventory items (hint)"} />}
+					>
+						<field.InventoryItemMultiPopupSelect
+							textTitle={
+								<Tx label={"Select inventory items (label)"} />
+							}
+							textSelect={
+								<Tx label={"Select inventory items (label)"} />
+							}
+							value={field.state.value}
+							onChange={field.handleChange}
+						/>
+					</FormField>
+				)}
+			</form.AppField>
+
+			<form.AppField name="transactionIds">
+				{(field) => (
+					<FormField
+						label={<Tx label={"Transactions (label)"} />}
+						name={field.name}
+						meta={field.state.meta}
+						hint={<Tx label={"Transactions (hint)"} />}
+					>
+						<field.TransactionMultiPopupSelect
+							textTitle={
+								<Tx label={"Select transactions (label)"} />
+							}
+							textSelect={
+								<Tx label={"Select transactions (label)"} />
+							}
+							where={{
+								mac: true,
+							}}
+							value={field.state.value}
+							onChange={field.handleChange}
 						/>
 					</FormField>
 				)}
@@ -109,7 +160,7 @@ export const MacCreateForm: FC<MacCreateForm.Props> = ({
 					<Tx label="Cancel" />
 				</Button>
 
-				<form.SubmitButton>
+				<form.SubmitButton iconEnabled={MacIcon}>
 					<Tx label="Create MAC" />
 				</form.SubmitButton>
 			</div>

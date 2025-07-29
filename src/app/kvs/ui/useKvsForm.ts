@@ -6,6 +6,8 @@ import {
 	TextInput,
 	Transfer,
 } from "@use-pico/client";
+import { InventoryItemMultiPopupSelect } from "~/app/inventory/item/ui/InventoryItemMultiPopupSelect";
+import { TransactionMultiPopupSelect } from "~/app/transaction/ui/TransactionMultiPopupSelect";
 
 const { fieldContext, formContext } = createFormHookContexts();
 
@@ -15,6 +17,8 @@ export const { useAppForm: useKvsForm } = createFormHook({
 		Select,
 		TextInput,
 		Transfer,
+		InventoryItemMultiPopupSelect,
+		TransactionMultiPopupSelect,
 	},
 	formComponents: {
 		SubmitButton,

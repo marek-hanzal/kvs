@@ -47,6 +47,14 @@ export const withTransactionListQuery = () => {
 						});
 					}
 
+					if (where?.mac !== undefined) {
+						$select = $select.where(
+							"t.mac",
+							"=",
+							where.mac ? 1 : 0,
+						);
+					}
+
 					// Handle accountToType enum values
 					if (where?.accountToType) {
 						const now = DateTime.utc();
