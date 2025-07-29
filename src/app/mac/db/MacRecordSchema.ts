@@ -3,6 +3,7 @@ import { z } from "zod";
 
 export const MacRecordSchema = z.object({
 	...IdentitySchema.shape,
+	macId: z.string(),
 	name: z.string(),
 	inventoryItemId: z.string(),
 	cost: z.number(),

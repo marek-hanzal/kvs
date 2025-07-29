@@ -45,6 +45,9 @@ export const InitialMigration: Migration = {
 		await db.schema
 			.createTable("MacRecord")
 			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
+			.addColumn("macId", "varchar(36)", (col) =>
+				col.references("Mac.id").onDelete("cascade").notNull(),
+			)
 			.addColumn("name", "text", (col) => col.notNull())
 			.addColumn("inventoryItemId", "varchar(36)", (col) =>
 				col

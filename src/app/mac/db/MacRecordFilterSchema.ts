@@ -3,6 +3,7 @@ import { z } from "zod";
 
 export const MacRecordFilterSchema = z.object({
 	...FilterSchema.shape,
+	macId: z.string().optional(),
 	name: z.string().optional(),
 	inventoryItemId: z.string().optional(),
 });

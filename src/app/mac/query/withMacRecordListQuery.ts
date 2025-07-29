@@ -36,6 +36,10 @@ export const withMacRecordListQuery = () => {
 						$select = $select.where("mr.id", "=", where.id);
 					}
 
+					if (where?.macId) {
+						$select = $select.where("mr.macId", "=", where.macId);
+					}
+
 					if (where?.name) {
 						$select = $select.where("mr.name", "=", where.name);
 					}

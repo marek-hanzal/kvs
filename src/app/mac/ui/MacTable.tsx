@@ -3,7 +3,6 @@ import { LinkTo, Table, Tx, withColumn } from "@use-pico/client";
 import { DateTime } from "@use-pico/common";
 import type { FC } from "react";
 import type { MacSchema } from "~/app/mac/db/MacSchema";
-import { ActionRow } from "~/app/mac/ui/MacTable/ActionRow";
 import { Toolbar } from "./MacTable/Toolbar";
 
 export namespace MacTable {
@@ -53,7 +52,6 @@ export const MacTable: FC<MacTable.Props> = ({ ...props }) => {
 		<Table
 			columns={columns}
 			toolbar={Toolbar}
-			actionRow={ActionRow}
 			{...props}
 		/>
 	);

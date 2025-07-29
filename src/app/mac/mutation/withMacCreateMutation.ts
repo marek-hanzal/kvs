@@ -77,14 +77,16 @@ export const withMacCreateMutation = () => {
 					0,
 				);
 
-				const costs = inventoryTransactions.map((item) => ({
-					...item,
-					cost:
-						quantity > 0
-							? (amount * -1 * (item.amount / quantity)) /
-								item.amount
-							: 0,
-				}));
+				const costs = inventoryTransactions.map((item) => {
+					const share = item.amount / quantity;
+					const allocated = -amount * share;
+					const unitCost = allocated / item.amount;
+
+					return {
+						...item,
+						cost: unitCost,
+					};
+				});
 
 				const mac = await trx
 					.insertInto("Mac")
@@ -116,11 +118,14 @@ export const withMacCreateMutation = () => {
 					.insertInto("MacRecord")
 					.values(
 						MacRecordSchema.array().parse(
-							costs.map((cost) => ({
-								id: genId(),
-								macId: mac.id,
-								...cost,
-							})),
+							costs.map(
+								(cost) =>
+									({
+										id: genId(),
+										macId: mac.id,
+										...cost,
+									}) satisfies MacRecordSchema.Type,
+							),
 						),
 					)
 					.execute();
