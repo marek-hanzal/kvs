@@ -1,4 +1,4 @@
-import { IdentitySchema } from "@use-pico/common";
+import { DateTime, IdentitySchema } from "@use-pico/common";
 import { z } from "zod";
 
 export const MvcRecordSchema = z.object({
@@ -6,7 +6,9 @@ export const MvcRecordSchema = z.object({
 	/**
 	 * When this record was created, usually one per month per type
 	 */
-	stamp: z.iso.datetime(),
+	stamp: z.string().transform((val) => {
+		return String(DateTime.fromSQL(val).toISO());
+	}),
 	/**
 	 * Name of the resource produced, e.g. pure salt
 	 */

@@ -26,19 +26,11 @@ export const withMvcRecordCreateMutation = (
 			];
 		},
 		async mutationFn(values) {
-			const now = DateTime.now().toUTC().toSQLTime();
-
-			console.log("values", {
-				id: genId(),
-				stamp: now,
-				...values,
-			});
-
 			return kysely
 				.insertInto("MvaRecord")
 				.values({
 					id: genId(),
-					stamp: now,
+					stamp: DateTime.now().toUTC().toSQLTime(),
 					...values,
 				})
 				.returningAll()

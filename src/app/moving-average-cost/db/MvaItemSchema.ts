@@ -1,4 +1,4 @@
-import { IdentitySchema } from "@use-pico/common";
+import { DateTime, IdentitySchema } from "@use-pico/common";
 import z from "zod";
 
 export const MvaItemSchema = z.object({
@@ -10,7 +10,9 @@ export const MvaItemSchema = z.object({
 	/**
 	 * Automatic datetime when this record was created; used only for sorting
 	 */
-	stamp: z.iso.datetime(),
+	stamp: z.string().transform((val) => {
+		return String(DateTime.fromSQL(val).toISO());
+	}),
 	/**
 	 * Name of item contributing to mva record
 	 */
