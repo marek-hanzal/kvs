@@ -10,6 +10,13 @@ export const TransactionSchema = z.object({
 		return String(DateTime.fromSQL(val).toISO());
 	}),
 	amount: z.number(),
+	/**
+	 * Account in Moving Average Cost
+	 */
+	mac: z
+		.number()
+		.int()
+		.refine((val) => val === 0 || val === 1),
 	note: z.string().nullish(),
 });
 

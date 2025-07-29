@@ -36,6 +36,7 @@ export const TransactionCreateForm: FC<TransactionCreateForm.Props> = ({
 		defaultValues: {
 			amount: 0,
 			note: "",
+			mac: 0,
 			accountTo: DateTime.now().toFormat("yyyy-MM"),
 			...defaultValues,
 		} satisfies TransactionCreateSchema.Type as TransactionCreateSchema.Type,
@@ -106,6 +107,24 @@ export const TransactionCreateForm: FC<TransactionCreateForm.Props> = ({
 							}
 							step="0.01"
 							min="0"
+						/>
+					</FormField>
+				)}
+			</form.AppField>
+
+			<form.AppField name="mac">
+				{(field) => (
+					<FormField
+						label={<Tx label="With MAC" />}
+						name={field.name}
+						meta={field.state.meta}
+						hint={<Tx label="With MAC (hint)" />}
+					>
+						<field.BoolInput
+							value={Boolean(field.state.value)}
+							onChange={(value) =>
+								field.handleChange(value ? 1 : 0)
+							}
 						/>
 					</FormField>
 				)}

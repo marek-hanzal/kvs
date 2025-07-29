@@ -1,5 +1,5 @@
 import { useParams } from "@tanstack/react-router";
-import { LinkTo, Table, Tx, withColumn } from "@use-pico/client";
+import { Badge, LinkTo, Table, Tx, withColumn } from "@use-pico/client";
 import { DateTime, toHumanNumber } from "@use-pico/common";
 import type { FC } from "react";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
@@ -54,6 +54,33 @@ const columns = [
 				number: value,
 				fraction: 2,
 			}),
+		size: 12,
+	}),
+	column({
+		name: "mac",
+		header: () => <Tx label="MAC" />,
+		render: ({ value }) =>
+			value ? (
+				<Badge
+					variant={{
+						borderless: true,
+						size: "md",
+						variant: "neutral",
+					}}
+				>
+					<Tx label="Yes" />
+				</Badge>
+			) : (
+				<Badge
+					variant={{
+						borderless: true,
+						size: "md",
+						variant: "neutral",
+					}}
+				>
+					<Tx label="No" />
+				</Badge>
+			),
 		size: 12,
 	}),
 	column({

@@ -16,6 +16,9 @@
 1a4f554672141fab5ebea5545cf45231b430a1b0224399c8e11ff04d:
   ref: List Moving Average Cost
   value: List Moving Average Cost
+1aa565bbb43dcc9c0f6906f8b752456f37a2327a6fa35a36e2fb7a95:
+  ref: With MAC
+  value: With MAC
 1b163f7a517fd4d7d84d7ac05f4afe6158ea8e941335589a2337ec6c:
   ref: File downloaded...
   value: File downloaded...
@@ -61,12 +64,21 @@
 3cf6a94de82eff398e945c860419d934e2ed52b559f97a8d4aedfadc:
   ref: Welcome to KVS
   value: Welcome to KVS
+3d1acc5392f55ebe98f90b5e100b2be8033df2948ff426020e8ae41d:
+  ref: With MAC (hint)
+  value: With MAC (hint)
 3fa727133217f67d7ba23ebb7aea03e50418be8190006ec675f298d0:
   ref: Without VAT
   value: Without VAT
+3ffcb5b44aced4b597f3d832b4818603cecc4b1ab6880e1ac2a4f1cd:
+  ref: Yes
+  value: Yes
 40caced8c964996299524e373a9706b339e9a614456d7c186799580f:
   ref: Transaction count
   value: Transaction count
+41f55144ef67976dd919d847c6af062aa305de2d2807a275bf317e3c:
+  ref: No
+  value: No
 420f1e10ac45101f5905b3b0d51d995d7c42e7c38f4dc034c898dca5:
   ref: Cancel (button)
   value: Cancel (button)
@@ -142,6 +154,9 @@
 90c4f87df60ca5f2ec54bd448c296038add492bd5cf5ae6902662be7:
   ref: Inventory Transaction count
   value: Inventory Transaction count
+94851eda121984232c6a7913ca54ae6726620c70ab3af37281444333:
+  ref: MAC
+  value: MAC
 94952ad5822a6cf558948336e3d28ae6fb1a0dc5598961d6894b7792:
   ref: Cost (label)
   value: Cost (label)

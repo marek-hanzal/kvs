@@ -31,6 +31,7 @@ export const InitialMigration: Migration = {
 			.addColumn("stamp", "datetime", (col) => col.notNull())
 			.addColumn("accountTo", "datetime", (col) => col.notNull())
 			.addColumn("amount", "real", (col) => col.notNull())
+			.addColumn("mac", "integer", (col) => col.notNull().defaultTo(0))
 			.addColumn("note", "text")
 			.execute();
 
