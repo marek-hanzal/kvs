@@ -2,6 +2,7 @@ import { withMutation } from "@use-pico/client";
 import { DateTime, genId } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
 import { MacCreateSchema } from "~/app/mac/db/MacCreateSchema";
+import { MacRecordSchema } from "~/app/mac/db/MacRecordSchema";
 import type { MacSchema } from "~/app/mac/db/MacSchema";
 import { withMacFetchQuery } from "~/app/mac/query/withMacFetchQuery";
 import { withMacListQuery } from "~/app/mac/query/withMacListQuery";
@@ -41,6 +42,10 @@ export const withMacCreateMutation = () => {
 						(eb) => eb.fn.sum<number>("amount").as("amount"),
 					])
 					.where("inventoryItemId", "in", inventoryItemIds)
+					/**
+					 * We've to pick produced goods for MAC computation
+					 */
+					.where("amount", ">", 0)
 					.where(
 						"accountTo",
 						">=",
@@ -67,10 +72,19 @@ export const withMacCreateMutation = () => {
 					])
 					.execute();
 
-				console.log({
-					amount,
-					inventoryTransactions,
-				});
+				const quantity = inventoryTransactions.reduce(
+					(sum, item) => sum + item.amount,
+					0,
+				);
+
+				const costs = inventoryTransactions.map((item) => ({
+					...item,
+					cost:
+						quantity > 0
+							? (amount * -1 * (item.amount / quantity)) /
+								item.amount
+							: 0,
+				}));
 
 				const mac = await trx
 					.insertInto("Mac")
@@ -98,7 +112,18 @@ export const withMacCreateMutation = () => {
 					.returningAll()
 					.executeTakeFirstOrThrow();
 
-				throw new Error("just break the transaction");
+				await trx
+					.insertInto("MacRecord")
+					.values(
+						MacRecordSchema.array().parse(
+							costs.map((cost) => ({
+								id: genId(),
+								macId: mac.id,
+								...cost,
+							})),
+						),
+					)
+					.execute();
 
 				return mac;
 			});
