@@ -3,8 +3,10 @@ import {
 	useNavigate,
 	useParams,
 } from "@tanstack/react-router";
+import { Tx } from "@use-pico/client";
 import { withTransactionCreateMutation } from "~/app/transaction/mutation/withTransactionCreateMutation";
 import { TransactionCreateForm } from "~/app/transaction/ui/TransactionCreateForm";
+import { FormWrapper } from "~/app/ui/FormWrapper";
 
 export const Route = createFileRoute("/$locale/transaction/output")({
 	component() {
@@ -27,14 +29,17 @@ export const Route = createFileRoute("/$locale/transaction/output")({
 		});
 
 		return (
-			<div className={"mx-auto w-1/2"}>
+			<FormWrapper
+				title={<Tx label="Create Output Transaction" />}
+				hint={<Tx label="Record money going out of your account" />}
+			>
 				<TransactionCreateForm
 					mutation={mutation}
 					defaultValues={{
 						amount: 0,
 					}}
 				/>
-			</div>
+			</FormWrapper>
 		);
 	},
 });

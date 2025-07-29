@@ -3,8 +3,10 @@ import {
 	useNavigate,
 	useParams,
 } from "@tanstack/react-router";
+import { Tx } from "@use-pico/client";
 import { withInventoryItemCreateMutation } from "~/app/inventory/item/mutation/withInventoryItemCreateMutation";
 import { InventoryItemCreateForm } from "~/app/inventory/item/ui/InventoryItemCreateForm";
+import { FormWrapper } from "~/app/ui/FormWrapper";
 
 export const Route = createFileRoute("/$locale/inventory/create")({
 	component() {
@@ -25,9 +27,12 @@ export const Route = createFileRoute("/$locale/inventory/create")({
 		});
 
 		return (
-			<div className={"mx-auto w-1/2"}>
+			<FormWrapper
+				title={<Tx label="Create Inventory Item" />}
+				hint={<Tx label="Add a new item to your inventory" />}
+			>
 				<InventoryItemCreateForm mutation={mutation} />
-			</div>
+			</FormWrapper>
 		);
 	},
 });

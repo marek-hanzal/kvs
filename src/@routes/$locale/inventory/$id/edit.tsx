@@ -1,7 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { Tx } from "@use-pico/client";
 import { withInventoryItemPatchMutation } from "~/app/inventory/item/mutation/withInventoryItemPatchMutation";
 import { withInventoryItemFetchQuery } from "~/app/inventory/item/query/withInventoryItemFetchQuery";
 import { InventoryItemPatchForm } from "~/app/inventory/item/ui/InventoryItemPatchForm";
+import { FormWrapper } from "~/app/ui/FormWrapper";
 
 export const Route = createFileRoute("/$locale/inventory/$id/edit")({
 	component() {
@@ -27,13 +29,16 @@ export const Route = createFileRoute("/$locale/inventory/$id/edit")({
 		});
 
 		return (
-			<div className={"mx-auto w-1/2"}>
+			<FormWrapper
+				title={<Tx label="Edit Inventory Item" />}
+				hint={<Tx label="Update the inventory item details" />}
+			>
 				<InventoryItemPatchForm
 					inventoryItemId={id}
 					mutation={mutation}
 					defaultValues={entity}
 				/>
-			</div>
+			</FormWrapper>
 		);
 	},
 });

@@ -3,9 +3,11 @@ import {
 	useNavigate,
 	useParams,
 } from "@tanstack/react-router";
+import { Tx } from "@use-pico/client";
 import { withMacPatchMutation } from "~/app/mac/mutation/withMacPatchMutation";
 import { withMacFetchQuery } from "~/app/mac/query/withMacFetchQuery";
 import { MacPatchForm } from "~/app/mac/ui/MacPatchForm";
+import { FormWrapper } from "~/app/ui/FormWrapper";
 
 export const Route = createFileRoute("/$locale/mac/$id/edit")({
 	async loader({ context: { queryClient }, params }) {
@@ -38,13 +40,18 @@ export const Route = createFileRoute("/$locale/mac/$id/edit")({
 		});
 
 		return (
-			<div className={"mx-auto w-1/2"}>
+			<FormWrapper
+				title={<Tx label="Edit MAC" />}
+				hint={
+					<Tx label="Update the MAC (Monthly Account Calculation) entry" />
+				}
+			>
 				<MacPatchForm
 					macId={id}
 					mutation={mutation}
 					defaultValues={data}
 				/>
-			</div>
+			</FormWrapper>
 		);
 	},
 });

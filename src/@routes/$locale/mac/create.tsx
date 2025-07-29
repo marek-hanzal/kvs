@@ -3,8 +3,10 @@ import {
 	useNavigate,
 	useParams,
 } from "@tanstack/react-router";
+import { Tx } from "@use-pico/client";
 import { withMacCreateMutation } from "~/app/mac/mutation/withMacCreateMutation";
 import { MacCreateForm } from "~/app/mac/ui/MacCreateForm";
+import { FormWrapper } from "~/app/ui/FormWrapper";
 
 export const Route = createFileRoute("/$locale/mac/create")({
 	component() {
@@ -25,9 +27,14 @@ export const Route = createFileRoute("/$locale/mac/create")({
 		});
 
 		return (
-			<div className={"mx-auto w-1/2"}>
+			<FormWrapper
+				title={<Tx label="Create MAC" />}
+				hint={
+					<Tx label="Create a new MAC (Monthly Account Calculation) entry" />
+				}
+			>
 				<MacCreateForm mutation={mutation} />
-			</div>
+			</FormWrapper>
 		);
 	},
 });

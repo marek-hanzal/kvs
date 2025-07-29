@@ -10,6 +10,9 @@
 1345bf9e64d99f8fa9a1cdb1067c859499aa7c04ef20ac9a94478b11:
     ref: Missing required token(s). (title)
     value: Chybí povinné token(y).
+15b88c18a36d16502bb701f9b870a0073d7efae28fc685c2199398ca:
+    ref: Create a new MAC (Monthly Account Calculation) entry
+    value: Vytvořte novou uzávěrku plovoucího průměru ceny
 1a1f737ddf071477184f4fe87e21c38c371f8edfc3bc013887265d59:
     ref: Todo list
     value: Todo list
