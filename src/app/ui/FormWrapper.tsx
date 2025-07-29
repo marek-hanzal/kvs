@@ -28,7 +28,7 @@ export const FormWrapper: FC<FormWrapper.Props> = ({
 					"text-center",
 				])}
 			>
-				<h1
+				<div
 					className={tvc([
 						"text-3xl",
 						"font-bold",
@@ -37,16 +37,16 @@ export const FormWrapper: FC<FormWrapper.Props> = ({
 					])}
 				>
 					{title}
-				</h1>
+				</div>
 				{hint && (
-					<p
+					<div
 						className={tvc([
 							"text-gray-600",
 							"text-lg",
 						])}
 					>
 						{hint}
-					</p>
+					</div>
 				)}
 			</div>
 

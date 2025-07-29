@@ -113,6 +113,9 @@ export const MacCreateForm: FC<MacCreateForm.Props> = ({
 							textSelect={
 								<Tx label={"Select inventory items (label)"} />
 							}
+							where={{
+								withQuantity: true,
+							}}
 							value={field.state.value}
 							onChange={field.handleChange}
 						/>

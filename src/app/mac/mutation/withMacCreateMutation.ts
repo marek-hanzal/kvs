@@ -15,29 +15,84 @@ export const withMacCreateMutation = () => {
 				data,
 			];
 		},
-		async mutationFn({ accountTo, ...values }) {
-			return kysely
-				.insertInto("Mac")
-				.values({
-					id: genId(),
-					stamp: DateTime.utc().toSQL(),
-					...MacCreateSchema.parse({
-						accountTo,
-						...values,
-					}),
-					/**
-					 * This one must be extra, because schema is formatting it in an
-					 * incorrect way.
-					 */
-					accountTo: String(
-						DateTime.fromISO(`${accountTo}-01`)
-							.endOf("month")
-							.toUTC()
-							.toSQL(),
-					),
-				})
-				.returningAll()
-				.executeTakeFirstOrThrow();
+		async mutationFn({
+			accountTo,
+			inventoryItemIds,
+			transactionIds,
+			...values
+		}) {
+			return kysely.transaction().execute(async (trx) => {
+				const { amount } = await trx
+					.selectFrom("Transaction")
+					.select((eb) => eb.fn.sum<number>("amount").as("amount"))
+					.where("id", "in", transactionIds)
+					.executeTakeFirstOrThrow();
+
+				const inventoryTransactions = await trx
+					.selectFrom("InventoryTransaction")
+					.select([
+						"amount",
+						"inventoryItemId",
+					])
+					.where("inventoryItemId", "in", inventoryItemIds)
+					.where("amount", ">", 0)
+					.where(
+						"accountTo",
+						">=",
+						String(
+							DateTime.fromISO(`${accountTo}-01`)
+								.startOf("month")
+								.toUTC()
+								.toSQL(),
+						),
+					)
+					.where(
+						"accountTo",
+						"<=",
+						String(
+							DateTime.fromISO(`${accountTo}-01`)
+								.endOf("month")
+								.toUTC()
+								.toSQL(),
+						),
+					)
+					.execute();
+
+				console.log({
+					amount,
+					inventoryTransactions,
+				});
+
+				const mac = await trx
+					.insertInto("Mac")
+					.values({
+						id: genId(),
+						stamp: DateTime.utc().toSQL(),
+						...MacCreateSchema.omit({
+							accountTo: true,
+							inventoryItemIds: true,
+							transactionIds: true,
+						}).parse({
+							...values,
+						}),
+						/**
+						 * This one must be extra, because schema is formatting it in an
+						 * incorrect way.
+						 */
+						accountTo: String(
+							DateTime.fromISO(`${accountTo}-01`)
+								.endOf("month")
+								.toUTC()
+								.toSQL(),
+						),
+					})
+					.returningAll()
+					.executeTakeFirstOrThrow();
+
+				throw new Error("just break the transaction");
+
+				return mac;
+			});
 		},
 		invalidate: [
 			withMacFetchQuery(),

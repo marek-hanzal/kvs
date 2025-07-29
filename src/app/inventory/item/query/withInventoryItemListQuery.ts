@@ -47,6 +47,10 @@ export const withInventoryItemListQuery = () => {
 						});
 					}
 
+					if (where?.withQuantity) {
+						$select = $select.where("ii.quantity", ">", 0);
+					}
+
 					if (sort) {
 						if (sort.name) {
 							$select = $select.orderBy("ii.name", sort.name);

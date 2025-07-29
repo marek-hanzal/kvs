@@ -3,6 +3,7 @@ import { z } from "zod";
 
 export const InventoryItemFilterSchema = z.object({
 	...FilterSchema.shape,
+	withQuantity: z.boolean().optional(),
 });
 
 export type InventoryItemFilterSchema = typeof InventoryItemFilterSchema;
