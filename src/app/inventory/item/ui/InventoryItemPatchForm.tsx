@@ -16,11 +16,12 @@ import { InventoryIcon } from "~/app/ui/icon/InventoryIcon";
 
 export namespace InventoryItemPatchForm {
 	export interface Props extends Form.Props<InventoryItemPatchSchema> {
-		//
+		inventoryItemId: string;
 	}
 }
 
 export const InventoryItemPatchForm: FC<InventoryItemPatchForm.Props> = ({
+	inventoryItemId,
 	mutation,
 	defaultValues,
 	variant,
@@ -28,8 +29,8 @@ export const InventoryItemPatchForm: FC<InventoryItemPatchForm.Props> = ({
 	cls,
 }) => {
 	const navigate = useNavigate();
-	const { locale, id } = useParams({
-		from: "/$locale/inventory/$id",
+	const { locale } = useParams({
+		from: "/$locale",
 	});
 
 	const form = useKvsForm({
@@ -119,7 +120,7 @@ export const InventoryItemPatchForm: FC<InventoryItemPatchForm.Props> = ({
 							to: "/$locale/inventory/$id/view",
 							params: {
 								locale,
-								id,
+								id: inventoryItemId,
 							},
 						})
 					}

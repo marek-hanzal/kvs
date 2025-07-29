@@ -1,7 +1,7 @@
 import { withMutation } from "@use-pico/client";
 import { DateTime, genId } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
-import type { TransactionCreateSchema } from "~/app/transaction/db/TransactionCreateSchema";
+import { TransactionCreateSchema } from "~/app/transaction/db/TransactionCreateSchema";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
 import { withTransactionListQuery } from "~/app/transaction/query/withTransactionListQuery";
 
@@ -32,8 +32,10 @@ export const withTransactionCreateMutation = ({
 				.values({
 					id: genId(),
 					stamp: DateTime.now().toUTC().toSQLTime(),
-					amount: mode === "input" ? amount : -amount,
-					...values,
+					...TransactionCreateSchema.parse({
+						amount: mode === "input" ? amount : -amount,
+						...values,
+					}),
 				})
 				.returningAll()
 				.executeTakeFirstOrThrow();

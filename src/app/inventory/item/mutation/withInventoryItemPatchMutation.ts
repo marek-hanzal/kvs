@@ -1,10 +1,11 @@
 import { withMutation } from "@use-pico/client";
+import type { IdentitySchema } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
-import type { InventoryItemPatchSchema } from "~/app/inventory/item/db/InventoryItemPatchSchema";
+import { InventoryItemPatchSchema } from "~/app/inventory/item/db/InventoryItemPatchSchema";
 import { withInventoryItemFetchQuery } from "~/app/inventory/item/query/withInventoryItemFetchQuery";
 import { withInventoryItemListQuery } from "~/app/inventory/item/query/withInventoryItemListQuery";
 
-export const withInventoryItemPatchMutation = ({ id }: { id: string }) => {
+export const withInventoryItemPatchMutation = ({ id }: IdentitySchema.Type) => {
 	return withMutation<InventoryItemPatchSchema.Type, void>({
 		keys(data) {
 			return [
@@ -19,7 +20,7 @@ export const withInventoryItemPatchMutation = ({ id }: { id: string }) => {
 		async mutationFn(values) {
 			await kysely
 				.updateTable("InventoryItem")
-				.set(values)
+				.set(InventoryItemPatchSchema.parse(values))
 				.where("id", "=", id)
 				.execute();
 		},

@@ -11,15 +11,17 @@ import {
 import { tvc } from "@use-pico/common";
 import type { FC } from "react";
 import { useKvsForm } from "~/app/kvs/ui/useKvsForm";
-import { MvcRecordCreateSchema } from "~/app/moving-average-cost/db/MvcRecordCreateSchema";
+import { TransactionPatchSchema } from "~/app/transaction/db/TransactionPatchSchema";
+import { TransactionIcon } from "~/app/ui/icon/TransactionIcon";
 
-export namespace MvcRecordCreateForm {
-	export interface Props extends Form.Props<MvcRecordCreateSchema> {
-		//
+export namespace TransactionPatchForm {
+	export interface Props extends Form.Props<TransactionPatchSchema> {
+		transactionId: string;
 	}
 }
 
-export const MvcRecordCreateForm: FC<MvcRecordCreateForm.Props> = ({
+export const TransactionPatchForm: FC<TransactionPatchForm.Props> = ({
+	transactionId,
 	mutation,
 	defaultValues,
 	variant,
@@ -33,15 +35,13 @@ export const MvcRecordCreateForm: FC<MvcRecordCreateForm.Props> = ({
 
 	const form = useKvsForm({
 		defaultValues: {
-			name: "",
-			amount: 1,
-			cost: 1,
-			gross: 1,
+			amount: 0,
+			note: "",
 			...defaultValues,
-		} satisfies MvcRecordCreateSchema.Type as MvcRecordCreateSchema.Type,
+		} satisfies TransactionPatchSchema.Type as TransactionPatchSchema.Type,
 		validators: {
-			onChange: MvcRecordCreateSchema,
-			onSubmit: MvcRecordCreateSchema,
+			onChange: TransactionPatchSchema,
+			onSubmit: TransactionPatchSchema,
 		},
 		onSubmit: onSubmit({
 			mutation,
@@ -69,10 +69,29 @@ export const MvcRecordCreateForm: FC<MvcRecordCreateForm.Props> = ({
 				form.handleSubmit();
 			}}
 		>
-			<form.AppField name="name">
+			<form.AppField name="amount">
 				{(field) => (
 					<FormField
-						label={<Tx label="Resource Name" />}
+						label={<Tx label="Amount" />}
+						name={field.name}
+						meta={field.state.meta}
+					>
+						<field.TextInput
+							type="number"
+							className={slots.input()}
+							value={field.state.value ?? 0}
+							onChange={(e) =>
+								field.handleChange(Number(e.target.value))
+							}
+						/>
+					</FormField>
+				)}
+			</form.AppField>
+
+			<form.AppField name="note">
+				{(field) => (
+					<FormField
+						label={<Tx label="Note" />}
 						name={field.name}
 						meta={field.state.meta}
 					>
@@ -80,75 +99,6 @@ export const MvcRecordCreateForm: FC<MvcRecordCreateForm.Props> = ({
 							className={slots.input()}
 							value={field.state.value ?? ""}
 							onChange={(e) => field.handleChange(e.target.value)}
-						/>
-					</FormField>
-				)}
-			</form.AppField>
-
-			<form.AppField name="amount">
-				{(field) => (
-					<FormField
-						label={<Tx label="Amount Produced" />}
-						name={field.name}
-						meta={field.state.meta}
-					>
-						<field.TextInput
-							type="number"
-							min={0.01}
-							step={0.01}
-							className={slots.input()}
-							value={field.state.value ?? 0}
-							onChange={(e) =>
-								field.handleChange(
-									parseFloat(e.target.value) || 0,
-								)
-							}
-						/>
-					</FormField>
-				)}
-			</form.AppField>
-
-			<form.AppField name="cost">
-				{(field) => (
-					<FormField
-						label={<Tx label="Company Runtime Cost" />}
-						name={field.name}
-						meta={field.state.meta}
-					>
-						<field.TextInput
-							type="number"
-							min={0.01}
-							step={0.01}
-							className={slots.input()}
-							value={field.state.value ?? 0}
-							onChange={(e) =>
-								field.handleChange(
-									parseFloat(e.target.value) || 0,
-								)
-							}
-						/>
-					</FormField>
-				)}
-			</form.AppField>
-
-			<form.AppField name="gross">
-				{(field) => (
-					<FormField
-						label={<Tx label="Cost per Unit" />}
-						name={field.name}
-						meta={field.state.meta}
-					>
-						<field.TextInput
-							type="number"
-							min={0.01}
-							step={0.01}
-							className={slots.input()}
-							value={field.state.value ?? 0}
-							onChange={(e) =>
-								field.handleChange(
-									parseFloat(e.target.value) || 0,
-								)
-							}
 						/>
 					</FormField>
 				)}
@@ -170,9 +120,10 @@ export const MvcRecordCreateForm: FC<MvcRecordCreateForm.Props> = ({
 					}}
 					onClick={() =>
 						navigate({
-							to: "/$locale/moving-average-cost/list",
+							to: "/$locale/transaction/$id/view",
 							params: {
 								locale,
+								id: transactionId,
 							},
 						})
 					}
@@ -180,8 +131,8 @@ export const MvcRecordCreateForm: FC<MvcRecordCreateForm.Props> = ({
 					<Tx label="Cancel" />
 				</Button>
 
-				<form.SubmitButton>
-					<Tx label="Create Record" />
+				<form.SubmitButton iconEnabled={TransactionIcon}>
+					<Tx label="Save" />
 				</form.SubmitButton>
 			</div>
 		</form>

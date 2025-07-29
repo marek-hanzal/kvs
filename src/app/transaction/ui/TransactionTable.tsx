@@ -1,4 +1,5 @@
-import { Table, Tx, withColumn } from "@use-pico/client";
+import { useParams } from "@tanstack/react-router";
+import { LinkTo, Table, Tx, withColumn } from "@use-pico/client";
 import { DateTime } from "@use-pico/common";
 import type { FC } from "react";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
@@ -16,7 +17,23 @@ const columns = [
 	column({
 		name: "stamp",
 		header: () => <Tx label="Date" />,
-		render: ({ value }) => DateTime.fromISO(value).toLocaleString(),
+		render({ value, data }) {
+			const { locale } = useParams({
+				from: "/$locale",
+			});
+
+			return (
+				<LinkTo
+					to="/$locale/transaction/$id/view"
+					params={{
+						locale,
+						id: data.id,
+					}}
+				>
+					{DateTime.fromISO(value).toLocaleString()}
+				</LinkTo>
+			);
+		},
 		size: 8,
 	}),
 	column({

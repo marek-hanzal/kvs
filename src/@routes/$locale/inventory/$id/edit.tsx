@@ -29,6 +29,7 @@ export const Route = createFileRoute("/$locale/inventory/$id/edit")({
 		return (
 			<div className={"mx-auto w-1/2"}>
 				<InventoryItemPatchForm
+					inventoryItemId={id}
 					mutation={mutation}
 					defaultValues={entity}
 				/>

@@ -125,17 +125,7 @@ export const Route = createFileRoute("/$locale/")({
 								<Tx label="Calculate and track moving average costs for inventory management" />
 							}
 							icon="icon-[mdi--calculator]"
-							wrapper={(props) => {
-								return (
-									<LinkTo
-										to={"/$locale/moving-average-cost"}
-										params={{
-											locale,
-										}}
-										{...props}
-									/>
-								);
-							}}
+							disabled={true}
 						/>
 
 						<Tile

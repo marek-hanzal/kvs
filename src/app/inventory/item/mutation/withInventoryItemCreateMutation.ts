@@ -1,7 +1,7 @@
 import { withMutation } from "@use-pico/client";
 import { genId } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
-import type { InventoryItemCreateSchema } from "~/app/inventory/item/db/InventoryItemCreateSchema";
+import { InventoryItemCreateSchema } from "~/app/inventory/item/db/InventoryItemCreateSchema";
 import type { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
 import { withInventoryItemListQuery } from "~/app/inventory/item/query/withInventoryItemListQuery";
 
@@ -35,7 +35,7 @@ export const withInventoryItemCreateMutation = (
 				.values({
 					id: genId(),
 					quantity: 0,
-					...values,
+					...InventoryItemCreateSchema.parse(values),
 				})
 				.returningAll()
 				.executeTakeFirstOrThrow();
