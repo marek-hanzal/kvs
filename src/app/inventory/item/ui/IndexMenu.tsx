@@ -5,6 +5,7 @@ import type { FC } from "react";
 import { InputIcon } from "~/app/ui/icon/InputIcon";
 import { InventoryIcon } from "~/app/ui/icon/InventoryIcon";
 import { OutputIcon } from "~/app/ui/icon/OutputIcon";
+import { TransactionIcon } from "~/app/ui/icon/TransactionIcon";
 
 export namespace IndexMenu {
 	export interface Props
@@ -52,6 +53,17 @@ export const IndexMenu: FC<IndexMenu.Props> = ({ entity, ...props }) => {
 				}}
 			>
 				<Tx label={"Output (label)"} />
+			</MenuLink>
+
+			<MenuLink
+				icon={TransactionIcon}
+				to={"/$locale/inventory/$id/cost"}
+				params={{
+					locale,
+					id: entity.id,
+				}}
+			>
+				<Tx label={"Cost (label)"} />
 			</MenuLink>
 
 			<MenuLink

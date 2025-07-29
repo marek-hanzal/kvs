@@ -130,6 +130,9 @@
 90c4f87df60ca5f2ec54bd448c296038add492bd5cf5ae6902662be7:
   ref: Inventory Transaction count
   value: Inventory Transaction count
+94952ad5822a6cf558948336e3d28ae6fb1a0dc5598961d6894b7792:
+  ref: Cost (label)
+  value: Cost (label)
 9787305b076729a8818974ec91c90b96e1bbeee3a189994587c92ff5:
   ref: Nothing here
   value: Nothing here

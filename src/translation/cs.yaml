@@ -45,7 +45,9 @@
     value: Množství
 3740fe891c40129e0667a10046c3cc819ca856998747b203db97cb01:
     ref: Transaction Account To (hint)
-    value: Určuje, do kterého účetního měsíce tato transakce spadne - toto má pak vliv např. na výpočty nákupních/výrobních cen.
+    value:
+        Určuje, do kterého účetního měsíce tato transakce spadne - toto má pak
+        vliv např. na výpočty nákupních/výrobních cen.
 38347572d8aa1607a788bf890a6e9f83c334d06fc92987ae1535b1f5:
     ref: Missing any token(s). (title)
     value: Chybí libovolné token(y).
@@ -130,6 +132,9 @@
 90c4f87df60ca5f2ec54bd448c296038add492bd5cf5ae6902662be7:
     ref: Inventory Transaction count
     value: Počet transakcí v inventáři
+94952ad5822a6cf558948336e3d28ae6fb1a0dc5598961d6894b7792:
+    ref: Cost (label)
+    value: Výpočet nákladů
 9787305b076729a8818974ec91c90b96e1bbeee3a189994587c92ff5:
     ref: Nothing here
     value: Nic zde není
