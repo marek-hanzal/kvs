@@ -29,6 +29,7 @@ export const InitialMigration: Migration = {
 			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
 			.addColumn("stamp", "datetime", (col) => col.notNull())
 			.addColumn("amount", "real", (col) => col.notNull())
+			.addColumn("note", "text")
 			.execute();
 
 		await db.schema

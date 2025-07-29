@@ -41,6 +41,7 @@ export const withTransactionListQuery = () => {
 						$select = $select.where((eb) => {
 							return eb.or([
 								eb("t.id", "like", fulltext),
+								eb("t.note", "like", fulltext),
 							]);
 						});
 					}

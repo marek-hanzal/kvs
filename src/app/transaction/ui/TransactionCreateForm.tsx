@@ -32,6 +32,7 @@ export const TransactionCreateForm: FC<TransactionCreateForm.Props> = ({
 	const form = useKvsForm({
 		defaultValues: {
 			amount: 0,
+			note: "",
 			...defaultValues,
 		} satisfies TransactionCreateSchema.Type as TransactionCreateSchema.Type,
 		validators: {
@@ -84,6 +85,22 @@ export const TransactionCreateForm: FC<TransactionCreateForm.Props> = ({
 							}
 							step="0.01"
 							min="0"
+						/>
+					</FormField>
+				)}
+			</form.AppField>
+
+			<form.AppField name="note">
+				{(field) => (
+					<FormField
+						label={<Tx label="Note" />}
+						name={field.name}
+						meta={field.state.meta}
+					>
+						<field.TextInput
+							className={slots.input()}
+							value={field.state.value ?? ""}
+							onChange={(e) => field.handleChange(e.target.value)}
 						/>
 					</FormField>
 				)}

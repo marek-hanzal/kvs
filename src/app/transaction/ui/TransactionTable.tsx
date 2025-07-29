@@ -25,6 +25,12 @@ const columns = [
 		render: ({ value }) => value.toFixed(2),
 		size: 12,
 	}),
+	column({
+		name: "note",
+		header: () => <Tx label="Note" />,
+		render: ({ data }) => data.note || "-",
+		size: "auto",
+	}),
 ];
 
 export const TransactionTable: FC<TransactionTable.Props> = ({ ...props }) => {

@@ -13,6 +13,9 @@
 1b163f7a517fd4d7d84d7ac05f4afe6158ea8e941335589a2337ec6c:
     ref: File downloaded...
     value: Soubor stažen...
+1c998cb11280a12e453e74bc727ef9fa1057fae9f48110279a593bad:
+    ref: Notifications
+    value: Notifikace
 1f6590e76a3425defb28e41ffa5dc896b32499bc9eb3745c04da7f2a:
     ref: Create Record
     value: Vytvořit záznam
@@ -55,6 +58,9 @@
 3fa727133217f67d7ba23ebb7aea03e50418be8190006ec675f298d0:
     ref: Without VAT
     value: Bez DPH
+40caced8c964996299524e373a9706b339e9a614456d7c186799580f:
+    ref: Transaction count
+    value: Počet transakcí
 420f1e10ac45101f5905b3b0d51d995d7c42e7c38f4dc034c898dca5:
     ref: Cancel (button)
     value: Zrušit
@@ -82,6 +88,9 @@
 66ddcf59b0dbab435cfb780058d90f4fb3fcaa144145747254addf1a:
     ref: Update Item
     value: Upravit položku
+6725918315956dd08ee7de15b33a5b021102dd358eae07c869a73914:
+    ref: Diary
+    value: Deník
 70d7fb9cb6ce7775c5f9e1f890e6b248e538277a973f1aa95a36c0f2:
     ref: Clear files
     value: Vymazat soubory
@@ -94,6 +103,9 @@
 7897e6d0cbd9ea7e40c873443e18bb3efe753f0ab7bc7762afcbd39b:
     ref: Saved!
     value: Uloženo!
+7967bd454176a5ace3111e10b29f4d5c58479d34b0be846ec829594d:
+    ref: Coming soon
+    value: Již brzy
 7ac2313b2801f9de771720c56f0d461e0d24afd4de926f7cf36ba015:
     ref: Output (label)
     value: Výdej
@@ -127,6 +139,9 @@
 9a4fbda949e2064f4e559fc54f6377f3c178bba7892face8fcc404fb:
     ref: Coming Soon
     value: Již brzy
+9d8a4d182abf49ed4d37c4cbf04be4a83d3c497d9bd86765dca46969:
+    ref: Input transaction
+    value: Zadat příjem
 9f3ea85808a44a993024995453b438851943f2aba42cad77b727d127:
     ref: Fulltext (placeholder)
     value: Vyhledávání
@@ -232,6 +247,12 @@ e9c24bfbf06755877d0fa51f062bc6e0475f722e432ce78224fb77d5:
 f049184b4891ec173899d756154cb8c7533e1667eef85faf75d4bc05:
     ref: Detail (label)
     value: Detail
+f3acc879f6d7a8558311e71269bf79ce74689eeba1dc71ee292dccdc:
+    ref: Transaction list
+    value: Seznam transakcí
+f4272751f3900e2ed4bebeff224bbf085162cf4266acf5f56a08e68e:
+    ref: Output transaction
+    value: Zadat výdej
 f5895da6a944a108bb4591801078b71911da5b609c264ecdcdfebca9:
     ref: Note
     value: Poznámka

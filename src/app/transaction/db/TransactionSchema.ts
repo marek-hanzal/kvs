@@ -7,6 +7,7 @@ export const TransactionSchema = z.object({
 		return String(DateTime.fromSQL(val).toISO());
 	}),
 	amount: z.number(),
+	note: z.string().nullish(),
 });
 
 export type TransactionSchema = typeof TransactionSchema;

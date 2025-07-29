@@ -11,11 +11,13 @@ export namespace withTransactionCreateMutation {
 			TransactionCreateSchema.Type,
 			TransactionSchema.Type
 		> {
-		//
+		mode: "input" | "output";
 	}
 }
 
-export const withTransactionCreateMutation = () => {
+export const withTransactionCreateMutation = ({
+	mode,
+}: withTransactionCreateMutation.Props) => {
 	return withMutation<TransactionCreateSchema.Type, TransactionSchema.Type>({
 		keys(data) {
 			return [
@@ -24,12 +26,13 @@ export const withTransactionCreateMutation = () => {
 				data,
 			];
 		},
-		async mutationFn(values) {
+		async mutationFn({ amount, ...values }) {
 			return kysely
 				.insertInto("Transaction")
 				.values({
 					id: genId(),
 					stamp: DateTime.now().toUTC().toSQLTime(),
+					amount: mode === "input" ? amount : -amount,
 					...values,
 				})
 				.returningAll()

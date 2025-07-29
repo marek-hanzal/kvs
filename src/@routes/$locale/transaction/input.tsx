@@ -6,13 +6,16 @@ import {
 import { withTransactionCreateMutation } from "~/app/transaction/mutation/withTransactionCreateMutation";
 import { TransactionCreateForm } from "~/app/transaction/ui/TransactionCreateForm";
 
-export const Route = createFileRoute("/$locale/transaction/create")({
+export const Route = createFileRoute("/$locale/transaction/input")({
 	component() {
 		const navigate = useNavigate();
 		const { locale } = useParams({
-			from: "/$locale",
+			from: "/$locale/transaction/input",
 		});
-		const mutation = withTransactionCreateMutation().useMutation({
+
+		const mutation = withTransactionCreateMutation({
+			mode: "input",
+		}).useMutation({
 			async onSuccess() {
 				return navigate({
 					to: "/$locale/transaction/list",
@@ -25,7 +28,12 @@ export const Route = createFileRoute("/$locale/transaction/create")({
 
 		return (
 			<div className={"mx-auto w-1/2"}>
-				<TransactionCreateForm mutation={mutation} />
+				<TransactionCreateForm
+					mutation={mutation}
+					defaultValues={{
+						amount: 0,
+					}}
+				/>
 			</div>
 		);
 	},
