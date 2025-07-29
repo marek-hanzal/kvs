@@ -62,6 +62,11 @@ export const IndexMenu: FC<IndexMenu.Props> = ({ entity, ...props }) => {
 					locale,
 					id: entity.id,
 				}}
+				search={{
+					filter: {
+						accountToType: "current-month",
+					},
+				}}
 			>
 				<Tx label={"Cost (label)"} />
 			</MenuLink>

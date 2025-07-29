@@ -1,5 +1,6 @@
 import { withListCount, withQuery } from "@use-pico/client";
 import type { CursorSchema } from "@use-pico/common";
+import { DateTime } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
 import type { TransactionFilterSchema } from "~/app/transaction/db/TransactionFilterSchema";
 import { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
@@ -46,20 +47,86 @@ export const withTransactionListQuery = () => {
 						});
 					}
 
-					if (where?.accountToFrom) {
-						$select = $select.where(
-							"t.accountTo",
-							">=",
-							where.accountToFrom,
-						);
-					}
+					// Handle accountToType enum values
+					if (where?.accountToType) {
+						const now = DateTime.utc();
+						let accountToFrom: string | undefined;
+						let accountToTo: string | undefined;
 
-					if (where?.accountToTo) {
-						$select = $select.where(
-							"t.accountTo",
-							"<=",
-							where.accountToTo,
-						);
+						switch (where.accountToType) {
+							case "current-month": {
+								accountToFrom = now.startOf("month").toSQL();
+								accountToTo = now.endOf("month").toSQL();
+								break;
+							}
+							case "last-month": {
+								const lastMonth = now.minus({
+									months: 1,
+								});
+								accountToFrom = lastMonth
+									.startOf("month")
+									.toSQL();
+								accountToTo = lastMonth.endOf("month").toSQL();
+								break;
+							}
+							case "last-three-months": {
+								accountToFrom = now
+									.minus({
+										months: 2,
+									})
+									.startOf("month")
+									.toSQL();
+								accountToTo = now.endOf("month").toSQL();
+								break;
+							}
+							case "last-half-year": {
+								accountToFrom = now
+									.minus({
+										months: 5,
+									})
+									.startOf("month")
+									.toSQL();
+								accountToTo = now.endOf("month").toSQL();
+								break;
+							}
+							default:
+								// Fallback to manual date ranges if provided
+								accountToFrom =
+									where?.accountToFrom ?? undefined;
+								accountToTo = where?.accountToTo ?? undefined;
+						}
+
+						if (accountToFrom) {
+							$select = $select.where(
+								"t.accountTo",
+								">=",
+								accountToFrom,
+							);
+						}
+						if (accountToTo) {
+							$select = $select.where(
+								"t.accountTo",
+								"<=",
+								accountToTo,
+							);
+						}
+					} else {
+						// Fallback to manual date ranges if no accountToType is specified
+						if (where?.accountToFrom) {
+							$select = $select.where(
+								"t.accountTo",
+								">=",
+								where.accountToFrom,
+							);
+						}
+
+						if (where?.accountToTo) {
+							$select = $select.where(
+								"t.accountTo",
+								"<=",
+								where.accountToTo,
+							);
+						}
 					}
 
 					if (sort) {

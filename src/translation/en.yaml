@@ -43,6 +43,9 @@
 2dc007e932619d69a3764f194224cb28fcd5e9ffb60d3cf82a144ca7:
   ref: Amount
   value: Amount
+3641a6fff4824fffe883f3d6123673e01a39c2b00690de8de8bdb22f:
+  ref: Last half a year
+  value: Last half a year
 3740fe891c40129e0667a10046c3cc819ca856998747b203db97cb01:
   ref: Transaction Account To (hint)
   value: Transaction Account To (hint)
@@ -70,6 +73,12 @@
 4c78c05221a2b3d855bacb29439ad8dca91d757038fae288842a32a5:
   ref: Track and manage your inventory
   value: Track and manage your inventory
+51443bd33c29e23f5f523ea2041a9aaa52196018c746a8f13b9dfbaa:
+  ref: Last three months
+  value: Last three months
+51527ec72979a1249c03ecbb7fe7800d9fbd181a293e9e395fae0a2c:
+  ref: Current month
+  value: Current month
 52a90ac39b40af333717a0e6d596cd865a4c7f56f760374bb86082ba:
   ref: Missing any token(s). (message)
   value: Missing any token(s). (message)
@@ -103,6 +112,9 @@
 77b049e75c767c4ca346dd05d7a42c39c3479ac4f6dfaeaaa6efc1da:
   ref: There is nothing to see right now.
   value: There is nothing to see right now.
+77b4ec19d75c059ef6a73946d3dd9a4627216c23e17083593759f51c:
+  ref: Last month
+  value: Last month
 7897e6d0cbd9ea7e40c873443e18bb3efe753f0ab7bc7762afcbd39b:
   ref: Saved!
   value: Saved!

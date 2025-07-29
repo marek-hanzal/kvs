@@ -8,8 +8,8 @@ import {
 	Tx,
 	withSourceSearchSchema,
 } from "@use-pico/client";
-import { DateTime } from "@use-pico/common";
 import type { FC } from "react";
+import type { AccountToTypeSchema } from "~/app/transaction/db/AccountToTypeSchema";
 import { TransactionFilterSchema } from "~/app/transaction/db/TransactionFilterSchema";
 import { withTransactionListQuery } from "~/app/transaction/query/withTransactionListQuery";
 import { TransactionTable } from "~/app/transaction/ui/TransactionTable";
@@ -26,13 +26,10 @@ const RangeToolbar: FC<{
 	filter: TransactionFilterSchema.Type | undefined;
 	setFilter: (filter: TransactionFilterSchema.Type) => void;
 }> = ({ filter, setFilter }) => {
-	const handleRangeClick = (rangeFilter: {
-		accountToFrom: string;
-		accountToTo: string;
-	}) => {
+	const handleRangeClick = (accountToType: AccountToTypeSchema.Type) => {
 		setFilter({
 			...filter,
-			...rangeFilter,
+			accountToType,
 		});
 	};
 
@@ -41,73 +38,48 @@ const RangeToolbar: FC<{
 			<Button
 				variant={{
 					size: "sm",
-					variant: "light",
+					variant:
+						filter?.accountToType === "current-month"
+							? "primary"
+							: "light",
 				}}
-				onClick={() => {
-					const now = DateTime.utc();
-					handleRangeClick({
-						accountToFrom: now.startOf("month").toSQL(),
-						accountToTo: now.endOf("month").toSQL(),
-					});
-				}}
+				onClick={() => handleRangeClick("current-month")}
 			>
 				<Tx label="Current month" />
 			</Button>
 			<Button
 				variant={{
 					size: "sm",
-					variant: "light",
+					variant:
+						filter?.accountToType === "last-month"
+							? "primary"
+							: "light",
 				}}
-				onClick={() => {
-					const now = DateTime.utc();
-					const lastMonth = now.minus({
-						months: 1,
-					});
-					handleRangeClick({
-						accountToFrom: lastMonth.startOf("month").toSQL(),
-						accountToTo: lastMonth.endOf("month").toSQL(),
-					});
-				}}
+				onClick={() => handleRangeClick("last-month")}
 			>
 				<Tx label="Last month" />
 			</Button>
 			<Button
 				variant={{
 					size: "sm",
-					variant: "light",
+					variant:
+						filter?.accountToType === "last-three-months"
+							? "primary"
+							: "light",
 				}}
-				onClick={() => {
-					const now = DateTime.utc();
-					handleRangeClick({
-						accountToFrom: now
-							.minus({
-								months: 2,
-							})
-							.startOf("month")
-							.toSQL(),
-						accountToTo: now.endOf("month").toSQL(),
-					});
-				}}
+				onClick={() => handleRangeClick("last-three-months")}
 			>
 				<Tx label="Last three months" />
 			</Button>
 			<Button
 				variant={{
 					size: "sm",
-					variant: "light",
+					variant:
+						filter?.accountToType === "last-half-year"
+							? "primary"
+							: "light",
 				}}
-				onClick={() => {
-					const now = DateTime.utc();
-					handleRangeClick({
-						accountToFrom: now
-							.minus({
-								months: 5,
-							})
-							.startOf("month")
-							.toSQL(),
-						accountToTo: now.endOf("month").toSQL(),
-					});
-				}}
+				onClick={() => handleRangeClick("last-half-year")}
 			>
 				<Tx label="Last half a year" />
 			</Button>
