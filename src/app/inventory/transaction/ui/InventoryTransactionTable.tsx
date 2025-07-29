@@ -14,6 +14,12 @@ const column = withColumn<InventoryTransactionSchema.Type>();
 
 const columns = [
 	column({
+		name: "stamp",
+		header: () => <Tx label="Date" />,
+		render: ({ value }) => DateTime.fromISO(value).toLocaleString(),
+		size: 8,
+	}),
+	column({
 		name: "accountTo",
 		header: () => <Tx label="Account To" />,
 		render: ({ value }) =>
