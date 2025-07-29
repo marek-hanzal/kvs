@@ -80,7 +80,15 @@ export const MacCreateForm: FC<MacCreateForm.Props> = ({
 				form.handleSubmit();
 			}}
 		>
-			<form.AppField name="accountTo">
+			<form.AppField
+				name="accountTo"
+				listeners={{
+					onChange({ fieldApi: { form } }) {
+						form.setFieldValue("inventoryItemIds", []);
+						form.setFieldValue("transactionIds", []);
+					},
+				}}
+			>
 				{(field) => (
 					<FormField
 						label={<Tx label="Account To" />}

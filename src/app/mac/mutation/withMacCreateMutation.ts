@@ -30,12 +30,17 @@ export const withMacCreateMutation = () => {
 
 				const inventoryTransactions = await trx
 					.selectFrom("InventoryTransaction")
+					.innerJoin(
+						"InventoryItem",
+						"InventoryItem.id",
+						"InventoryTransaction.inventoryItemId",
+					)
 					.select([
-						"amount",
 						"inventoryItemId",
+						"InventoryItem.name",
+						(eb) => eb.fn.sum<number>("amount").as("amount"),
 					])
 					.where("inventoryItemId", "in", inventoryItemIds)
-					.where("amount", ">", 0)
 					.where(
 						"accountTo",
 						">=",
@@ -56,6 +61,10 @@ export const withMacCreateMutation = () => {
 								.toSQL(),
 						),
 					)
+					.groupBy([
+						"inventoryItemId",
+						"InventoryItem.name",
+					])
 					.execute();
 
 				console.log({

@@ -7,7 +7,7 @@ import {
 	TitlePreview,
 	Tx,
 } from "@use-pico/client";
-import { translator } from "@use-pico/common";
+import { toHumanNumber, translator } from "@use-pico/common";
 import type { FC } from "react";
 import type { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
 import { RecalculateQuantityButton } from "~/app/inventory/item/ui/RecalculateQuantityButton";
@@ -53,7 +53,10 @@ export const InventoryItemPreview: FC<InventoryItemPreview.Props> = (props) => {
 												: undefined,
 								},
 								render: ({ entity }) =>
-									entity.quantity.toFixed(2),
+									toHumanNumber({
+										number: entity.quantity,
+										fraction: 2,
+									}),
 							},
 							{
 								id: "description",
