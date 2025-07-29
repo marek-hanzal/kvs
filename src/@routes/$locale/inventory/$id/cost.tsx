@@ -41,7 +41,7 @@ const RangeToolbar: FC<{
 			<Button
 				variant={{
 					size: "sm",
-					variant: "secondary",
+					variant: "light",
 				}}
 				onClick={() => {
 					const now = DateTime.utc();
@@ -56,7 +56,7 @@ const RangeToolbar: FC<{
 			<Button
 				variant={{
 					size: "sm",
-					variant: "secondary",
+					variant: "light",
 				}}
 				onClick={() => {
 					const now = DateTime.utc();
@@ -74,14 +74,14 @@ const RangeToolbar: FC<{
 			<Button
 				variant={{
 					size: "sm",
-					variant: "secondary",
+					variant: "light",
 				}}
 				onClick={() => {
 					const now = DateTime.utc();
 					handleRangeClick({
 						accountToFrom: now
 							.minus({
-								months: 3,
+								months: 2,
 							})
 							.startOf("month")
 							.toSQL(),
@@ -94,14 +94,14 @@ const RangeToolbar: FC<{
 			<Button
 				variant={{
 					size: "sm",
-					variant: "secondary",
+					variant: "light",
 				}}
 				onClick={() => {
 					const now = DateTime.utc();
 					handleRangeClick({
 						accountToFrom: now
 							.minus({
-								months: 6,
+								months: 5,
 							})
 							.startOf("month")
 							.toSQL(),
