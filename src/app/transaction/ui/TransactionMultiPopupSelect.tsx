@@ -36,12 +36,23 @@ export const TransactionMultiPopupSelect: FC<
 					items={entities}
 					limit={5}
 					render={({ entity }) => (
-						<Badge>
-							{DateTime.fromISO(entity.accountTo).toLocaleString({
-								year: "numeric",
-								month: "long",
-							})}
-							{entity.note}
+						<Badge
+							cls={{
+								base: [
+									"flex",
+									"gap-2",
+								],
+							}}
+						>
+							<div>
+								{DateTime.fromISO(
+									entity.accountTo,
+								).toLocaleString({
+									year: "numeric",
+									month: "long",
+								})}
+							</div>
+							<div>{entity.note}</div>
 						</Badge>
 					)}
 				/>

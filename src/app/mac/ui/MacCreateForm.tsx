@@ -1,3 +1,4 @@
+import { useStore } from "@tanstack/react-form";
 import { useNavigate, useParams } from "@tanstack/react-router";
 import {
 	BackIcon,
@@ -12,6 +13,7 @@ import { DateTime, tvc } from "@use-pico/common";
 import type { FC } from "react";
 import { useKvsForm } from "~/app/kvs/ui/useKvsForm";
 import { MacCreateSchema } from "~/app/mac/db/MacCreateSchema";
+import type { TransactionFilterSchema } from "~/app/transaction/db/TransactionFilterSchema";
 import { MacIcon } from "~/app/ui/icon/MacIcon";
 
 export namespace MacCreateForm {
@@ -60,6 +62,15 @@ export const MacCreateForm: FC<MacCreateForm.Props> = ({
 		},
 		cls,
 	);
+
+	const accountTo = useStore(form.store, (value) => value.values.accountTo);
+
+	const transactionWhere: TransactionFilterSchema.Type = {
+		mac: true,
+		mode: "output",
+		accountToFrom: DateTime.fromISO(accountTo).startOf("month").toSQL(),
+		accountToTo: DateTime.fromISO(accountTo).endOf("month").toSQL(),
+	};
 
 	return (
 		<form
@@ -112,21 +123,27 @@ export const MacCreateForm: FC<MacCreateForm.Props> = ({
 			<form.AppField name="transactionIds">
 				{(field) => (
 					<FormField
-						label={<Tx label={"Transactions (label)"} />}
+						label={<Tx label={"Transactions - output (label)"} />}
 						name={field.name}
 						meta={field.state.meta}
-						hint={<Tx label={"Transactions (hint)"} />}
+						hint={<Tx label={"Transactions - output (hint)"} />}
 					>
 						<field.TransactionMultiPopupSelect
 							textTitle={
-								<Tx label={"Select transactions (label)"} />
+								<Tx
+									label={
+										"Select transactions - output (label)"
+									}
+								/>
 							}
 							textSelect={
-								<Tx label={"Select transactions (label)"} />
+								<Tx
+									label={
+										"Select transactions - output (label)"
+									}
+								/>
 							}
-							where={{
-								mac: true,
-							}}
+							where={transactionWhere}
 							value={field.state.value}
 							onChange={field.handleChange}
 						/>

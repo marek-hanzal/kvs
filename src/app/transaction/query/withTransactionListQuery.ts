@@ -37,6 +37,10 @@ export const withTransactionListQuery = () => {
 						$select = $select.where("t.id", "=", where.id);
 					}
 
+					if (where?.idIn && where.idIn.length > 0) {
+						$select = $select.where("t.id", "in", where.idIn);
+					}
+
 					if (where?.fulltext) {
 						const fulltext = `%${where.fulltext}%`.toLowerCase();
 						$select = $select.where((eb) => {
@@ -52,6 +56,14 @@ export const withTransactionListQuery = () => {
 							"t.mac",
 							"=",
 							where.mac ? 1 : 0,
+						);
+					}
+
+					if (where?.mode) {
+						$select = $select.where(
+							"t.amount",
+							where.mode === "input" ? ">" : "<",
+							0,
 						);
 					}
 

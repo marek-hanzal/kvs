@@ -36,7 +36,7 @@ export const TransactionCreateForm: FC<TransactionCreateForm.Props> = ({
 		defaultValues: {
 			amount: 0,
 			note: "",
-			mac: 0,
+			mac: 1,
 			accountTo: DateTime.now().toFormat("yyyy-MM"),
 			...defaultValues,
 		} satisfies TransactionCreateSchema.Type as TransactionCreateSchema.Type,

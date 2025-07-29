@@ -28,6 +28,9 @@
 1c998cb11280a12e453e74bc727ef9fa1057fae9f48110279a593bad:
     ref: Notifications
     value: Notifikace
+20517245311cef0771a1050bf2e2d368d7fa14d8de5e85c1b7682f85:
+    ref: Transactions - output (label)
+    value: Výdaje
 22648440e36f6980e7bbf7f1f9c5c080edccd9ba1415f301b3b2df2f:
     ref: Sorted by desc, remove sort
     value: Seřazeno sestupně, odebrat řazení
@@ -118,6 +121,9 @@
 5aadd057a77e161f140bd21426c90c9a5c6f3ddecfc261351e5cdfa1:
     ref: Moving Average Cost
     value: Plovoucí průměrná cena
+5b62415e6fd1e52c97dab257e24b337782ae38b07370cc4e2173e48e:
+    ref: Transactions - output (hint)
+    value: Vyberte výdaje, které se mají zahrnout do uzávěrky.
 5cd4cffcbafbe0a40563538352c1a593909e57b10bb8d9ad5f9b3d2a:
     ref: Delete (button)
     value: Smazat
@@ -199,6 +205,9 @@
 9f3ea85808a44a993024995453b438851943f2aba42cad77b727d127:
     ref: Fulltext (placeholder)
     value: Vyhledávání
+a04abe86b8a50aea1ba1c37256d80207551c00b3168079ab5dc87358:
+    ref: Select transactions - output (label)
+    value: Vyberte výdaje
 a23ce2805827f8c89f8254b43ecc2a73d5974af2fb57a74ecd8839c5:
     ref: Invalid data provided (message)
     value: Poskytnuta neplatná data

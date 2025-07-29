@@ -8,6 +8,12 @@ export const TransactionFilterSchema = z.object({
 	accountToTo: z.string().nullish(),
 	accountToType: DateRangeSchema.optional(),
 	mac: z.boolean().nullish(),
+	mode: z
+		.enum([
+			"input",
+			"output",
+		])
+		.optional(),
 });
 
 export type TransactionFilterSchema = typeof TransactionFilterSchema;
