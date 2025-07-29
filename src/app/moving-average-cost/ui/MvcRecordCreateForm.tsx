@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "@tanstack/react-router";
 import {
+	BackIcon,
 	Button,
 	type Form,
 	FormCls,
@@ -162,6 +163,7 @@ export const MvcRecordCreateForm: FC<MvcRecordCreateForm.Props> = ({
 				])}
 			>
 				<Button
+					iconEnabled={BackIcon}
 					variant={{
 						borderless: true,
 						variant: "light",

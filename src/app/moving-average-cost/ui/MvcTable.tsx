@@ -1,6 +1,7 @@
 import { Table, Tx, withColumn } from "@use-pico/client";
 import type { FC } from "react";
 import type { MvcRecordSchema } from "~/app/moving-average-cost/db/MvcRecordSchema";
+import { Toolbar } from "~/app/moving-average-cost/ui/MvcTable/Toolbar";
 
 export namespace MvcTable {
 	export interface Props extends Table.PropsEx<MvcRecordSchema.Type> {
@@ -47,6 +48,7 @@ export const MvcTable: FC<MvcTable.Props> = ({ ...props }) => {
 	return (
 		<Table
 			columns={columns}
+			toolbar={Toolbar}
 			{...props}
 		/>
 	);
