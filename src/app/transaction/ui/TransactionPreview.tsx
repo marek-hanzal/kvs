@@ -31,8 +31,11 @@ export const TransactionPreview: FC<TransactionPreview.Props> = (props) => {
 						icon={TransactionIcon}
 						title={<Tx label="Transaction (preview)" />}
 						subtitle={DateTime.fromISO(
-							entity.stamp,
-						).toLocaleString()}
+							entity.accountTo,
+						).toLocaleString({
+							year: "numeric",
+							month: "long",
+						})}
 					/>
 					<Card
 						inline

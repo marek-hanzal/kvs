@@ -43,6 +43,9 @@
 2dc007e932619d69a3764f194224cb28fcd5e9ffb60d3cf82a144ca7:
   ref: Amount
   value: Amount
+3740fe891c40129e0667a10046c3cc819ca856998747b203db97cb01:
+  ref: Transaction Account To (hint)
+  value: Transaction Account To (hint)
 38347572d8aa1607a788bf890a6e9f83c334d06fc92987ae1535b1f5:
   ref: Missing any token(s). (title)
   value: Missing any token(s). (title)
@@ -244,9 +247,15 @@ f3acc879f6d7a8558311e71269bf79ce74689eeba1dc71ee292dccdc:
 f4272751f3900e2ed4bebeff224bbf085162cf4266acf5f56a08e68e:
   ref: Output transaction
   value: Output transaction
+f562fa65e4d2b04bc91ab6addfc417d32f241c90c21d9194b84f311d:
+  ref: Transaction amount
+  value: Transaction amount
 f5895da6a944a108bb4591801078b71911da5b609c264ecdcdfebca9:
   ref: Note
   value: Note
+f6d86be34667ab62aaf2173c74159c451054dd8d40026cc70a64f1fe:
+  ref: Account To
+  value: Account To
 f9243e42e2e73ad6a3ef91f35dbeb72ba0aa4e3cb6b74e2a0f815e3c:
   ref: Edit (label)
   value: Edit (label)

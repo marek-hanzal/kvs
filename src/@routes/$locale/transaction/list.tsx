@@ -14,7 +14,7 @@ import { TransactionTable } from "~/app/transaction/ui/TransactionTable";
 const { validateSearch } = withSourceSearchSchema({
 	filter: TransactionFilterSchema,
 	defaultSort: {
-		stamp: "desc",
+		accountTo: "desc",
 	},
 });
 

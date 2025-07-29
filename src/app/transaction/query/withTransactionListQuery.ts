@@ -53,6 +53,12 @@ export const withTransactionListQuery = () => {
 						if (sort.amount) {
 							$select = $select.orderBy("t.amount", sort.amount);
 						}
+						if (sort.accountTo) {
+							$select = $select.orderBy(
+								"t.accountTo",
+								sort.accountTo,
+							);
+						}
 					}
 
 					return $select;

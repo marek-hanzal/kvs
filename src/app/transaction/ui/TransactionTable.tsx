@@ -16,8 +16,8 @@ const column = withColumn<TransactionSchema.Type>();
 
 const columns = [
 	column({
-		name: "stamp",
-		header: () => <Tx label="Date" />,
+		name: "accountTo",
+		header: () => <Tx label="Account To" />,
 		render({ value, data }) {
 			const { locale } = useParams({
 				from: "/$locale",
@@ -31,7 +31,10 @@ const columns = [
 						id: data.id,
 					}}
 				>
-					{DateTime.fromISO(value).toLocaleString()}
+					{DateTime.fromISO(value).toLocaleString({
+						year: "numeric",
+						month: "long",
+					})}
 				</LinkTo>
 			);
 		},
@@ -39,7 +42,7 @@ const columns = [
 	}),
 	column({
 		name: "amount",
-		header: () => <Tx label="Amount" />,
+		header: () => <Tx label="Transaction amount" />,
 		render: ({ value }) => value.toFixed(2),
 		size: 12,
 	}),

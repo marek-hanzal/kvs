@@ -6,6 +6,9 @@ export const TransactionSchema = z.object({
 	stamp: z.string().transform((val) => {
 		return String(DateTime.fromSQL(val).toISO());
 	}),
+	accountTo: z.string().transform((val) => {
+		return String(DateTime.fromSQL(val).toISO());
+	}),
 	amount: z.number(),
 	note: z.string().nullish(),
 });

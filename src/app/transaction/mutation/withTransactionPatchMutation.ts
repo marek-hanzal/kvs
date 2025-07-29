@@ -16,16 +16,22 @@ export const withTransactionPatchMutation = ({ id }: IdentitySchema.Type) => {
 				data,
 			];
 		},
-		async mutationFn(values) {
+		async mutationFn({ accountTo, ...values }) {
 			return kysely
 				.updateTable("Transaction")
-				.set(TransactionPatchSchema.parse(values))
+				.set({
+					...TransactionPatchSchema.parse({
+						...values,
+						accountTo,
+					}),
+					accountTo: `${accountTo}-01`,
+				})
 				.where("id", "=", id)
 				.returningAll()
 				.executeTakeFirstOrThrow();
 		},
 		invalidate: [
-            withTransactionSumQuery(),
+			withTransactionSumQuery(),
 			withTransactionFetchQuery(),
 			withTransactionListQuery(),
 		],

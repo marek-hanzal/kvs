@@ -177,3 +177,7 @@ Comprehensive reporting capabilities will include a custom report builder, sched
 The development approach will focus on building these features incrementally, starting with the core TODO and diary systems, then adding entity relations, and finally implementing advanced features like AI integration and external services. Each feature will be designed to work independently while providing maximum value when used together.
 
 The goal is to create a unified business management platform that feels like a natural extension of how users think about and manage their business, rather than a collection of separate tools that require manual coordination.
+
+
+- Add accountto to transactions
+- add cost to inventory item

@@ -27,7 +27,7 @@ export const withTransactionCreateMutation = ({
 				data,
 			];
 		},
-		async mutationFn({ amount, ...values }) {
+		async mutationFn({ amount, accountTo, ...values }) {
 			return kysely
 				.insertInto("Transaction")
 				.values({
@@ -35,8 +35,14 @@ export const withTransactionCreateMutation = ({
 					stamp: DateTime.now().toUTC().toSQLTime(),
 					...TransactionCreateSchema.parse({
 						amount: mode === "input" ? amount : -amount,
+						accountTo,
 						...values,
 					}),
+					/**
+					 * This one must be extra, because schema is formatting it in an
+					 * incorrect way.
+					 */
+					accountTo: `${accountTo}-01`,
 				})
 				.returningAll()
 				.executeTakeFirstOrThrow();

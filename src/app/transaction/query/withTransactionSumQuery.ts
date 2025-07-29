@@ -10,10 +10,10 @@ export const withTransactionSumQuery = () => {
 		async queryFn() {
 			const result = await kysely
 				.selectFrom("Transaction")
-				.select((eb) => eb.fn.sum<number>("amount").as("sum"))
+				.select((eb) => eb.fn.sum<number | null>("amount").as("sum"))
 				.executeTakeFirstOrThrow();
 
-			return result.sum;
+			return Number(result.sum ?? 0);
 		},
 	});
 };

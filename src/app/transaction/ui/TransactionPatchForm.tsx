@@ -8,7 +8,7 @@ import {
 	onSubmit,
 	Tx,
 } from "@use-pico/client";
-import { tvc } from "@use-pico/common";
+import { DateTime, tvc } from "@use-pico/common";
 import type { FC } from "react";
 import { useKvsForm } from "~/app/kvs/ui/useKvsForm";
 import { TransactionPatchSchema } from "~/app/transaction/db/TransactionPatchSchema";
@@ -38,6 +38,9 @@ export const TransactionPatchForm: FC<TransactionPatchForm.Props> = ({
 			amount: 0,
 			note: "",
 			...defaultValues,
+			accountTo: defaultValues?.accountTo
+				? DateTime.fromISO(defaultValues.accountTo).toFormat("yyyy-MM")
+				: DateTime.now().toFormat("yyyy-MM"),
 		} satisfies TransactionPatchSchema.Type as TransactionPatchSchema.Type,
 		validators: {
 			onChange: TransactionPatchSchema,
@@ -69,10 +72,28 @@ export const TransactionPatchForm: FC<TransactionPatchForm.Props> = ({
 				form.handleSubmit();
 			}}
 		>
+			<form.AppField name="accountTo">
+				{(field) => (
+					<FormField
+						label={<Tx label="Account To" />}
+						name={field.name}
+						meta={field.state.meta}
+						hint={<Tx label="Transaction Account To (hint)" />}
+					>
+						<field.TextInput
+							type="month"
+							className={slots.input()}
+							value={field.state.value ?? ""}
+							onChange={(e) => field.handleChange(e.target.value)}
+						/>
+					</FormField>
+				)}
+			</form.AppField>
+
 			<form.AppField name="amount">
 				{(field) => (
 					<FormField
-						label={<Tx label="Amount" />}
+						label={<Tx label="Transaction amount" />}
 						name={field.name}
 						meta={field.state.meta}
 					>

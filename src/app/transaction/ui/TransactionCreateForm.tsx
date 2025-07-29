@@ -8,7 +8,7 @@ import {
 	onSubmit,
 	Tx,
 } from "@use-pico/client";
-import { tvc } from "@use-pico/common";
+import { DateTime, tvc } from "@use-pico/common";
 import type { FC } from "react";
 import { useKvsForm } from "~/app/kvs/ui/useKvsForm";
 import { TransactionCreateSchema } from "~/app/transaction/db/TransactionCreateSchema";
@@ -33,6 +33,7 @@ export const TransactionCreateForm: FC<TransactionCreateForm.Props> = ({
 		defaultValues: {
 			amount: 0,
 			note: "",
+			accountTo: DateTime.now().toFormat("yyyy-MM"),
 			...defaultValues,
 		} satisfies TransactionCreateSchema.Type as TransactionCreateSchema.Type,
 		validators: {
@@ -65,10 +66,27 @@ export const TransactionCreateForm: FC<TransactionCreateForm.Props> = ({
 				form.handleSubmit();
 			}}
 		>
+			<form.AppField name="accountTo">
+				{(field) => (
+					<FormField
+						label={<Tx label="Account To" />}
+						name={field.name}
+						meta={field.state.meta}
+					>
+						<field.TextInput
+							type="month"
+							className={slots.input()}
+							value={field.state.value ?? ""}
+							onChange={(e) => field.handleChange(e.target.value)}
+						/>
+					</FormField>
+				)}
+			</form.AppField>
+
 			<form.AppField name="amount">
 				{(field) => (
 					<FormField
-						label={<Tx label="Amount" />}
+						label={<Tx label="Transaction amount" />}
 						name={field.name}
 						meta={field.state.meta}
 					>
