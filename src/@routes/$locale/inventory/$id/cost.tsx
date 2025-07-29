@@ -138,8 +138,6 @@ export const Route = createFileRoute("/$locale/inventory/$id/cost")({
 		const navigate = Route.useNavigate();
 		const setFilter = navigateOnFilter(navigate);
 
-		console.log("filter", filter);
-
 		return (
 			<TransactionTable
 				toolbar={() => (

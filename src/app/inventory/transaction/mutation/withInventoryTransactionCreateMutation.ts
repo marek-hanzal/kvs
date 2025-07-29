@@ -45,7 +45,10 @@ export const withInventoryTransactionCreateMutation = ({
 					 * incorrect way.
 					 */
 					accountTo: String(
-						DateTime.fromISO(`${accountTo}-01`).toUTC().toSQL(),
+						DateTime.fromISO(`${accountTo}-01`)
+							.endOf("month")
+							.toUTC()
+							.toSQL(),
 					),
 				})
 				.returningAll()
