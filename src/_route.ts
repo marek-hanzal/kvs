@@ -22,6 +22,8 @@ import { Route as LocaleInventoryListRouteImport } from './@routes/$locale/inven
 import { Route as LocaleInventoryCreateRouteImport } from './@routes/$locale/inventory/create'
 import { Route as LocaleInventoryIdRouteImport } from './@routes/$locale/inventory/$id'
 import { Route as LocaleInventoryIdViewRouteImport } from './@routes/$locale/inventory/$id/view'
+import { Route as LocaleInventoryIdOutputRouteImport } from './@routes/$locale/inventory/$id/output'
+import { Route as LocaleInventoryIdInputRouteImport } from './@routes/$locale/inventory/$id/input'
 
 const LocaleRoute = LocaleRouteImport.update({
   id: '/$locale',
@@ -91,6 +93,16 @@ const LocaleInventoryIdViewRoute = LocaleInventoryIdViewRouteImport.update({
   path: '/view',
   getParentRoute: () => LocaleInventoryIdRoute,
 } as any)
+const LocaleInventoryIdOutputRoute = LocaleInventoryIdOutputRouteImport.update({
+  id: '/output',
+  path: '/output',
+  getParentRoute: () => LocaleInventoryIdRoute,
+} as any)
+const LocaleInventoryIdInputRoute = LocaleInventoryIdInputRouteImport.update({
+  id: '/input',
+  path: '/input',
+  getParentRoute: () => LocaleInventoryIdRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -105,6 +117,8 @@ export interface FileRoutesByFullPath {
   '/$locale/moving-average-cost/list': typeof LocaleMovingAverageCostListRoute
   '/$locale/inventory/': typeof LocaleInventoryIndexRoute
   '/$locale/moving-average-cost/': typeof LocaleMovingAverageCostIndexRoute
+  '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
+  '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
   '/$locale/inventory/$id/view': typeof LocaleInventoryIdViewRoute
 }
 export interface FileRoutesByTo {
@@ -117,6 +131,8 @@ export interface FileRoutesByTo {
   '/$locale/moving-average-cost/list': typeof LocaleMovingAverageCostListRoute
   '/$locale/inventory': typeof LocaleInventoryIndexRoute
   '/$locale/moving-average-cost': typeof LocaleMovingAverageCostIndexRoute
+  '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
+  '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
   '/$locale/inventory/$id/view': typeof LocaleInventoryIdViewRoute
 }
 export interface FileRoutesById {
@@ -133,6 +149,8 @@ export interface FileRoutesById {
   '/$locale/moving-average-cost/list': typeof LocaleMovingAverageCostListRoute
   '/$locale/inventory/': typeof LocaleInventoryIndexRoute
   '/$locale/moving-average-cost/': typeof LocaleMovingAverageCostIndexRoute
+  '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
+  '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
   '/$locale/inventory/$id/view': typeof LocaleInventoryIdViewRoute
 }
 export interface FileRouteTypes {
@@ -150,6 +168,8 @@ export interface FileRouteTypes {
     | '/$locale/moving-average-cost/list'
     | '/$locale/inventory/'
     | '/$locale/moving-average-cost/'
+    | '/$locale/inventory/$id/input'
+    | '/$locale/inventory/$id/output'
     | '/$locale/inventory/$id/view'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -162,6 +182,8 @@ export interface FileRouteTypes {
     | '/$locale/moving-average-cost/list'
     | '/$locale/inventory'
     | '/$locale/moving-average-cost'
+    | '/$locale/inventory/$id/input'
+    | '/$locale/inventory/$id/output'
     | '/$locale/inventory/$id/view'
   id:
     | '__root__'
@@ -177,6 +199,8 @@ export interface FileRouteTypes {
     | '/$locale/moving-average-cost/list'
     | '/$locale/inventory/'
     | '/$locale/moving-average-cost/'
+    | '/$locale/inventory/$id/input'
+    | '/$locale/inventory/$id/output'
     | '/$locale/inventory/$id/view'
   fileRoutesById: FileRoutesById
 }
@@ -278,14 +302,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleInventoryIdViewRouteImport
       parentRoute: typeof LocaleInventoryIdRoute
     }
+    '/$locale/inventory/$id/output': {
+      id: '/$locale/inventory/$id/output'
+      path: '/output'
+      fullPath: '/$locale/inventory/$id/output'
+      preLoaderRoute: typeof LocaleInventoryIdOutputRouteImport
+      parentRoute: typeof LocaleInventoryIdRoute
+    }
+    '/$locale/inventory/$id/input': {
+      id: '/$locale/inventory/$id/input'
+      path: '/input'
+      fullPath: '/$locale/inventory/$id/input'
+      preLoaderRoute: typeof LocaleInventoryIdInputRouteImport
+      parentRoute: typeof LocaleInventoryIdRoute
+    }
   }
 }
 
 interface LocaleInventoryIdRouteChildren {
+  LocaleInventoryIdInputRoute: typeof LocaleInventoryIdInputRoute
+  LocaleInventoryIdOutputRoute: typeof LocaleInventoryIdOutputRoute
   LocaleInventoryIdViewRoute: typeof LocaleInventoryIdViewRoute
 }
 
 const LocaleInventoryIdRouteChildren: LocaleInventoryIdRouteChildren = {
+  LocaleInventoryIdInputRoute: LocaleInventoryIdInputRoute,
+  LocaleInventoryIdOutputRoute: LocaleInventoryIdOutputRoute,
   LocaleInventoryIdViewRoute: LocaleInventoryIdViewRoute,
 }
 

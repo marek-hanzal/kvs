@@ -29,6 +29,28 @@ export const IndexMenu: FC<IndexMenu.Props> = ({ entity, ...props }) => {
 			>
 				<Tx label={"Detail (label)"} />
 			</MenuLink>
+
+			<MenuLink
+				icon={"icon-[mdi--storefront-plus-outline]"}
+				to={"/$locale/inventory/$id/input"}
+				params={{
+					locale,
+					id: entity.id,
+				}}
+			>
+				<Tx label={"Input (label)"} />
+			</MenuLink>
+
+			<MenuLink
+				icon={"icon-[mdi--storefront-minus-outline]"}
+				to={"/$locale/inventory/$id/output"}
+				params={{
+					locale,
+					id: entity.id,
+				}}
+			>
+				<Tx label={"Output (label)"} />
+			</MenuLink>
 		</Menu>
 	);
 };
