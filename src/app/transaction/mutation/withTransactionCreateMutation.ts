@@ -32,7 +32,7 @@ export const withTransactionCreateMutation = ({
 				.insertInto("Transaction")
 				.values({
 					id: genId(),
-					stamp: DateTime.now().toUTC().toSQLTime(),
+					stamp: DateTime.utc().toSQL(),
 					...TransactionCreateSchema.parse({
 						amount: mode === "input" ? amount : -amount,
 						accountTo,
@@ -42,7 +42,9 @@ export const withTransactionCreateMutation = ({
 					 * This one must be extra, because schema is formatting it in an
 					 * incorrect way.
 					 */
-					accountTo: `${accountTo}-01`,
+					accountTo: String(
+						DateTime.fromISO(`${accountTo}-01`).toUTC().toSQL(),
+					),
 				})
 				.returningAll()
 				.executeTakeFirstOrThrow();

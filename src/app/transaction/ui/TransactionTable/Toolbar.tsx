@@ -1,6 +1,6 @@
 import { useParams } from "@tanstack/react-router";
 import { Button, Icon, LinkTo, type Table, Tx } from "@use-pico/client";
-import { tvc } from "@use-pico/common";
+import { toHumanNumber, tvc } from "@use-pico/common";
 import type { FC } from "react";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
 import { withTransactionSumQuery } from "~/app/transaction/query/withTransactionSumQuery";
@@ -81,7 +81,10 @@ export const Toolbar: FC<Toolbar.Props> = () => {
 						sum > 0 ? "text-green-600" : "text-red-600",
 					])}
 				>
-					{sum.toFixed(2)}
+					{toHumanNumber({
+						number: sum,
+						fraction: 2,
+					})}
 				</div>
 			</div>
 		</>

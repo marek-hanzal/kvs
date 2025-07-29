@@ -1,6 +1,6 @@
 import { useParams } from "@tanstack/react-router";
 import { LinkTo, Table, Tx, withColumn } from "@use-pico/client";
-import { DateTime } from "@use-pico/common";
+import { DateTime, toHumanNumber } from "@use-pico/common";
 import type { FC } from "react";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
 import { ActionRow } from "~/app/transaction/ui/TransactionTable/ActionRow";
@@ -49,7 +49,11 @@ const columns = [
 	column({
 		name: "amount",
 		header: () => <Tx label="Transaction amount" />,
-		render: ({ value }) => value.toFixed(2),
+		render: ({ value }) =>
+			toHumanNumber({
+				number: value,
+				fraction: 2,
+			}),
 		size: 12,
 	}),
 	column({

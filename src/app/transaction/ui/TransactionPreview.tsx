@@ -7,7 +7,7 @@ import {
 	TitlePreview,
 	Tx,
 } from "@use-pico/client";
-import { DateTime } from "@use-pico/common";
+import { DateTime, toHumanNumber } from "@use-pico/common";
 import type { FC } from "react";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
 import { TransactionIcon } from "~/app/ui/icon/TransactionIcon";
@@ -47,7 +47,7 @@ export const TransactionPreview: FC<TransactionPreview.Props> = (props) => {
 						items={[
 							{
 								id: "amount",
-								label: <Tx label="Amount" />,
+								label: <Tx label="Transaction amount" />,
 								cls: {
 									value:
 										entity.amount > 0
@@ -57,7 +57,10 @@ export const TransactionPreview: FC<TransactionPreview.Props> = (props) => {
 												: undefined,
 								},
 								render: ({ entity }) =>
-									entity.amount.toFixed(2),
+									toHumanNumber({
+										number: entity.amount,
+										fraction: 2,
+									}),
 							},
 							{
 								id: "note",

@@ -1,5 +1,5 @@
 import { withMutation } from "@use-pico/client";
-import type { IdentitySchema } from "@use-pico/common";
+import { DateTime, type IdentitySchema } from "@use-pico/common";
 import { kysely } from "~/app/database/kysely";
 import { TransactionPatchSchema } from "~/app/transaction/db/TransactionPatchSchema";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
@@ -24,7 +24,9 @@ export const withTransactionPatchMutation = ({ id }: IdentitySchema.Type) => {
 						...values,
 						accountTo,
 					}),
-					accountTo: `${accountTo}-01`,
+					accountTo: String(
+						DateTime.fromISO(`${accountTo}-01`).toUTC().toSQL(),
+					),
 				})
 				.where("id", "=", id)
 				.returningAll()

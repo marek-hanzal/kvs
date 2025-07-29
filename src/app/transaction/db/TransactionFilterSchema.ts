@@ -1,20 +1,10 @@
-import { DateTime, FilterSchema } from "@use-pico/common";
+import { FilterSchema } from "@use-pico/common";
 import { z } from "zod";
 
 export const TransactionFilterSchema = z.object({
 	...FilterSchema.shape,
-	accountToFrom: z
-		.string()
-		.transform((val) => {
-			return String(DateTime.fromSQL(val).toISO());
-		})
-		.nullish(),
-	accountToTo: z
-		.string()
-		.transform((val) => {
-			return String(DateTime.fromSQL(val).toISO());
-		})
-		.nullish(),
+	accountToFrom: z.string().nullish(),
+	accountToTo: z.string().nullish(),
 });
 
 export type TransactionFilterSchema = typeof TransactionFilterSchema;
