@@ -13,8 +13,6 @@ export const withInventoryItemFetchQuery = () => {
 			];
 		},
 		async queryFn({ id }) {
-			console.log("refetching!");
-
 			return withFetch({
 				select: kysely.selectFrom("InventoryItem as ii").selectAll(),
 				output: InventoryItemSchema,

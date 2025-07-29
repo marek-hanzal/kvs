@@ -11,6 +11,7 @@ import { translator } from "@use-pico/common";
 import type { FC } from "react";
 import type { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
 import { RecalculateQuantityButton } from "~/app/inventory/item/ui/RecalculateQuantityButton";
+import { InventoryItemIcon } from "~/app/ui/icon/InventoryItemIcon";
 
 export namespace InventoryItemPreview {
 	export interface Props extends Preview.PropsEx<InventoryItemSchema.Type> {
@@ -28,7 +29,7 @@ export const InventoryItemPreview: FC<InventoryItemPreview.Props> = (props) => {
 			title={({ entity }) => (
 				<div className={"flex flex-row gap-2 items-center"}>
 					<TitlePreview
-						icon="icon-[mdi--package-variant]"
+						icon={InventoryItemIcon}
 						title={translator.rich("Inventory Item (preview)")}
 						subtitle={entity.name}
 					/>
