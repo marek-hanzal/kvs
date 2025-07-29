@@ -17,7 +17,7 @@ const columns = [
 		name: "stamp",
 		header: () => <Tx label="Date" />,
 		render: ({ value }) => DateTime.fromISO(value).toLocaleString(),
-		size: 12,
+		size: 8,
 	}),
 	column({
 		name: "amount",
@@ -39,6 +39,23 @@ export const InventoryTransactionTable: FC<InventoryTransactionTable.Props> = ({
 	return (
 		<Table
 			columns={columns}
+			row={{
+				css({ data }) {
+					if (data.amount > 0) {
+						return [
+							"bg-green-50",
+							"odd:bg-green-100",
+						];
+					} else if (data.amount < 0) {
+						return [
+							"bg-red-50",
+							"odd:bg-red-100",
+						];
+					}
+
+					return [];
+				},
+			}}
 			{...props}
 		/>
 	);
