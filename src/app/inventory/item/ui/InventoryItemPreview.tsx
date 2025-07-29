@@ -45,11 +45,11 @@ export const InventoryItemPreview: FC<InventoryItemPreview.Props> = (props) => {
 								id: "quantity",
 								label: translator.rich("Quantity"),
 								cls: {
-									base:
+									value:
 										entity.quantity > 0
-											? "text-green-500"
+											? "text-green-700"
 											: entity.quantity < 0
-												? "text-red-500"
+												? "text-red-700"
 												: undefined,
 								},
 								render: ({ entity }) =>

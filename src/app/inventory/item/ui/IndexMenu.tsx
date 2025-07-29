@@ -1,5 +1,5 @@
 import { useParams } from "@tanstack/react-router";
-import { Menu, MenuLink, Tx } from "@use-pico/client";
+import { EditIcon, Menu, MenuLink, Tx } from "@use-pico/client";
 import type { Entity, IdentitySchema } from "@use-pico/common";
 import type { FC } from "react";
 import { InventoryIcon } from "~/app/ui/icon/InventoryIcon";
@@ -50,6 +50,17 @@ export const IndexMenu: FC<IndexMenu.Props> = ({ entity, ...props }) => {
 				}}
 			>
 				<Tx label={"Output (label)"} />
+			</MenuLink>
+
+			<MenuLink
+				icon={EditIcon}
+				to={"/$locale/inventory/$id/edit"}
+				params={{
+					locale,
+					id: entity.id,
+				}}
+			>
+				<Tx label={"Edit (label)"} />
 			</MenuLink>
 		</Menu>
 	);

@@ -25,7 +25,7 @@ export const RecalculateQuantityButton: FC<RecalculateQuantityButton.Props> = ({
 			disabled={mutation.isPending}
 			variant={{
 				size: "sm",
-				variant: "light",
+				variant: "subtle",
 			}}
 			iconEnabled="icon-[material-symbols-light--refresh-rounded]"
 		>

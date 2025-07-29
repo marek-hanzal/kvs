@@ -1,3 +1,6 @@
+0146b5cddbb273ed3ecc2871f7d0cd1161b039c65c552b85700d90d5:
+  ref: Item Name
+  value: Item Name
 06870a93e66047a4d536fc3467bb3152d92487734dbc2ab9bc5ab06a:
   ref: Create
   value: Create
@@ -22,6 +25,9 @@
 2727e5a04d8acc225b3320799348e34eff9ac515e1130101baab751a:
   ref: .
   value: .
+27f4d70c7841ee0974d8174a5874c0ea335c1d52d4494a60fe4011f4:
+  ref: Quantity
+  value: Quantity
 282447aea716ad0adce959ef2fa721688cf8614506ecdfd8c1dcf052:
   ref: No tags (label)
   value: No tags (label)
@@ -31,6 +37,9 @@
 2a6f89ba384a713b42f124fb17b8b6d99487cbe7d06208030f033a5e:
   ref: Amount Produced
   value: Amount Produced
+2dc007e932619d69a3764f194224cb28fcd5e9ffb60d3cf82a144ca7:
+  ref: Amount
+  value: Amount
 38347572d8aa1607a788bf890a6e9f83c334d06fc92987ae1535b1f5:
   ref: Missing any token(s). (title)
   value: Missing any token(s). (title)
@@ -70,15 +79,24 @@
 64a9bd6efedee20522b35742072e63d585bd6f326f2f4d93ca2f00ba:
   ref: Company Runtime Cost
   value: Company Runtime Cost
+66ddcf59b0dbab435cfb780058d90f4fb3fcaa144145747254addf1a:
+  ref: Update Item
+  value: Update Item
 70d7fb9cb6ce7775c5f9e1f890e6b248e538277a973f1aa95a36c0f2:
   ref: Clear files
   value: Clear files
+71ca0db1fb23b188f21c08a2e282cfba2ef12949468398212694ee73:
+  ref: Inventory Item count
+  value: Inventory Item count
 77b049e75c767c4ca346dd05d7a42c39c3479ac4f6dfaeaaa6efc1da:
   ref: There is nothing to see right now.
   value: There is nothing to see right now.
 7897e6d0cbd9ea7e40c873443e18bb3efe753f0ab7bc7762afcbd39b:
   ref: Saved!
   value: Saved!
+7ac2313b2801f9de771720c56f0d461e0d24afd4de926f7cf36ba015:
+  ref: Output (label)
+  value: Output (label)
 816c08b99b10a24bccbaf9ed3be66e93498a5ca8967792f35b425fa2:
   ref: Close (label)
   value: Close (label)
@@ -88,12 +106,18 @@
 84c534a811ace551d75f55848c009f057b7f67955ff7d32b251f6548:
   ref: MVC Record count
   value: MVC Record count
+851db0190e11976a9a9be952123a2360166bf8ca526afdadf1e5f2cd:
+  ref: Description
+  value: Description
 877f5f6106968c26486b30ccfd0af1e22ca05b4131099f99823b45f6:
   ref: With VAT
   value: With VAT
 891fe47dd650cc5e7c3864f9cb807b951df70b334f3c076fe50fda11:
   ref: Missing required token(s). (message)
   value: Missing required token(s). (message)
+90c4f87df60ca5f2ec54bd448c296038add492bd5cf5ae6902662be7:
+  ref: Inventory Transaction count
+  value: Inventory Transaction count
 9787305b076729a8818974ec91c90b96e1bbeee3a189994587c92ff5:
   ref: Nothing here
   value: Nothing here
@@ -115,6 +139,12 @@ a26e2f454b3953f2d2b295fcdae89f2bd7b4a6a145918f37d91e31c8:
 a421acdb6005685abf3ab655b39bd5a6fd36b74ffb42026ddc48fc6b:
   ref: Cannot resolve iso date time
   value: Cannot resolve iso date time
+a864ba545b4983feb9375f547fc86ce7c0d22c589212c1f103563512:
+  ref: Create Item
+  value: Create Item
+aab104d3222afec626023ea5bb7493ed506b23a4633a902b7da6ab78:
+  ref: Inventory Item (preview)
+  value: Inventory Item (preview)
 abcfdda5d6985517d677dc843ccdb96a3b74a2e708e82fbc8076dcf8:
   ref: Success (toast)
   value: Success (toast)
@@ -160,12 +190,24 @@ cb991f39f30e87a574eb95aca9cfcdad90a0983a8198507ba127cc51:
 cc8fbdb9d7a01c996c607174aec16985e3583279f6cd61656a06a60c:
   ref: Overview
   value: Overview
+cd6da5d1a46c93ef11d8a7f16619de31f2142687543f1bf479997d5a:
+  ref: Input (label)
+  value: Input (label)
 cfbb9c4de21431ab1400b242ecc0937d8361e828fc32b29ac00a4aa6:
   ref: Saving...
   value: Saving...
 d01f079a9c3b5b30892103f15d66f2c1dbf278bb56f58ed903146ca9:
   ref: Total Cost
   value: Total Cost
+d4746c101ee2b6a47bacebef07520ba9036e508d22c0b15bcebf893a:
+  ref: Recalculate Quantity
+  value: Recalculate Quantity
+d50008b3a4aba6e137e418a8d769d6058c7cabc898c35f14a0039f5a:
+  ref: Create Transaction
+  value: Create Transaction
+d822eb9c8ad2021e8151ba6f0ff4f460d16e8aa56cb5e58c48ea1988:
+  ref: Back to inventory list
+  value: Back to inventory list
 dc408471ab7060a83f7ded6167a5ce1c79ea02a9b5d44f40c4530ee2:
   ref: Loading... (toast)
   value: Loading... (toast)
@@ -181,6 +223,15 @@ e5e586960a7915ea8061fbc329e9b1d3c9afdbbc3cec6a7db6c53053:
 e9c24bfbf06755877d0fa51f062bc6e0475f722e432ce78224fb77d5:
   ref: Select item (label)
   value: Select item (label)
+f049184b4891ec173899d756154cb8c7533e1667eef85faf75d4bc05:
+  ref: Detail (label)
+  value: Detail (label)
+f5895da6a944a108bb4591801078b71911da5b609c264ecdcdfebca9:
+  ref: Note
+  value: Note
+f9243e42e2e73ad6a3ef91f35dbeb72ba0aa4e3cb6b74e2a0f815e3c:
+  ref: Edit (label)
+  value: Edit (label)
 f92c5bcd27dd6e6537d9b4eaaac63558d27e759c58675fef5f4f992c:
   ref: Confirm selection (label)
   value: Confirm selection (label)
