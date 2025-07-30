@@ -1,0 +1,28 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"tasks": {
+		"dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"typecheck": {
+			"cache": false
+		},
+		"translations": {
+			"cache": false
+		},
+		"sdk": {
+			"cache": false,
+			"env": [
+				"VITE_API"
+			]
+		},
+		"build": {
+			"cache": false,
+			"dependsOn": [
+				"^build",
+				"typecheck"
+			]
+		}
+	}
+}

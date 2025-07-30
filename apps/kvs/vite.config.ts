@@ -7,7 +7,7 @@ import dynamicImport from "vite-plugin-dynamic-import";
 import tla from "vite-plugin-top-level-await";
 import wasm from "vite-plugin-wasm";
 import paths from "vite-tsconfig-paths";
-import pkg from "./package.json";
+import pkg from "../../package.json";
 
 export default defineConfig({
 	clearScreen: false,

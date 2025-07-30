@@ -37,13 +37,10 @@
 		}
 	},
 	"include": [
-		"src/**/*.ts",
-		"src/**/*.tsx",
-		"src/**/*.js",
-		"src/**/*.jsx",
-		"index.html",
-		"vite.config.ts",
-		"tailwind.config.ts"
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.cjs",
+		"**/*.js"
 	],
 	"exclude": [
 		"node_modules",
