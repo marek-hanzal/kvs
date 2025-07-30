@@ -14,7 +14,7 @@
 		"sdk": {
 			"cache": false,
 			"env": [
-				"VITE_API"
+				"VITE_ARES_API"
 			]
 		},
 		"build": {
