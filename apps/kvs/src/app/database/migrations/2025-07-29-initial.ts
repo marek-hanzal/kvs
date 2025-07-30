@@ -67,5 +67,16 @@ export const InitialMigration: Migration = {
 			.addColumn("city", "text")
 			.addColumn("zip", "text")
 			.execute();
+
+		await db.schema
+			.createTable("Contact")
+			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
+			.addColumn("name", "text", (col) => col.notNull())
+			.addColumn("subjectId", "varchar(36)", (col) =>
+				col.references("Subject.id").onDelete("cascade").notNull(),
+			)
+			.addColumn("email", "text")
+			.addColumn("phone", "text")
+			.execute();
 	},
 };

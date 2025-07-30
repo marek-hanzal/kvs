@@ -1,3 +1,4 @@
+import type { ContactSchema } from "~/app/contact/db/ContactSchema";
 import type { InventoryItemSchema } from "~/app/inventory/item/db/InventoryItemSchema";
 import type { InventoryTransactionSchema } from "~/app/inventory/transaction/db/InventoryTransactionSchema";
 import type { MacRecordSchema } from "~/app/mac/db/MacRecordSchema";
@@ -6,6 +7,7 @@ import type { SubjectSchema } from "~/app/subject/db/SubjectSchema";
 import type { TransactionSchema } from "~/app/transaction/db/TransactionSchema";
 
 export interface Database {
+	Contact: ContactSchema.Type;
 	InventoryItem: InventoryItemSchema.Type;
 	InventoryTransaction: InventoryTransactionSchema.Type;
 	Subject: SubjectSchema.Type;
