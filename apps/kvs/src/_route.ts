@@ -35,7 +35,6 @@ import { Route as LocaleInventoryIdViewRouteImport } from './@routes/$locale/inv
 import { Route as LocaleInventoryIdOutputRouteImport } from './@routes/$locale/inventory/$id/output'
 import { Route as LocaleInventoryIdInputRouteImport } from './@routes/$locale/inventory/$id/input'
 import { Route as LocaleInventoryIdEditRouteImport } from './@routes/$locale/inventory/$id/edit'
-import { Route as LocaleInventoryIdCostRouteImport } from './@routes/$locale/inventory/$id/cost'
 
 const LocaleRoute = LocaleRouteImport.update({
   id: '/$locale',
@@ -167,11 +166,6 @@ const LocaleInventoryIdEditRoute = LocaleInventoryIdEditRouteImport.update({
   path: '/edit',
   getParentRoute: () => LocaleInventoryIdRoute,
 } as any)
-const LocaleInventoryIdCostRoute = LocaleInventoryIdCostRouteImport.update({
-  id: '/cost',
-  path: '/cost',
-  getParentRoute: () => LocaleInventoryIdRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -193,7 +187,6 @@ export interface FileRoutesByFullPath {
   '/$locale/inventory/': typeof LocaleInventoryIndexRoute
   '/$locale/mac/': typeof LocaleMacIndexRoute
   '/$locale/transaction/': typeof LocaleTransactionIndexRoute
-  '/$locale/inventory/$id/cost': typeof LocaleInventoryIdCostRoute
   '/$locale/inventory/$id/edit': typeof LocaleInventoryIdEditRoute
   '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
   '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
@@ -218,7 +211,6 @@ export interface FileRoutesByTo {
   '/$locale/inventory': typeof LocaleInventoryIndexRoute
   '/$locale/mac': typeof LocaleMacIndexRoute
   '/$locale/transaction': typeof LocaleTransactionIndexRoute
-  '/$locale/inventory/$id/cost': typeof LocaleInventoryIdCostRoute
   '/$locale/inventory/$id/edit': typeof LocaleInventoryIdEditRoute
   '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
   '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
@@ -248,7 +240,6 @@ export interface FileRoutesById {
   '/$locale/inventory/': typeof LocaleInventoryIndexRoute
   '/$locale/mac/': typeof LocaleMacIndexRoute
   '/$locale/transaction/': typeof LocaleTransactionIndexRoute
-  '/$locale/inventory/$id/cost': typeof LocaleInventoryIdCostRoute
   '/$locale/inventory/$id/edit': typeof LocaleInventoryIdEditRoute
   '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
   '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
@@ -279,7 +270,6 @@ export interface FileRouteTypes {
     | '/$locale/inventory/'
     | '/$locale/mac/'
     | '/$locale/transaction/'
-    | '/$locale/inventory/$id/cost'
     | '/$locale/inventory/$id/edit'
     | '/$locale/inventory/$id/input'
     | '/$locale/inventory/$id/output'
@@ -304,7 +294,6 @@ export interface FileRouteTypes {
     | '/$locale/inventory'
     | '/$locale/mac'
     | '/$locale/transaction'
-    | '/$locale/inventory/$id/cost'
     | '/$locale/inventory/$id/edit'
     | '/$locale/inventory/$id/input'
     | '/$locale/inventory/$id/output'
@@ -333,7 +322,6 @@ export interface FileRouteTypes {
     | '/$locale/inventory/'
     | '/$locale/mac/'
     | '/$locale/transaction/'
-    | '/$locale/inventory/$id/cost'
     | '/$locale/inventory/$id/edit'
     | '/$locale/inventory/$id/input'
     | '/$locale/inventory/$id/output'
@@ -532,18 +520,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleInventoryIdEditRouteImport
       parentRoute: typeof LocaleInventoryIdRoute
     }
-    '/$locale/inventory/$id/cost': {
-      id: '/$locale/inventory/$id/cost'
-      path: '/cost'
-      fullPath: '/$locale/inventory/$id/cost'
-      preLoaderRoute: typeof LocaleInventoryIdCostRouteImport
-      parentRoute: typeof LocaleInventoryIdRoute
-    }
   }
 }
 
 interface LocaleInventoryIdRouteChildren {
-  LocaleInventoryIdCostRoute: typeof LocaleInventoryIdCostRoute
   LocaleInventoryIdEditRoute: typeof LocaleInventoryIdEditRoute
   LocaleInventoryIdInputRoute: typeof LocaleInventoryIdInputRoute
   LocaleInventoryIdOutputRoute: typeof LocaleInventoryIdOutputRoute
@@ -551,7 +531,6 @@ interface LocaleInventoryIdRouteChildren {
 }
 
 const LocaleInventoryIdRouteChildren: LocaleInventoryIdRouteChildren = {
-  LocaleInventoryIdCostRoute: LocaleInventoryIdCostRoute,
   LocaleInventoryIdEditRoute: LocaleInventoryIdEditRoute,
   LocaleInventoryIdInputRoute: LocaleInventoryIdInputRoute,
   LocaleInventoryIdOutputRoute: LocaleInventoryIdOutputRoute,

@@ -19,9 +19,9 @@
         "@tanstack/react-query": "^5.83.0",
         "@tanstack/react-router": "^1.130.2",
         "@tanstack/zod-adapter": "^1.130.2",
-        "@use-pico/client": "4.1.81",
-        "@use-pico/common": "4.1.81",
-        "@use-pico/server": "4.1.81",
+        "@use-pico/client": "4.1.82",
+        "@use-pico/common": "4.1.82",
+        "@use-pico/server": "4.1.82",
         "fuse.js": "7.1.0",
         "kysely": "^0.28.3",
         "react": "^19.1.1",
@@ -444,11 +444,11 @@
 
     "@ungap/with-resolvers": ["@ungap/with-resolvers@0.1.0", "", {}, "sha512-g7f0IkJdPW2xhY7H4iE72DAsIyfuwEFc6JWc2tYFwKDMWWAF699vGjrM348cwQuOXgHpe1gWFe+Eiyjx/ewvvw=="],
 
-    "@use-pico/client": ["@use-pico/client@4.1.81", "", { "dependencies": { "@floating-ui/react": "^0.27.13", "@lexical/list": "0.33.1", "@lexical/react": "0.33.1", "@lexical/utils": "0.33.1", "@standard-schema/spec": "1.0.0", "@tanstack/react-form": "^1.14.2", "@tanstack/react-query": "^5.83.0", "@tanstack/react-router": "^1.129.8", "@tanstack/zod-adapter": "^1.129.7", "@types/luxon": "^3.6.2", "@use-pico/common": "4.1.81", "axios": "^1.10.0", "js-file-downloader": "1.1.25", "kysely": "^0.28.3", "lexical": "0.33.1", "localstorage-slim": "2.7.1", "luxon": "^3.7.1", "react": "^19.1.0", "react-dropzone": "14.3.8", "react-hot-toast": "2.5.2", "read-excel-file": "5.8.8", "sqlocal": "0.14.2", "use-debounce": "10.0.5", "uuid": "^11.1.0", "write-excel-file": "2.3.4", "zod": "^4.0.5", "zustand": "^5.0.6" } }, "sha512-NQUDXuEBDJYKsmxcCMAJhp+IAF2erAmb7VeqHC/NYvwpIb9AeeNPS1rJ2JIMijOBsSWcMPzWpnlsznGqd8f0rg=="],
+    "@use-pico/client": ["@use-pico/client@4.1.82", "", { "dependencies": { "@floating-ui/react": "^0.27.13", "@lexical/list": "0.33.1", "@lexical/react": "0.33.1", "@lexical/utils": "0.33.1", "@standard-schema/spec": "1.0.0", "@tanstack/react-form": "^1.14.2", "@tanstack/react-query": "^5.83.0", "@tanstack/react-router": "^1.129.8", "@tanstack/zod-adapter": "^1.129.7", "@types/luxon": "^3.6.2", "@use-pico/common": "4.1.82", "axios": "^1.10.0", "js-file-downloader": "1.1.25", "kysely": "^0.28.3", "lexical": "0.33.1", "localstorage-slim": "2.7.1", "luxon": "^3.7.1", "react": "^19.1.1", "react-dom": "^19.1.1", "react-dropzone": "14.3.8", "react-hot-toast": "2.5.2", "read-excel-file": "5.8.8", "sqlocal": "0.14.2", "use-debounce": "10.0.5", "uuid": "^11.1.0", "write-excel-file": "2.3.4", "zod": "^4.0.5", "zustand": "^5.0.6" } }, "sha512-Qru4gY8VvC0lKePui3Iz+YDA0dF+FOAg+iUfasn8Z6zpnESlEK5vfIiphkBCsx7umQxCV/g6NB61wFTcWjYpmQ=="],
 
-    "@use-pico/common": ["@use-pico/common@4.1.81", "", { "dependencies": { "@apollo/client": "^3.13.8", "@graphql-typed-document-node/core": "3.2.0", "@paralleldrive/cuid2": "^2.2.2", "@tanstack/zod-adapter": "^1.129.7", "@types/is-callable": "1.1.2", "@types/is-empty": "1.2.3", "@types/luxon": "^3.6.2", "@types/object-path": "0.11.4", "axios": "^1.10.0", "axios-rate-limit": "^1.4.0", "build-url-ts": "6.1.8", "fast-clean": "1.4.0", "flattie": "1.1.1", "is-callable": "1.2.7", "is-empty": "1.2.0", "is-string": "1.1.1", "js-sha256": "0.11.1", "kysely": "^0.28.3", "luxon": "^3.7.1", "object-path": "0.11.8", "path-to-regexp": "8.2.0", "preferred-locale": "2.0.2", "read-excel-file": "5.8.8", "tailwind-merge": "^3.3.1", "timer-node": "5.0.9", "zod": "^4.0.5" } }, "sha512-PRj6q/soPN8UXVRxmz2I5WL3i4pJJ8GLVkRLU4QrJ4SljBI+n+nBbON3naX44KqBhuuvXWnkN7M1eryu97U7JA=="],
+    "@use-pico/common": ["@use-pico/common@4.1.82", "", { "dependencies": { "@apollo/client": "^3.13.8", "@graphql-typed-document-node/core": "3.2.0", "@paralleldrive/cuid2": "^2.2.2", "@tanstack/zod-adapter": "^1.129.7", "@types/is-callable": "1.1.2", "@types/is-empty": "1.2.3", "@types/luxon": "^3.6.2", "@types/object-path": "0.11.4", "axios": "^1.10.0", "axios-rate-limit": "^1.4.0", "build-url-ts": "6.1.8", "fast-clean": "1.4.0", "flattie": "1.1.1", "is-callable": "1.2.7", "is-empty": "1.2.0", "is-string": "1.1.1", "js-sha256": "0.11.1", "kysely": "^0.28.3", "luxon": "^3.7.1", "object-path": "0.11.8", "path-to-regexp": "8.2.0", "preferred-locale": "2.0.2", "read-excel-file": "5.8.8", "tailwind-merge": "^3.3.1", "timer-node": "5.0.9", "zod": "^4.0.5" } }, "sha512-GpszHri+Hzra9WpdGaKf9L64OcNF0Rn1z0Q9cM4X+H0ohKZkSadqXnfSy4X9YCLkhleJYvxdbLBxeRG3E8fyKQ=="],
 
-    "@use-pico/server": ["@use-pico/server@4.1.81", "", { "dependencies": { "@phenomnomnominal/tsquery": "6.1.3", "@use-pico/common": "4.1.81", "yaml": "2.8.0" } }, "sha512-z5GblYarGL4VKjvIZsbEKggKKC9Iq0/VMxzL91qgHotgzKKlVR6kS8zJgt9EmT0gSUECGw+yzd2WkxEbZJwmQg=="],
+    "@use-pico/server": ["@use-pico/server@4.1.82", "", { "dependencies": { "@phenomnomnominal/tsquery": "6.1.3", "@use-pico/common": "4.1.82", "yaml": "2.8.0" } }, "sha512-KivHtdIS46NQbnpPq+Nz6OUgAFEbvIzduxmJiOI48Ck9hsSuWfrVCECnrkHwBGnVNfFc8cS3nkcGJdQDGSeNLg=="],
 
     "@vitejs/plugin-react": ["@vitejs/plugin-react@4.7.0", "", { "dependencies": { "@babel/core": "^7.28.0", "@babel/plugin-transform-react-jsx-self": "^7.27.1", "@babel/plugin-transform-react-jsx-source": "^7.27.1", "@rolldown/pluginutils": "1.0.0-beta.27", "@types/babel__core": "^7.20.5", "react-refresh": "^0.17.0" }, "peerDependencies": { "vite": "^4.2.0 || ^5.0.0 || ^6.0.0 || ^7.0.0" } }, "sha512-gUu9hwfWvvEDBBmgtAowQCojwZmJ5mcLn3aufeCsitijs3+f2NsrPtlAWIR6OPiqljl96GVCUbLe0HyqIpVaoA=="],
 

@@ -94,6 +94,7 @@ const columns = [
 export const TransactionTable: FC<TransactionTable.Props> = ({ ...props }) => {
 	return (
 		<Table
+			actionWidth={"2rem"}
 			columns={columns}
 			toolbar={Toolbar}
 			actionRow={ActionRow}

@@ -60,6 +60,7 @@ export const InventoryItemTable: FC<InventoryItemTable.Props> = ({
 }) => {
 	return (
 		<Table
+			actionWidth={"2rem"}
 			columns={columns}
 			toolbar={Toolbar}
 			actionRow={ActionRow}

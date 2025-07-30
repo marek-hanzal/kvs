@@ -1,11 +1,10 @@
 import { tvc } from "@use-pico/common";
-import type { FC, ReactNode } from "react";
+import type { FC, PropsWithChildren, ReactNode } from "react";
 
 export namespace FormWrapper {
-	export interface Props {
+	export interface Props extends PropsWithChildren {
 		title: ReactNode;
 		hint?: ReactNode;
-		children: ReactNode;
 	}
 }
 

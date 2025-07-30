@@ -26,6 +26,7 @@ export const InventoryItemMultiPopupSelect: FC<
 			table={(props) => (
 				<InventoryItemTable
 					toolbarHidden
+					actionRow={undefined}
 					{...props}
 				/>
 			)}

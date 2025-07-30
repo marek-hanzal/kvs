@@ -27,6 +27,7 @@ export const TransactionMultiPopupSelect: FC<
 			table={(props) => (
 				<TransactionTable
 					toolbarHidden
+					actionRow={undefined}
 					{...props}
 				/>
 			)}

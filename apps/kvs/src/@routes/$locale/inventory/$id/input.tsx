@@ -4,9 +4,11 @@ import {
 	useNavigate,
 	useParams,
 } from "@tanstack/react-router";
+import { Tx } from "@use-pico/client";
 import { withInventoryItemQuantityMutation } from "~/app/inventory/item/mutation/withInventoryItemQuantityMutation";
 import { withInventoryTransactionCreateMutation } from "~/app/inventory/transaction/mutation/withInventoryTransactionCreateMutation";
 import { InventoryTransactionCreateForm } from "~/app/inventory/transaction/ui/InventoryTransactionCreateForm";
+import { FormWrapper } from "~/app/ui/FormWrapper";
 
 export const Route = createFileRoute("/$locale/inventory/$id/input")({
 	component() {
@@ -35,12 +37,15 @@ export const Route = createFileRoute("/$locale/inventory/$id/input")({
 		});
 
 		return (
-			<div className={"mx-auto w-1/2"}>
+			<FormWrapper
+				title={<Tx label={"Inventory Input"} />}
+				hint={<Tx label={"Inventory Input (hint)"} />}
+			>
 				<InventoryTransactionCreateForm
 					mutation={mutation}
 					inventoryItemId={id}
 				/>
-			</div>
+			</FormWrapper>
 		);
 	},
 });
