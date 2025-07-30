@@ -16,21 +16,38 @@ export const Toolbar: FC<Toolbar.Props> = () => {
 	});
 
 	return (
-		<LinkTo
-			to="/$locale/subject/create"
-			params={{
-				locale,
-			}}
-		>
-			<Button
-				iconEnabled={SubjectIcon}
-				variant={{
-					size: "md",
-					variant: "primary",
+		<>
+			<LinkTo
+				to="/$locale/subject/create"
+				params={{
+					locale,
 				}}
 			>
-				<Tx label="Create" />
-			</Button>
-		</LinkTo>
+				<Button
+					iconEnabled={SubjectIcon}
+					variant={{
+						size: "md",
+						variant: "primary",
+					}}
+				>
+					<Tx label="Create" />
+				</Button>
+			</LinkTo>
+
+			<LinkTo
+				to="/$locale/subject/vat"
+				params={{
+					locale,
+				}}
+			>
+				<Button
+					variant={{
+						variant: "subtle",
+					}}
+				>
+					<Tx label="Create from VAT" />
+				</Button>
+			</LinkTo>
+		</>
 	);
 };

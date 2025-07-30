@@ -24,6 +24,7 @@ import { Route as LocaleTransactionOutputRouteImport } from './@routes/$locale/t
 import { Route as LocaleTransactionListRouteImport } from './@routes/$locale/transaction/list'
 import { Route as LocaleTransactionInputRouteImport } from './@routes/$locale/transaction/input'
 import { Route as LocaleTransactionIdRouteImport } from './@routes/$locale/transaction/$id'
+import { Route as LocaleSubjectVatRouteImport } from './@routes/$locale/subject/vat'
 import { Route as LocaleSubjectListRouteImport } from './@routes/$locale/subject/list'
 import { Route as LocaleSubjectCreateRouteImport } from './@routes/$locale/subject/create'
 import { Route as LocaleSubjectIdRouteImport } from './@routes/$locale/subject/$id'
@@ -117,6 +118,11 @@ const LocaleTransactionIdRoute = LocaleTransactionIdRouteImport.update({
   id: '/$id',
   path: '/$id',
   getParentRoute: () => LocaleTransactionRoute,
+} as any)
+const LocaleSubjectVatRoute = LocaleSubjectVatRouteImport.update({
+  id: '/vat',
+  path: '/vat',
+  getParentRoute: () => LocaleSubjectRoute,
 } as any)
 const LocaleSubjectListRoute = LocaleSubjectListRouteImport.update({
   id: '/list',
@@ -226,6 +232,7 @@ export interface FileRoutesByFullPath {
   '/$locale/subject/$id': typeof LocaleSubjectIdRouteWithChildren
   '/$locale/subject/create': typeof LocaleSubjectCreateRoute
   '/$locale/subject/list': typeof LocaleSubjectListRoute
+  '/$locale/subject/vat': typeof LocaleSubjectVatRoute
   '/$locale/transaction/$id': typeof LocaleTransactionIdRouteWithChildren
   '/$locale/transaction/input': typeof LocaleTransactionInputRoute
   '/$locale/transaction/list': typeof LocaleTransactionListRoute
@@ -256,6 +263,7 @@ export interface FileRoutesByTo {
   '/$locale/subject/$id': typeof LocaleSubjectIdRouteWithChildren
   '/$locale/subject/create': typeof LocaleSubjectCreateRoute
   '/$locale/subject/list': typeof LocaleSubjectListRoute
+  '/$locale/subject/vat': typeof LocaleSubjectVatRoute
   '/$locale/transaction/$id': typeof LocaleTransactionIdRouteWithChildren
   '/$locale/transaction/input': typeof LocaleTransactionInputRoute
   '/$locale/transaction/list': typeof LocaleTransactionListRoute
@@ -292,6 +300,7 @@ export interface FileRoutesById {
   '/$locale/subject/$id': typeof LocaleSubjectIdRouteWithChildren
   '/$locale/subject/create': typeof LocaleSubjectCreateRoute
   '/$locale/subject/list': typeof LocaleSubjectListRoute
+  '/$locale/subject/vat': typeof LocaleSubjectVatRoute
   '/$locale/transaction/$id': typeof LocaleTransactionIdRouteWithChildren
   '/$locale/transaction/input': typeof LocaleTransactionInputRoute
   '/$locale/transaction/list': typeof LocaleTransactionListRoute
@@ -329,6 +338,7 @@ export interface FileRouteTypes {
     | '/$locale/subject/$id'
     | '/$locale/subject/create'
     | '/$locale/subject/list'
+    | '/$locale/subject/vat'
     | '/$locale/transaction/$id'
     | '/$locale/transaction/input'
     | '/$locale/transaction/list'
@@ -359,6 +369,7 @@ export interface FileRouteTypes {
     | '/$locale/subject/$id'
     | '/$locale/subject/create'
     | '/$locale/subject/list'
+    | '/$locale/subject/vat'
     | '/$locale/transaction/$id'
     | '/$locale/transaction/input'
     | '/$locale/transaction/list'
@@ -394,6 +405,7 @@ export interface FileRouteTypes {
     | '/$locale/subject/$id'
     | '/$locale/subject/create'
     | '/$locale/subject/list'
+    | '/$locale/subject/vat'
     | '/$locale/transaction/$id'
     | '/$locale/transaction/input'
     | '/$locale/transaction/list'
@@ -524,6 +536,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/$locale/transaction/$id'
       preLoaderRoute: typeof LocaleTransactionIdRouteImport
       parentRoute: typeof LocaleTransactionRoute
+    }
+    '/$locale/subject/vat': {
+      id: '/$locale/subject/vat'
+      path: '/vat'
+      fullPath: '/$locale/subject/vat'
+      preLoaderRoute: typeof LocaleSubjectVatRouteImport
+      parentRoute: typeof LocaleSubjectRoute
     }
     '/$locale/subject/list': {
       id: '/$locale/subject/list'
@@ -737,6 +756,7 @@ interface LocaleSubjectRouteChildren {
   LocaleSubjectIdRoute: typeof LocaleSubjectIdRouteWithChildren
   LocaleSubjectCreateRoute: typeof LocaleSubjectCreateRoute
   LocaleSubjectListRoute: typeof LocaleSubjectListRoute
+  LocaleSubjectVatRoute: typeof LocaleSubjectVatRoute
   LocaleSubjectIndexRoute: typeof LocaleSubjectIndexRoute
 }
 
@@ -744,6 +764,7 @@ const LocaleSubjectRouteChildren: LocaleSubjectRouteChildren = {
   LocaleSubjectIdRoute: LocaleSubjectIdRouteWithChildren,
   LocaleSubjectCreateRoute: LocaleSubjectCreateRoute,
   LocaleSubjectListRoute: LocaleSubjectListRoute,
+  LocaleSubjectVatRoute: LocaleSubjectVatRoute,
   LocaleSubjectIndexRoute: LocaleSubjectIndexRoute,
 }
 
