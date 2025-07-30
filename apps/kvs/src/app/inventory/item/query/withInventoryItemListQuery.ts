@@ -36,6 +36,10 @@ export const withInventoryItemListQuery = () => {
 						$select = $select.where("ii.id", "=", where.id);
 					}
 
+					if (where?.idIn) {
+						$select = $select.where("ii.id", "in", where.idIn);
+					}
+
 					if (where?.fulltext) {
 						const fulltext = `%${where.fulltext}%`.toLowerCase();
 						$select = $select.where((eb) => {
