@@ -13,15 +13,20 @@ import { Route as LocaleRouteImport } from './@routes/$locale'
 import { Route as IndexRouteImport } from './@routes/index'
 import { Route as LocaleIndexRouteImport } from './@routes/$locale/index'
 import { Route as LocaleTransactionRouteImport } from './@routes/$locale/transaction'
+import { Route as LocaleSubjectRouteImport } from './@routes/$locale/subject'
 import { Route as LocaleMacRouteImport } from './@routes/$locale/mac'
 import { Route as LocaleInventoryRouteImport } from './@routes/$locale/inventory'
 import { Route as LocaleTransactionIndexRouteImport } from './@routes/$locale/transaction/index'
+import { Route as LocaleSubjectIndexRouteImport } from './@routes/$locale/subject/index'
 import { Route as LocaleMacIndexRouteImport } from './@routes/$locale/mac/index'
 import { Route as LocaleInventoryIndexRouteImport } from './@routes/$locale/inventory/index'
 import { Route as LocaleTransactionOutputRouteImport } from './@routes/$locale/transaction/output'
 import { Route as LocaleTransactionListRouteImport } from './@routes/$locale/transaction/list'
 import { Route as LocaleTransactionInputRouteImport } from './@routes/$locale/transaction/input'
 import { Route as LocaleTransactionIdRouteImport } from './@routes/$locale/transaction/$id'
+import { Route as LocaleSubjectListRouteImport } from './@routes/$locale/subject/list'
+import { Route as LocaleSubjectCreateRouteImport } from './@routes/$locale/subject/create'
+import { Route as LocaleSubjectIdRouteImport } from './@routes/$locale/subject/$id'
 import { Route as LocaleMacListRouteImport } from './@routes/$locale/mac/list'
 import { Route as LocaleMacCreateRouteImport } from './@routes/$locale/mac/create'
 import { Route as LocaleMacIdRouteImport } from './@routes/$locale/mac/$id'
@@ -30,6 +35,8 @@ import { Route as LocaleInventoryCreateRouteImport } from './@routes/$locale/inv
 import { Route as LocaleInventoryIdRouteImport } from './@routes/$locale/inventory/$id'
 import { Route as LocaleTransactionIdViewRouteImport } from './@routes/$locale/transaction/$id/view'
 import { Route as LocaleTransactionIdEditRouteImport } from './@routes/$locale/transaction/$id/edit'
+import { Route as LocaleSubjectIdViewRouteImport } from './@routes/$locale/subject/$id/view'
+import { Route as LocaleSubjectIdEditRouteImport } from './@routes/$locale/subject/$id/edit'
 import { Route as LocaleMacIdViewRouteImport } from './@routes/$locale/mac/$id/view'
 import { Route as LocaleInventoryIdViewRouteImport } from './@routes/$locale/inventory/$id/view'
 import { Route as LocaleInventoryIdOutputRouteImport } from './@routes/$locale/inventory/$id/output'
@@ -56,6 +63,11 @@ const LocaleTransactionRoute = LocaleTransactionRouteImport.update({
   path: '/transaction',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocaleSubjectRoute = LocaleSubjectRouteImport.update({
+  id: '/subject',
+  path: '/subject',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LocaleMacRoute = LocaleMacRouteImport.update({
   id: '/mac',
   path: '/mac',
@@ -70,6 +82,11 @@ const LocaleTransactionIndexRoute = LocaleTransactionIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => LocaleTransactionRoute,
+} as any)
+const LocaleSubjectIndexRoute = LocaleSubjectIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LocaleSubjectRoute,
 } as any)
 const LocaleMacIndexRoute = LocaleMacIndexRouteImport.update({
   id: '/',
@@ -100,6 +117,21 @@ const LocaleTransactionIdRoute = LocaleTransactionIdRouteImport.update({
   id: '/$id',
   path: '/$id',
   getParentRoute: () => LocaleTransactionRoute,
+} as any)
+const LocaleSubjectListRoute = LocaleSubjectListRouteImport.update({
+  id: '/list',
+  path: '/list',
+  getParentRoute: () => LocaleSubjectRoute,
+} as any)
+const LocaleSubjectCreateRoute = LocaleSubjectCreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => LocaleSubjectRoute,
+} as any)
+const LocaleSubjectIdRoute = LocaleSubjectIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => LocaleSubjectRoute,
 } as any)
 const LocaleMacListRoute = LocaleMacListRouteImport.update({
   id: '/list',
@@ -141,6 +173,16 @@ const LocaleTransactionIdEditRoute = LocaleTransactionIdEditRouteImport.update({
   path: '/edit',
   getParentRoute: () => LocaleTransactionIdRoute,
 } as any)
+const LocaleSubjectIdViewRoute = LocaleSubjectIdViewRouteImport.update({
+  id: '/view',
+  path: '/view',
+  getParentRoute: () => LocaleSubjectIdRoute,
+} as any)
+const LocaleSubjectIdEditRoute = LocaleSubjectIdEditRouteImport.update({
+  id: '/edit',
+  path: '/edit',
+  getParentRoute: () => LocaleSubjectIdRoute,
+} as any)
 const LocaleMacIdViewRoute = LocaleMacIdViewRouteImport.update({
   id: '/view',
   path: '/view',
@@ -172,6 +214,7 @@ export interface FileRoutesByFullPath {
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/inventory': typeof LocaleInventoryRouteWithChildren
   '/$locale/mac': typeof LocaleMacRouteWithChildren
+  '/$locale/subject': typeof LocaleSubjectRouteWithChildren
   '/$locale/transaction': typeof LocaleTransactionRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/inventory/$id': typeof LocaleInventoryIdRouteWithChildren
@@ -180,18 +223,24 @@ export interface FileRoutesByFullPath {
   '/$locale/mac/$id': typeof LocaleMacIdRouteWithChildren
   '/$locale/mac/create': typeof LocaleMacCreateRoute
   '/$locale/mac/list': typeof LocaleMacListRoute
+  '/$locale/subject/$id': typeof LocaleSubjectIdRouteWithChildren
+  '/$locale/subject/create': typeof LocaleSubjectCreateRoute
+  '/$locale/subject/list': typeof LocaleSubjectListRoute
   '/$locale/transaction/$id': typeof LocaleTransactionIdRouteWithChildren
   '/$locale/transaction/input': typeof LocaleTransactionInputRoute
   '/$locale/transaction/list': typeof LocaleTransactionListRoute
   '/$locale/transaction/output': typeof LocaleTransactionOutputRoute
   '/$locale/inventory/': typeof LocaleInventoryIndexRoute
   '/$locale/mac/': typeof LocaleMacIndexRoute
+  '/$locale/subject/': typeof LocaleSubjectIndexRoute
   '/$locale/transaction/': typeof LocaleTransactionIndexRoute
   '/$locale/inventory/$id/edit': typeof LocaleInventoryIdEditRoute
   '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
   '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
   '/$locale/inventory/$id/view': typeof LocaleInventoryIdViewRoute
   '/$locale/mac/$id/view': typeof LocaleMacIdViewRoute
+  '/$locale/subject/$id/edit': typeof LocaleSubjectIdEditRoute
+  '/$locale/subject/$id/view': typeof LocaleSubjectIdViewRoute
   '/$locale/transaction/$id/edit': typeof LocaleTransactionIdEditRoute
   '/$locale/transaction/$id/view': typeof LocaleTransactionIdViewRoute
 }
@@ -204,18 +253,24 @@ export interface FileRoutesByTo {
   '/$locale/mac/$id': typeof LocaleMacIdRouteWithChildren
   '/$locale/mac/create': typeof LocaleMacCreateRoute
   '/$locale/mac/list': typeof LocaleMacListRoute
+  '/$locale/subject/$id': typeof LocaleSubjectIdRouteWithChildren
+  '/$locale/subject/create': typeof LocaleSubjectCreateRoute
+  '/$locale/subject/list': typeof LocaleSubjectListRoute
   '/$locale/transaction/$id': typeof LocaleTransactionIdRouteWithChildren
   '/$locale/transaction/input': typeof LocaleTransactionInputRoute
   '/$locale/transaction/list': typeof LocaleTransactionListRoute
   '/$locale/transaction/output': typeof LocaleTransactionOutputRoute
   '/$locale/inventory': typeof LocaleInventoryIndexRoute
   '/$locale/mac': typeof LocaleMacIndexRoute
+  '/$locale/subject': typeof LocaleSubjectIndexRoute
   '/$locale/transaction': typeof LocaleTransactionIndexRoute
   '/$locale/inventory/$id/edit': typeof LocaleInventoryIdEditRoute
   '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
   '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
   '/$locale/inventory/$id/view': typeof LocaleInventoryIdViewRoute
   '/$locale/mac/$id/view': typeof LocaleMacIdViewRoute
+  '/$locale/subject/$id/edit': typeof LocaleSubjectIdEditRoute
+  '/$locale/subject/$id/view': typeof LocaleSubjectIdViewRoute
   '/$locale/transaction/$id/edit': typeof LocaleTransactionIdEditRoute
   '/$locale/transaction/$id/view': typeof LocaleTransactionIdViewRoute
 }
@@ -225,6 +280,7 @@ export interface FileRoutesById {
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/inventory': typeof LocaleInventoryRouteWithChildren
   '/$locale/mac': typeof LocaleMacRouteWithChildren
+  '/$locale/subject': typeof LocaleSubjectRouteWithChildren
   '/$locale/transaction': typeof LocaleTransactionRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/inventory/$id': typeof LocaleInventoryIdRouteWithChildren
@@ -233,18 +289,24 @@ export interface FileRoutesById {
   '/$locale/mac/$id': typeof LocaleMacIdRouteWithChildren
   '/$locale/mac/create': typeof LocaleMacCreateRoute
   '/$locale/mac/list': typeof LocaleMacListRoute
+  '/$locale/subject/$id': typeof LocaleSubjectIdRouteWithChildren
+  '/$locale/subject/create': typeof LocaleSubjectCreateRoute
+  '/$locale/subject/list': typeof LocaleSubjectListRoute
   '/$locale/transaction/$id': typeof LocaleTransactionIdRouteWithChildren
   '/$locale/transaction/input': typeof LocaleTransactionInputRoute
   '/$locale/transaction/list': typeof LocaleTransactionListRoute
   '/$locale/transaction/output': typeof LocaleTransactionOutputRoute
   '/$locale/inventory/': typeof LocaleInventoryIndexRoute
   '/$locale/mac/': typeof LocaleMacIndexRoute
+  '/$locale/subject/': typeof LocaleSubjectIndexRoute
   '/$locale/transaction/': typeof LocaleTransactionIndexRoute
   '/$locale/inventory/$id/edit': typeof LocaleInventoryIdEditRoute
   '/$locale/inventory/$id/input': typeof LocaleInventoryIdInputRoute
   '/$locale/inventory/$id/output': typeof LocaleInventoryIdOutputRoute
   '/$locale/inventory/$id/view': typeof LocaleInventoryIdViewRoute
   '/$locale/mac/$id/view': typeof LocaleMacIdViewRoute
+  '/$locale/subject/$id/edit': typeof LocaleSubjectIdEditRoute
+  '/$locale/subject/$id/view': typeof LocaleSubjectIdViewRoute
   '/$locale/transaction/$id/edit': typeof LocaleTransactionIdEditRoute
   '/$locale/transaction/$id/view': typeof LocaleTransactionIdViewRoute
 }
@@ -255,6 +317,7 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/inventory'
     | '/$locale/mac'
+    | '/$locale/subject'
     | '/$locale/transaction'
     | '/$locale/'
     | '/$locale/inventory/$id'
@@ -263,18 +326,24 @@ export interface FileRouteTypes {
     | '/$locale/mac/$id'
     | '/$locale/mac/create'
     | '/$locale/mac/list'
+    | '/$locale/subject/$id'
+    | '/$locale/subject/create'
+    | '/$locale/subject/list'
     | '/$locale/transaction/$id'
     | '/$locale/transaction/input'
     | '/$locale/transaction/list'
     | '/$locale/transaction/output'
     | '/$locale/inventory/'
     | '/$locale/mac/'
+    | '/$locale/subject/'
     | '/$locale/transaction/'
     | '/$locale/inventory/$id/edit'
     | '/$locale/inventory/$id/input'
     | '/$locale/inventory/$id/output'
     | '/$locale/inventory/$id/view'
     | '/$locale/mac/$id/view'
+    | '/$locale/subject/$id/edit'
+    | '/$locale/subject/$id/view'
     | '/$locale/transaction/$id/edit'
     | '/$locale/transaction/$id/view'
   fileRoutesByTo: FileRoutesByTo
@@ -287,18 +356,24 @@ export interface FileRouteTypes {
     | '/$locale/mac/$id'
     | '/$locale/mac/create'
     | '/$locale/mac/list'
+    | '/$locale/subject/$id'
+    | '/$locale/subject/create'
+    | '/$locale/subject/list'
     | '/$locale/transaction/$id'
     | '/$locale/transaction/input'
     | '/$locale/transaction/list'
     | '/$locale/transaction/output'
     | '/$locale/inventory'
     | '/$locale/mac'
+    | '/$locale/subject'
     | '/$locale/transaction'
     | '/$locale/inventory/$id/edit'
     | '/$locale/inventory/$id/input'
     | '/$locale/inventory/$id/output'
     | '/$locale/inventory/$id/view'
     | '/$locale/mac/$id/view'
+    | '/$locale/subject/$id/edit'
+    | '/$locale/subject/$id/view'
     | '/$locale/transaction/$id/edit'
     | '/$locale/transaction/$id/view'
   id:
@@ -307,6 +382,7 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/inventory'
     | '/$locale/mac'
+    | '/$locale/subject'
     | '/$locale/transaction'
     | '/$locale/'
     | '/$locale/inventory/$id'
@@ -315,18 +391,24 @@ export interface FileRouteTypes {
     | '/$locale/mac/$id'
     | '/$locale/mac/create'
     | '/$locale/mac/list'
+    | '/$locale/subject/$id'
+    | '/$locale/subject/create'
+    | '/$locale/subject/list'
     | '/$locale/transaction/$id'
     | '/$locale/transaction/input'
     | '/$locale/transaction/list'
     | '/$locale/transaction/output'
     | '/$locale/inventory/'
     | '/$locale/mac/'
+    | '/$locale/subject/'
     | '/$locale/transaction/'
     | '/$locale/inventory/$id/edit'
     | '/$locale/inventory/$id/input'
     | '/$locale/inventory/$id/output'
     | '/$locale/inventory/$id/view'
     | '/$locale/mac/$id/view'
+    | '/$locale/subject/$id/edit'
+    | '/$locale/subject/$id/view'
     | '/$locale/transaction/$id/edit'
     | '/$locale/transaction/$id/view'
   fileRoutesById: FileRoutesById
@@ -366,6 +448,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleTransactionRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/subject': {
+      id: '/$locale/subject'
+      path: '/subject'
+      fullPath: '/$locale/subject'
+      preLoaderRoute: typeof LocaleSubjectRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/mac': {
       id: '/$locale/mac'
       path: '/mac'
@@ -386,6 +475,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/$locale/transaction/'
       preLoaderRoute: typeof LocaleTransactionIndexRouteImport
       parentRoute: typeof LocaleTransactionRoute
+    }
+    '/$locale/subject/': {
+      id: '/$locale/subject/'
+      path: '/'
+      fullPath: '/$locale/subject/'
+      preLoaderRoute: typeof LocaleSubjectIndexRouteImport
+      parentRoute: typeof LocaleSubjectRoute
     }
     '/$locale/mac/': {
       id: '/$locale/mac/'
@@ -428,6 +524,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/$locale/transaction/$id'
       preLoaderRoute: typeof LocaleTransactionIdRouteImport
       parentRoute: typeof LocaleTransactionRoute
+    }
+    '/$locale/subject/list': {
+      id: '/$locale/subject/list'
+      path: '/list'
+      fullPath: '/$locale/subject/list'
+      preLoaderRoute: typeof LocaleSubjectListRouteImport
+      parentRoute: typeof LocaleSubjectRoute
+    }
+    '/$locale/subject/create': {
+      id: '/$locale/subject/create'
+      path: '/create'
+      fullPath: '/$locale/subject/create'
+      preLoaderRoute: typeof LocaleSubjectCreateRouteImport
+      parentRoute: typeof LocaleSubjectRoute
+    }
+    '/$locale/subject/$id': {
+      id: '/$locale/subject/$id'
+      path: '/$id'
+      fullPath: '/$locale/subject/$id'
+      preLoaderRoute: typeof LocaleSubjectIdRouteImport
+      parentRoute: typeof LocaleSubjectRoute
     }
     '/$locale/mac/list': {
       id: '/$locale/mac/list'
@@ -484,6 +601,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/$locale/transaction/$id/edit'
       preLoaderRoute: typeof LocaleTransactionIdEditRouteImport
       parentRoute: typeof LocaleTransactionIdRoute
+    }
+    '/$locale/subject/$id/view': {
+      id: '/$locale/subject/$id/view'
+      path: '/view'
+      fullPath: '/$locale/subject/$id/view'
+      preLoaderRoute: typeof LocaleSubjectIdViewRouteImport
+      parentRoute: typeof LocaleSubjectIdRoute
+    }
+    '/$locale/subject/$id/edit': {
+      id: '/$locale/subject/$id/edit'
+      path: '/edit'
+      fullPath: '/$locale/subject/$id/edit'
+      preLoaderRoute: typeof LocaleSubjectIdEditRouteImport
+      parentRoute: typeof LocaleSubjectIdRoute
     }
     '/$locale/mac/$id/view': {
       id: '/$locale/mac/$id/view'
@@ -588,6 +719,38 @@ const LocaleMacRouteWithChildren = LocaleMacRoute._addFileChildren(
   LocaleMacRouteChildren,
 )
 
+interface LocaleSubjectIdRouteChildren {
+  LocaleSubjectIdEditRoute: typeof LocaleSubjectIdEditRoute
+  LocaleSubjectIdViewRoute: typeof LocaleSubjectIdViewRoute
+}
+
+const LocaleSubjectIdRouteChildren: LocaleSubjectIdRouteChildren = {
+  LocaleSubjectIdEditRoute: LocaleSubjectIdEditRoute,
+  LocaleSubjectIdViewRoute: LocaleSubjectIdViewRoute,
+}
+
+const LocaleSubjectIdRouteWithChildren = LocaleSubjectIdRoute._addFileChildren(
+  LocaleSubjectIdRouteChildren,
+)
+
+interface LocaleSubjectRouteChildren {
+  LocaleSubjectIdRoute: typeof LocaleSubjectIdRouteWithChildren
+  LocaleSubjectCreateRoute: typeof LocaleSubjectCreateRoute
+  LocaleSubjectListRoute: typeof LocaleSubjectListRoute
+  LocaleSubjectIndexRoute: typeof LocaleSubjectIndexRoute
+}
+
+const LocaleSubjectRouteChildren: LocaleSubjectRouteChildren = {
+  LocaleSubjectIdRoute: LocaleSubjectIdRouteWithChildren,
+  LocaleSubjectCreateRoute: LocaleSubjectCreateRoute,
+  LocaleSubjectListRoute: LocaleSubjectListRoute,
+  LocaleSubjectIndexRoute: LocaleSubjectIndexRoute,
+}
+
+const LocaleSubjectRouteWithChildren = LocaleSubjectRoute._addFileChildren(
+  LocaleSubjectRouteChildren,
+)
+
 interface LocaleTransactionIdRouteChildren {
   LocaleTransactionIdEditRoute: typeof LocaleTransactionIdEditRoute
   LocaleTransactionIdViewRoute: typeof LocaleTransactionIdViewRoute
@@ -623,6 +786,7 @@ const LocaleTransactionRouteWithChildren =
 interface LocaleRouteChildren {
   LocaleInventoryRoute: typeof LocaleInventoryRouteWithChildren
   LocaleMacRoute: typeof LocaleMacRouteWithChildren
+  LocaleSubjectRoute: typeof LocaleSubjectRouteWithChildren
   LocaleTransactionRoute: typeof LocaleTransactionRouteWithChildren
   LocaleIndexRoute: typeof LocaleIndexRoute
 }
@@ -630,6 +794,7 @@ interface LocaleRouteChildren {
 const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleInventoryRoute: LocaleInventoryRouteWithChildren,
   LocaleMacRoute: LocaleMacRouteWithChildren,
+  LocaleSubjectRoute: LocaleSubjectRouteWithChildren,
   LocaleTransactionRoute: LocaleTransactionRouteWithChildren,
   LocaleIndexRoute: LocaleIndexRoute,
 }

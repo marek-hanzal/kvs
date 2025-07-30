@@ -5,458 +5,456 @@
  * REST rozhraní systému ARES
  * OpenAPI spec version: 1.2.0
  */
-import axios from 'axios';
-import type {
-  AxiosRequestConfig,
-  AxiosResponse
-} from 'axios';
+import axios from "axios";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
- * Adresa - obecný předek 
+ * Adresa - obecný předek
  */
 export interface Adresa {
-  /**
-   * Kód státu (ciselnikKod: Stat) 
-   * @minLength 3
-   * @maxLength 3
-   */
-  kodStatu?: string;
-  /**
-   * Název státu
-   * @maxLength 32
-   */
-  nazevStatu?: string;
-  /**
-   * Kód kraje
-   * @minimum 0
-   * @maximum 999
-   */
-  kodKraje?: number;
-  /**
-   * Název kraje
-   * @maxLength 32
-   */
-  nazevKraje?: string;
-  /**
-   * Kód okresu
-   * @minimum 0
-   * @maximum 9999
-   */
-  kodOkresu?: number;
-  /**
-   * Název okresu
-   * @maxLength 32
-   */
-  nazevOkresu?: string;
-  /**
-   * Kód obce
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodObce?: number;
-  /**
-   * Název obce
-   * @maxLength 48
-   */
-  nazevObce?: string;
-  /**
-   * Kód správního obvodu Prahy
-   * @minimum 0
-   * @maximum 999
-   */
-  kodSpravnihoObvodu?: number;
-  /**
-   * Název správního obvodu Prahy 
-   * @maxLength 32
-   */
-  nazevSpravnihoObvodu?: string;
-  /**
-   * Kód městského obvodu Prahy
-   * @minimum 0
-   * @maximum 999
-   */
-  kodMestskehoObvodu?: number;
-  /**
-   * Název městského obvodu Prahy
-   * @maxLength 32
-   */
-  nazevMestskehoObvodu?: string;
-  /**
-   * Kód městské části statutárního města
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodMestskeCastiObvodu?: number;
-  /**
-   * Kód ulice, veřejného prostranství ze zdroje
-   * @minimum 0
-   * @maximum 9999999
-   */
-  kodUlice?: number;
-  /**
-   * Název městské části statutárního města 
-   * @maxLength 48
-   */
-  nazevMestskeCastiObvodu?: string;
-  /**
-   * Název ulice, veřejného prostranství 
-   * @maxLength 48
-   */
-  nazevUlice?: string;
-  /**
-   * Číslo domovní
-   * @maximum 9999
-   */
-  cisloDomovni?: number;
-  /**
-   * Doplňující informace adresního popisu
-   * @maxLength 1500
-   */
-  doplnekAdresy?: string;
-  /**
-   * Kód časti obce
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodCastiObce?: number;
-  /**
-   * Číslo orientační - číselná část
-   * @maximum 999
-   */
-  cisloOrientacni?: number;
-  /**
-   * Číslo orientační - písmenná část
-   * @maxLength 1
-   */
-  cisloOrientacniPismeno?: string;
-  /**
-   * Název části obce
-   * @maxLength 48
-   */
-  nazevCastiObce?: string;
-  /**
-   * Kód adresního místa
-   * @minimum 0
-   * @maximum 999999999
-   */
-  kodAdresnihoMista?: number;
-  /** Poštovní směrovací číslo adresní pošty */
-  psc?: number;
-  /**
-   * Nestrukturovaná adresa (formátovaná adresa)
-   * @maxLength 1500
-   */
-  textovaAdresa?: string;
-  /**
-   * Nestrukturované číslo/a použíté v adrese
-   * @maxLength 255
-   */
-  cisloDoAdresy?: string;
-  /** Stav standardizace adresy dle RÚIAN */
-  standardizaceAdresy?: boolean;
-  /**
-   * Psč zahraničních nebo nestandardně definovaných čísel
-   * @maximum 255
-   */
-  pscTxt?: string;
-  /**
-   * Typ čísla domu - kód (ciselnikKod: TypCislaDomovniho) 
-   * @maximum 9999
-   */
-  typCisloDomovni?: number;
+	/**
+	 * Kód státu (ciselnikKod: Stat)
+	 * @minLength 3
+	 * @maxLength 3
+	 */
+	kodStatu?: string;
+	/**
+	 * Název státu
+	 * @maxLength 32
+	 */
+	nazevStatu?: string;
+	/**
+	 * Kód kraje
+	 * @minimum 0
+	 * @maximum 999
+	 */
+	kodKraje?: number;
+	/**
+	 * Název kraje
+	 * @maxLength 32
+	 */
+	nazevKraje?: string;
+	/**
+	 * Kód okresu
+	 * @minimum 0
+	 * @maximum 9999
+	 */
+	kodOkresu?: number;
+	/**
+	 * Název okresu
+	 * @maxLength 32
+	 */
+	nazevOkresu?: string;
+	/**
+	 * Kód obce
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodObce?: number;
+	/**
+	 * Název obce
+	 * @maxLength 48
+	 */
+	nazevObce?: string;
+	/**
+	 * Kód správního obvodu Prahy
+	 * @minimum 0
+	 * @maximum 999
+	 */
+	kodSpravnihoObvodu?: number;
+	/**
+	 * Název správního obvodu Prahy
+	 * @maxLength 32
+	 */
+	nazevSpravnihoObvodu?: string;
+	/**
+	 * Kód městského obvodu Prahy
+	 * @minimum 0
+	 * @maximum 999
+	 */
+	kodMestskehoObvodu?: number;
+	/**
+	 * Název městského obvodu Prahy
+	 * @maxLength 32
+	 */
+	nazevMestskehoObvodu?: string;
+	/**
+	 * Kód městské části statutárního města
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodMestskeCastiObvodu?: number;
+	/**
+	 * Kód ulice, veřejného prostranství ze zdroje
+	 * @minimum 0
+	 * @maximum 9999999
+	 */
+	kodUlice?: number;
+	/**
+	 * Název městské části statutárního města
+	 * @maxLength 48
+	 */
+	nazevMestskeCastiObvodu?: string;
+	/**
+	 * Název ulice, veřejného prostranství
+	 * @maxLength 48
+	 */
+	nazevUlice?: string;
+	/**
+	 * Číslo domovní
+	 * @maximum 9999
+	 */
+	cisloDomovni?: number;
+	/**
+	 * Doplňující informace adresního popisu
+	 * @maxLength 1500
+	 */
+	doplnekAdresy?: string;
+	/**
+	 * Kód časti obce
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodCastiObce?: number;
+	/**
+	 * Číslo orientační - číselná část
+	 * @maximum 999
+	 */
+	cisloOrientacni?: number;
+	/**
+	 * Číslo orientační - písmenná část
+	 * @maxLength 1
+	 */
+	cisloOrientacniPismeno?: string;
+	/**
+	 * Název části obce
+	 * @maxLength 48
+	 */
+	nazevCastiObce?: string;
+	/**
+	 * Kód adresního místa
+	 * @minimum 0
+	 * @maximum 999999999
+	 */
+	kodAdresnihoMista?: number;
+	/** Poštovní směrovací číslo adresní pošty */
+	psc?: number;
+	/**
+	 * Nestrukturovaná adresa (formátovaná adresa)
+	 * @maxLength 1500
+	 */
+	textovaAdresa?: string;
+	/**
+	 * Nestrukturované číslo/a použíté v adrese
+	 * @maxLength 255
+	 */
+	cisloDoAdresy?: string;
+	/** Stav standardizace adresy dle RÚIAN */
+	standardizaceAdresy?: boolean;
+	/**
+	 * Psč zahraničních nebo nestandardně definovaných čísel
+	 * @maximum 255
+	 */
+	pscTxt?: string;
+	/**
+	 * Typ čísla domu - kód (ciselnikKod: TypCislaDomovniho)
+	 * @maximum 9999
+	 */
+	typCisloDomovni?: number;
 }
 
 /**
  * Osoba v angažmá ekonomického subjektu
  */
 export interface AngazovanaOsoba {
-  /**
-   * Jméno fyzické osoby
-   * @maxLength 100
-   */
-  jmeno?: string;
-  /**
-   * Příjmení fyzické osoby
-   * @maxLength 100
-   */
-  prijmeni?: string;
-  /**
-   * Titul před jménem fyzické osoby 
-   * @maxLength 32
-   */
-  titulPredJmenem?: string;
-  /**
-   * Titul za jménem fyzické osoby
-   * @maxLength 32
-   */
-  titulZaJmenem?: string;
-  /** Datum narození fyzické osoby */
-  datumNarozeni?: string;
+	/**
+	 * Jméno fyzické osoby
+	 * @maxLength 100
+	 */
+	jmeno?: string;
+	/**
+	 * Příjmení fyzické osoby
+	 * @maxLength 100
+	 */
+	prijmeni?: string;
+	/**
+	 * Titul před jménem fyzické osoby
+	 * @maxLength 32
+	 */
+	titulPredJmenem?: string;
+	/**
+	 * Titul za jménem fyzické osoby
+	 * @maxLength 32
+	 */
+	titulZaJmenem?: string;
+	/** Datum narození fyzické osoby */
+	datumNarozeni?: string;
 }
 
 /**
  * Základní informace o ekonomickém subjektu - obecný předek
  */
 export interface EkonomickySubjektZaklad {
-  /**
-   * Identifikační číslo osoby - IČO
-   * @minLength 8
-   * @maxLength 8
-   * @pattern ^\d{8}$
-   */
-  ico?: string;
-  /**
-   * Obchodní jméno ekonomického subjektu
-   * @minLength 1
-   * @maxLength 2000
-   */
-  obchodniJmeno?: string;
-  /** Sídlo ekonomického subjektu */
-  sidlo?: Adresa;
-  /**
-   * Právní forma - kód (ciselnikKod: PravniForma, zdroj: res, com) 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  pravniForma?: string;
-  /**
-   * Správně příslušný finanční úřad - kód (ciselnikKod: FinancniUrad, zdroj:ufo) 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  financniUrad?: string;
-  /** Datum vzniku ekonomického subjektu  */
-  datumVzniku?: string;
-  /** Datum zániku ekonomického subjektu */
-  datumZaniku?: string;
-  /** Datum aktualizace záznamu */
-  datumAktualizace?: string;
-  /** Daňové identifikační číslo ve formátu CZNNNNNNNNNN */
-  dic?: string;
+	/**
+	 * Identifikační číslo osoby - IČO
+	 * @minLength 8
+	 * @maxLength 8
+	 * @pattern ^\d{8}$
+	 */
+	ico?: string;
+	/**
+	 * Obchodní jméno ekonomického subjektu
+	 * @minLength 1
+	 * @maxLength 2000
+	 */
+	obchodniJmeno?: string;
+	/** Sídlo ekonomického subjektu */
+	sidlo?: Adresa;
+	/**
+	 * Právní forma - kód (ciselnikKod: PravniForma, zdroj: res, com)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	pravniForma?: string;
+	/**
+	 * Správně příslušný finanční úřad - kód (ciselnikKod: FinancniUrad, zdroj:ufo)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	financniUrad?: string;
+	/** Datum vzniku ekonomického subjektu  */
+	datumVzniku?: string;
+	/** Datum zániku ekonomického subjektu */
+	datumZaniku?: string;
+	/** Datum aktualizace záznamu */
+	datumAktualizace?: string;
+	/** Daňové identifikační číslo ve formátu CZNNNNNNNNNN */
+	dic?: string;
 }
 
 /**
  * Adresa doručovací dle vyhlášky 359/2011 sb.
  */
 export interface AdresaDorucovaci {
-  /**
-   * 1. řádek doručovací adresy
-   * @maxLength 255
-   */
-  radekAdresy1?: string;
-  /**
-   * 2. řádek doručovací adresy
-   * @maxLength 255
-   */
-  radekAdresy2?: string;
-  /**
-   * 3. řádek doručovací adresy
-   * @maxLength 255
-   */
-  radekAdresy3?: string;
+	/**
+	 * 1. řádek doručovací adresy
+	 * @maxLength 255
+	 */
+	radekAdresy1?: string;
+	/**
+	 * 2. řádek doručovací adresy
+	 * @maxLength 255
+	 */
+	radekAdresy2?: string;
+	/**
+	 * 3. řádek doručovací adresy
+	 * @maxLength 255
+	 */
+	radekAdresy3?: string;
 }
 
 /**
  * Seznam nalezených záznamů - obecný předek.
  */
 export interface Seznam {
-  /**
-   * Počet prvků seznamu.
-   * @minimum 0
-   */
-  pocetCelkem?: number;
+	/**
+	 * Počet prvků seznamu.
+	 * @minimum 0
+	 */
+	pocetCelkem?: number;
 }
 
 /**
- * Předek pro všechny seznamy obsahující stránkování a řazení. Defaultní parametry pro všechny aplikace s komplexním filtrem: [+/-]icoiD [+/-]obchodniJmeno [+/-]nazevObce 
+ * Předek pro všechny seznamy obsahující stránkování a řazení. Defaultní parametry pro všechny aplikace s komplexním filtrem: [+/-]icoiD [+/-]obchodniJmeno [+/-]nazevObce
  */
 export interface StrankovaniARazeni {
-  /**
-   * Offset pro stránkování (poloha prvního vráceného prvku).
-   * @minimum 0
-   */
-  start?: number;
-  /**
-   * Počet prvků k výstupu.
-   * @minimum 0
-   */
-  pocet?: number;
-  razeni?: string[];
+	/**
+	 * Offset pro stránkování (poloha prvního vráceného prvku).
+	 * @minimum 0
+	 */
+	start?: number;
+	/**
+	 * Počet prvků k výstupu.
+	 * @minimum 0
+	 */
+	pocet?: number;
+	razeni?: string[];
 }
 
 export interface Chyba {
-  /** Číselníkový kód chyby */
-  kod?: KodChybyEnum;
-  /** Popis chyby */
-  popis?: string;
-  /** Subkod chyby */
-  subKod?: string;
+	/** Číselníkový kód chyby */
+	kod?: KodChybyEnum;
+	/** Popis chyby */
+	popis?: string;
+	/** Subkod chyby */
+	subKod?: string;
 }
 
 export interface Chyby {
-  chyby?: Chyba[];
+	chyby?: Chyba[];
 }
 
 /**
  * Adresa s platností
  */
 export interface AdresaAres {
-  /** Sídlo */
-  sidlo?: Adresa;
-  /** Primární záznam */
-  primarniZaznam?: boolean;
-  /** Platnost údaje od data */
-  platnostOd?: string;
-  /** Platnost údaje od data */
-  platnostDo?: string;
+	/** Sídlo */
+	sidlo?: Adresa;
+	/** Primární záznam */
+	primarniZaznam?: boolean;
+	/** Platnost údaje od data */
+	platnostOd?: string;
+	/** Platnost údaje od data */
+	platnostDo?: string;
 }
 
 /**
  * Další údaje o ekonomickém subjektu
  */
 export interface EkonomickySubjektDalsiUdaje {
-  obchodniJmeno?: ObchodniJmenoAres[];
-  sidlo?: AdresaAres[];
-  /**
-   * Právní forma - kód (ciselnikKod: PravniForma, zdroj: res, com)
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  pravniForma?: string;
-  /**
-   * Aktuální spisová značka ve tvaru ODDIL xx/SOUD (např. B 100/MSPH) - poskytováno pouze pro zdroj: Veřejné rejstříky 
-   * @maxLength 32
-   */
-  spisovaZnacka?: string;
-  /**
-   * Identifikace primárního zdroje dat - kód (ciselnikKod: TypZdroje, zdroj: com) 
-   * @maxLength 30
-   */
-  datovyZdroj?: string;
+	obchodniJmeno?: ObchodniJmenoAres[];
+	sidlo?: AdresaAres[];
+	/**
+	 * Právní forma - kód (ciselnikKod: PravniForma, zdroj: res, com)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	pravniForma?: string;
+	/**
+	 * Aktuální spisová značka ve tvaru ODDIL xx/SOUD (např. B 100/MSPH) - poskytováno pouze pro zdroj: Veřejné rejstříky
+	 * @maxLength 32
+	 */
+	spisovaZnacka?: string;
+	/**
+	 * Identifikace primárního zdroje dat - kód (ciselnikKod: TypZdroje, zdroj: com)
+	 * @maxLength 30
+	 */
+	datovyZdroj?: string;
 }
 
 /**
  * Obchodní jméno s platností
  */
 export interface ObchodniJmenoAres {
-  /** Platnost údaje od data */
-  platnostOd?: string;
-  /** Platnost údaje do data */
-  platnostDo?: string;
-  /**
-   * Obchodní jméno ekonomického subjektu
-   * @minLength 1
-   * @maxLength 2000
-   */
-  obchodniJmeno?: string;
-  /** Primární záznam  */
-  primarniZaznam?: boolean;
+	/** Platnost údaje od data */
+	platnostOd?: string;
+	/** Platnost údaje do data */
+	platnostDo?: string;
+	/**
+	 * Obchodní jméno ekonomického subjektu
+	 * @minLength 1
+	 * @maxLength 2000
+	 */
+	obchodniJmeno?: string;
+	/** Primární záznam  */
+	primarniZaznam?: boolean;
 }
 
 export type EkonomickeSubjektyKomplexFiltrAllOf = {
-  czNace?: string[];
+	czNace?: string[];
 };
 
 /**
  * Filtr pro vyhledání seznamu ekonomických subjektů
  */
-export type EkonomickeSubjektyKomplexFiltr = EkonomickeSubjektyZakladFiltr & EkonomickeSubjektyKomplexFiltrAllOf;
+export type EkonomickeSubjektyKomplexFiltr = EkonomickeSubjektyZakladFiltr &
+	EkonomickeSubjektyKomplexFiltrAllOf;
 
 /**
  * Seznam registrací ekonomického subjektu v jednotlivých zdrojích
  */
 export interface SeznamRegistraci {
-  /**
-   * Stav ekonomického subjektu ve zdroji VR (Veřejné rejstříky) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeVr?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji RES (Registr ekonomických subjektů) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeRes?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji RŽP (Registr živnostenského podnikání) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeRzp?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji NRPZS (Národní registr poskytovatelů zdrovotnických služeb) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeNrpzs?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji RPSH (Registr politických stran a hnutí) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeRpsh?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji RCNS(Registr církví a náboženských společenství) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeRcns?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji  SZR(Společný zemědělský registr) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeSzr?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji DPH(Registr plátců daně s přidané hodnoty) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeDph?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji SD(Registr plátců spotřební daně) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeSd?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji ISIR(Insolvenční rejstřík) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeIr?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji CEÚ(Centrální evidence úpadců) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeCeu?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji RŠ(Registr škol) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeRs?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji RED(Registr evidence dotací) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeRed?: string;
-  /**
-   * Stav ekonomického subjektu ve zdroji MONITOR(Monitor účetních jednotek státu) - kód (ciselnikKod: StavZdroje, zdroj: com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavZdrojeMonitor?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji VR (Veřejné rejstříky) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeVr?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji RES (Registr ekonomických subjektů) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeRes?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji RŽP (Registr živnostenského podnikání) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeRzp?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji NRPZS (Národní registr poskytovatelů zdrovotnických služeb) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeNrpzs?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji RPSH (Registr politických stran a hnutí) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeRpsh?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji RCNS(Registr církví a náboženských společenství) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeRcns?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji  SZR(Společný zemědělský registr) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeSzr?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji DPH(Registr plátců daně s přidané hodnoty) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeDph?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji SD(Registr plátců spotřební daně) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeSd?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji ISIR(Insolvenční rejstřík) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeIr?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji CEÚ(Centrální evidence úpadců) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeCeu?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji RŠ(Registr škol) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeRs?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji RED(Registr evidence dotací) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeRed?: string;
+	/**
+	 * Stav ekonomického subjektu ve zdroji MONITOR(Monitor účetních jednotek státu) - kód (ciselnikKod: StavZdroje, zdroj: com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavZdrojeMonitor?: string;
 }
 
 export type EkonomickeSubjektySeznamAllOf = {
-  ekonomickeSubjekty?: EkonomickySubjekt[];
+	ekonomickeSubjekty?: EkonomickySubjekt[];
 };
 
 /**
@@ -465,77 +463,79 @@ export type EkonomickeSubjektySeznamAllOf = {
 export type EkonomickeSubjektySeznam = Seznam & EkonomickeSubjektySeznamAllOf;
 
 export type EkonomickySubjektAllOf = {
-  /**
-   * Ičo ekonomického subjektu, pokud je ičo přidělené. Id ekonomického subjektu, pokud je ičo nepřidělené.
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
-  /** Doručovací adresa sídla ekonomického subjektu */
-  adresaDorucovaci?: AdresaDorucovaci;
-  /** Seznam registraci ekonomického subjektu v jednotlivých datových zdrojích */
-  seznamRegistraci?: SeznamRegistraci;
-  /**
-   * Identifikace primárního zdroje dat.
-   * @maxLength 30
-   */
-  primarniZdroj?: string;
-  dalsiUdaje?: EkonomickySubjektDalsiUdaje[];
-  czNace?: string[];
-  /** Indeftifikátor sub-registru zdroje SZR - kód (ciselnikKod: SubRegistrSzr, zdroj:com)  */
-  subRegistrSzr?: string;
-  /** Daňové identifikační číslo skupiny plátce DPH ve formátu CZNNNNNNNNNN  */
-  dicSkDph?: string;
+	/**
+	 * Ičo ekonomického subjektu, pokud je ičo přidělené. Id ekonomického subjektu, pokud je ičo nepřidělené.
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
+	/** Doručovací adresa sídla ekonomického subjektu */
+	adresaDorucovaci?: AdresaDorucovaci;
+	/** Seznam registraci ekonomického subjektu v jednotlivých datových zdrojích */
+	seznamRegistraci?: SeznamRegistraci;
+	/**
+	 * Identifikace primárního zdroje dat.
+	 * @maxLength 30
+	 */
+	primarniZdroj?: string;
+	dalsiUdaje?: EkonomickySubjektDalsiUdaje[];
+	czNace?: string[];
+	/** Indeftifikátor sub-registru zdroje SZR - kód (ciselnikKod: SubRegistrSzr, zdroj:com)  */
+	subRegistrSzr?: string;
+	/** Daňové identifikační číslo skupiny plátce DPH ve formátu CZNNNNNNNNNN  */
+	dicSkDph?: string;
 };
 
 /**
  * Základní informace o ekonomickém subjektu
  */
-export type EkonomickySubjekt = EkonomickySubjektZaklad & EkonomickySubjektAllOf;
+export type EkonomickySubjekt = EkonomickySubjektZaklad &
+	EkonomickySubjektAllOf;
 
 export type AngazmaFyzickaOsobaVrAllOf = {
-  /** Členství */
-  clenstvi?: AngazmaClenstviVr;
-  /** Fyzická osoba */
-  fyzickaOsoba?: FyzickaOsobaVr;
-  /**
-   * Název angažmá - nestandardní
-   * @maxLength 255
-   */
-  nazevAngazma?: string;
-  /**
-   * Typ angažmá  - kód (ciselnikKod: TypAngazma, zdroj: vr) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
+	/** Členství */
+	clenstvi?: AngazmaClenstviVr;
+	/** Fyzická osoba */
+	fyzickaOsoba?: FyzickaOsobaVr;
+	/**
+	 * Název angažmá - nestandardní
+	 * @maxLength 255
+	 */
+	nazevAngazma?: string;
+	/**
+	 * Typ angažmá  - kód (ciselnikKod: TypAngazma, zdroj: vr)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
 };
 
 /**
  * Angažná - fyzická osoba
  */
-export type AngazmaFyzickaOsobaVr = DatumZapisuVymazuUdajeVr & AngazmaFyzickaOsobaVrAllOf;
+export type AngazmaFyzickaOsobaVr = DatumZapisuVymazuUdajeVr &
+	AngazmaFyzickaOsobaVrAllOf;
 
 export type AngazmaOsobaVrAllOf = {
-  /** Skrytý údaj */
-  skrytyUdaj?: ObecnyTextVr;
-  /**
-   * Typ angažmá  - kód (ciselnikKod: TypAngazma, zdroj: vr) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
-  /** Členství */
-  clenstvi?: AngazmaClenstviVr;
-  /**
-   * Název angažmá - nestandardní
-   * @maxLength 255
-   */
-  nazevAngazma?: string;
-  /** Právnická osoba */
-  pravnickaOsoba?: PravnickaOsobaVr;
-  /** Fyzická osoba */
-  fyzickaOsoba?: FyzickaOsobaVr;
+	/** Skrytý údaj */
+	skrytyUdaj?: ObecnyTextVr;
+	/**
+	 * Typ angažmá  - kód (ciselnikKod: TypAngazma, zdroj: vr)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
+	/** Členství */
+	clenstvi?: AngazmaClenstviVr;
+	/**
+	 * Název angažmá - nestandardní
+	 * @maxLength 255
+	 */
+	nazevAngazma?: string;
+	/** Právnická osoba */
+	pravnickaOsoba?: PravnickaOsobaVr;
+	/** Fyzická osoba */
+	fyzickaOsoba?: FyzickaOsobaVr;
 };
 
 /**
@@ -544,56 +544,58 @@ export type AngazmaOsobaVrAllOf = {
 export type AngazmaOsobaVr = DatumZapisuVymazuUdajeVr & AngazmaOsobaVrAllOf;
 
 export type EkonomickeSubjektyVrSeznamAllOf = {
-  ekonomickeSubjekty?: EkonomickySubjektVr[];
+	ekonomickeSubjekty?: EkonomickySubjektVr[];
 };
 
 /**
  * Seznam ekonomických subjektů ze zdroje VR
  */
-export type EkonomickeSubjektyVrSeznam = Seznam & EkonomickeSubjektyVrSeznamAllOf;
+export type EkonomickeSubjektyVrSeznam = Seznam &
+	EkonomickeSubjektyVrSeznamAllOf;
 
 /**
  * Ekonomický subjekt
  */
 export interface EkonomickySubjektVr {
-  /**
-   * ičo/id ekonomického subjektu
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
-  zaznamy?: ZaznamVr[];
+	/**
+	 * ičo/id ekonomického subjektu
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
+	zaznamy?: ZaznamVr[];
 }
 
 export type InsolvencniRizeniVrAllOf = {
-  spravce?: AngazmaOsobaVr[];
-  insolvencniZapis?: InsolvencniZapisVr[];
+	spravce?: AngazmaOsobaVr[];
+	insolvencniZapis?: InsolvencniZapisVr[];
 };
 
 /**
  * Insolvence
  */
-export type InsolvencniRizeniVr = DatumZapisuVymazuUdajeVr & InsolvencniRizeniVrAllOf;
+export type InsolvencniRizeniVr = DatumZapisuVymazuUdajeVr &
+	InsolvencniRizeniVrAllOf;
 
 export type KonkursVrAllOf = {
-  spravce?: AngazmaOsobaVr[];
-  /**
-   * Typ konkursu - kód (ciselnikKod: TypKonkursu) 
-   * @maxLength 50
-   */
-  typKonkursu?: string;
-  /** Datum rozhodnutí okresního soudu */
-  datumRozhodnutiOs?: string;
-  /** Datum vyvěšení rozhodnutí */
-  datumVyveseni?: string;
-  /**
-   * Spisová značka konkurzního řízení
-   * @maxLength 255
-   */
-  spisZnOs?: string;
-  /** Vlastní informace o konkurzním řízení */
-  text?: string;
-  zruseniKonkursu?: ObecnyTextVr[];
+	spravce?: AngazmaOsobaVr[];
+	/**
+	 * Typ konkursu - kód (ciselnikKod: TypKonkursu)
+	 * @maxLength 50
+	 */
+	typKonkursu?: string;
+	/** Datum rozhodnutí okresního soudu */
+	datumRozhodnutiOs?: string;
+	/** Datum vyvěšení rozhodnutí */
+	datumVyveseni?: string;
+	/**
+	 * Spisová značka konkurzního řízení
+	 * @maxLength 255
+	 */
+	spisZnOs?: string;
+	/** Vlastní informace o konkurzním řízení */
+	text?: string;
+	zruseniKonkursu?: ObecnyTextVr[];
 };
 
 /**
@@ -602,14 +604,14 @@ export type KonkursVrAllOf = {
 export type KonkursVr = DatumZapisuVymazuUdajeVr & KonkursVrAllOf;
 
 export type OdstepnyZavodVrAllOf = {
-  vedouci?: AngazmaOsobaVr[];
-  ostatniSkutecnosti?: ObecnyTextVr[];
-  /** Předmět podnikání, předmět činnosti, účel */
-  cinnosti?: CinnostiVr;
-  ico?: IcoVr[];
-  sidlo?: AdresaVr[];
-  pravniForma?: PravniFormaVr[];
-  obchodniJmeno?: ObchodniJmenoVr[];
+	vedouci?: AngazmaOsobaVr[];
+	ostatniSkutecnosti?: ObecnyTextVr[];
+	/** Předmět podnikání, předmět činnosti, účel */
+	cinnosti?: CinnostiVr;
+	ico?: IcoVr[];
+	sidlo?: AdresaVr[];
+	pravniForma?: PravniFormaVr[];
+	obchodniJmeno?: ObchodniJmenoVr[];
 };
 
 /**
@@ -618,30 +620,30 @@ export type OdstepnyZavodVrAllOf = {
 export type OdstepnyZavodVr = DatumZapisuVymazuUdajeVr & OdstepnyZavodVrAllOf;
 
 export type OrganVrAllOf = {
-  /**
-   * Název orgánu - nestandardní
-   * @maxLength 255
-   */
-  nazevOrganu?: string;
-  pocetClenu?: PocetClenuVr[];
-  clenoveOrganu?: AngazmaOsobaVr[];
-  /**
-   * Typ orgánu - kód (ciselnikKod: TypOrganu, zdroj: vr) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typOrganu?: string;
-  /**
-   * Název angažmá - nestandardní
-   * @maxLength 255
-   */
-  nazevAngazma?: string;
-  /**
-   * Typ orgánu - kód (ciselnikKod: TypOrganu, zdroj: vr) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
+	/**
+	 * Název orgánu - nestandardní
+	 * @maxLength 255
+	 */
+	nazevOrganu?: string;
+	pocetClenu?: PocetClenuVr[];
+	clenoveOrganu?: AngazmaOsobaVr[];
+	/**
+	 * Typ orgánu - kód (ciselnikKod: TypOrganu, zdroj: vr)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typOrganu?: string;
+	/**
+	 * Název angažmá - nestandardní
+	 * @maxLength 255
+	 */
+	nazevAngazma?: string;
+	/**
+	 * Typ orgánu - kód (ciselnikKod: TypOrganu, zdroj: vr)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
 };
 
 /**
@@ -650,21 +652,21 @@ export type OrganVrAllOf = {
 export type OrganVr = DatumZapisuVymazuUdajeVr & OrganVrAllOf;
 
 export type PodnikatelVrAllOf = {
-  bydliste?: AdresaVr[];
-  /** Informace o osobě podnikatele */
-  osobaPodnikatel?: AngazmaFyzickaOsobaVr;
-  pobyt?: AdresaVr[];
-  /**
-   * Typ angažmá  - kód (ciselnikKod: TypAngazma, zdroj: vr) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
-  /**
-   * Název angažmá - nestandardní
-   * @maxLength 255
-   */
-  nazevAngazma?: string;
+	bydliste?: AdresaVr[];
+	/** Informace o osobě podnikatele */
+	osobaPodnikatel?: AngazmaFyzickaOsobaVr;
+	pobyt?: AdresaVr[];
+	/**
+	 * Typ angažmá  - kód (ciselnikKod: TypAngazma, zdroj: vr)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
+	/**
+	 * Název angažmá - nestandardní
+	 * @maxLength 255
+	 */
+	nazevAngazma?: string;
 };
 
 /**
@@ -673,27 +675,27 @@ export type PodnikatelVrAllOf = {
 export type PodnikatelVr = DatumZapisuVymazuUdajeVr & PodnikatelVrAllOf;
 
 export type PravnickaOsobaVrAllOf = {
-  /**
-   * Idenitifikační číslo právnické osoby
-   * @minLength 8
-   * @maxLength 8
-   * @pattern ^\d{8}$
-   */
-  ico?: string;
-  /**
-   * Název právnické osoby
-   * @minLength 1
-   * @maxLength 2000
-   */
-  obchodniJmeno?: string;
-  zastoupeni?: AngazmaFyzickaOsobaVr[];
-  /**
-   * Právní forma - kód (ciselnikKod: PravniForma, zdroj: res, com)
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  pravniForma?: string;
+	/**
+	 * Idenitifikační číslo právnické osoby
+	 * @minLength 8
+	 * @maxLength 8
+	 * @pattern ^\d{8}$
+	 */
+	ico?: string;
+	/**
+	 * Název právnické osoby
+	 * @minLength 1
+	 * @maxLength 2000
+	 */
+	obchodniJmeno?: string;
+	zastoupeni?: AngazmaFyzickaOsobaVr[];
+	/**
+	 * Právní forma - kód (ciselnikKod: PravniForma, zdroj: res, com)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	pravniForma?: string;
 };
 
 /**
@@ -702,25 +704,25 @@ export type PravnickaOsobaVrAllOf = {
 export type PravnickaOsobaVr = OsobaVr & PravnickaOsobaVrAllOf;
 
 export type SpolecniciVrAllOf = {
-  /**
-   * Název orgánu - nestandardní
-   * @maxLength 255
-   */
-  nazevOrganu?: string;
-  spolecnik?: SpolecnikVr[];
-  spolecnyPodil?: SpolecnyPodilVr[];
-  /**
-   * Typ orgánu - kód (ciselnikKod: TypOrganu, zdroj: vr) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typOrganu?: string;
-  uvolnenyPodil?: UvolnenyPodilVr[];
-  /**
-   * Název orgánu - nestandardní
-   * @maxLength 255
-   */
-  nazev?: string;
+	/**
+	 * Název orgánu - nestandardní
+	 * @maxLength 255
+	 */
+	nazevOrganu?: string;
+	spolecnik?: SpolecnikVr[];
+	spolecnyPodil?: SpolecnyPodilVr[];
+	/**
+	 * Typ orgánu - kód (ciselnikKod: TypOrganu, zdroj: vr)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typOrganu?: string;
+	uvolnenyPodil?: UvolnenyPodilVr[];
+	/**
+	 * Název orgánu - nestandardní
+	 * @maxLength 255
+	 */
+	nazev?: string;
 };
 
 /**
@@ -729,9 +731,9 @@ export type SpolecniciVrAllOf = {
 export type SpolecniciVr = DatumZapisuVymazuUdajeVr & SpolecniciVrAllOf;
 
 export type SpolecnikVrAllOf = {
-  podil?: PodilVr[];
-  /** Právnická nebo fyzická osoba v angažmá společník */
-  osoba?: AngazmaOsobaVr;
+	podil?: PodilVr[];
+	/** Právnická nebo fyzická osoba v angažmá společník */
+	osoba?: AngazmaOsobaVr;
 };
 
 /**
@@ -740,8 +742,8 @@ export type SpolecnikVrAllOf = {
 export type SpolecnikVr = DatumZapisuVymazuUdajeVr & SpolecnikVrAllOf;
 
 export type SpolecnyPodilVrAllOf = {
-  podilnik?: AngazmaOsobaVr[];
-  podil?: PodilVr[];
+	podilnik?: AngazmaOsobaVr[];
+	podil?: PodilVr[];
 };
 
 /**
@@ -750,7 +752,7 @@ export type SpolecnyPodilVrAllOf = {
 export type SpolecnyPodilVr = DatumZapisuVymazuUdajeVr & SpolecnyPodilVrAllOf;
 
 export type StatutarniOrganVrAllOf = {
-  zpusobJednani?: ObecnyTextVr[];
+	zpusobJednani?: ObecnyTextVr[];
 };
 
 /**
@@ -759,13 +761,13 @@ export type StatutarniOrganVrAllOf = {
 export type StatutarniOrganVr = OrganVr & StatutarniOrganVrAllOf;
 
 export type ZaznamVrAllOf = {
-  ostatniOrgany?: OrganVr[];
-  statutarniOrgany?: StatutarniOrganVr[];
-  podnikatel?: PodnikatelVr[];
-  spolecnici?: SpolecniciVr[];
-  odstepneZavody?: OdstepnyZavodVr[];
-  insolvence?: InsolvencniRizeniVr[];
-  konkursy?: KonkursVr[];
+	ostatniOrgany?: OrganVr[];
+	statutarniOrgany?: StatutarniOrganVr[];
+	podnikatel?: PodnikatelVr[];
+	spolecnici?: SpolecniciVr[];
+	odstepneZavody?: OdstepnyZavodVr[];
+	insolvence?: InsolvencniRizeniVr[];
+	konkursy?: KonkursVr[];
 };
 
 /**
@@ -774,14 +776,14 @@ export type ZaznamVrAllOf = {
 export type ZaznamVr = ZaznamVrZaklad & ZaznamVrAllOf;
 
 export type AdresaVrAllOf = {
-  /** Adresa */
-  adresa?: Adresa;
-  /**
-   * Typ typu adresy - kód (ciselnikKod: TypAdresy, zdroj:vr) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAdresy?: string;
+	/** Adresa */
+	adresa?: Adresa;
+	/**
+	 * Typ typu adresy - kód (ciselnikKod: TypAdresy, zdroj:vr)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAdresy?: string;
 };
 
 /**
@@ -790,42 +792,42 @@ export type AdresaVrAllOf = {
 export type AdresaVr = DatumZapisuVymazuUdajeVr & AdresaVrAllOf;
 
 /**
- * Členství v angažmá 
+ * Členství v angažmá
  */
 export interface AngazmaClenstviVr {
-  /** Doplňující text k osobě */
-  textZaOsobu?: string;
-  /** Členství osoby v angažmá */
-  clenstvi?: ClenstviVr;
-  /** Funkce osoby v angažmá */
-  funkce?: FunkceVr;
-  /** Doplňující text k zrušení  osoby */
-  textZruseni?: string;
+	/** Doplňující text k osobě */
+	textZaOsobu?: string;
+	/** Členství osoby v angažmá */
+	clenstvi?: ClenstviVr;
+	/** Funkce osoby v angažmá */
+	funkce?: FunkceVr;
+	/** Doplňující text k zrušení  osoby */
+	textZruseni?: string;
 }
 
 /**
  * Činnosti
  */
 export interface CinnostiVr {
-  predmetPodnikani?: ObecnyTextVr[];
-  doplnkovaCinnost?: ObecnyTextVr[];
-  predmetCinnosti?: ObecnyTextVr[];
-  ucel?: ObecnyTextVr[];
+	predmetPodnikani?: ObecnyTextVr[];
+	doplnkovaCinnost?: ObecnyTextVr[];
+	predmetCinnosti?: ObecnyTextVr[];
+	ucel?: ObecnyTextVr[];
 }
 
 /**
  * Členství
  */
 export interface ClenstviVr {
-  /** Datum vzniku členství */
-  vznikClenstvi?: string;
-  /** Datum zániku členství */
-  zanikClenstvi?: string;
+	/** Datum vzniku členství */
+	vznikClenstvi?: string;
+	/** Datum zániku členství */
+	zanikClenstvi?: string;
 }
 
 export type DatumVrAllOf = {
-  /** Datum */
-  hodnota?: string;
+	/** Datum */
+	hodnota?: string;
 };
 
 /**
@@ -837,32 +839,32 @@ export type DatumVr = DatumZapisuVymazuUdajeVr & DatumVrAllOf;
  * Datum zápisu, výmazu údaje - obecný předek
  */
 export interface DatumZapisuVymazuUdajeVr {
-  /** Datum zápisu údaje */
-  datumZapisu?: string;
-  /** Datum výmazu údaje */
-  datumVymazu?: string;
+	/** Datum zápisu údaje */
+	datumZapisu?: string;
+	/** Datum výmazu údaje */
+	datumVymazu?: string;
 }
 
 export type EmiseAkcieVrAllOf = {
-  /**
-   * Typ akcie - kód (ciselnikKod: TypAkcie) 
-   * @maxLength 50
-   */
-  typAkcie?: string;
-  /**
-   * Podoby akcií (listinná, zaknihovaná, imobilizovaná)  - kód (ciselnikKod: PodobaAkcie) 
-   * @maxLength 50
-   */
-  podobaAkcie?: string;
-  /**
-   * Počet akcií v emisi
-   * @minimum 0
-   */
-  pocet?: number;
-  /** Doplňkový text za akcií */
-  text?: string;
-  /** Hodnota akcie */
-  hodnota?: ObnosVr;
+	/**
+	 * Typ akcie - kód (ciselnikKod: TypAkcie)
+	 * @maxLength 50
+	 */
+	typAkcie?: string;
+	/**
+	 * Podoby akcií (listinná, zaknihovaná, imobilizovaná)  - kód (ciselnikKod: PodobaAkcie)
+	 * @maxLength 50
+	 */
+	podobaAkcie?: string;
+	/**
+	 * Počet akcií v emisi
+	 * @minimum 0
+	 */
+	pocet?: number;
+	/** Doplňkový text za akcií */
+	text?: string;
+	/** Hodnota akcie */
+	hodnota?: ObnosVr;
 };
 
 /**
@@ -874,48 +876,48 @@ export type EmiseAkcieVr = DatumZapisuVymazuUdajeVr & EmiseAkcieVrAllOf;
  * Funkce
  */
 export interface FunkceVr {
-  /** Datum vzniku funkce */
-  vznikFunkce?: string;
-  /** Datum zániku funkce */
-  zanikFunkce?: string;
-  /**
-   * Název funkce
-   * @maxLength 255
-   */
-  nazev?: string;
+	/** Datum vzniku funkce */
+	vznikFunkce?: string;
+	/** Datum zániku funkce */
+	zanikFunkce?: string;
+	/**
+	 * Název funkce
+	 * @maxLength 255
+	 */
+	nazev?: string;
 }
 
 export type FyzickaOsobaVrAllOf = {
-  /** Adresa bydliště fyzické osoby */
-  bydliste?: Adresa;
-  /** Datum narození */
-  datumNarozeni?: string;
-  /**
-   * Jméno
-   * @maxLength 100
-   */
-  jmeno?: string;
-  /**
-   * Příjmení
-   * @maxLength 100
-   */
-  prijmeni?: string;
-  /**
-   * Státní občanství osoby - kod (ciselnikKod: Stat)
-   * @minLength 3
-   * @maxLength 3
-   */
-  statniObcanstvi?: string;
-  /**
-   * Titul před jménem
-   * @maxLength 32
-   */
-  titulPredJmenem?: string;
-  /**
-   * Titul za jménem
-   * @maxLength 32
-   */
-  titulZaJmenem?: string;
+	/** Adresa bydliště fyzické osoby */
+	bydliste?: Adresa;
+	/** Datum narození */
+	datumNarozeni?: string;
+	/**
+	 * Jméno
+	 * @maxLength 100
+	 */
+	jmeno?: string;
+	/**
+	 * Příjmení
+	 * @maxLength 100
+	 */
+	prijmeni?: string;
+	/**
+	 * Státní občanství osoby - kod (ciselnikKod: Stat)
+	 * @minLength 3
+	 * @maxLength 3
+	 */
+	statniObcanstvi?: string;
+	/**
+	 * Titul před jménem
+	 * @maxLength 32
+	 */
+	titulPredJmenem?: string;
+	/**
+	 * Titul za jménem
+	 * @maxLength 32
+	 */
+	titulZaJmenem?: string;
 };
 
 /**
@@ -924,13 +926,13 @@ export type FyzickaOsobaVrAllOf = {
 export type FyzickaOsobaVr = OsobaVr & FyzickaOsobaVrAllOf;
 
 export type IcoVrAllOf = {
-  /**
-   * Hodnota IČO
-   * @minLength 8
-   * @maxLength 8
-   * @pattern ^\d{8}$
-   */
-  hodnota?: string;
+	/**
+	 * Hodnota IČO
+	 * @minLength 8
+	 * @maxLength 8
+	 * @pattern ^\d{8}$
+	 */
+	hodnota?: string;
 };
 
 /**
@@ -939,26 +941,27 @@ export type IcoVrAllOf = {
 export type IcoVr = DatumZapisuVymazuUdajeVr & IcoVrAllOf;
 
 export type InsolvencniZapisVrAllOf = {
-  /** Text insolvenčního zápisu */
-  text?: string;
-  /**
-   * Typ insolvenčního zápisu- kód (ciselnikKod: TypInsolvencnihoZapisu) 
-   * @maxLength 50
-   */
-  typZapisu?: string;
+	/** Text insolvenčního zápisu */
+	text?: string;
+	/**
+	 * Typ insolvenčního zápisu- kód (ciselnikKod: TypInsolvencnihoZapisu)
+	 * @maxLength 50
+	 */
+	typZapisu?: string;
 };
 
 /**
  * Insolvenční zápis
  */
-export type InsolvencniZapisVr = DatumZapisuVymazuUdajeVr & InsolvencniZapisVrAllOf;
+export type InsolvencniZapisVr = DatumZapisuVymazuUdajeVr &
+	InsolvencniZapisVrAllOf;
 
 export type KategorieZoVrAllOf = {
-  /**
-   * Typ kategorie zahraniční osoby - kód (ciselnikKod: KategorieZo) 
-   * @maxLength 50
-   */
-  typKategorieZo?: string;
+	/**
+	 * Typ kategorie zahraniční osoby - kód (ciselnikKod: KategorieZo)
+	 * @maxLength 50
+	 */
+	typKategorieZo?: string;
 };
 
 /**
@@ -967,8 +970,8 @@ export type KategorieZoVrAllOf = {
 export type KategorieZoVr = DatumZapisuVymazuUdajeVr & KategorieZoVrAllOf;
 
 export type ObecnyTextVrAllOf = {
-  /** Obecný text */
-  hodnota?: string;
+	/** Obecný text */
+	hodnota?: string;
 };
 
 /**
@@ -977,11 +980,11 @@ export type ObecnyTextVrAllOf = {
 export type ObecnyTextVr = DatumZapisuVymazuUdajeVr & ObecnyTextVrAllOf;
 
 export type ObchodniJmenoCiziVrAllOf = {
-  /**
-   * jazyk
-   * @maxLength 255
-   */
-  jazyk?: string;
+	/**
+	 * jazyk
+	 * @maxLength 255
+	 */
+	jazyk?: string;
 };
 
 /**
@@ -990,12 +993,12 @@ export type ObchodniJmenoCiziVrAllOf = {
 export type ObchodniJmenoCiziVr = ObchodniJmenoVr & ObchodniJmenoCiziVrAllOf;
 
 export type ObchodniJmenoVrAllOf = {
-  /**
-   * Hodnota obchodního jména
-   * @minLength 1
-   * @maxLength 2000
-   */
-  hodnota?: string;
+	/**
+	 * Hodnota obchodního jména
+	 * @minLength 1
+	 * @maxLength 2000
+	 */
+	hodnota?: string;
 };
 
 /**
@@ -1007,45 +1010,45 @@ export type ObchodniJmenoVr = DatumZapisuVymazuUdajeVr & ObchodniJmenoVrAllOf;
  * Obnos
  */
 export interface ObnosVr {
-  /**
-   * Typ obnosu - kód (ciselnikKod: TypObnosu)
-   * @maxLength 50
-   */
-  typObnos?: string;
-  /** Hodnota */
-  hodnota?: string;
+	/**
+	 * Typ obnosu - kód (ciselnikKod: TypObnosu)
+	 * @maxLength 50
+	 */
+	typObnos?: string;
+	/** Hodnota */
+	hodnota?: string;
 }
 
 /**
  * Osoba - obecný předek
  */
 export interface OsobaVr {
-  /** Doplňková informace k osobě */
-  textOsoba?: string;
-  /** Platnost doplňkové informace o osobě od data */
-  textOsobaOd?: string;
-  /** Primární adresa dané osoby (u fyzické pobyt, u právnické sídlo) */
-  adresa?: Adresa;
-  /** Platnost doplňkové informace o osobě od data */
-  textOsobaDo?: string;
+	/** Doplňková informace k osobě */
+	textOsoba?: string;
+	/** Platnost doplňkové informace o osobě od data */
+	textOsobaOd?: string;
+	/** Primární adresa dané osoby (u fyzické pobyt, u právnické sídlo) */
+	adresa?: Adresa;
+	/** Platnost doplňkové informace o osobě od data */
+	textOsobaDo?: string;
 }
 
 export type PocetClenuVrAllOf = {
-  /**
-   * Počet členů orgánu
-   * @minimum 0
-   */
-  pocetClenu?: number;
-  /**
-   * Maximální počet členů orgánu 
-   * @minimum 0
-   */
-  maxPocetClenu?: number;
-  /**
-   * Typ počet členů - kód (ciselnikKod: TypPocetClenu) 
-   * @maxLength 15
-   */
-  typ?: string;
+	/**
+	 * Počet členů orgánu
+	 * @minimum 0
+	 */
+	pocetClenu?: number;
+	/**
+	 * Maximální počet členů orgánu
+	 * @minimum 0
+	 */
+	maxPocetClenu?: number;
+	/**
+	 * Typ počet členů - kód (ciselnikKod: TypPocetClenu)
+	 * @maxLength 15
+	 */
+	typ?: string;
 };
 
 /**
@@ -1054,15 +1057,15 @@ export type PocetClenuVrAllOf = {
 export type PocetClenuVr = DatumZapisuVymazuUdajeVr & PocetClenuVrAllOf;
 
 export type PodilVrAllOf = {
-  /** Text k podílu */
-  text?: string;
-  /** Vklad */
-  vklad?: ObnosVr;
-  /** Velikost podílu */
-  velikostPodilu?: ObnosVr;
-  /** Splacenost podílu */
-  splaceni?: ObnosVr;
-  zastavniPravo?: ZastavniPravoVr[];
+	/** Text k podílu */
+	text?: string;
+	/** Vklad */
+	vklad?: ObnosVr;
+	/** Velikost podílu */
+	velikostPodilu?: ObnosVr;
+	/** Splacenost podílu */
+	splaceni?: ObnosVr;
+	zastavniPravo?: ZastavniPravoVr[];
 };
 
 /**
@@ -1071,13 +1074,13 @@ export type PodilVrAllOf = {
 export type PodilVr = DatumZapisuVymazuUdajeVr & PodilVrAllOf;
 
 export type PravniFormaVrAllOf = {
-  /**
-   * Hodnota pravní formy - kód (ciselnikKod: PravniForma, zdroj:res, com) 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  hodnota?: string;
+	/**
+	 * Hodnota pravní formy - kód (ciselnikKod: PravniForma, zdroj:res, com)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	hodnota?: string;
 };
 
 /**
@@ -1086,18 +1089,18 @@ export type PravniFormaVrAllOf = {
 export type PravniFormaVr = DatumZapisuVymazuUdajeVr & PravniFormaVrAllOf;
 
 export type SpisovaZnackaVrAllOf = {
-  /**
-   * Obchodní soud - kód (ciselnikKod: SoudVr, zdroj: vr) 
-   * @maxLength 15
-   */
-  soud?: string;
-  /**
-   * Oddíl spisové značky
-   * @maxLength 20
-   */
-  oddil?: string;
-  /** Vlozka spisové značky */
-  vlozka?: number;
+	/**
+	 * Obchodní soud - kód (ciselnikKod: SoudVr, zdroj: vr)
+	 * @maxLength 15
+	 */
+	soud?: string;
+	/**
+	 * Oddíl spisové značky
+	 * @maxLength 20
+	 */
+	oddil?: string;
+	/** Vlozka spisové značky */
+	vlozka?: number;
 };
 
 /**
@@ -1106,9 +1109,9 @@ export type SpisovaZnackaVrAllOf = {
 export type SpisovaZnackaVr = DatumZapisuVymazuUdajeVr & SpisovaZnackaVrAllOf;
 
 export type UvolnenyPodilVrAllOf = {
-  /** Text k uvolněnému podílu */
-  clenstvi?: AngazmaClenstviVr;
-  podil?: PodilVr[];
+	/** Text k uvolněnému podílu */
+	clenstvi?: AngazmaClenstviVr;
+	podil?: PodilVr[];
 };
 
 /**
@@ -1117,15 +1120,15 @@ export type UvolnenyPodilVrAllOf = {
 export type UvolnenyPodilVr = DatumZapisuVymazuUdajeVr & UvolnenyPodilVrAllOf;
 
 export type VkladVrAllOf = {
-  /** Vklad */
-  vklad?: ObnosVr;
-  /** Text k vkladu */
-  text?: string;
-  /**
-   * Typ vkladu - kód (ciselnikKod: TypObnosu)
-   * @maxLength 50
-   */
-  typVkladu?: string;
+	/** Vklad */
+	vklad?: ObnosVr;
+	/** Text k vkladu */
+	text?: string;
+	/**
+	 * Typ vkladu - kód (ciselnikKod: TypObnosu)
+	 * @maxLength 50
+	 */
+	typVkladu?: string;
 };
 
 /**
@@ -1134,31 +1137,32 @@ export type VkladVrAllOf = {
 export type VkladVr = DatumZapisuVymazuUdajeVr & VkladVrAllOf;
 
 export type ZakladniKapitalVrAllOf = {
-  /**
-   * Typ jmění - kód (ciselnikKod: TypJmeni)
-   * @maxLength 50
-   */
-  typJmeni?: string;
-  /** Doplňující text */
-  text?: string;
-  /** Celkový vklad */
-  vklad?: ObnosVr;
-  /** Informace o splacení */
-  splaceni?: ObnosVr;
+	/**
+	 * Typ jmění - kód (ciselnikKod: TypJmeni)
+	 * @maxLength 50
+	 */
+	typJmeni?: string;
+	/** Doplňující text */
+	text?: string;
+	/** Celkový vklad */
+	vklad?: ObnosVr;
+	/** Informace o splacení */
+	splaceni?: ObnosVr;
 };
 
 /**
  *  Základní kapitál
  */
-export type ZakladniKapitalVr = DatumZapisuVymazuUdajeVr & ZakladniKapitalVrAllOf;
+export type ZakladniKapitalVr = DatumZapisuVymazuUdajeVr &
+	ZakladniKapitalVrAllOf;
 
 export type ZastavniPravoVrAllOf = {
-  /** Text zástavního práva */
-  text?: string;
-  /** Vznik zástavního práva */
-  vznikZastavnihoPrava?: string;
-  /** Zánik zástavního práva */
-  zanikZastavnihoPrava?: string;
+	/** Text zástavního práva */
+	text?: string;
+	/** Vznik zástavního práva */
+	vznikZastavnihoPrava?: string;
+	/** Zánik zástavního práva */
+	zanikZastavnihoPrava?: string;
 };
 
 /**
@@ -1170,58 +1174,58 @@ export type ZastavniPravoVr = DatumZapisuVymazuUdajeVr & ZastavniPravoVrAllOf;
  * Detailní informace o ekonomickém subjektu - obecný předek
  */
 export interface ZaznamVrZaklad {
-  akcie?: EmiseAkcieVr[];
-  /**
-   * Typ veřejného rejstříku (VR) - kód (ciselnikKod: TypRejstriku ) 
-   * @maxLength 15
-   */
-  rejstrik?: string;
-  /** Primární záznam */
-  primarniZaznam?: boolean;
-  spisovaZnacka?: SpisovaZnackaVr[];
-  ico?: IcoVr[];
-  obchodniJmeno?: ObchodniJmenoVr[];
-  vklady?: VkladVr[];
-  obchodniJmenoCizi?: ObchodniJmenoCiziVr[];
-  zakladniKapital?: ZakladniKapitalVr[];
-  pravniForma?: PravniFormaVr[];
-  /**
-   * Finanční úřad - kód (ciselnikKod: FinancniUrad, zdroj: ufo) 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  financniUrad?: string;
-  adresy?: AdresaVr[];
-  ostatniSkutecnosti?: ObecnyTextVr[];
-  /** Datum aktualizace */
-  datumAktualizace?: string;
-  /**
-   * Stav ekonomického subjektu v ARES - kód (ciselnikKod: StavZdroje, zdroj:com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavSubjektu?: string;
-  datumVzniku?: DatumVr[];
-  /** Datum zápisu subjektu do VR */
-  datumZapisu?: string;
-  /** Datum výmazu subjektu z VR */
-  datumVymazu?: string;
-  zpusobRizeni?: ZpusobRizeniVr[];
-  kategorieZO?: KategorieZoVr[];
-  pravniDuvodVymazu?: ObecnyTextVr[];
-  /** Předmět podnikání, předmět činnosti, účel */
-  cinnosti?: CinnostiVr;
-  nazevNejvyssihoOrganu?: ObecnyTextVr[];
-  exekuce?: ObecnyTextVr[];
+	akcie?: EmiseAkcieVr[];
+	/**
+	 * Typ veřejného rejstříku (VR) - kód (ciselnikKod: TypRejstriku )
+	 * @maxLength 15
+	 */
+	rejstrik?: string;
+	/** Primární záznam */
+	primarniZaznam?: boolean;
+	spisovaZnacka?: SpisovaZnackaVr[];
+	ico?: IcoVr[];
+	obchodniJmeno?: ObchodniJmenoVr[];
+	vklady?: VkladVr[];
+	obchodniJmenoCizi?: ObchodniJmenoCiziVr[];
+	zakladniKapital?: ZakladniKapitalVr[];
+	pravniForma?: PravniFormaVr[];
+	/**
+	 * Finanční úřad - kód (ciselnikKod: FinancniUrad, zdroj: ufo)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	financniUrad?: string;
+	adresy?: AdresaVr[];
+	ostatniSkutecnosti?: ObecnyTextVr[];
+	/** Datum aktualizace */
+	datumAktualizace?: string;
+	/**
+	 * Stav ekonomického subjektu v ARES - kód (ciselnikKod: StavZdroje, zdroj:com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavSubjektu?: string;
+	datumVzniku?: DatumVr[];
+	/** Datum zápisu subjektu do VR */
+	datumZapisu?: string;
+	/** Datum výmazu subjektu z VR */
+	datumVymazu?: string;
+	zpusobRizeni?: ZpusobRizeniVr[];
+	kategorieZO?: KategorieZoVr[];
+	pravniDuvodVymazu?: ObecnyTextVr[];
+	/** Předmět podnikání, předmět činnosti, účel */
+	cinnosti?: CinnostiVr;
+	nazevNejvyssihoOrganu?: ObecnyTextVr[];
+	exekuce?: ObecnyTextVr[];
 }
 
 export type ZpusobRizeniVrAllOf = {
-  /**
-   * Způsob řízení - kód (ciselnikKod: TypZpusobuRizeni) 
-   * @maxLength 50
-   */
-  typ?: string;
+	/**
+	 * Způsob řízení - kód (ciselnikKod: TypZpusobuRizeni)
+	 * @maxLength 50
+	 */
+	typ?: string;
 };
 
 /**
@@ -1233,54 +1237,54 @@ export type ZpusobRizeniVr = DatumZapisuVymazuUdajeVr & ZpusobRizeniVrAllOf;
  * Statistické informace o subjektu
  */
 export interface StatistickeUdaje {
-  /**
-   * Institucinální sektor dle ESA2010 - kód (ciselnikKod: FceVladnichInstituci) 
-   * @minLength 5
-   * @maxLength 5
-   * @pattern ^\d{5}$
-   */
-  institucionalniSektor2010?: string;
-  /**
-   * Kategorie dle počtu pracovníků - kód (ciselnikKod: KategoriePoctuPracovniku, zdroj: res) 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  kategoriePoctuPracovniku?: string;
+	/**
+	 * Institucinální sektor dle ESA2010 - kód (ciselnikKod: FceVladnichInstituci)
+	 * @minLength 5
+	 * @maxLength 5
+	 * @pattern ^\d{5}$
+	 */
+	institucionalniSektor2010?: string;
+	/**
+	 * Kategorie dle počtu pracovníků - kód (ciselnikKod: KategoriePoctuPracovniku, zdroj: res)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	kategoriePoctuPracovniku?: string;
 }
 
 export type ZaznamResAllOf = {
-  /**
-   * Právní forma ROS - kód (ciselnikKod: PravniFormaRos, zdroj:res) 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  pravniFormaRos?: string;
-  czNace?: string[];
-  doplnkovePravniFormy?: string[];
-  /** Statistické údaje ekonomického subjektu */
-  statistickeUdaje?: StatistickeUdaje;
-  /**
-   * Základní územní jednotka sídla organizace - kód (ciselnikKod: ZakladniUzemniJednotka) 
-   * @minLength 6
-   * @maxLength 6
-   * @pattern ^\d{6}$
-   */
-  zakladniUzemniJednotka?: string;
-  /** Logická informace o primárním(hlavním) záznamu ekonomického subjektu.  */
-  primarniZaznam?: boolean;
-  /**
-   * Převažující CZ-NACE ekonomického subjektu - kód (ciselnikKod: CzNace, zdroj:res) 
-   * @minLength 1
-   * @maxLength 5
-   */
-  czNacePrevazujici?: string;
-  /**
-   * Okres sídla - kód NUTS/LAU (ciselnikKod: okresLau, zdroj:res) 
-   * @maxLength 6
-   */
-  okresNutsLau?: string;
+	/**
+	 * Právní forma ROS - kód (ciselnikKod: PravniFormaRos, zdroj:res)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	pravniFormaRos?: string;
+	czNace?: string[];
+	doplnkovePravniFormy?: string[];
+	/** Statistické údaje ekonomického subjektu */
+	statistickeUdaje?: StatistickeUdaje;
+	/**
+	 * Základní územní jednotka sídla organizace - kód (ciselnikKod: ZakladniUzemniJednotka)
+	 * @minLength 6
+	 * @maxLength 6
+	 * @pattern ^\d{6}$
+	 */
+	zakladniUzemniJednotka?: string;
+	/** Logická informace o primárním(hlavním) záznamu ekonomického subjektu.  */
+	primarniZaznam?: boolean;
+	/**
+	 * Převažující CZ-NACE ekonomického subjektu - kód (ciselnikKod: CzNace, zdroj:res)
+	 * @minLength 1
+	 * @maxLength 5
+	 */
+	czNacePrevazujici?: string;
+	/**
+	 * Okres sídla - kód NUTS/LAU (ciselnikKod: okresLau, zdroj:res)
+	 * @maxLength 6
+	 */
+	okresNutsLau?: string;
 };
 
 /**
@@ -1289,216 +1293,218 @@ export type ZaznamResAllOf = {
 export type ZaznamRes = EkonomickySubjektZaklad & ZaznamResAllOf;
 
 export type EkonomickeSubjektyResSeznamAllOf = {
-  ekonomickeSubjekty?: EkonomickySubjektRes[];
+	ekonomickeSubjekty?: EkonomickySubjektRes[];
 };
 
 /**
  * Seznam ekonomických subjektů ze zdroje RES
  */
-export type EkonomickeSubjektyResSeznam = Seznam & EkonomickeSubjektyResSeznamAllOf;
+export type EkonomickeSubjektyResSeznam = Seznam &
+	EkonomickeSubjektyResSeznamAllOf;
 
 /**
- * Ekonomický subjekt 
+ * Ekonomický subjekt
  */
 export interface EkonomickySubjektRes {
-  /**
-   * ičo/id ekonomického subjektu 
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
-  zaznamy?: ZaznamRes[];
+	/**
+	 * ičo/id ekonomického subjektu
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
+	zaznamy?: ZaznamRes[];
 }
 
 export type AngazovanySubjektAdresaAllOf = {
-  /** Platnost adresy od data */
-  platnostOd?: string;
-  /** Platnost adresy do data */
-  platnostDo?: string;
+	/** Platnost adresy od data */
+	platnostOd?: string;
+	/** Platnost adresy do data */
+	platnostDo?: string;
 };
 
 /**
- * Adresa 
+ * Adresa
  */
 export type AngazovanySubjektAdresa = Adresa & AngazovanySubjektAdresaAllOf;
 
 /**
- * Právnické osoby v angažmá ekonomického subjektu. 
+ * Právnické osoby v angažmá ekonomického subjektu.
  */
 export interface AngazovanySubjektRzpZaklad {
-  /**
-   * Typ angažmá osoby u subjektu ve zdroji RŽP (Registr živnostenského podnikání) - kód (ciselnikKod: TypAngazma, zdroj: rzp) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
-  /** Platnost angažmá subjektu od data */
-  platnostOd?: string;
-  /** Platnost angažmá subjektu do data */
-  platnostDo?: string;
-  /**
-   * Ičo angažovaného subjektu
-   * @minLength 8
-   * @maxLength 8
-   * @pattern ^\d{8}$
-   */
-  ico?: string;
-  /**
-   * obchodní jméno angažovaného subjektu
-   * @minLength 1
-   * @maxLength 2000
-   */
-  obchodniJmeno?: string;
-  /** Adresa sídla angažovaného subjektu */
-  sidlo?: AngazovanySubjektAdresa;
-  /**
-   * Typ subjektu - kód (ciselnikKod: TypSubjektu, zdroj: rzp) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typSubjektu?: string;
-  /**
-   * Právní forma - kód (ciselnikKod: PravniForma, zdroj:com, res) 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  pravniForma?: string;
-  /**
-   * Kód státu (ciselnikKod: Stat, zdroj:com) 
-   * @minLength 3
-   * @maxLength 3
-   */
-  kodStatu?: string;
+	/**
+	 * Typ angažmá osoby u subjektu ve zdroji RŽP (Registr živnostenského podnikání) - kód (ciselnikKod: TypAngazma, zdroj: rzp)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
+	/** Platnost angažmá subjektu od data */
+	platnostOd?: string;
+	/** Platnost angažmá subjektu do data */
+	platnostDo?: string;
+	/**
+	 * Ičo angažovaného subjektu
+	 * @minLength 8
+	 * @maxLength 8
+	 * @pattern ^\d{8}$
+	 */
+	ico?: string;
+	/**
+	 * obchodní jméno angažovaného subjektu
+	 * @minLength 1
+	 * @maxLength 2000
+	 */
+	obchodniJmeno?: string;
+	/** Adresa sídla angažovaného subjektu */
+	sidlo?: AngazovanySubjektAdresa;
+	/**
+	 * Typ subjektu - kód (ciselnikKod: TypSubjektu, zdroj: rzp)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typSubjektu?: string;
+	/**
+	 * Právní forma - kód (ciselnikKod: PravniForma, zdroj:com, res)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	pravniForma?: string;
+	/**
+	 * Kód státu (ciselnikKod: Stat, zdroj:com)
+	 * @minLength 3
+	 * @maxLength 3
+	 */
+	kodStatu?: string;
 }
 
 export type EkonomickySubjektRzpAdresaAllOf = {
-  /** Platnost adresy od data */
-  platnostOd?: string;
-  /** Platnost adresy do data  */
-  platnostDo?: string;
-  /**
-   * Typ adresy  - kód (ciselnikKod: TypAdresy, zdroj: rzp) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAdresy?: string;
+	/** Platnost adresy od data */
+	platnostOd?: string;
+	/** Platnost adresy do data  */
+	platnostDo?: string;
+	/**
+	 * Typ adresy  - kód (ciselnikKod: TypAdresy, zdroj: rzp)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAdresy?: string;
 };
 
 /**
  * Vazební tabulka adres
  */
-export type EkonomickySubjektRzpAdresa = Adresa & EkonomickySubjektRzpAdresaAllOf;
+export type EkonomickySubjektRzpAdresa = Adresa &
+	EkonomickySubjektRzpAdresaAllOf;
 
 /**
  * Události v rámci insolvenčního řízení
  */
 export interface InsolvencniRizeni {
-  /** Datum zápisu události  */
-  datumZapisu?: string;
-  /** Datum zplatnění události  */
-  platnostOd?: string;
+	/** Datum zápisu události  */
+	datumZapisu?: string;
+	/** Datum zplatnění události  */
+	platnostOd?: string;
 }
 
 /**
  * Provozovna - obecný předek
  */
 export interface ProvozovnaZaklad {
-  /**
-   * identifikační číslo provozovny
-   * @minLength 10
-   * @maxLength 10
-   */
-  icp?: number;
-  /** Adresa sídla provozovny */
-  sidloProvozovny?: Adresa;
-  /**
-   * Umístění provozovny
-   * @maxLength 254
-   */
-  umisteniProvozovny?: string;
-  /** Platnost provozovny od data */
-  platnostOd?: string;
-  /** Platnost provozovny do data  */
-  platnostDo?: string;
-  pozastaveniProvozovny?: ZivnostProvozovnaPozastaveni[];
-  /**
-   * Typ provozovny - kód (ciselnikKod: TypProvozovny) 
-   * @minLength 1
-   * @maxLength 1
-   * @pattern ^\d{1}$
-   */
-  typProvozovny?: string;
-  /**
-   * Název provozovny
-   * @maxLength 254
-   */
-  nazev?: string;
+	/**
+	 * identifikační číslo provozovny
+	 * @minLength 10
+	 * @maxLength 10
+	 */
+	icp?: number;
+	/** Adresa sídla provozovny */
+	sidloProvozovny?: Adresa;
+	/**
+	 * Umístění provozovny
+	 * @maxLength 254
+	 */
+	umisteniProvozovny?: string;
+	/** Platnost provozovny od data */
+	platnostOd?: string;
+	/** Platnost provozovny do data  */
+	platnostDo?: string;
+	pozastaveniProvozovny?: ZivnostProvozovnaPozastaveni[];
+	/**
+	 * Typ provozovny - kód (ciselnikKod: TypProvozovny)
+	 * @minLength 1
+	 * @maxLength 1
+	 * @pattern ^\d{1}$
+	 */
+	typProvozovny?: string;
+	/**
+	 * Název provozovny
+	 * @maxLength 254
+	 */
+	nazev?: string;
 }
 
 /**
  * Stav provozovny
  */
 export interface ProvozovnyRzpStav {
-  /**
-   * Celkový počet provozoven
-   * @minimum 0
-   */
-  pocetCelkem?: number;
-  /**
-   * Celkový počet zaniklých provozoven
-   * @minimum 0
-   */
-  pocetZaniklych?: number;
-  /**
-   * Celkový počet aktivnich provozoven
-   * @minimum 0
-   */
-  pocetAktivnich?: number;
-  /**
-   * Celkový počet zaniklých provozoven
-   * @minimum 0
-   */
-  pocetPozastavenych?: number;
+	/**
+	 * Celkový počet provozoven
+	 * @minimum 0
+	 */
+	pocetCelkem?: number;
+	/**
+	 * Celkový počet zaniklých provozoven
+	 * @minimum 0
+	 */
+	pocetZaniklych?: number;
+	/**
+	 * Celkový počet aktivnich provozoven
+	 * @minimum 0
+	 */
+	pocetAktivnich?: number;
+	/**
+	 * Celkový počet zaniklých provozoven
+	 * @minimum 0
+	 */
+	pocetPozastavenych?: number;
 }
 
 export type ZaznamRzpZakladAllOf = {
-  /** Události v rámci insolvenčního řízení */
-  insolvencniRizeni?: InsolvencniRizeni;
-  /** Datum doručení prvního výpisu sloužícího jako průkaz živnostenského podnikání,  */
-  datumDoruceniVypisu?: string;
-  adresySubjektu?: EkonomickySubjektRzpAdresa[];
-  /**
-   * Typ subjektu - kód (ciselnikKod: TypSubjektu, zdroj: rzp) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typSubjektu?: string;
-  /**
-   * Živnostenský úřad – kód (ciselnikKod: ZivnostenskyUrad, zdroj: rzp)
-   * @pattern ^\d{6}$
-   */
-  zivnostenskyUrad?: string;
-  /**
-   * Název organizační složky
-   * @minLength 1
-   * @maxLength 2000
-   */
-  organizacniSlozka?: string;
-  /** Stav živnosti - kód (ciselnikKod: StavZivnosti)  */
-  zivnostiStav?: ZivnostiRzpStav;
-  /** Datum zápisu do Obchodního nebo podobného rejstříku  */
-  datumZapisuVr?: string;
-  /** Stav provozovny - kód (ciselnikKod: StavProvozovny)  */
-  provozovnyStav?: ProvozovnyRzpStav;
-  /** Identifikace primárního záznamu  pozn.: U multiplicitních registrací je pouze jedna registrace primární */
-  primarniZaznam?: boolean;
-  /**
-   * Kód státu  (ciselnikKod: Stat, zdroj:com) 
-   * @minLength 3
-   * @maxLength 3
-   */
-  kodStatu?: string;
+	/** Události v rámci insolvenčního řízení */
+	insolvencniRizeni?: InsolvencniRizeni;
+	/** Datum doručení prvního výpisu sloužícího jako průkaz živnostenského podnikání,  */
+	datumDoruceniVypisu?: string;
+	adresySubjektu?: EkonomickySubjektRzpAdresa[];
+	/**
+	 * Typ subjektu - kód (ciselnikKod: TypSubjektu, zdroj: rzp)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typSubjektu?: string;
+	/**
+	 * Živnostenský úřad – kód (ciselnikKod: ZivnostenskyUrad, zdroj: rzp)
+	 * @pattern ^\d{6}$
+	 */
+	zivnostenskyUrad?: string;
+	/**
+	 * Název organizační složky
+	 * @minLength 1
+	 * @maxLength 2000
+	 */
+	organizacniSlozka?: string;
+	/** Stav živnosti - kód (ciselnikKod: StavZivnosti)  */
+	zivnostiStav?: ZivnostiRzpStav;
+	/** Datum zápisu do Obchodního nebo podobného rejstříku  */
+	datumZapisuVr?: string;
+	/** Stav provozovny - kód (ciselnikKod: StavProvozovny)  */
+	provozovnyStav?: ProvozovnyRzpStav;
+	/** Identifikace primárního záznamu  pozn.: U multiplicitních registrací je pouze jedna registrace primární */
+	primarniZaznam?: boolean;
+	/**
+	 * Kód státu  (ciselnikKod: Stat, zdroj:com)
+	 * @minLength 3
+	 * @maxLength 3
+	 */
+	kodStatu?: string;
 };
 
 /**
@@ -1510,143 +1516,143 @@ export type ZaznamRzpZaklad = EkonomickySubjektZaklad & ZaznamRzpZakladAllOf;
  * Živnost bez odpovědného zástupce
  */
 export interface ZivnostBezOZ {
-  /** Zahájení vykonávání živnosti bez odpovědného zástupce od data  */
-  platnostOd?: string;
-  /** Ukončení vykonávání živnosti bez odpovědného zástupce od data  */
-  platnostDo?: string;
+	/** Zahájení vykonávání živnosti bez odpovědného zástupce od data  */
+	platnostOd?: string;
+	/** Ukončení vykonávání živnosti bez odpovědného zástupce od data  */
+	platnostDo?: string;
 }
 
 /**
  * Stav živnosti
  */
 export interface ZivnostiRzpStav {
-  /**
-   * Celkový počet aktivních živností
-   * @minimum 0
-   */
-  pocetAktivnich?: number;
-  /**
-   * Celkový počet zaniklých živností
-   * @minimum 0
-   */
-  pocetZaniklych?: number;
-  /**
-   * Celkový počet pozastavených živností
-   * @minimum 0
-   */
-  pocetPozastavenych?: number;
-  /**
-   * Celkový počet přerušených živností
-   * @minimum 0
-   */
-  pocetPrerusenych?: number;
-  /**
-   * Celkový počet živností
-   * @minimum 0
-   */
-  pocetCelkem?: number;
+	/**
+	 * Celkový počet aktivních živností
+	 * @minimum 0
+	 */
+	pocetAktivnich?: number;
+	/**
+	 * Celkový počet zaniklých živností
+	 * @minimum 0
+	 */
+	pocetZaniklych?: number;
+	/**
+	 * Celkový počet pozastavených živností
+	 * @minimum 0
+	 */
+	pocetPozastavenych?: number;
+	/**
+	 * Celkový počet přerušených živností
+	 * @minimum 0
+	 */
+	pocetPrerusenych?: number;
+	/**
+	 * Celkový počet živností
+	 * @minimum 0
+	 */
+	pocetCelkem?: number;
 }
 
 /**
  * Živnost - obor činnosti
  */
 export interface ZivnostOborCinnosti {
-  /** Platnost záznamu od data */
-  platnostOd?: string;
-  /** Platnost záznamu do data */
-  platnostDo?: string;
-  /**
-   * Název oboru
-   * @minLength 5
-   * @maxLength 750
-   */
-  oborNazev?: string;
+	/** Platnost záznamu od data */
+	platnostOd?: string;
+	/** Platnost záznamu do data */
+	platnostDo?: string;
+	/**
+	 * Název oboru
+	 * @minLength 5
+	 * @maxLength 750
+	 */
+	oborNazev?: string;
 }
 
 /**
  * Podmínky pro vykonávání živnosti
  */
 export interface ZivnostPodminky {
-  /** Platnost podmínky od data */
-  platnostOd?: string;
-  /** Platnost podmínky do data */
-  platnostDo?: string;
-  /** Text podmínky provozování živnosti */
-  podminka?: string;
+	/** Platnost podmínky od data */
+	platnostOd?: string;
+	/** Platnost podmínky do data */
+	platnostDo?: string;
+	/** Text podmínky provozování živnosti */
+	podminka?: string;
 }
 
 /**
  * Přerušení živnosti
  */
 export interface ZivnostPreruseni {
-  /** Platnost přerušení živnosti od data */
-  platnostOd?: string;
-  /** Platnost přerušení živnosti do data */
-  platnostDo?: string;
+	/** Platnost přerušení živnosti od data */
+	platnostOd?: string;
+	/** Platnost přerušení živnosti do data */
+	platnostDo?: string;
 }
 
 /**
  * Pozastavení provozovny nebo živnosti
  */
 export interface ZivnostProvozovnaPozastaveni {
-  /** Platnost pozastavení živnosti od data */
-  platnostOd?: string;
-  /** Platnost pozastavení živnosti do data */
-  platnostDo?: string;
-  /**
-   * Popis rozsahu pozastavení živnosti
-   * @maxLength 1024
-   */
-  rozsahPozastaveni?: string;
+	/** Platnost pozastavení živnosti od data */
+	platnostOd?: string;
+	/** Platnost pozastavení živnosti do data */
+	platnostDo?: string;
+	/**
+	 * Popis rozsahu pozastavení živnosti
+	 * @maxLength 1024
+	 */
+	rozsahPozastaveni?: string;
 }
 
 /**
  * Živnosti, které ekonomický subjekt provozuje nebo provozoval - obecný předek
  */
 export interface ZivnostZaklad {
-  /** Datum vzniku živnosti  */
-  datumVzniku?: string;
-  /** Datum zániku živnosti  */
-  datumZaniku?: string;
-  /** Platnost živnosti do data */
-  platnostDo?: string;
-  /**
-   * Předmět podnikáni živnosti
-   * @minLength 5
-   * @maxLength 750
-   */
-  predmetPodnikani?: string;
-  pozastaveniZivnosti?: ZivnostProvozovnaPozastaveni[];
-  podminkyProvozovaniZivnosti?: ZivnostPodminky[];
-  preruseniZivnosti?: ZivnostPreruseni[];
-  zivnostBezOz?: ZivnostBezOZ[];
-  /** Datum aktualizace záznamu */
-  datumAktualizace?: string;
-  /**
-   * Druh živnosti - kód (ciselnikKod: DruhZivnosti) 
-   * @minLength 1
-   * @maxLength 1
-   */
-  druhZivnosti?: string;
+	/** Datum vzniku živnosti  */
+	datumVzniku?: string;
+	/** Datum zániku živnosti  */
+	datumZaniku?: string;
+	/** Platnost živnosti do data */
+	platnostDo?: string;
+	/**
+	 * Předmět podnikáni živnosti
+	 * @minLength 5
+	 * @maxLength 750
+	 */
+	predmetPodnikani?: string;
+	pozastaveniZivnosti?: ZivnostProvozovnaPozastaveni[];
+	podminkyProvozovaniZivnosti?: ZivnostPodminky[];
+	preruseniZivnosti?: ZivnostPreruseni[];
+	zivnostBezOz?: ZivnostBezOZ[];
+	/** Datum aktualizace záznamu */
+	datumAktualizace?: string;
+	/**
+	 * Druh živnosti - kód (ciselnikKod: DruhZivnosti)
+	 * @minLength 1
+	 * @maxLength 1
+	 */
+	druhZivnosti?: string;
 }
 
 export type AngazovanaOsobaRzpAllOf = {
-  /** Platnost angažmá osoby od data */
-  platnostOd?: string;
-  /** Platnost angažmá osoby do data  */
-  platnostDo?: string;
-  /**
-   * Státní občanství osoby - kód (ciselnikKod: Stat, zdroj:com) 
-   * @minLength 3
-   * @maxLength 3
-   */
-  statniObcanstvi?: string;
-  /**
-   * Typ angažmá osoby  - kód (ciselnikKod: TypAngazma, zdroj: rzp) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
+	/** Platnost angažmá osoby od data */
+	platnostOd?: string;
+	/** Platnost angažmá osoby do data  */
+	platnostDo?: string;
+	/**
+	 * Státní občanství osoby - kód (ciselnikKod: Stat, zdroj:com)
+	 * @minLength 3
+	 * @maxLength 3
+	 */
+	statniObcanstvi?: string;
+	/**
+	 * Typ angažmá osoby  - kód (ciselnikKod: TypAngazma, zdroj: rzp)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
 };
 
 /**
@@ -1655,38 +1661,40 @@ export type AngazovanaOsobaRzpAllOf = {
 export type AngazovanaOsobaRzp = AngazovanaOsoba & AngazovanaOsobaRzpAllOf;
 
 export type AngazovanySubjektRzpAllOf = {
-  osobyZastupce?: AngazovanaOsobaRzp[];
+	osobyZastupce?: AngazovanaOsobaRzp[];
 };
 
 /**
- * Právnické osoby v angažmá ekonomického subjektu. 
+ * Právnické osoby v angažmá ekonomického subjektu.
  */
-export type AngazovanySubjektRzp = AngazovanySubjektRzpZaklad & AngazovanySubjektRzpAllOf;
+export type AngazovanySubjektRzp = AngazovanySubjektRzpZaklad &
+	AngazovanySubjektRzpAllOf;
 
 export type EkonomickeSubjektyRzpSeznamAllOf = {
-  ekonomickeSubjekty?: EkonomickySubjektRzp[];
+	ekonomickeSubjekty?: EkonomickySubjektRzp[];
 };
 
 /**
  * Seznam ekonomických subjektů ze zdroje RŽP
  */
-export type EkonomickeSubjektyRzpSeznam = Seznam & EkonomickeSubjektyRzpSeznamAllOf;
+export type EkonomickeSubjektyRzpSeznam = Seznam &
+	EkonomickeSubjektyRzpSeznamAllOf;
 
 /**
- * Ekonomický subjekt 
+ * Ekonomický subjekt
  */
 export interface EkonomickySubjektRzp {
-  /**
-   * ičo/id ekonomického subjektu
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
-  zaznamy?: ZaznamRzp[];
+	/**
+	 * ičo/id ekonomického subjektu
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
+	zaznamy?: ZaznamRzp[];
 }
 
 export type ProvozovnaAllOf = {
-  oboryCinnosti?: ZivnostOborCinnosti[];
+	oboryCinnosti?: ZivnostOborCinnosti[];
 };
 
 /**
@@ -1695,11 +1703,11 @@ export type ProvozovnaAllOf = {
 export type Provozovna = ProvozovnaZaklad & ProvozovnaAllOf;
 
 export type ZaznamRzpAllOf = {
-  souvisejiciSubjekty?: AngazovanySubjektRzp[];
-  /** Informace o podnikateli */
-  osobaPodnikatel?: AngazovanaOsobaRzp;
-  angazovaneOsoby?: AngazovanaOsobaRzp[];
-  zivnosti?: Zivnost[];
+	souvisejiciSubjekty?: AngazovanySubjektRzp[];
+	/** Informace o podnikateli */
+	osobaPodnikatel?: AngazovanaOsobaRzp;
+	angazovaneOsoby?: AngazovanaOsobaRzp[];
+	zivnosti?: Zivnost[];
 };
 
 /**
@@ -1708,9 +1716,9 @@ export type ZaznamRzpAllOf = {
 export type ZaznamRzp = ZaznamRzpZaklad & ZaznamRzpAllOf;
 
 export type ZivnostAllOf = {
-  oboryCinnosti?: ZivnostOborCinnosti[];
-  odpovedniZastupci?: AngazovanaOsobaRzp[];
-  provozovny?: Provozovna[];
+	oboryCinnosti?: ZivnostOborCinnosti[];
+	odpovedniZastupci?: AngazovanaOsobaRzp[];
+	provozovny?: Provozovna[];
 };
 
 /**
@@ -1719,12 +1727,12 @@ export type ZivnostAllOf = {
 export type Zivnost = ZivnostZaklad & ZivnostAllOf;
 
 export type AngazovanaOsobaNrpzsAllOf = {
-  /**
-   * Typ angažmá osoby  - kód (ciselnikKod: TypAngazma, zdroj: nrpzs) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
+	/**
+	 * Typ angažmá osoby  - kód (ciselnikKod: TypAngazma, zdroj: nrpzs)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
 };
 
 /**
@@ -1736,185 +1744,186 @@ export type AngazovanaOsobaNrpzs = AngazovanaOsoba & AngazovanaOsobaNrpzsAllOf;
  * Kontaktní údaje
  */
 export interface Kontakty {
-  /**
-   * Email zdravotnického zařízení 
-   * @maxLength 50
-   */
-  email?: string;
-  /**
-   * Fax
-   * @minLength 1
-   * @maxLength 25
-   */
-  fax?: string;
-  /**
-   * Telefoní kontakt
-   * @minLength 1
-   * @maxLength 25
-   */
-  telefon?: string;
-  /**
-   * WWW zdravotnického zařízení
-   * @minLength 1
-   * @maxLength 255
-   */
-  www?: string;
+	/**
+	 * Email zdravotnického zařízení
+	 * @maxLength 50
+	 */
+	email?: string;
+	/**
+	 * Fax
+	 * @minLength 1
+	 * @maxLength 25
+	 */
+	fax?: string;
+	/**
+	 * Telefoní kontakt
+	 * @minLength 1
+	 * @maxLength 25
+	 */
+	telefon?: string;
+	/**
+	 * WWW zdravotnického zařízení
+	 * @minLength 1
+	 * @maxLength 255
+	 */
+	www?: string;
 }
 
 export type ZaznamNrpzsAllOf = {
-  /**
-   * Pořadové číslo zařízení 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern '^\d{3}$'
-   */
-  poradoveCisloZar?: string;
-  /**
-   * Pořadové číslo pracovistě 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern '^\d{3}$'
-   */
-  poradoveCisloPrac?: string;
-  /**
-   * Typ ekonomického subjektu - forma hospodaření - kód (ciselnikKod: TypSubjektu, zdroj: nrpzs)
-   * @minLength 2
-   * @maxLength 2
-   */
-  typSubjektu?: string;
-  /**
-   * Druh zdravotnického zařízení - kód (ciselnikKod: DruhZarizeni, zdroj: nrpzs)
-   * @minLength 3
-   * @maxLength 3
-   * @pattern '^\d{3}$'
-   */
-  druhZarizeni?: string;
-  /** Primární záznam */
-  primarniZaznam?: boolean;
-  /**
-   * Typ zřizovatele zdravotnického zařízení - kód (ciselnikKod: Zrizovatel, zdroj: nrpzs) 
-   * @minLength 1
-   * @maxLength 1
-   */
-  typZrizovatele?: string;
-  angazovaneOsoby?: AngazovanaOsobaNrpzs[];
-  /** Kontakty pro komunikaci se zdravotnickéhým zažízením */
-  kontakty?: Kontakty;
+	/**
+	 * Pořadové číslo zařízení
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern '^\d{3}$'
+	 */
+	poradoveCisloZar?: string;
+	/**
+	 * Pořadové číslo pracovistě
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern '^\d{3}$'
+	 */
+	poradoveCisloPrac?: string;
+	/**
+	 * Typ ekonomického subjektu - forma hospodaření - kód (ciselnikKod: TypSubjektu, zdroj: nrpzs)
+	 * @minLength 2
+	 * @maxLength 2
+	 */
+	typSubjektu?: string;
+	/**
+	 * Druh zdravotnického zařízení - kód (ciselnikKod: DruhZarizeni, zdroj: nrpzs)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern '^\d{3}$'
+	 */
+	druhZarizeni?: string;
+	/** Primární záznam */
+	primarniZaznam?: boolean;
+	/**
+	 * Typ zřizovatele zdravotnického zařízení - kód (ciselnikKod: Zrizovatel, zdroj: nrpzs)
+	 * @minLength 1
+	 * @maxLength 1
+	 */
+	typZrizovatele?: string;
+	angazovaneOsoby?: AngazovanaOsobaNrpzs[];
+	/** Kontakty pro komunikaci se zdravotnickéhým zažízením */
+	kontakty?: Kontakty;
 };
 
 /**
- * Detailní informace o ekonomickém subjektu ze zdroje NRPZS 
+ * Detailní informace o ekonomickém subjektu ze zdroje NRPZS
  */
 export type ZaznamNrpzs = EkonomickySubjektZaklad & ZaznamNrpzsAllOf;
 
 export type EkonomickeSubjektyNrpzsSeznamAllOf = {
-  ekonomickeSubjekty?: EkonomickySubjektNrpzs[];
+	ekonomickeSubjekty?: EkonomickySubjektNrpzs[];
 };
 
 /**
  * Seznam ekonomických subjektů ze zdroje NRPZS
  */
-export type EkonomickeSubjektyNrpzsSeznam = Seznam & EkonomickeSubjektyNrpzsSeznamAllOf;
+export type EkonomickeSubjektyNrpzsSeznam = Seznam &
+	EkonomickeSubjektyNrpzsSeznamAllOf;
 
 /**
- * Ekonomický subjekt 
+ * Ekonomický subjekt
  */
 export interface EkonomickySubjektNrpzs {
-  /**
-   * ičo/id ekonomického subjektu 
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
-  zaznamy?: ZaznamNrpzs[];
+	/**
+	 * ičo/id ekonomického subjektu
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
+	zaznamy?: ZaznamNrpzs[];
 }
 
 export type AngazovanaOsobaRpshAllOf = {
-  /**
-   * Název fukce
-   * @maxLength 120
-   */
-  funkce?: string;
-  /** Platnost záznamu od data */
-  platnostOd?: string;
-  /** Platnost záznamu do data  */
-  platnostDo?: string;
-  /** adresa angažované osoby */
-  adresa?: Adresa;
-  /**
-   * Kód fukce
-   * @maxLength 10
-   */
-  kod?: string;
-  /**
-   * Typ angažmá osoby - kód (ciselnikKod: TypAngazma, zdroj: rpsh)
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
+	/**
+	 * Název fukce
+	 * @maxLength 120
+	 */
+	funkce?: string;
+	/** Platnost záznamu od data */
+	platnostOd?: string;
+	/** Platnost záznamu do data  */
+	platnostDo?: string;
+	/** adresa angažované osoby */
+	adresa?: Adresa;
+	/**
+	 * Kód fukce
+	 * @maxLength 10
+	 */
+	kod?: string;
+	/**
+	 * Typ angažmá osoby - kód (ciselnikKod: TypAngazma, zdroj: rpsh)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
 };
 
 /**
- * Identifikace fyzické osoby statutárního orgánu subjektu. 
+ * Identifikace fyzické osoby statutárního orgánu subjektu.
  */
 export type AngazovanaOsobaRpsh = AngazovanaOsoba & AngazovanaOsobaRpshAllOf;
 
 /**
- * Informace o způsobu jednání právnické osoby. 
+ * Informace o způsobu jednání právnické osoby.
  */
 export interface StatutarniOrgan {
-  /** Platnost záznamu od data  */
-  platnostOd?: string;
-  /**
-   * Texty způsobu jednání právnické osoby. 
-   * @maxLength 1000
-   */
-  popis?: string;
+	/** Platnost záznamu od data  */
+	platnostOd?: string;
+	/**
+	 * Texty způsobu jednání právnické osoby.
+	 * @maxLength 1000
+	 */
+	popis?: string;
 }
 
 /**
- * Stav, ve kterém se subjekt nachází, s udáním počátku platnosti. 
+ * Stav, ve kterém se subjekt nachází, s udáním počátku platnosti.
  */
 export interface StavSubjektu {
-  /**
-   * Popis stavu subjektu
-   * @maxLength 1000
-   */
-  popis?: string;
-  /** Platnost záznamu od data  */
-  platnostOd?: string;
-  /**
-   * Stav ekonomického subjektu - kód (ciselnikKod: StavSubjektu(zdroj:rpsh) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  stavSubjektu?: string;
+	/**
+	 * Popis stavu subjektu
+	 * @maxLength 1000
+	 */
+	popis?: string;
+	/** Platnost záznamu od data  */
+	platnostOd?: string;
+	/**
+	 * Stav ekonomického subjektu - kód (ciselnikKod: StavSubjektu(zdroj:rpsh)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	stavSubjektu?: string;
 }
 
 export type ZaznamRpshAllOf = {
-  /**
-   * Číslo registrace
-   * @maxLength 20
-   */
-  cisloRegistrace?: string;
-  /**
-   * Typ subjektu - strana/hnutí - kód (ciselnikKod: TypSubjektuRpsh) 
-   * @minimum 1
-   * @maximum 1
-   * @pattern ^\d{1}$
-   */
-  typSubjektu?: string;
-  /**
-   * Obchodní jméno zkrácené
-   * @maxLength 1000
-   */
-  obchodniJmenoZkratka?: string;
-  angazovaneOsoby?: AngazovanaOsobaRpsh[];
-  /** Primární záznam */
-  primarniZaznam?: boolean;
-  zmenaStanov?: ZmenaStanov[];
-  statutarniOrgan?: StatutarniOrgan[];
-  stavSubjektu?: StavSubjektu[];
+	/**
+	 * Číslo registrace
+	 * @maxLength 20
+	 */
+	cisloRegistrace?: string;
+	/**
+	 * Typ subjektu - strana/hnutí - kód (ciselnikKod: TypSubjektuRpsh)
+	 * @minimum 1
+	 * @maximum 1
+	 * @pattern ^\d{1}$
+	 */
+	typSubjektu?: string;
+	/**
+	 * Obchodní jméno zkrácené
+	 * @maxLength 1000
+	 */
+	obchodniJmenoZkratka?: string;
+	angazovaneOsoby?: AngazovanaOsobaRpsh[];
+	/** Primární záznam */
+	primarniZaznam?: boolean;
+	zmenaStanov?: ZmenaStanov[];
+	statutarniOrgan?: StatutarniOrgan[];
+	stavSubjektu?: StavSubjektu[];
 };
 
 /**
@@ -1923,46 +1932,47 @@ export type ZaznamRpshAllOf = {
 export type ZaznamRpsh = EkonomickySubjektZaklad & ZaznamRpshAllOf;
 
 /**
- * Seznam datumů změn stanov. 
+ * Seznam datumů změn stanov.
  */
 export interface ZmenaStanov {
-  /** Datum změny stanov. */
-  datumZmeny?: string;
+	/** Datum změny stanov. */
+	datumZmeny?: string;
 }
 
 export type EkonomickeSubjektyRpshSeznamAllOf = {
-  ekonomickeSubjekty?: EkonomickySubjektRpsh[];
+	ekonomickeSubjekty?: EkonomickySubjektRpsh[];
 };
 
 /**
  * Seznam ekonomických subjektů ze zdroje RPSH
  */
-export type EkonomickeSubjektyRpshSeznam = Seznam & EkonomickeSubjektyRpshSeznamAllOf;
+export type EkonomickeSubjektyRpshSeznam = Seznam &
+	EkonomickeSubjektyRpshSeznamAllOf;
 
 /**
- * Ekonomický subjekt 
+ * Ekonomický subjekt
  */
 export interface EkonomickySubjektRpsh {
-  /**
-   * ičo/id ekonomického subjektu 
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
-  zaznamy?: ZaznamRpsh[];
+	/**
+	 * ičo/id ekonomického subjektu
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
+	zaznamy?: ZaznamRpsh[];
 }
 
 export type AdresaRcnsAllOf = {
-  /** Platnost adresy od data */
-  platnostOd?: string;
-  /** Platnost adresy do data */
-  platnostDo?: string;
-  /**
-   * Typ adresy  - kód (ciselnikKod: TypAdresy, zdroj: rcns) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAdresy?: string;
+	/** Platnost adresy od data */
+	platnostOd?: string;
+	/** Platnost adresy do data */
+	platnostDo?: string;
+	/**
+	 * Typ adresy  - kód (ciselnikKod: TypAdresy, zdroj: rcns)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAdresy?: string;
 };
 
 /**
@@ -1974,125 +1984,125 @@ export type AdresaRcns = Adresa & AdresaRcnsAllOf;
  * Angažovaný subjekt
  */
 export interface AngazovanySubjektRcnsZaklad {
-  /**
-   * IČO
-   * @minLength 8
-   * @maxLength 8
-   * @pattern ^\d{8}$
-   */
-  ico?: string;
-  /** DIČ */
-  dic?: string;
-  /** Platnost záznamu od data */
-  platnostOd?: string;
-  /** Platnost záznamu do data */
-  platnostDo?: string;
-  /** Adresa sídla */
-  sidlo?: AdresaRcns;
-  /**
-   * Obchodní jméno subjektu
-   * @minLength 1
-   * @maxLength 2000
-   */
-  obchodniJmeno?: string;
-  /**
-   * Kód státu  (ciselnikKod: Stat) 
-   * @minLength 3
-   * @maxLength 3
-   */
-  kodStatu?: string;
-  /**
-   * Právní forma - kód (ciselnikKod: PravniForma) 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  pravniForma?: string;
+	/**
+	 * IČO
+	 * @minLength 8
+	 * @maxLength 8
+	 * @pattern ^\d{8}$
+	 */
+	ico?: string;
+	/** DIČ */
+	dic?: string;
+	/** Platnost záznamu od data */
+	platnostOd?: string;
+	/** Platnost záznamu do data */
+	platnostDo?: string;
+	/** Adresa sídla */
+	sidlo?: AdresaRcns;
+	/**
+	 * Obchodní jméno subjektu
+	 * @minLength 1
+	 * @maxLength 2000
+	 */
+	obchodniJmeno?: string;
+	/**
+	 * Kód státu  (ciselnikKod: Stat)
+	 * @minLength 3
+	 * @maxLength 3
+	 */
+	kodStatu?: string;
+	/**
+	 * Právní forma - kód (ciselnikKod: PravniForma)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	pravniForma?: string;
 }
 
 /**
  * Člen svazu církví
  */
 export interface ClenSvazu {
-  /**
-   * IČO člana svazu
-   * @minLength 8
-   * @maxLength 8
-   * @pattern ^\d{8}$
-   */
-  ico?: string;
-  /** Platnost členství od data  */
-  platnostOd?: string;
-  /** Platnost členství do data */
-  platnostDo?: string;
+	/**
+	 * IČO člana svazu
+	 * @minLength 8
+	 * @maxLength 8
+	 * @pattern ^\d{8}$
+	 */
+	ico?: string;
+	/** Platnost členství od data  */
+	platnostOd?: string;
+	/** Platnost členství do data */
+	platnostDo?: string;
 }
 
 /**
  * Oprávnění k výkonu zvláštních práv církve
  */
 export interface PravoZvlastni {
-  /** Začátek platnosti zvláštního práva subjektu  */
-  platnostOd?: string;
-  /** Konec platnosti zvláštního práva subjektu */
-  platnostDo?: string;
-  /** Oprávnění pro výkon církve - kód (ciselnikKod: Pravo, zdroj: rcns)  */
-  kodPravo?: number;
+	/** Začátek platnosti zvláštního práva subjektu  */
+	platnostOd?: string;
+	/** Konec platnosti zvláštního práva subjektu */
+	platnostDo?: string;
+	/** Oprávnění pro výkon církve - kód (ciselnikKod: Pravo, zdroj: rcns)  */
+	kodPravo?: number;
 }
 
 /**
  * Informace o registraci církve
  */
 export interface RegistraceRcns {
-  /**
-   * Pro subjekt typu církev a svaz církví je zde uvedeno registrační číslo pod kterým byl daný subjekt zaregistrován na MK. Pro subjekty typu právnická osoba je zde uvedeno evidenční číslo pod kterým byl daný subjekt zaevidován na MK.
-   * @maxLength 30
-   */
-  cisloRegistrace?: string;
-  /**
-   * Datum zrušení registrace, evidence subjektu na MK
-   * @maxLength 30
-   */
-  cisloZruseniRegistrace?: string;
-  /** Datum vyhlášení likvidace subjektu */
-  datumLikvidace?: string;
-  /** Datum vyhlášení konkurzu subjektu */
-  datumKonkurzu?: string;
-  /** Datum jmenování opatrovníka */
-  datumOpatrovnik?: string;
-  /** Datum zrušení registrace, evidence subjektu na MK */
-  datumZruseniRegistrace?: string;
+	/**
+	 * Pro subjekt typu církev a svaz církví je zde uvedeno registrační číslo pod kterým byl daný subjekt zaregistrován na MK. Pro subjekty typu právnická osoba je zde uvedeno evidenční číslo pod kterým byl daný subjekt zaevidován na MK.
+	 * @maxLength 30
+	 */
+	cisloRegistrace?: string;
+	/**
+	 * Datum zrušení registrace, evidence subjektu na MK
+	 * @maxLength 30
+	 */
+	cisloZruseniRegistrace?: string;
+	/** Datum vyhlášení likvidace subjektu */
+	datumLikvidace?: string;
+	/** Datum vyhlášení konkurzu subjektu */
+	datumKonkurzu?: string;
+	/** Datum jmenování opatrovníka */
+	datumOpatrovnik?: string;
+	/** Datum zrušení registrace, evidence subjektu na MK */
+	datumZruseniRegistrace?: string;
 }
 
 export type ZaznamRcnsZakladAllOf = {
-  /**
-   * Typ subjektu - kód (ciselnikKod: TypSubjektuRcns) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typSubjektu?: string;
-  /**
-   * Stát
-   * @minLength 3
-   * @maxLength 3
-   */
-  stat?: string;
-  /** Primární záznam */
-  primarniZaznam?: boolean;
-  /** Registrace */
-  registrace?: RegistraceRcns;
-  zpusobJednani?: ZpusobJednani[];
-  adresySubjektu?: AdresaRcns[];
-  /**
-   * Identifikátor záznamu ve zdrojovém registru.
-   * @maxLength 100
-   */
-  zdrojId?: string;
-  /** Platnost subjekt v registru od */
-  platnostOd?: string;
+	/**
+	 * Typ subjektu - kód (ciselnikKod: TypSubjektuRcns)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typSubjektu?: string;
+	/**
+	 * Stát
+	 * @minLength 3
+	 * @maxLength 3
+	 */
+	stat?: string;
+	/** Primární záznam */
+	primarniZaznam?: boolean;
+	/** Registrace */
+	registrace?: RegistraceRcns;
+	zpusobJednani?: ZpusobJednani[];
+	adresySubjektu?: AdresaRcns[];
+	/**
+	 * Identifikátor záznamu ve zdrojovém registru.
+	 * @maxLength 100
+	 */
+	zdrojId?: string;
+	/** Platnost subjekt v registru od */
+	platnostOd?: string;
 };
 
 /**
- * Základní informace o ekonomickém subjektu - obecný předek zdroje RCNS 
+ * Základní informace o ekonomickém subjektu - obecný předek zdroje RCNS
  */
 export type ZaznamRcnsZaklad = EkonomickySubjektZaklad & ZaznamRcnsZakladAllOf;
 
@@ -2100,179 +2110,181 @@ export type ZaznamRcnsZaklad = EkonomickySubjektZaklad & ZaznamRcnsZakladAllOf;
  * tabulka způsobů jednání subjektu
  */
 export interface ZpusobJednani {
-  /** popis způsobu jednání */
-  popis?: string;
-  /** počátek platnosti způsobu jednání dle popisu */
-  platnostOd?: string;
-  /** konec platnosti způsobu jednání dle popisu  */
-  platnostDo?: string;
+	/** popis způsobu jednání */
+	popis?: string;
+	/** počátek platnosti způsobu jednání dle popisu */
+	platnostOd?: string;
+	/** konec platnosti způsobu jednání dle popisu  */
+	platnostDo?: string;
 }
 
 export type AngazovanaOsobaRcnsAllOf = {
-  /** Platnost angažované osoby od data */
-  platnostOd?: string;
-  /** Platnost angažované osoby od data */
-  platnostDo?: string;
-  /**
-   * Název orgánu
-   * @maxLength 100
-   */
-  nazevAngazma?: string;
-  /**
-   * Dodatečná informace jako 'funkce neobsazena'
-   * @maxLength 100
-   */
-  poznamka?: string;
-  /**
-   * Typ angažmá osoby  - kód (ciselnikKod: TypAngazma, zdroj: rcns) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
-  /**
-   * Název orgánu
-   * @maxLength 100
-   */
-  nazevOrganu?: string;
-  /**
-   * Kód státu  (ciselnikKod: Stat) 
-   * @minLength 3
-   * @maxLength 3
-   */
-  kodStatu?: string;
-  /**
-   * Právní forma - kód (ciselnikKod: PravniForma) 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  pravniForma?: string;
+	/** Platnost angažované osoby od data */
+	platnostOd?: string;
+	/** Platnost angažované osoby od data */
+	platnostDo?: string;
+	/**
+	 * Název orgánu
+	 * @maxLength 100
+	 */
+	nazevAngazma?: string;
+	/**
+	 * Dodatečná informace jako 'funkce neobsazena'
+	 * @maxLength 100
+	 */
+	poznamka?: string;
+	/**
+	 * Typ angažmá osoby  - kód (ciselnikKod: TypAngazma, zdroj: rcns)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
+	/**
+	 * Název orgánu
+	 * @maxLength 100
+	 */
+	nazevOrganu?: string;
+	/**
+	 * Kód státu  (ciselnikKod: Stat)
+	 * @minLength 3
+	 * @maxLength 3
+	 */
+	kodStatu?: string;
+	/**
+	 * Právní forma - kód (ciselnikKod: PravniForma)
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	pravniForma?: string;
 };
 
 /**
- * Název vykonávané statutární(církevní) funkce 
+ * Název vykonávané statutární(církevní) funkce
  */
 export type AngazovanaOsobaRcns = AngazovanaOsoba & AngazovanaOsobaRcnsAllOf;
 
 /**
- * Církev - základ - obecný předek 
+ * Církev - základ - obecný předek
  */
 export interface SubjektCirkevZaklad {
-  /** Datum registrace práv dané církvi. */
-  datumRegistracePrav?: string;
-  /**
-   * Číslo registrace práv dané církvi.
-   * @maxLength 30
-   */
-  cisloRegistracePrav?: string;
-  /**
-   * IČO nástupce zrušené právnické osoby. 
-   * @minLength 8
-   * @maxLength 8
-   * @pattern ^\d{8}$
-   */
-  icoNastupce?: string;
-  /** Datum zrušení registrace práv dané církvi. */
-  datumZruseniRegistracePrav?: string;
-  pravoZvlastni?: PravoZvlastni[];
-  /**
-   * Číslo zrušení registrace práv dané církvi.
-   * @maxLength 30
-   */
-  cisloZruseniRegistracePrav?: string;
+	/** Datum registrace práv dané církvi. */
+	datumRegistracePrav?: string;
+	/**
+	 * Číslo registrace práv dané církvi.
+	 * @maxLength 30
+	 */
+	cisloRegistracePrav?: string;
+	/**
+	 * IČO nástupce zrušené právnické osoby.
+	 * @minLength 8
+	 * @maxLength 8
+	 * @pattern ^\d{8}$
+	 */
+	icoNastupce?: string;
+	/** Datum zrušení registrace práv dané církvi. */
+	datumZruseniRegistracePrav?: string;
+	pravoZvlastni?: PravoZvlastni[];
+	/**
+	 * Číslo zrušení registrace práv dané církvi.
+	 * @maxLength 30
+	 */
+	cisloZruseniRegistracePrav?: string;
 }
 
 /**
- * Právnická osoba církve - základ - obecný předek 
+ * Právnická osoba církve - základ - obecný předek
  */
 export interface SubjektPravnickaOsobaZaklad {
-  /**
-   * IČO zřizovatele právnické osoby. 
-   * @minLength 8
-   * @maxLength 8
-   * @pattern ^\d{8}$
-   */
-  icoZrizovatel?: string;
-  /**
-   * IČO nástupce zrušené právnické osoby. 
-   * @minLength 8
-   * @maxLength 8
-   * @pattern ^\d{8}$
-   */
-  icoNastupce?: string;
-  /** Způsob zrušení registrace – kód (ciselnikKod: ZpusobZruseni, zdroj: rcns) */
-  zpusobZruseniRegistrace?: number;
+	/**
+	 * IČO zřizovatele právnické osoby.
+	 * @minLength 8
+	 * @maxLength 8
+	 * @pattern ^\d{8}$
+	 */
+	icoZrizovatel?: string;
+	/**
+	 * IČO nástupce zrušené právnické osoby.
+	 * @minLength 8
+	 * @maxLength 8
+	 * @pattern ^\d{8}$
+	 */
+	icoNastupce?: string;
+	/** Způsob zrušení registrace – kód (ciselnikKod: ZpusobZruseni, zdroj: rcns) */
+	zpusobZruseniRegistrace?: number;
 }
 
 /**
  * Svaz církví - základ - obecný předek
  */
 export interface SubjektSvazCirkviZaklad {
-  clenoveSvazu?: ClenSvazu[];
-  /**
-   * IČO nástupce zrušené právnické osoby. 
-   * @minLength 8
-   * @maxLength 8
-   * @pattern ^\d{8}$
-   */
-  icoNastupce?: string;
+	clenoveSvazu?: ClenSvazu[];
+	/**
+	 * IČO nástupce zrušené právnické osoby.
+	 * @minLength 8
+	 * @maxLength 8
+	 * @pattern ^\d{8}$
+	 */
+	icoNastupce?: string;
 }
 
 /**
  * Angažmá
  */
 export interface AngazmaRcns {
-  /** Právnická osoba */
-  osobaPravnicka?: AngazovanySubjektRcns;
-  /** Fyzická osoba */
-  osobaFyzicka?: AngazovanaOsobaRcns;
+	/** Právnická osoba */
+	osobaPravnicka?: AngazovanySubjektRcns;
+	/** Fyzická osoba */
+	osobaFyzicka?: AngazovanaOsobaRcns;
 }
 
 export type AngazovanySubjektRcnsAllOf = {
-  statutarniOrgany?: AngazovanaOsobaRcns[];
+	statutarniOrgany?: AngazovanaOsobaRcns[];
 };
 
 /**
  * Angažovaný subjekt
  */
-export type AngazovanySubjektRcns = AngazovanySubjektRcnsZaklad & AngazovanySubjektRcnsAllOf;
+export type AngazovanySubjektRcns = AngazovanySubjektRcnsZaklad &
+	AngazovanySubjektRcnsAllOf;
 
 export type EkonomickeSubjektyRcnsSeznamAllOf = {
-  ekonomickeSubjekty?: EkonomickySubjektRcns[];
+	ekonomickeSubjekty?: EkonomickySubjektRcns[];
 };
 
 /**
  * Seznam ekonomických subjektů ze zdroje RCNS
  */
-export type EkonomickeSubjektyRcnsSeznam = Seznam & EkonomickeSubjektyRcnsSeznamAllOf;
+export type EkonomickeSubjektyRcnsSeznam = Seznam &
+	EkonomickeSubjektyRcnsSeznamAllOf;
 
 /**
  * Stautární orgány církve
  */
 export interface StatutatniOrganRcns {
-  /** Struktura s údaji sledovanými u subjektu typu církev */
-  subjektCirkev?: SubjektCirkev;
-  /** Struktura s údaji sledovanými u subjektu typu svaz církví */
-  subjektSvazCirkvi?: SubjektSvazCirkvi;
-  /** Struktura s údaji sledovanými u subjektu typu právnická osoba dříve církevní právnická osoba. */
-  subjektPravnickaOsoba?: SubjektPravnickaOsoba;
+	/** Struktura s údaji sledovanými u subjektu typu církev */
+	subjektCirkev?: SubjektCirkev;
+	/** Struktura s údaji sledovanými u subjektu typu svaz církví */
+	subjektSvazCirkvi?: SubjektSvazCirkvi;
+	/** Struktura s údaji sledovanými u subjektu typu právnická osoba dříve církevní právnická osoba. */
+	subjektPravnickaOsoba?: SubjektPravnickaOsoba;
 }
 
 /**
- * Ekonomický subjekt 
+ * Ekonomický subjekt
  */
 export interface EkonomickySubjektRcns {
-  /**
-   * ičo/id ekonomického subjektu 
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
-  zaznamy?: ZaznamRcns[];
+	/**
+	 * ičo/id ekonomického subjektu
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
+	zaznamy?: ZaznamRcns[];
 }
 
 export type SubjektCirkevAllOf = {
-  organy?: AngazovanySubjektRcns[];
+	organy?: AngazovanySubjektRcns[];
 };
 
 /**
@@ -2281,29 +2293,31 @@ export type SubjektCirkevAllOf = {
 export type SubjektCirkev = SubjektCirkevZaklad & SubjektCirkevAllOf;
 
 export type SubjektPravnickaOsobaAllOf = {
-  organy?: AngazovanaOsobaRcns[];
+	organy?: AngazovanaOsobaRcns[];
 };
 
 /**
  * Právnická osoba církve
  */
-export type SubjektPravnickaOsoba = SubjektPravnickaOsobaZaklad & SubjektPravnickaOsobaAllOf;
+export type SubjektPravnickaOsoba = SubjektPravnickaOsobaZaklad &
+	SubjektPravnickaOsobaAllOf;
 
 export type SubjektSvazCirkviAllOf = {
-  organy?: AngazovanySubjektRcns[];
+	organy?: AngazovanySubjektRcns[];
 };
 
 /**
  * Svaz církví
  */
-export type SubjektSvazCirkvi = SubjektSvazCirkviZaklad & SubjektSvazCirkviAllOf;
+export type SubjektSvazCirkvi = SubjektSvazCirkviZaklad &
+	SubjektSvazCirkviAllOf;
 
 export type ZaznamRcnsAllOf = {
-  /** Statutární orgány církve */
-  statutarniOrgan?: StatutatniOrganRcns;
-  likvidatori?: AngazmaRcns[];
-  konkurzniSpravci?: AngazmaRcns[];
-  opatrovnici?: AngazmaRcns[];
+	/** Statutární orgány církve */
+	statutarniOrgan?: StatutatniOrganRcns;
+	likvidatori?: AngazmaRcns[];
+	konkurzniSpravci?: AngazmaRcns[];
+	opatrovnici?: AngazmaRcns[];
 };
 
 /**
@@ -2312,79 +2326,82 @@ export type ZaznamRcnsAllOf = {
 export type ZaznamRcns = ZaznamRcnsZaklad & ZaznamRcnsAllOf;
 
 export type AngazovanaOsobaSzrZakladAllOf = {
-  /**
-   * Typ angažmá osoby  - kód (ciselnikKod: TypAngazma) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
+	/**
+	 * Typ angažmá osoby  - kód (ciselnikKod: TypAngazma)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
 };
 
 /**
  * Angažovaná osoba - obecný předek
  */
-export type AngazovanaOsobaSzrZaklad = AngazovanaOsoba & AngazovanaOsobaSzrZakladAllOf;
+export type AngazovanaOsobaSzrZaklad = AngazovanaOsoba &
+	AngazovanaOsobaSzrZakladAllOf;
 
 export type EkonomickySubjektEzpZakladAllOf = {
-  /**
-   * URL odkaz na záznam zdrojového IS.
-   * @maxLength 255
-   */
-  odkaz?: string;
+	/**
+	 * URL odkaz na záznam zdrojového IS.
+	 * @maxLength 255
+	 */
+	odkaz?: string;
 };
 
 /**
  * Ekonomický subjekt zdroje EZP - obecný předek
  */
-export type EkonomickySubjektEzpZaklad = EkonomickySubjektZaklad & EkonomickySubjektEzpZakladAllOf;
+export type EkonomickySubjektEzpZaklad = EkonomickySubjektZaklad &
+	EkonomickySubjektEzpZakladAllOf;
 
 export type EkonomickeSubjektySzrSeznamAllOf = {
-  ekonomickeSubjekty?: EkonomickySubjektSzr[];
+	ekonomickeSubjekty?: EkonomickySubjektSzr[];
 };
 
 /**
  * Seznam ekonomických subjektů ze zdroje SZR
  */
-export type EkonomickeSubjektySzrSeznam = Seznam & EkonomickeSubjektySzrSeznamAllOf;
+export type EkonomickeSubjektySzrSeznam = Seznam &
+	EkonomickeSubjektySzrSeznamAllOf;
 
 /**
- * Ekonomický subjekt 
+ * Ekonomický subjekt
  */
 export interface EkonomickySubjektSzr {
-  /**
-   * ičo/id ekonomického subjektu 
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
-  zaznamy?: ZaznamSzr[];
+	/**
+	 * ičo/id ekonomického subjektu
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
+	zaznamy?: ZaznamSzr[];
 }
 
 /**
  * Detailní infromace o ekonomickém subjektu ze subzdroje EZP
  */
 export interface Ezp {
-  /** Osoba podnikatele EZP */
-  osobaEzp?: AngazovanaOsobaSzrZaklad;
-  /** Ekonomický subjekt EZP */
-  subjektEzp?: EkonomickySubjektEzpZaklad;
+	/** Osoba podnikatele EZP */
+	osobaEzp?: AngazovanaOsobaSzrZaklad;
+	/** Ekonomický subjekt EZP */
+	subjektEzp?: EkonomickySubjektEzpZaklad;
 }
 
 /**
- * Detailní informace o ekonomickém subjektu ze zdroje SZR - část EZP 
+ * Detailní informace o ekonomickém subjektu ze zdroje SZR - část EZP
  */
 export interface ZaznamSzr {
-  /** Evidence zemědělského podnikatele */
-  ezp?: Ezp;
+	/** Evidence zemědělského podnikatele */
+	ezp?: Ezp;
 }
 
 export type AngazovanaOsobaRsAllOf = {
-  /**
-   * Typ angažmá osoby - kód (ciselnikKod: TypAngazma, zdroj: rs)
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
+	/**
+	 * Typ angažmá osoby - kód (ciselnikKod: TypAngazma, zdroj: rs)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
 };
 
 /**
@@ -2396,132 +2413,132 @@ export type AngazovanaOsobaRs = AngazovanaOsoba & AngazovanaOsobaRsAllOf;
  * Detailní informace o ekonomickém subjektu ze zdroje RŠ
  */
 export interface AngazovanySubjektRs {
-  /**
-   * IČO
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  ico?: string;
-  /**
-   * Jméno subjektu
-   * @minLength 1
-   * @maxLength 2000
-   */
-  obchodniJmeno?: string;
-  /**
-   * Zkrácené jméno subjektu
-   * @minLength 1
-   * @maxLength 40
-   */
-  obchodniJmenoZkracene?: string;
-  /**
-   * Typ angažmá osoby - kód (ciselnikKod: TypAngazma, zdroj: rs)
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
-  /** Adresa angažovaného subjektu */
-  adresa?: Adresa;
-  /**
-   * Právní forma 
-   * @minLength 3
-   * @maxLength 3
-   * @pattern ^\d{3}$
-   */
-  pravniForma?: string;
-  /** Datum vzniku */
-  datumVzniku?: string;
-  /** Datum zániku */
-  datumZaniku?: string;
+	/**
+	 * IČO
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	ico?: string;
+	/**
+	 * Jméno subjektu
+	 * @minLength 1
+	 * @maxLength 2000
+	 */
+	obchodniJmeno?: string;
+	/**
+	 * Zkrácené jméno subjektu
+	 * @minLength 1
+	 * @maxLength 40
+	 */
+	obchodniJmenoZkracene?: string;
+	/**
+	 * Typ angažmá osoby - kód (ciselnikKod: TypAngazma, zdroj: rs)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
+	/** Adresa angažovaného subjektu */
+	adresa?: Adresa;
+	/**
+	 * Právní forma
+	 * @minLength 3
+	 * @maxLength 3
+	 * @pattern ^\d{3}$
+	 */
+	pravniForma?: string;
+	/** Datum vzniku */
+	datumVzniku?: string;
+	/** Datum zániku */
+	datumZaniku?: string;
 }
 
 /**
  * Kontakty subjektu
  */
 export interface KontaktyRs {
-  /**
-   * kontaktní telefon
-   * @minLength 1
-   * @maxLength 25
-   */
-  telefon?: string;
-  /**
-   * číslo faxu
-   * @minLength 1
-   * @maxLength 25
-   */
-  fax?: string;
-  email?: string[];
-  /**
-   * webová adresa ekonomického subjektu
-   * @minLength 1
-   * @maxLength 255
-   */
-  www?: string;
+	/**
+	 * kontaktní telefon
+	 * @minLength 1
+	 * @maxLength 25
+	 */
+	telefon?: string;
+	/**
+	 * číslo faxu
+	 * @minLength 1
+	 * @maxLength 25
+	 */
+	fax?: string;
+	email?: string[];
+	/**
+	 * webová adresa ekonomického subjektu
+	 * @minLength 1
+	 * @maxLength 255
+	 */
+	www?: string;
 }
 
 /**
  * Škola
  */
 export interface SkolaZarizeni {
-  /** Kontakty */
-  kontakty?: KontaktyRs;
-  /**
-   * IZO - resortní identifikátor
-   * @minLength 1
-   * @maxLength 9
-   */
-  izo?: string;
-  /**
-   * Jméno subjektu
-   * @minLength 1
-   * @maxLength 2000
-   */
-  obchodniJmeno?: string;
-  /**
-   * Zkrácené jméno subjektu
-   * @minLength 1
-   * @maxLength 40
-   */
-  obchodniJmenoZkracene?: string;
-  /**
-   * Typ školy
-   * @minLength 1
-   * @maxLength 64
-   */
-  typSkoly?: string;
-  /** Adresa angažovaného subjektu */
-  adresa?: Adresa;
-  /** Datum vzniku */
-  datumVzniku?: string;
-  /** Datum zániku */
-  datumZaniku?: string;
+	/** Kontakty */
+	kontakty?: KontaktyRs;
+	/**
+	 * IZO - resortní identifikátor
+	 * @minLength 1
+	 * @maxLength 9
+	 */
+	izo?: string;
+	/**
+	 * Jméno subjektu
+	 * @minLength 1
+	 * @maxLength 2000
+	 */
+	obchodniJmeno?: string;
+	/**
+	 * Zkrácené jméno subjektu
+	 * @minLength 1
+	 * @maxLength 40
+	 */
+	obchodniJmenoZkracene?: string;
+	/**
+	 * Typ školy
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typSkoly?: string;
+	/** Adresa angažovaného subjektu */
+	adresa?: Adresa;
+	/** Datum vzniku */
+	datumVzniku?: string;
+	/** Datum zániku */
+	datumZaniku?: string;
 }
 
 export type ZaznamRsZakladAllOf = {
-  /**
-   * REDIZO - resortní identifikátor
-   * @minLength 1
-   * @maxLength 9
-   */
-  redizo?: string;
-  /**
-   * Zkrácené obchodní jméno
-   * @minLength 1
-   * @maxLength 40
-   */
-  obchodniJmenoZkracene?: string;
-  /** Kontakty */
-  kontakty?: KontaktyRs;
-  /** Primární záznam */
-  primarniZaznam?: boolean;
-  skolyAZarizeni?: SkolaZarizeni[];
-  /**
-   * Typ subjektu
-   * @minLength 1
-   * @maxLength 64
-   */
-  typSubjektu?: string;
+	/**
+	 * REDIZO - resortní identifikátor
+	 * @minLength 1
+	 * @maxLength 9
+	 */
+	redizo?: string;
+	/**
+	 * Zkrácené obchodní jméno
+	 * @minLength 1
+	 * @maxLength 40
+	 */
+	obchodniJmenoZkracene?: string;
+	/** Kontakty */
+	kontakty?: KontaktyRs;
+	/** Primární záznam */
+	primarniZaznam?: boolean;
+	skolyAZarizeni?: SkolaZarizeni[];
+	/**
+	 * Typ subjektu
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typSubjektu?: string;
 };
 
 /**
@@ -2530,30 +2547,31 @@ export type ZaznamRsZakladAllOf = {
 export type ZaznamRsZaklad = EkonomickySubjektZaklad & ZaznamRsZakladAllOf;
 
 export type EkonomickeSubjektyRsSeznamAllOf = {
-  ekonomickeSubjekty?: EkonomickySubjektRs[];
+	ekonomickeSubjekty?: EkonomickySubjektRs[];
 };
 
 /**
  * Seznam ekonomických subjektů ze zdroje RŠ
  */
-export type EkonomickeSubjektyRsSeznam = Seznam & EkonomickeSubjektyRsSeznamAllOf;
+export type EkonomickeSubjektyRsSeznam = Seznam &
+	EkonomickeSubjektyRsSeznamAllOf;
 
 /**
  * Ekonomický subjekt
  */
 export interface EkonomickySubjektRs {
-  /**
-   * ičo ekonomického subjektu
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
-  zaznamy?: ZaznamRs[];
+	/**
+	 * ičo ekonomického subjektu
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
+	zaznamy?: ZaznamRs[];
 }
 
 export type ZaznamRsAllOf = {
-  angazovanySubjekt?: AngazovanySubjektRs[];
-  angazovanaOsoba?: AngazovanaOsobaRs[];
+	angazovanySubjekt?: AngazovanySubjektRs[];
+	angazovanaOsoba?: AngazovanaOsobaRs[];
 };
 
 /**
@@ -2562,7 +2580,7 @@ export type ZaznamRsAllOf = {
 export type ZaznamRs = ZaznamRsZaklad & ZaznamRsAllOf;
 
 export type CiselnikyNazevnikSeznamAllOf = {
-  ciselniky?: Ciselnik[];
+	ciselniky?: Ciselnik[];
 };
 
 /**
@@ -2574,401 +2592,406 @@ export type CiselnikyNazevnikSeznam = Seznam & CiselnikyNazevnikSeznamAllOf;
  * Číselník
  */
 export interface Ciselnik {
-  /**
-   * Kód číselníku
-   * @minLength 1
-   * @maxLength 64
-   */
-  kodCiselniku?: string;
-  /**
-   * Název číselníku
-   * @maxLength 255
-   */
-  nazevCiselniku?: string;
-  polozkyCiselniku?: PolozkaCiselniku[];
-  /**
-   * Zdroj číselníku (ciselnikKod: StavZdroje) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  zdrojCiselniku?: string;
+	/**
+	 * Kód číselníku
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	kodCiselniku?: string;
+	/**
+	 * Název číselníku
+	 * @maxLength 255
+	 */
+	nazevCiselniku?: string;
+	polozkyCiselniku?: PolozkaCiselniku[];
+	/**
+	 * Zdroj číselníku (ciselnikKod: StavZdroje)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	zdrojCiselniku?: string;
 }
 
 export type CiselnikyZakladniFiltrAllOf = {
-  /**
-   * Zdroj/oblast číselníku - kód (ciselnikKod: TypZdrojeAres, zdroj:com) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  zdrojCiselniku?: string;
-  /**
-   * Kód číselníku
-   * @minLength 1
-   * @maxLength 64
-   */
-  kodCiselniku?: string;
+	/**
+	 * Zdroj/oblast číselníku - kód (ciselnikKod: TypZdrojeAres, zdroj:com)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	zdrojCiselniku?: string;
+	/**
+	 * Kód číselníku
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	kodCiselniku?: string;
 };
 
 /**
  * Filtr pro vyhledávání číselníků
  */
-export type CiselnikyZakladniFiltr = StrankovaniARazeni & CiselnikyZakladniFiltrAllOf;
+export type CiselnikyZakladniFiltr = StrankovaniARazeni &
+	CiselnikyZakladniFiltrAllOf;
 
 /**
  * Seznam názvů položky číselníků z ohledem na jazykovou mutaci
  */
 export interface NazevPolozky {
-  /** Kód jazyka položky číselníku */
-  kodJazyka?: string;
-  /**
-   * Název položky číselníku
-   * @maxLength 255
-   */
-  nazev?: string;
+	/** Kód jazyka položky číselníku */
+	kodJazyka?: string;
+	/**
+	 * Název položky číselníku
+	 * @maxLength 255
+	 */
+	nazev?: string;
 }
 
 /**
  * Položka číselníku
  */
 export interface PolozkaCiselniku {
-  /**
-   * Kód položky číselníku
-   * @minLength 1
-   * @maxLength 64
-   */
-  kod?: string;
-  nazev?: NazevPolozky[];
-  /** Platnost položky od data */
-  platnostOd?: string;
-  /** Platnost položky do data  */
-  platnostDo?: string;
-  /**
-   * Nadřízený záznam položky číselníku
-   * @minLength 1
-   * @maxLength 64
-   */
-  kodNadrizeny?: string;
+	/**
+	 * Kód položky číselníku
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	kod?: string;
+	nazev?: NazevPolozky[];
+	/** Platnost položky od data */
+	platnostOd?: string;
+	/** Platnost položky do data  */
+	platnostDo?: string;
+	/**
+	 * Nadřízený záznam položky číselníku
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	kodNadrizeny?: string;
 }
 
 /**
- * Adresa 
+ * Adresa
  */
 export interface AdresaFiltr {
-  /**
-   * Kód časti obce
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodCastiObce?: number;
-  /**
-   * Kód správního obvodu Prahy
-   * @minimum 0
-   * @maximum 999
-   */
-  kodSpravnihoObvodu?: number;
-  /**
-   * Kód městské části statutárního města
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodMestskeCastiObvodu?: number;
-  /**
-   * Kód ulice, veřejného prostranství ze zdroje
-   * @minimum 0
-   * @maximum 9999999
-   */
-  kodUlice?: number;
-  /**
-   * Číslo domovní
-   * @maximum 9999
-   */
-  cisloDomovni?: number;
-  /**
-   * Kód obce
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodObce?: number;
-  /**
-   * Číslo orientační - číselná část
-   * @maximum 999
-   */
-  cisloOrientacni?: number;
-  /**
-   * Číslo orientační - písmenná část
-   * @maxLength 1
-   */
-  cisloOrientacniPismeno?: string;
-  /**
-   * Nestrukturovaná adresa
-   * @maxLength 1500
-   */
-  textovaAdresa?: string;
+	/**
+	 * Kód časti obce
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodCastiObce?: number;
+	/**
+	 * Kód správního obvodu Prahy
+	 * @minimum 0
+	 * @maximum 999
+	 */
+	kodSpravnihoObvodu?: number;
+	/**
+	 * Kód městské části statutárního města
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodMestskeCastiObvodu?: number;
+	/**
+	 * Kód ulice, veřejného prostranství ze zdroje
+	 * @minimum 0
+	 * @maximum 9999999
+	 */
+	kodUlice?: number;
+	/**
+	 * Číslo domovní
+	 * @maximum 9999
+	 */
+	cisloDomovni?: number;
+	/**
+	 * Kód obce
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodObce?: number;
+	/**
+	 * Číslo orientační - číselná část
+	 * @maximum 999
+	 */
+	cisloOrientacni?: number;
+	/**
+	 * Číslo orientační - písmenná část
+	 * @maxLength 1
+	 */
+	cisloOrientacniPismeno?: string;
+	/**
+	 * Nestrukturovaná adresa
+	 * @maxLength 1500
+	 */
+	textovaAdresa?: string;
 }
 
 export type EkonomickeSubjektyRegistraceFiltrAllOf = {
-  ico?: string[];
+	ico?: string[];
 };
 
 /**
  * Filtr pro vyhledání seznamu ekonomických subjektů podle parametru IČO.
  */
-export type EkonomickeSubjektyRegistraceFiltr = StrankovaniARazeni & EkonomickeSubjektyRegistraceFiltrAllOf;
+export type EkonomickeSubjektyRegistraceFiltr = StrankovaniARazeni &
+	EkonomickeSubjektyRegistraceFiltrAllOf;
 
 export type EkonomickeSubjektyZakladFiltrAllOf = {
-  ico?: string[];
-  /**
-   * Obchodní jméno ekonomického subjektu
-   * @minLength 1
-   * @maxLength 2000
-   */
-  obchodniJmeno?: string;
-  /** Adresa sídla ekonomického subjektu */
-  sidlo?: AdresaFiltr;
-  pravniForma?: string[];
-  financniUrad?: string[];
+	ico?: string[];
+	/**
+	 * Obchodní jméno ekonomického subjektu
+	 * @minLength 1
+	 * @maxLength 2000
+	 */
+	obchodniJmeno?: string;
+	/** Adresa sídla ekonomického subjektu */
+	sidlo?: AdresaFiltr;
+	pravniForma?: string[];
+	financniUrad?: string[];
 };
 
 /**
  * Obecný filtr pro vyhledání seznamu ekonomických subjektů
  */
-export type EkonomickeSubjektyZakladFiltr = StrankovaniARazeni & EkonomickeSubjektyZakladFiltrAllOf;
+export type EkonomickeSubjektyZakladFiltr = StrankovaniARazeni &
+	EkonomickeSubjektyZakladFiltrAllOf;
 
 export type StandardizovaneAdresySeznamAllOf = {
-  standardizovaneAdresy?: StandardizovanaAdresa[];
-  /** Stav standardizace adresy - kod (Číselník kod:StavStandardizaceAdresy) UPLNA, CASTECNA_OBEC/..., NEUSPESNA */
-  stavStandardizace?: string;
-  /** Podmínka dotazu */
-  request?: StandardizovanaAdresaFiltr;
+	standardizovaneAdresy?: StandardizovanaAdresa[];
+	/** Stav standardizace adresy - kod (Číselník kod:StavStandardizaceAdresy) UPLNA, CASTECNA_OBEC/..., NEUSPESNA */
+	stavStandardizace?: string;
+	/** Podmínka dotazu */
+	request?: StandardizovanaAdresaFiltr;
 };
 
 /**
  * Seznam nalezených standardizovaných adres
  */
-export type StandardizovaneAdresySeznam = Seznam & StandardizovaneAdresySeznamAllOf;
+export type StandardizovaneAdresySeznam = Seznam &
+	StandardizovaneAdresySeznamAllOf;
 
 /**
  * Standardizovaná adresa
  */
 export interface StandardizovanaAdresa {
-  /**
-   * Číslo domovní
-   * @maximum 9999
-   */
-  cisloDomovni?: number;
-  /**
-   * Číslo orientační - číselná část
-   * @maximum 999
-   */
-  cisloOrientacni?: number;
-  /**
-   * Číslo orientační - písmenná část
-   * @maxLength 1
-   */
-  cisloOrientacniPismeno?: string;
-  /**
-   * Kód adresního místa
-   * @minimum 0
-   * @maximum 999999999
-   */
-  kodAdresnihoMista?: number;
-  /**
-   * Kód časti obce
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodCastiObce?: number;
-  /**
-   * Kód kraje
-   * @minimum 0
-   * @maximum 999
-   */
-  kodKraje?: number;
-  /**
-   * Kód městské části statutárního města
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodMestskeCastiObvodu?: number;
-  /**
-   * Kód městského obvodu Prahy
-   * @minimum 0
-   * @maximum 999
-   */
-  kodMestskehoObvoduP?: number;
-  /**
-   * Kód obce
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodObce?: number;
-  /**
-   * Kód okresu
-   * @minimum 0
-   * @maximum 9999
-   */
-  kodOkresu?: number;
-  /**
-   * Kód správního obvodu Prahy
-   * @minimum 0
-   * @maximum 999
-   */
-  kodSpravnihoObvoduP?: number;
-  /**
-   * Kód stavebního objektu
-   * @minimum 0
-   * @maximum 999999999
-   */
-  kodStavebnihoObjektu?: number;
-  /**
-   * Kód ulice, veřejného prostranství ze zdroje
-   * @minimum 0
-   * @maximum 9999999
-   */
-  kodUlice?: number;
-  /**
-   * Název části obce
-   * @maxLength 48
-   */
-  nazevCastiObce?: string;
-  /**
-   * Název kraje
-   * @maxLength 32
-   */
-  nazevKraje?: string;
-  /**
-   * Název městské části statutárního města 
-   * @maxLength 48
-   */
-  nazevMestskeCastiObvodu?: string;
-  /**
-   * Název městského obvodu Prahy
-   * @maxLength 32
-   */
-  nazevMestskehoObvoduP?: string;
-  /**
-   * Název obce
-   * @maxLength 48
-   */
-  nazevObce?: string;
-  /**
-   * Název okresu
-   * @maxLength 32
-   */
-  nazevOkresu?: string;
-  /**
-   * Název správního obvodu Prahy 
-   * @maxLength 32
-   */
-  nazevSpravnihoObvoduP?: string;
-  /**
-   * Název ulice, veřejného prostranství 
-   * @maxLength 48
-   */
-  nazevUlice?: string;
-  /** Poštovní směrovací číslo adresní pošty */
-  psc?: number;
-  /**
-   * Textová podoba adresy
-   * @maxLength 1500
-   */
-  textovaAdresa?: string;
-  /** Typ stavebního objektu - kód (Číselník kod:TypStavebnihoObjektu, zdroj:ruian) pozn. atribut bude v příštích verzích nahrazen atributem typCisloDomovni (sjednocení pojmosloví IS). Z důvodů kompatibility api bude atribut podporováno/duplikován do verze 1.2.0  */
-  typStavebnihoObjektu?: string;
-  /**
-   * Typ čísla domu - kód (ciselnikKod: TypCislaDomovniho) 
-   * @maximum 9999
-   */
-  typCisloDomovni?: number;
+	/**
+	 * Číslo domovní
+	 * @maximum 9999
+	 */
+	cisloDomovni?: number;
+	/**
+	 * Číslo orientační - číselná část
+	 * @maximum 999
+	 */
+	cisloOrientacni?: number;
+	/**
+	 * Číslo orientační - písmenná část
+	 * @maxLength 1
+	 */
+	cisloOrientacniPismeno?: string;
+	/**
+	 * Kód adresního místa
+	 * @minimum 0
+	 * @maximum 999999999
+	 */
+	kodAdresnihoMista?: number;
+	/**
+	 * Kód časti obce
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodCastiObce?: number;
+	/**
+	 * Kód kraje
+	 * @minimum 0
+	 * @maximum 999
+	 */
+	kodKraje?: number;
+	/**
+	 * Kód městské části statutárního města
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodMestskeCastiObvodu?: number;
+	/**
+	 * Kód městského obvodu Prahy
+	 * @minimum 0
+	 * @maximum 999
+	 */
+	kodMestskehoObvoduP?: number;
+	/**
+	 * Kód obce
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodObce?: number;
+	/**
+	 * Kód okresu
+	 * @minimum 0
+	 * @maximum 9999
+	 */
+	kodOkresu?: number;
+	/**
+	 * Kód správního obvodu Prahy
+	 * @minimum 0
+	 * @maximum 999
+	 */
+	kodSpravnihoObvoduP?: number;
+	/**
+	 * Kód stavebního objektu
+	 * @minimum 0
+	 * @maximum 999999999
+	 */
+	kodStavebnihoObjektu?: number;
+	/**
+	 * Kód ulice, veřejného prostranství ze zdroje
+	 * @minimum 0
+	 * @maximum 9999999
+	 */
+	kodUlice?: number;
+	/**
+	 * Název části obce
+	 * @maxLength 48
+	 */
+	nazevCastiObce?: string;
+	/**
+	 * Název kraje
+	 * @maxLength 32
+	 */
+	nazevKraje?: string;
+	/**
+	 * Název městské části statutárního města
+	 * @maxLength 48
+	 */
+	nazevMestskeCastiObvodu?: string;
+	/**
+	 * Název městského obvodu Prahy
+	 * @maxLength 32
+	 */
+	nazevMestskehoObvoduP?: string;
+	/**
+	 * Název obce
+	 * @maxLength 48
+	 */
+	nazevObce?: string;
+	/**
+	 * Název okresu
+	 * @maxLength 32
+	 */
+	nazevOkresu?: string;
+	/**
+	 * Název správního obvodu Prahy
+	 * @maxLength 32
+	 */
+	nazevSpravnihoObvoduP?: string;
+	/**
+	 * Název ulice, veřejného prostranství
+	 * @maxLength 48
+	 */
+	nazevUlice?: string;
+	/** Poštovní směrovací číslo adresní pošty */
+	psc?: number;
+	/**
+	 * Textová podoba adresy
+	 * @maxLength 1500
+	 */
+	textovaAdresa?: string;
+	/** Typ stavebního objektu - kód (Číselník kod:TypStavebnihoObjektu, zdroj:ruian) pozn. atribut bude v příštích verzích nahrazen atributem typCisloDomovni (sjednocení pojmosloví IS). Z důvodů kompatibility api bude atribut podporováno/duplikován do verze 1.2.0  */
+	typStavebnihoObjektu?: string;
+	/**
+	 * Typ čísla domu - kód (ciselnikKod: TypCislaDomovniho)
+	 * @maximum 9999
+	 */
+	typCisloDomovni?: number;
 }
 
 export type StandardizovanaAdresaFiltrAllOf = {
-  /**
-   * Kód obce
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodObce?: number;
-  /**
-   * Název obce
-   * @maxLength 48
-   */
-  nazevObce?: string;
-  /**
-   * Kód části obce
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodCastiObce?: number;
-  /**
-   * Název části obce
-   * @maxLength 48
-   */
-  nazevCastiObce?: string;
-  /**
-   * Kód městské části statutárního města nebo Prahy 
-   * @minimum 0
-   * @maximum 999999
-   */
-  kodMestskehoCastiObvodu?: number;
-  /**
-   * Název městské části statutárního města nebo Prahy
-   * @maxLength 32
-   */
-  nazevMestskehoCastiObvodu?: string;
-  /**
-   * Kód ulice, veřejného prostranství 
-   * @minimum 0
-   * @maximum 9999999
-   */
-  kodUlice?: number;
-  /**
-   * Název ulice, veřejného prostranství 
-   * @maxLength 48
-   */
-  nazevUlice?: string;
-  /**
-   * Číslo domovní
-   * @maximum 9999
-   */
-  cisloDomovni?: number;
-  /**
-   * Číslo orientační - číselná část
-   * @maximum 999
-   */
-  cisloOrientacni?: number;
-  /**
-   * Číslo orientační - písmenná část
-   * @maxLength 1
-   */
-  cisloOrientacniPismeno?: string;
-  /**
-   * Kód adresního místa
-   * @minimum 0
-   * @maximum 999999999
-   */
-  kodAdresnihoMista?: number;
-  /**
-   * Nestrukturovaná adresa
-   * @maxLength 1500
-   */
-  textovaAdresa?: string;
-  /** Typ požadované standardizace - kód (číselník kod:TypStandardizaceAdresy) UPLNA_STANDARDIZACE, VYHOVUJICI_ADRESY */
-  typStandardizaceAdresy?: string;
+	/**
+	 * Kód obce
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodObce?: number;
+	/**
+	 * Název obce
+	 * @maxLength 48
+	 */
+	nazevObce?: string;
+	/**
+	 * Kód části obce
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodCastiObce?: number;
+	/**
+	 * Název části obce
+	 * @maxLength 48
+	 */
+	nazevCastiObce?: string;
+	/**
+	 * Kód městské části statutárního města nebo Prahy
+	 * @minimum 0
+	 * @maximum 999999
+	 */
+	kodMestskehoCastiObvodu?: number;
+	/**
+	 * Název městské části statutárního města nebo Prahy
+	 * @maxLength 32
+	 */
+	nazevMestskehoCastiObvodu?: string;
+	/**
+	 * Kód ulice, veřejného prostranství
+	 * @minimum 0
+	 * @maximum 9999999
+	 */
+	kodUlice?: number;
+	/**
+	 * Název ulice, veřejného prostranství
+	 * @maxLength 48
+	 */
+	nazevUlice?: string;
+	/**
+	 * Číslo domovní
+	 * @maximum 9999
+	 */
+	cisloDomovni?: number;
+	/**
+	 * Číslo orientační - číselná část
+	 * @maximum 999
+	 */
+	cisloOrientacni?: number;
+	/**
+	 * Číslo orientační - písmenná část
+	 * @maxLength 1
+	 */
+	cisloOrientacniPismeno?: string;
+	/**
+	 * Kód adresního místa
+	 * @minimum 0
+	 * @maximum 999999999
+	 */
+	kodAdresnihoMista?: number;
+	/**
+	 * Nestrukturovaná adresa
+	 * @maxLength 1500
+	 */
+	textovaAdresa?: string;
+	/** Typ požadované standardizace - kód (číselník kod:TypStandardizaceAdresy) UPLNA_STANDARDIZACE, VYHOVUJICI_ADRESY */
+	typStandardizaceAdresy?: string;
 };
 
 /**
- * Komplexní filtr pro standardizaci adresy RÚIAN 
+ * Komplexní filtr pro standardizaci adresy RÚIAN
  */
-export type StandardizovanaAdresaFiltr = StrankovaniARazeni & StandardizovanaAdresaFiltrAllOf;
+export type StandardizovanaAdresaFiltr = StrankovaniARazeni &
+	StandardizovanaAdresaFiltrAllOf;
 
 export type AdresaCeuAllOf = {
-  /**
-   * Typ adresy
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAdresy?: string;
+	/**
+	 * Typ adresy
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAdresy?: string;
 };
 
 /**
@@ -2980,106 +3003,108 @@ export type AdresaCeu = Adresa & AdresaCeuAllOf;
  * Tabulka angažovaných osob
  */
 export interface AngazovanaOsobaCeu {
-  /**
-   * Jméno, příjmení správce
-   * @maxLength 100
-   */
-  jmenoPrijmeni?: string;
-  /**
-   * Typ angažmá
-   * @minLength 1
-   * @maxLength 64
-   */
-  typAngazma?: string;
+	/**
+	 * Jméno, příjmení správce
+	 * @maxLength 100
+	 */
+	jmenoPrijmeni?: string;
+	/**
+	 * Typ angažmá
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typAngazma?: string;
 }
 
 export type EkonomickySubjektCeuZakladAllOf = {
-  /**
-   * Typ subjektu  (ciselnikKod: TypSubjektu, zdroj: Ceu) 
-   * @minLength 1
-   * @maxLength 64
-   */
-  typSubjektu?: string;
-  adresy?: AdresaCeu[];
-  /**
-   * Jméno, příjmení fyzické osoby
-   * @maxLength 100
-   */
-  jmenoPrijmeni?: string;
+	/**
+	 * Typ subjektu  (ciselnikKod: TypSubjektu, zdroj: Ceu)
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typSubjektu?: string;
+	adresy?: AdresaCeu[];
+	/**
+	 * Jméno, příjmení fyzické osoby
+	 * @maxLength 100
+	 */
+	jmenoPrijmeni?: string;
 };
 
 /**
- * Ekonomický subjekt zdroje CEÚ - obecný předek 
+ * Ekonomický subjekt zdroje CEÚ - obecný předek
  */
-export type EkonomickySubjektCeuZaklad = EkonomickySubjektZaklad & EkonomickySubjektCeuZakladAllOf;
+export type EkonomickySubjektCeuZaklad = EkonomickySubjektZaklad &
+	EkonomickySubjektCeuZakladAllOf;
 
 /**
  * Úpadek - obecný předek
  */
 export interface UpadekCeu {
-  /** Textace podnětu úpadku  */
-  podnet?: string;
-  /** Spisová značka řízení úpadku */
-  spisZn?: string;
-  /** Datum zápisu */
-  datum?: string;
-  /**
-   * Odkaz na detail úpadku 
-   * @minLength 1
-   * @maxLength 255
-   */
-  detail?: string;
-  /**
-   * Odkaz na usnesení
-   * @minLength 1
-   * @maxLength 255
-   */
-  usneseni?: string;
-  /**
-   * Akce úpadku
-   * @minLength 1
-   * @maxLength 64
-   */
-  akceUpadek?: string;
-  /**
-   * Typ úpadku
-   * @minLength 1
-   * @maxLength 64
-   */
-  typUpadek?: string;
-  /**
-   * Soud rozhodující o úpadku
-   * @minLength 1
-   * @maxLength 64
-   */
-  soudUpadek?: string;
+	/** Textace podnětu úpadku  */
+	podnet?: string;
+	/** Spisová značka řízení úpadku */
+	spisZn?: string;
+	/** Datum zápisu */
+	datum?: string;
+	/**
+	 * Odkaz na detail úpadku
+	 * @minLength 1
+	 * @maxLength 255
+	 */
+	detail?: string;
+	/**
+	 * Odkaz na usnesení
+	 * @minLength 1
+	 * @maxLength 255
+	 */
+	usneseni?: string;
+	/**
+	 * Akce úpadku
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	akceUpadek?: string;
+	/**
+	 * Typ úpadku
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	typUpadek?: string;
+	/**
+	 * Soud rozhodující o úpadku
+	 * @minLength 1
+	 * @maxLength 64
+	 */
+	soudUpadek?: string;
 }
 
 export type EkonomickeSubjektyCeuSeznamAllOf = {
-  ekonomickeSubjekty?: EkonomickySubjektCeu[];
+	ekonomickeSubjekty?: EkonomickySubjektCeu[];
 };
 
 /**
  * Seznam ekonomických subjektů ze zdroje CEÚ
  */
-export type EkonomickeSubjektyCeuSeznam = Seznam & EkonomickeSubjektyCeuSeznamAllOf;
+export type EkonomickeSubjektyCeuSeznam = Seznam &
+	EkonomickeSubjektyCeuSeznamAllOf;
 
 /**
  * Ekonomický subjekt
  */
 export interface EkonomickySubjektCeu {
-  /**
-   * ičo/Id ekonomického subjektu
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
-  zaznamy?: ZaznamCeu[];
+	/**
+	 * ičo/Id ekonomického subjektu
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
+	zaznamy?: ZaznamCeu[];
 }
 
 export type UpadekCeuVerejnyAllOf = {
-  /** Správce úpadku  */
-  spravceUpadku?: AngazovanaOsobaCeu;
+	/** Správce úpadku  */
+	spravceUpadku?: AngazovanaOsobaCeu;
 };
 
 /**
@@ -3088,7 +3113,7 @@ export type UpadekCeuVerejnyAllOf = {
 export type UpadekCeuVerejny = UpadekCeu & UpadekCeuVerejnyAllOf;
 
 export type ZaznamCeuAllOf = {
-  upadek?: UpadekCeuVerejny[];
+	upadek?: UpadekCeuVerejny[];
 };
 
 /**
@@ -3100,402 +3125,515 @@ export type ZaznamCeu = EkonomickySubjektCeuZaklad & ZaznamCeuAllOf;
  * Filtr notifikační dávky ARES
  */
 export interface EkonomickeSubjektyNotifikaceFiltr {
-  /**
-   * Datový zdroj notifikační dávky - kód (ciselnikKod: TypZdrojeAres, zdroj:com) Podporované zdroje:  vr - Věřejný rejstřík res - Registr ekonomických subjektů rzp - Registr živnostenského podnikání nrpzs - Národní registr poskytovatelů zdravotnických služeb rcns - Registr církvní a náboženských společenství rpsh - Registr politických stran a hnutí rs - Registr škol szr - Společný zemědělský registr 
-   * @maxLength 30
-   */
-  datovyZdroj?: string;
+	/**
+	 * Datový zdroj notifikační dávky - kód (ciselnikKod: TypZdrojeAres, zdroj:com) Podporované zdroje:  vr - Věřejný rejstřík res - Registr ekonomických subjektů rzp - Registr živnostenského podnikání nrpzs - Národní registr poskytovatelů zdravotnických služeb rcns - Registr církvní a náboženských společenství rpsh - Registr politických stran a hnutí rs - Registr škol szr - Společný zemědělský registr
+	 * @maxLength 30
+	 */
+	datovyZdroj?: string;
 }
 
 /**
  * Notifikační změna
  */
 export interface Notifikace {
-  /**
-   * Typ notifikační změny - kód (kodCiselniku: TypZmenyAres)
-   * @maxLength 50
-   */
-  typZmeny?: string;
-  /**
-   * Ičo ekonomického subjektu, pokud je ičo přidělené. Id ekonomického subjektu, polkud je ičo nepřidělené.
-   * @maxLength 32
-   * @pattern ^(ARES_)?\d{8}$
-   */
-  icoId?: string;
+	/**
+	 * Typ notifikační změny - kód (kodCiselniku: TypZmenyAres)
+	 * @maxLength 50
+	 */
+	typZmeny?: string;
+	/**
+	 * Ičo ekonomického subjektu, pokud je ičo přidělené. Id ekonomického subjektu, polkud je ičo nepřidělené.
+	 * @maxLength 32
+	 * @pattern ^(ARES_)?\d{8}$
+	 */
+	icoId?: string;
 }
 
 /**
  * Notifikační dávka datového zdroje
  */
 export interface NotifikacniDavka {
-  /** Číslo notifikační dávky */
-  cisloDavky?: number;
-  /**
-   * Datový zdroj notifikační dávky - kód (ciselnikKod: TypZdrojeAres, zdroj:com) 
-   * @maxLength 30
-   */
-  datovyZdroj?: string;
-  /** Datum uvolnění notifikační dávky */
-  datumUvolneniDavky?: string;
-  /** Počet změn v notifikační dávce */
-  pocetZmen?: number;
+	/** Číslo notifikační dávky */
+	cisloDavky?: number;
+	/**
+	 * Datový zdroj notifikační dávky - kód (ciselnikKod: TypZdrojeAres, zdroj:com)
+	 * @maxLength 30
+	 */
+	datovyZdroj?: string;
+	/** Datum uvolnění notifikační dávky */
+	datumUvolneniDavky?: string;
+	/** Počet změn v notifikační dávce */
+	pocetZmen?: number;
 }
 
 export type NotifikacniDavkaZaznamAllOf = {
-  seznamNotifikaci?: Notifikace[];
+	seznamNotifikaci?: Notifikace[];
 };
 
 /**
  * Notifikační dávka datového zdroje
  */
-export type NotifikacniDavkaZaznam = NotifikacniDavka & NotifikacniDavkaZaznamAllOf;
+export type NotifikacniDavkaZaznam = NotifikacniDavka &
+	NotifikacniDavkaZaznamAllOf;
 
 /**
  * Seznam notifikačních dávek
  */
 export interface SeznamNotifikacnichDavek {
-  notifikacniDavky?: NotifikacniDavka[];
+	notifikacniDavky?: NotifikacniDavka[];
 }
 
 /**
  * Angažovaná osoba - filtr
  */
 export interface AngazovanaOsobaFiltr {
-  /**
-   * Jméno angažované osoby
-   * @maxLength 100
-   */
-  jmeno?: string;
-  /**
-   * Rodné číslo osoby
-   * @minLength 9
-   * @maxLength 10
-   */
-  rodneCislo?: string;
-  /**
-   * Příjmení angažované osoby
-   * @maxLength 100
-   */
-  prijmeni?: string;
-  /** Datum narození angažované osoby */
-  datumNarozeni?: string;
+	/**
+	 * Jméno angažované osoby
+	 * @maxLength 100
+	 */
+	jmeno?: string;
+	/**
+	 * Rodné číslo osoby
+	 * @minLength 9
+	 * @maxLength 10
+	 */
+	rodneCislo?: string;
+	/**
+	 * Příjmení angažované osoby
+	 * @maxLength 100
+	 */
+	prijmeni?: string;
+	/** Datum narození angažované osoby */
+	datumNarozeni?: string;
 }
 
 /**
  * Chybové kódy.
  */
-export type KodChybyEnum = typeof KodChybyEnum[keyof typeof KodChybyEnum];
-
+export type KodChybyEnum = (typeof KodChybyEnum)[keyof typeof KodChybyEnum];
 
 // eslint-disable-next-line @typescript-eslint/no-redeclare
 export const KodChybyEnum = {
-  OBECNA_CHYBA: 'OBECNA_CHYBA',
-  CHYBA_VSTUPU: 'CHYBA_VSTUPU',
-  NENALEZENO: 'NENALEZENO',
-  NENI_IMPLEMENTOVANO: 'NENI_IMPLEMENTOVANO',
-  NEPRIHLASENY_UZIVATEL: 'NEPRIHLASENY_UZIVATEL',
-  NENI_OPRAVNENI: 'NENI_OPRAVNENI',
+	OBECNA_CHYBA: "OBECNA_CHYBA",
+	CHYBA_VSTUPU: "CHYBA_VSTUPU",
+	NENALEZENO: "NENALEZENO",
+	NENI_IMPLEMENTOVANO: "NENI_IMPLEMENTOVANO",
+	NEPRIHLASENY_UZIVATEL: "NEPRIHLASENY_UZIVATEL",
+	NENI_OPRAVNENI: "NENI_OPRAVNENI",
 } as const;
 
 /**
  * Vyhledání seznamu ekonomických subjektů ARES podle komplexního filtru
  */
-export const vyhledejEkonomickeSubjekty = <TData = AxiosResponse<EkonomickeSubjektySeznam>>(
-    ekonomickeSubjektyKomplexFiltr: EkonomickeSubjektyKomplexFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat`,
-      ekonomickeSubjektyKomplexFiltr,options
-    );
-  }
+export const vyhledejEkonomickeSubjekty = <
+	TData = AxiosResponse<EkonomickeSubjektySeznam>,
+>(
+	ekonomickeSubjektyKomplexFiltr: EkonomickeSubjektyKomplexFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/vyhledat`,
+		ekonomickeSubjektyKomplexFiltr,
+		options,
+	);
+};
 
 /**
- * Vyhledání ekonomického subjektu ARES podle zadaného iča 
+ * Vyhledání ekonomického subjektu ARES podle zadaného iča
  */
 export const vratEkonomickySubjekt = <TData = AxiosResponse<EkonomickySubjekt>>(
-    ico: string, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/${ico}`,options
-    );
-  }
+	ico: string,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty/${ico}`,
+		options,
+	);
+};
 
 /**
  * Vyhledání konkrétního ekonomického subjektu ze zdroje VR
  */
-export const vratEkonomickySubjektVr = <TData = AxiosResponse<EkonomickySubjektVr>>(
-    ico: string, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-vr/${ico}`,options
-    );
-  }
+export const vratEkonomickySubjektVr = <
+	TData = AxiosResponse<EkonomickySubjektVr>,
+>(
+	ico: string,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-vr/${ico}`,
+		options,
+	);
+};
 
 /**
  * Vyhledání seznamu ekonomických subjektu ze zdroje VR
  */
-export const vyhledejSeznamEkonomickychSubjektuVr = <TData = AxiosResponse<EkonomickeSubjektyVrSeznam>>(
-    ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-vr/vyhledat`,
-      ekonomickeSubjektyRegistraceFiltr,options
-    );
-  }
+export const vyhledejSeznamEkonomickychSubjektuVr = <
+	TData = AxiosResponse<EkonomickeSubjektyVrSeznam>,
+>(
+	ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-vr/vyhledat`,
+		ekonomickeSubjektyRegistraceFiltr,
+		options,
+	);
+};
 
 /**
  * Vyhledání konkrétního ekonomického subjektu ze zdroje RES
  */
-export const vratEkonomickySubjektRes = <TData = AxiosResponse<EkonomickySubjektRes>>(
-    ico: string, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-res/${ico}`,options
-    );
-  }
+export const vratEkonomickySubjektRes = <
+	TData = AxiosResponse<EkonomickySubjektRes>,
+>(
+	ico: string,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-res/${ico}`,
+		options,
+	);
+};
 
 /**
  * Vyhledání seznamu ekonomických subjektu ze zdroje RES
  */
-export const vyhledejSeznamEkonomickychSubjektuRes = <TData = AxiosResponse<EkonomickeSubjektyResSeznam>>(
-    ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-res/vyhledat`,
-      ekonomickeSubjektyRegistraceFiltr,options
-    );
-  }
+export const vyhledejSeznamEkonomickychSubjektuRes = <
+	TData = AxiosResponse<EkonomickeSubjektyResSeznam>,
+>(
+	ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-res/vyhledat`,
+		ekonomickeSubjektyRegistraceFiltr,
+		options,
+	);
+};
 
 /**
  * Vyhledání konkrétního ekonomického subjektu ze zdroje RŽP
  */
-export const vratEkonomickySubjektRzp = <TData = AxiosResponse<EkonomickySubjektRzp>>(
-    ico: string, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rzp/${ico}`,options
-    );
-  }
+export const vratEkonomickySubjektRzp = <
+	TData = AxiosResponse<EkonomickySubjektRzp>,
+>(
+	ico: string,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rzp/${ico}`,
+		options,
+	);
+};
 
 /**
  * Vyhledání seznamu ekonomických subjektu ze zdroje RŽP
  */
-export const vyhledejSeznamEkonomickychSubjektuRzp = <TData = AxiosResponse<EkonomickeSubjektyRzpSeznam>>(
-    ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rzp/vyhledat`,
-      ekonomickeSubjektyRegistraceFiltr,options
-    );
-  }
+export const vyhledejSeznamEkonomickychSubjektuRzp = <
+	TData = AxiosResponse<EkonomickeSubjektyRzpSeznam>,
+>(
+	ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rzp/vyhledat`,
+		ekonomickeSubjektyRegistraceFiltr,
+		options,
+	);
+};
 
 /**
  * Vyhledání seznamu ekonomických subjektu ze zdroje NRPZS
  */
-export const vyhledejSeznamEkonomickychSubjektuNrpzs = <TData = AxiosResponse<EkonomickeSubjektyNrpzsSeznam>>(
-    ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-nrpzs/vyhledat`,
-      ekonomickeSubjektyRegistraceFiltr,options
-    );
-  }
+export const vyhledejSeznamEkonomickychSubjektuNrpzs = <
+	TData = AxiosResponse<EkonomickeSubjektyNrpzsSeznam>,
+>(
+	ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-nrpzs/vyhledat`,
+		ekonomickeSubjektyRegistraceFiltr,
+		options,
+	);
+};
 
 /**
  * Vyhledání konkrétního ekonomického subjektu ze zdroje NRPZS
  */
-export const vratEkonomickySubjektNrpzs = <TData = AxiosResponse<EkonomickySubjektNrpzs>>(
-    ico: string, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-nrpzs/${ico}`,options
-    );
-  }
+export const vratEkonomickySubjektNrpzs = <
+	TData = AxiosResponse<EkonomickySubjektNrpzs>,
+>(
+	ico: string,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-nrpzs/${ico}`,
+		options,
+	);
+};
 
 /**
  * Vyhledání konkrétního ekonomického subjektu ze zdroje RPSH
  */
-export const vratEkonomickySubjektRpsh = <TData = AxiosResponse<EkonomickySubjektRpsh>>(
-    ico: string, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rpsh/${ico}`,options
-    );
-  }
+export const vratEkonomickySubjektRpsh = <
+	TData = AxiosResponse<EkonomickySubjektRpsh>,
+>(
+	ico: string,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rpsh/${ico}`,
+		options,
+	);
+};
 
 /**
  * Vyhledání seznamu ekonomických subjektu ze zdroje RPSH
  */
-export const vyhledejSeznamEkonomickychSubjektuRpsh = <TData = AxiosResponse<EkonomickeSubjektyRpshSeznam>>(
-    ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rpsh/vyhledat`,
-      ekonomickeSubjektyRegistraceFiltr,options
-    );
-  }
+export const vyhledejSeznamEkonomickychSubjektuRpsh = <
+	TData = AxiosResponse<EkonomickeSubjektyRpshSeznam>,
+>(
+	ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rpsh/vyhledat`,
+		ekonomickeSubjektyRegistraceFiltr,
+		options,
+	);
+};
 
 /**
  * Vyhledání konkrétního ekonomického subjektu ze zdroje RCNS
  */
-export const vratEkonomickySubjektRcns = <TData = AxiosResponse<EkonomickySubjektRcns>>(
-    ico: string, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rcns/${ico}`,options
-    );
-  }
+export const vratEkonomickySubjektRcns = <
+	TData = AxiosResponse<EkonomickySubjektRcns>,
+>(
+	ico: string,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rcns/${ico}`,
+		options,
+	);
+};
 
 /**
  * Vyhledání seznamu ekonomických subjektu ze zdroje RCNS
  */
-export const vyhledejSeznamEkonomickychSubjektuRcns = <TData = AxiosResponse<EkonomickeSubjektyRcnsSeznam>>(
-    ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rcns/vyhledat`,
-      ekonomickeSubjektyRegistraceFiltr,options
-    );
-  }
+export const vyhledejSeznamEkonomickychSubjektuRcns = <
+	TData = AxiosResponse<EkonomickeSubjektyRcnsSeznam>,
+>(
+	ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rcns/vyhledat`,
+		ekonomickeSubjektyRegistraceFiltr,
+		options,
+	);
+};
 
 /**
  * Vyhledání konkrétního ekonomického subjektu ze zdroje SZR - subregistr EZP
  */
-export const vratEkonomickySubjektSzr = <TData = AxiosResponse<EkonomickySubjektSzr>>(
-    ico: string, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-szr/${ico}`,options
-    );
-  }
+export const vratEkonomickySubjektSzr = <
+	TData = AxiosResponse<EkonomickySubjektSzr>,
+>(
+	ico: string,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-szr/${ico}`,
+		options,
+	);
+};
 
 /**
  * Vyhledání seznamu ekonomických subjektu ze zdroje SZR - subregistr EZP
  */
-export const vyhledejSeznamEkonomickychSubjektuSzr = <TData = AxiosResponse<EkonomickeSubjektySzrSeznam>>(
-    ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-szr/vyhledat`,
-      ekonomickeSubjektyRegistraceFiltr,options
-    );
-  }
+export const vyhledejSeznamEkonomickychSubjektuSzr = <
+	TData = AxiosResponse<EkonomickeSubjektySzrSeznam>,
+>(
+	ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-szr/vyhledat`,
+		ekonomickeSubjektyRegistraceFiltr,
+		options,
+	);
+};
 
 /**
  * Vyhledání konkrétního ekonomického subjektu ze zdroje RŠ
  */
-export const vratEkonomickySubjektRs = <TData = AxiosResponse<EkonomickySubjektRs>>(
-    ico: string, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rs/${ico}`,options
-    );
-  }
+export const vratEkonomickySubjektRs = <
+	TData = AxiosResponse<EkonomickySubjektRs>,
+>(
+	ico: string,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rs/${ico}`,
+		options,
+	);
+};
 
 /**
  * Vyhledání seznamu ekonomických subjektu ze zdroje RŠ
  */
-export const vyhledejSeznamEkonomickychSubjektuRs = <TData = AxiosResponse<EkonomickeSubjektyRsSeznam>>(
-    ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rs/vyhledat`,
-      ekonomickeSubjektyRegistraceFiltr,options
-    );
-  }
+export const vyhledejSeznamEkonomickychSubjektuRs = <
+	TData = AxiosResponse<EkonomickeSubjektyRsSeznam>,
+>(
+	ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-rs/vyhledat`,
+		ekonomickeSubjektyRegistraceFiltr,
+		options,
+	);
+};
 
 /**
  * Vyhledání číselníků používaných v IS ARES podle komplexního filtru
  */
-export const vyhledejCiselnik = <TData = AxiosResponse<CiselnikyNazevnikSeznam>>(
-    ciselnikyZakladniFiltr: CiselnikyZakladniFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ciselniky-nazevniky/vyhledat`,
-      ciselnikyZakladniFiltr,options
-    );
-  }
+export const vyhledejCiselnik = <
+	TData = AxiosResponse<CiselnikyNazevnikSeznam>,
+>(
+	ciselnikyZakladniFiltr: CiselnikyZakladniFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ciselniky-nazevniky/vyhledat`,
+		ciselnikyZakladniFiltr,
+		options,
+	);
+};
 
 /**
  * Vyhledání seznamu standardizovaných adres RÚIAN podle komplexního filtru
  */
-export const vyhledejStandardizovaneAdresy = <TData = AxiosResponse<StandardizovaneAdresySeznam>>(
-    standardizovanaAdresaFiltr: StandardizovanaAdresaFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/standardizovane-adresy/vyhledat`,
-      standardizovanaAdresaFiltr,options
-    );
-  }
+export const vyhledejStandardizovaneAdresy = <
+	TData = AxiosResponse<StandardizovaneAdresySeznam>,
+>(
+	standardizovanaAdresaFiltr: StandardizovanaAdresaFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/standardizovane-adresy/vyhledat`,
+		standardizovanaAdresaFiltr,
+		options,
+	);
+};
 
 /**
  * Vyhledání konkrétního úpadce ze zdroje CEÚ
  */
-export const vratEkonomickySubjektCeu = <TData = AxiosResponse<EkonomickySubjektCeu>>(
-    ico: string, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-ceu/${ico}`,options
-    );
-  }
+export const vratEkonomickySubjektCeu = <
+	TData = AxiosResponse<EkonomickySubjektCeu>,
+>(
+	ico: string,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-ceu/${ico}`,
+		options,
+	);
+};
 
 /**
  * Vyhledání seznamu úpadců ze zdroje CEÚ
  */
-export const vyhledejSeznamEkonomickychSubjektuCeu = <TData = AxiosResponse<EkonomickeSubjektyCeuSeznam>>(
-    ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-ceu/vyhledat`,
-      ekonomickeSubjektyRegistraceFiltr,options
-    );
-  }
+export const vyhledejSeznamEkonomickychSubjektuCeu = <
+	TData = AxiosResponse<EkonomickeSubjektyCeuSeznam>,
+>(
+	ekonomickeSubjektyRegistraceFiltr: EkonomickeSubjektyRegistraceFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-ceu/vyhledat`,
+		ekonomickeSubjektyRegistraceFiltr,
+		options,
+	);
+};
 
 /**
- * Vyhledání seznamu notifikačních dávek ekonomických subjektů ARES podle zvoleného filtru 
+ * Vyhledání seznamu notifikačních dávek ekonomických subjektů ARES podle zvoleného filtru
  */
-export const vyhledejSeznamNotifikacnichDavek = <TData = AxiosResponse<SeznamNotifikacnichDavek>>(
-    ekonomickeSubjektyNotifikaceFiltr: EkonomickeSubjektyNotifikaceFiltr, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.post(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-notifikace/vyhledat`,
-      ekonomickeSubjektyNotifikaceFiltr,options
-    );
-  }
+export const vyhledejSeznamNotifikacnichDavek = <
+	TData = AxiosResponse<SeznamNotifikacnichDavek>,
+>(
+	ekonomickeSubjektyNotifikaceFiltr: EkonomickeSubjektyNotifikaceFiltr,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.post(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-notifikace/vyhledat`,
+		ekonomickeSubjektyNotifikaceFiltr,
+		options,
+	);
+};
 
 /**
- * Vyhledání  konkrétní notifikační dávky zdroje ARES podle vstupcách parametrů (zdroj, číslo notifikační dávky) 
+ * Vyhledání  konkrétní notifikační dávky zdroje ARES podle vstupcách parametrů (zdroj, číslo notifikační dávky)
  */
-export const vratNotifikacniDavku = <TData = AxiosResponse<NotifikacniDavkaZaznam>>(
-    datovyZdroj: string,
-    cisloDavky: number, options?: AxiosRequestConfig
- ): Promise<TData> => {
-    return axios.get(
-      `https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-notifikace/datovy-zdroj/${datovyZdroj}/cislo-davky/${cisloDavky}`,options
-    );
-  }
+export const vratNotifikacniDavku = <
+	TData = AxiosResponse<NotifikacniDavkaZaznam>,
+>(
+	datovyZdroj: string,
+	cisloDavky: number,
+	options?: AxiosRequestConfig,
+): Promise<TData> => {
+	return axios.get(
+		`https://ares.gov.cz/ekonomicke-subjekty-v-be/rest/ekonomicke-subjekty-notifikace/datovy-zdroj/${datovyZdroj}/cislo-davky/${cisloDavky}`,
+		options,
+	);
+};
 
-export type VyhledejEkonomickeSubjektyResult = AxiosResponse<EkonomickeSubjektySeznam>
-export type VratEkonomickySubjektResult = AxiosResponse<EkonomickySubjekt>
-export type VratEkonomickySubjektVrResult = AxiosResponse<EkonomickySubjektVr>
-export type VyhledejSeznamEkonomickychSubjektuVrResult = AxiosResponse<EkonomickeSubjektyVrSeznam>
-export type VratEkonomickySubjektResResult = AxiosResponse<EkonomickySubjektRes>
-export type VyhledejSeznamEkonomickychSubjektuResResult = AxiosResponse<EkonomickeSubjektyResSeznam>
-export type VratEkonomickySubjektRzpResult = AxiosResponse<EkonomickySubjektRzp>
-export type VyhledejSeznamEkonomickychSubjektuRzpResult = AxiosResponse<EkonomickeSubjektyRzpSeznam>
-export type VyhledejSeznamEkonomickychSubjektuNrpzsResult = AxiosResponse<EkonomickeSubjektyNrpzsSeznam>
-export type VratEkonomickySubjektNrpzsResult = AxiosResponse<EkonomickySubjektNrpzs>
-export type VratEkonomickySubjektRpshResult = AxiosResponse<EkonomickySubjektRpsh>
-export type VyhledejSeznamEkonomickychSubjektuRpshResult = AxiosResponse<EkonomickeSubjektyRpshSeznam>
-export type VratEkonomickySubjektRcnsResult = AxiosResponse<EkonomickySubjektRcns>
-export type VyhledejSeznamEkonomickychSubjektuRcnsResult = AxiosResponse<EkonomickeSubjektyRcnsSeznam>
-export type VratEkonomickySubjektSzrResult = AxiosResponse<EkonomickySubjektSzr>
-export type VyhledejSeznamEkonomickychSubjektuSzrResult = AxiosResponse<EkonomickeSubjektySzrSeznam>
-export type VratEkonomickySubjektRsResult = AxiosResponse<EkonomickySubjektRs>
-export type VyhledejSeznamEkonomickychSubjektuRsResult = AxiosResponse<EkonomickeSubjektyRsSeznam>
-export type VyhledejCiselnikResult = AxiosResponse<CiselnikyNazevnikSeznam>
-export type VyhledejStandardizovaneAdresyResult = AxiosResponse<StandardizovaneAdresySeznam>
-export type VratEkonomickySubjektCeuResult = AxiosResponse<EkonomickySubjektCeu>
-export type VyhledejSeznamEkonomickychSubjektuCeuResult = AxiosResponse<EkonomickeSubjektyCeuSeznam>
-export type VyhledejSeznamNotifikacnichDavekResult = AxiosResponse<SeznamNotifikacnichDavek>
-export type VratNotifikacniDavkuResult = AxiosResponse<NotifikacniDavkaZaznam>
+export type VyhledejEkonomickeSubjektyResult =
+	AxiosResponse<EkonomickeSubjektySeznam>;
+export type VratEkonomickySubjektResult = AxiosResponse<EkonomickySubjekt>;
+export type VratEkonomickySubjektVrResult = AxiosResponse<EkonomickySubjektVr>;
+export type VyhledejSeznamEkonomickychSubjektuVrResult =
+	AxiosResponse<EkonomickeSubjektyVrSeznam>;
+export type VratEkonomickySubjektResResult =
+	AxiosResponse<EkonomickySubjektRes>;
+export type VyhledejSeznamEkonomickychSubjektuResResult =
+	AxiosResponse<EkonomickeSubjektyResSeznam>;
+export type VratEkonomickySubjektRzpResult =
+	AxiosResponse<EkonomickySubjektRzp>;
+export type VyhledejSeznamEkonomickychSubjektuRzpResult =
+	AxiosResponse<EkonomickeSubjektyRzpSeznam>;
+export type VyhledejSeznamEkonomickychSubjektuNrpzsResult =
+	AxiosResponse<EkonomickeSubjektyNrpzsSeznam>;
+export type VratEkonomickySubjektNrpzsResult =
+	AxiosResponse<EkonomickySubjektNrpzs>;
+export type VratEkonomickySubjektRpshResult =
+	AxiosResponse<EkonomickySubjektRpsh>;
+export type VyhledejSeznamEkonomickychSubjektuRpshResult =
+	AxiosResponse<EkonomickeSubjektyRpshSeznam>;
+export type VratEkonomickySubjektRcnsResult =
+	AxiosResponse<EkonomickySubjektRcns>;
+export type VyhledejSeznamEkonomickychSubjektuRcnsResult =
+	AxiosResponse<EkonomickeSubjektyRcnsSeznam>;
+export type VratEkonomickySubjektSzrResult =
+	AxiosResponse<EkonomickySubjektSzr>;
+export type VyhledejSeznamEkonomickychSubjektuSzrResult =
+	AxiosResponse<EkonomickeSubjektySzrSeznam>;
+export type VratEkonomickySubjektRsResult = AxiosResponse<EkonomickySubjektRs>;
+export type VyhledejSeznamEkonomickychSubjektuRsResult =
+	AxiosResponse<EkonomickeSubjektyRsSeznam>;
+export type VyhledejCiselnikResult = AxiosResponse<CiselnikyNazevnikSeznam>;
+export type VyhledejStandardizovaneAdresyResult =
+	AxiosResponse<StandardizovaneAdresySeznam>;
+export type VratEkonomickySubjektCeuResult =
+	AxiosResponse<EkonomickySubjektCeu>;
+export type VyhledejSeznamEkonomickychSubjektuCeuResult =
+	AxiosResponse<EkonomickeSubjektyCeuSeznam>;
+export type VyhledejSeznamNotifikacnichDavekResult =
+	AxiosResponse<SeznamNotifikacnichDavek>;
+export type VratNotifikacniDavkuResult = AxiosResponse<NotifikacniDavkaZaznam>;

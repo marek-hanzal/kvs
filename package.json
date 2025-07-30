@@ -1,35 +1,35 @@
 {
-  "name": "@marek-hanzal/kvs",
-  "version": "0.5.0",
-  "type": "module",
-  "scripts": {
-    "dev": "dotenv -c development -- bun x turbo run dev --no-daemon",
-    "build": "dotenv -c development -- bun x turbo run build --no-daemon",
-    "sdk": "dotenv -c development -- bun x turbo run sdk --no-daemon",
-    "translations": "turbo run translations --no-daemon",
-    "format": "biome format --write .",
-    "lint": "biome lint .",
-    "typecheck": "dotenv -- bun x turbo run typecheck --no-daemon",
-    "check": "run-s format lint typecheck",
-    "update": "bun update --linker=isolated",
-    "sp:fix": "bun x syncpack fix-mismatches",
-    "sp:format": "bun x syncpack format",
-    "sp:update": "bun x syncpack update",
-    "workflow:format": "run-s sp:format format",
-    "workflow:check": "run-s workflow:format lint typecheck",
-    "workflow:update": "run-s sp:* update sdk workflow:check"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.1.3",
-    "dotenv-cli": "10.0.0",
-    "npm-run-all2": "8.0.4",
-    "syncpack": "13.0.4",
-    "turbo": "2.5.5"
-  },
-  "packageManager": "bun@1.2.4",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/**/*"
-  ]
+	"name": "@marek-hanzal/kvs",
+	"version": "0.5.0",
+	"type": "module",
+	"scripts": {
+		"dev": "dotenv -c development -- bun x turbo run dev --no-daemon",
+		"build": "dotenv -c development -- bun x turbo run build --no-daemon",
+		"sdk": "dotenv -c development -- bun x turbo run sdk --no-daemon",
+		"translations": "turbo run translations --no-daemon",
+		"format": "biome format --write .",
+		"lint": "biome lint .",
+		"typecheck": "dotenv -- bun x turbo run typecheck --no-daemon",
+		"check": "run-s format lint typecheck",
+		"update": "bun update --linker=isolated",
+		"sp:fix": "bun x syncpack fix-mismatches",
+		"sp:format": "bun x syncpack format",
+		"sp:update": "bun x syncpack update",
+		"workflow:format": "run-s sp:format format",
+		"workflow:check": "run-s workflow:format lint typecheck",
+		"workflow:update": "run-s sp:* update sdk workflow:check"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.1.3",
+		"dotenv-cli": "10.0.0",
+		"npm-run-all2": "8.0.4",
+		"syncpack": "13.0.4",
+		"turbo": "2.5.5"
+	},
+	"packageManager": "bun@1.2.4",
+	"private": true,
+	"workspaces": [
+		"apps/*",
+		"packages/**/*"
+	]
 }
