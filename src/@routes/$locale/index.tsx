@@ -139,6 +139,13 @@ export const Route = createFileRoute("/$locale/")({
 						/>
 
 						<Tile
+							title={<Tx label="Clients" />}
+							description={<Tx label="Coming soon" />}
+							icon="icon-[mdi--account-group]"
+							disabled={true}
+						/>
+
+						<Tile
 							title={<Tx label="Diary" />}
 							description={<Tx label="Coming soon" />}
 							icon="icon-[mdi--clock-outline]"
@@ -160,20 +167,9 @@ export const Route = createFileRoute("/$locale/")({
 						/>
 
 						<Tile
-							title={<Tx label="Coming Soon" />}
-							description={
-								<Tx label="New modules are being developed" />
-							}
+							title={<Tx label="Pohoda" />}
+							description={<Tx label="Coming soon" />}
 							icon="icon-[mdi--clock-outline]"
-							disabled={true}
-						/>
-
-						<Tile
-							title={<Tx label="Coming Soon" />}
-							description={
-								<Tx label="More exciting features on the way" />
-							}
-							icon="icon-[mdi--star-outline]"
 							disabled={true}
 						/>
 					</TileSet>

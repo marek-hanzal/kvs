@@ -34,6 +34,8 @@ export const TileCls = cls({
 			"h-12",
 			"bg-blue-100",
 			"rounded-full",
+			"border",
+			"border-blue-500",
 			"flex",
 			"items-center",
 			"justify-center",
@@ -43,7 +45,7 @@ export const TileCls = cls({
 		icon: [
 			"w-6",
 			"h-6",
-			"text-blue-600",
+			"text-blue-500",
 		],
 		textContainer: [
 			"flex-1",
@@ -89,6 +91,7 @@ export const TileCls = cls({
 				],
 				iconContainer: [
 					"bg-slate-100",
+					"border-slate-200",
 				],
 				icon: [
 					"text-slate-400",

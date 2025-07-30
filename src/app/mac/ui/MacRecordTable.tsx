@@ -32,7 +32,7 @@ const columns = [
 				</LinkTo>
 			);
 		},
-		size: 16,
+		size: 32,
 	}),
 	column({
 		name: "cost",

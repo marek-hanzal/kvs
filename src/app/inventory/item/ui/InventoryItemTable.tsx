@@ -35,13 +35,7 @@ const columns = [
 				</LinkTo>
 			);
 		},
-		size: 18,
-	}),
-	column({
-		name: "description",
-		header: () => <Tx label="Description" />,
-		render: ({ data }) => data.description || "-",
-		size: 24,
+		size: 32,
 	}),
 	column({
 		name: "quantity",
@@ -51,6 +45,12 @@ const columns = [
 				number: data.quantity,
 				fraction: 2,
 			}),
+		size: 12,
+	}),
+	column({
+		name: "description",
+		header: () => <Tx label="Description" />,
+		render: ({ data }) => data.description || "-",
 		size: "auto",
 	}),
 ];
