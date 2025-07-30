@@ -8,10 +8,14 @@ import {
 	withSourceSearchSchema,
 } from "@use-pico/client";
 import { InventoryItemFilterSchema } from "~/app/inventory/item/db/InventoryItemFilterSchema";
+import type { InventoryItemSortSchema } from "~/app/inventory/item/db/InventoryItemSortSchema";
 import { withInventoryItemListQuery } from "~/app/inventory/item/query/withInventoryItemListQuery";
 import { InventoryItemTable } from "~/app/inventory/item/ui/InventoryItemTable";
 
-const { validateSearch } = withSourceSearchSchema({
+const { validateSearch } = withSourceSearchSchema<
+	InventoryItemFilterSchema,
+	InventoryItemSortSchema.Type
+>({
 	filter: InventoryItemFilterSchema,
 	defaultSort: {
 		name: "asc",
