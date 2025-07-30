@@ -59,24 +59,13 @@ export const InitialMigration: Migration = {
 			.execute();
 
 		await db.schema
-			.createTable("MvcRecord")
+			.createTable("Subject")
 			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
-			.addColumn("stamp", "datetime", (col) => col.notNull())
 			.addColumn("name", "text", (col) => col.notNull())
-			.addColumn("amount", "real", (col) => col.notNull())
-			.addColumn("cost", "real", (col) => col.notNull())
-			.addColumn("gross", "real", (col) => col.notNull())
-			.execute();
-
-		await db.schema
-			.createTable("MvcItem")
-			.addColumn("id", "varchar(36)", (col) => col.primaryKey())
-			.addColumn("mvcRecordId", "varchar(36)", (col) =>
-				col.references("MvcRecord.id").onDelete("cascade").notNull(),
-			)
-			.addColumn("stamp", "datetime", (col) => col.notNull())
-			.addColumn("name", "text", (col) => col.notNull())
-			.addColumn("cost", "real", (col) => col.notNull())
+			.addColumn("vat", "text")
+			.addColumn("street", "text")
+			.addColumn("city", "text")
+			.addColumn("zip", "text")
 			.execute();
 	},
 };
